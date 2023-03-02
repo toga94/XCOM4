@@ -153,96 +153,108 @@ public class DragAndDrop : MonoBehaviour
     {
 
         Debug.Log($"{character.GetUnit.GetUnitName} moving from {lastgridPosition} to {gridPosition} at dragstate {dragState.ToString()}");
-        if(dragState == DragState.Grid2Grid)
+        switch (dragState)
         {
-            if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
-            {
-                Unit unit = character.GetUnit;
-                levelGrid.UnitMovedGridPosition(unit, lastgridPosition, gridPosition);
+            case DragState.Grid2Grid:
+                {
+                    if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
+                    {
+                        Unit unit = character.GetUnit;
+                        levelGrid.UnitMovedGridPosition(unit, lastgridPosition, gridPosition);
 
-                unit.Move(levelGrid.GetWorldPosition(gridPosition));
-                levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
-                Debug.Log(levelGrid.HasAnyUnitOnGridPosition(lastgridPosition));
-            }
-            else
-            {
-                levelGrid.UnitSwappedGridPosition(character.GetUnit, levelGrid.GetUnitAtGridPosition(gridPosition), gridPosition, lastgridPosition);
-            }
-        }
-        else if(dragState == DragState.Inv2Inv)
-        {
-            if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))
-            {
-                Unit unit = character.GetUnit;
-                inventoryGrid.UnitMovedInventoryPosition(unit, lastgridPosition, gridPosition);
+                        unit.Move(levelGrid.GetWorldPosition(gridPosition));
+                        levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
+                    }
+                    else
+                    {
+                        levelGrid.UnitSwappedGridPosition(character.GetUnit, levelGrid.GetUnitAtGridPosition(gridPosition), gridPosition, lastgridPosition);
+                    }
 
-                unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
-                inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
-                Debug.Log(inventoryGrid.HasAnyUnitOnInventoryPosition(lastgridPosition));
-            }
-            else
-            {
-                inventoryGrid.UnitSwappedInventoryPosition(character.GetUnit, inventoryGrid.GetUnitAtInventoryPosition(gridPosition), gridPosition, lastgridPosition);
-            }
-        }
-        else if (dragState == DragState.Inv2Grid)
-        {
-            if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
-            {
-                Unit unit = character.GetUnit;
+                    break;
+                }
 
-                unit.Move(levelGrid.GetWorldPosition(gridPosition));
-                inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
+            case DragState.Inv2Inv:
+                {
+                    if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))
+                    {
+                        Unit unit = character.GetUnit;
+                        inventoryGrid.UnitMovedInventoryPosition(unit, lastgridPosition, gridPosition);
 
-                levelGrid.AddUnitAtGridPosition(gridPosition, unit);
-                unit.OnGrid = true;
-            }
-            else
-            {
-                Unit unitA = character.GetUnit;
-                Unit unitB = levelGrid.GetUnitAtGridPosition(gridPosition);
+                        unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
+                        inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
+                    }
+                    else
+                    {
+                        inventoryGrid.UnitSwappedInventoryPosition(character.GetUnit, inventoryGrid.GetUnitAtInventoryPosition(gridPosition), gridPosition, lastgridPosition);
+                    }
 
-                inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
-                levelGrid.RemoveAnyUnitAtGridPosition(gridPosition);
+                    break;
+                }
 
-                levelGrid.AddUnitAtGridPosition(gridPosition, unitA);
-                unitA.Move(levelGrid.GetWorldPosition(gridPosition));
-                unitA.OnGrid = true;
+            case DragState.Inv2Grid:
+                {
+                    if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
+                    {
+                        Unit unit = character.GetUnit;
 
-                inventoryGrid.AddUnitAtInventoryPosition(lastgridPosition, unitB);
-                unitB.Move(inventoryGrid.GetInventoryWorldPosition(lastgridPosition));
-                unitB.OnGrid = false;
-            }
-        }
-        else if (dragState == DragState.Grid2Inv)
-        {
-            if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))
-            {
-                Unit unit = character.GetUnit;
+                        unit.Move(levelGrid.GetWorldPosition(gridPosition));
+                        inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
 
-                unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
-                levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
+                        levelGrid.AddUnitAtGridPosition(gridPosition, unit);
+                        unit.OnGrid = true;
+                    }
+                    else
+                    {
+                        Unit unitA = character.GetUnit;
+                        Unit unitB = levelGrid.GetUnitAtGridPosition(gridPosition);
 
-                inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
-                unit.OnGrid = false;
-            }
-            else
-            {
-                Unit unitA = character.GetUnit;
-                Unit unitB = inventoryGrid.GetUnitAtInventoryPosition(gridPosition);
+                        inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
+                        levelGrid.RemoveAnyUnitAtGridPosition(gridPosition);
 
-                inventoryGrid.RemoveAnyUnitAtInventoryPosition(gridPosition);
-                levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
+                        levelGrid.AddUnitAtGridPosition(gridPosition, unitA);
+                        unitA.Move(levelGrid.GetWorldPosition(gridPosition));
+                        unitA.OnGrid = true;
 
-                inventoryGrid.AddUnitAtInventoryPosition(lastgridPosition, unitA);
-                unitA.Move(inventoryGrid.GetInventoryWorldPosition(lastgridPosition));
-                unitA.OnGrid = false;
+                        inventoryGrid.AddUnitAtInventoryPosition(lastgridPosition, unitB);
+                        unitB.Move(inventoryGrid.GetInventoryWorldPosition(lastgridPosition));
+                        unitB.OnGrid = false;
+                    }
 
-                levelGrid.AddUnitAtGridPosition(gridPosition, unitB);
-                unitB.Move(levelGrid.GetWorldPosition(gridPosition));
-                unitB.OnGrid = true;
+                    break;
+                }
 
-            }
+            case DragState.Grid2Inv:
+                {
+                    if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))
+                    {
+                        Unit unit = character.GetUnit;
+
+                        unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
+                        levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
+
+                        inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
+                        unit.OnGrid = false;
+                    }
+                    else
+                    {
+                        Unit unitA = character.GetUnit;
+                        Unit unitB = inventoryGrid.GetUnitAtInventoryPosition(gridPosition);
+
+                        inventoryGrid.RemoveAnyUnitAtInventoryPosition(gridPosition);
+                        levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
+
+                        inventoryGrid.AddUnitAtInventoryPosition(lastgridPosition, unitA);
+                        unitA.Move(inventoryGrid.GetInventoryWorldPosition(lastgridPosition));
+                        unitA.OnGrid = false;
+
+                        levelGrid.AddUnitAtGridPosition(gridPosition, unitB);
+                        unitB.Move(levelGrid.GetWorldPosition(gridPosition));
+                        unitB.OnGrid = true;
+
+                    }
+
+                    break;
+                }
         }
     }
 
