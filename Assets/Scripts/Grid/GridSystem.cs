@@ -7,7 +7,8 @@ public class GridSystem<TGridObject>
     private int height;
     private float cellSize;
     private TGridObject[,] gridObjectArray;
-    private Vector3 GlobalOffset = new Vector3(1, 0, -3);
+    private Vector3 GlobalOffset = new Vector3(-4, 0, -6);
+  
     public GridSystem(int width, int height, float cellSize, Func<GridSystem<TGridObject>, GridPosition, TGridObject> createGridObject, Vector3Int offset)
     {
         this.width = width;
@@ -33,9 +34,10 @@ public class GridSystem<TGridObject>
 
     public GridPosition GetGridPosition(Vector3 worldPosition)
     {
+       Vector3 curWorldPosition  = worldPosition - GlobalOffset;
         return new GridPosition(
-            Mathf.RoundToInt(worldPosition.x / cellSize) ,
-            Mathf.RoundToInt(worldPosition.z / cellSize)
+            Mathf.RoundToInt(curWorldPosition.x / cellSize) ,
+            Mathf.RoundToInt(curWorldPosition.z / cellSize)
         );
     }
 

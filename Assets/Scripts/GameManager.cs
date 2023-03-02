@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +14,16 @@ public class GameManager : MonoBehaviour
     public List<Unit> UnitsInGrid;
     public List<Unit> UnitsInInventory;
 
+    public event EventHandler<UpdateTextArg> OnUpdateText;
 
 
+    public class UpdateTextArg : EventArgs {
 
+    }
 
+    void UpdateMeText() {
+        OnUpdateText?.Invoke(this, new UpdateTextArg { });
+    }
     void Awake()
     {
         if (Instance != null)
@@ -34,6 +41,8 @@ public class GameManager : MonoBehaviour
             AddToGrid();
         if (UnitsInInventory.Count > 0)
             AddToInventory();
+
+        UpdateMeText();
 
     }
     private void AddToGrid()
@@ -53,10 +62,10 @@ public class GameManager : MonoBehaviour
             int index = unitIndex++;
             int x = index % width;
             int z = index / width;
-
+            unit.OnGrid = true;
             GridPosition gridPosition = new GridPosition(x, z);
-            LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, unit);
-            unit.Move(LevelGrid.Instance.GetWorldPosition(gridPosition));
+            levelGrid.AddUnitAtGridPosition(gridPosition, unit);
+            unit.Move(levelGrid.GetWorldPosition(gridPosition));
         }
     }
     private void AddToInventory()
@@ -64,18 +73,17 @@ public class GameManager : MonoBehaviour
         int unitIndex = 0;
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
         int width = inventoryGrid.GetWidth() - 1;
-        int height = inventoryGrid.GetHeight() - 1;
+      
 
         foreach (var unit in UnitsInInventory)
         {
-            if (unitIndex >= width * height)
+            if (unitIndex >= width)
             {
                 break;
             }
-
-            int index = unitIndex++;
-            int x = index % width;
-            int z = index / width;
+            unit.OnGrid = false;
+            int x = unitIndex++;
+            int z = 0;
 
             GridPosition gridPosition = new GridPosition(x, z);
             inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);

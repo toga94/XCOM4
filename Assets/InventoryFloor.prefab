@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3049824225381459573}
   - component: {fileID: 2690091079338832183}
   - component: {fileID: 5631668384563609265}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,8 +181,8 @@ GameObject:
   - component: {fileID: 701484816430573326}
   - component: {fileID: 667939073203764738}
   - component: {fileID: 9063088779874950275}
-  m_Layer: 7
-  m_Name: Floor 1
+  m_Layer: 8
+  m_Name: InventoryFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 6944307573593479825}
   - component: {fileID: 4680431911357924414}
   - component: {fileID: 7401016737538171735}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

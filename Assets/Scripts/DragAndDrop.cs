@@ -12,38 +12,28 @@ public class DragAndDrop : MonoBehaviour
     private Vector3 _offset;
     private Camera _mainCamera;
     private LevelGrid levelGrid;
+    private InventoryGrid inventoryGrid;
 
 
     public Unit[] freeUnits;
+
+
+    public enum DragState
+    {
+        Inv2Inv,
+        Inv2Grid,
+        Grid2Inv,
+        Grid2Grid
+    }
+
+    [SerializeField] private DragState dragState = DragState.Inv2Inv;
+
     private void Start()
     {
         levelGrid = LevelGrid.Instance;
+        inventoryGrid = InventoryGrid.Instance;
         _mainCamera = Camera.main;
 
-        //AddtoGrid();
-    }
-
-    private void AddtoGrid()
-    {
-        int unitIndex = 0;
-
-        for (int y = levelGrid.GetHeight() - 1; y >= 0; y--)
-        {
-            for (int x = levelGrid.GetWidth() - 1; x >= 0; x--)
-            {
-                GridPosition gridPosition = new GridPosition(x, y);
-
-                levelGrid.AddUnitAtGridPosition(gridPosition, freeUnits[unitIndex]);
-                freeUnits[unitIndex].Move(levelGrid.GetWorldPosition(gridPosition));
-                //freeUnits[unitIndex].addedtoGrid = true;
-                unitIndex++;
-
-                if (unitIndex >= freeUnits.Length)
-                {
-                    unitIndex = 0;
-                }
-            }
-        }
     }
 
     private void Update()
@@ -123,25 +113,7 @@ public class DragAndDrop : MonoBehaviour
                 character.GetTransform.position = _startDraggablePosition;
             else
             {
-                GridPosition lastgridPosition = levelGrid.GetGridPosition(_startDraggablePosition);
-                GridPosition gridPosition = levelGrid.GetGridPosition(lastfloor.position);
-
-                if(levelGrid.IsValidGridPosition(levelGrid.GetGridPosition(lastfloor.position)))
-                if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
-                {
-                        Unit unit = character.GetUnit;
-                        levelGrid.UnitMovedGridPosition(unit, lastgridPosition, gridPosition);
-                        
-                        unit.Move(levelGrid.GetWorldPosition(gridPosition));
-                        levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
-                        Debug.Log(levelGrid.HasAnyUnitOnGridPosition(lastgridPosition));
-                    }
-                else
-                {
-
-                        levelGrid.UnitSwappedGridPosition(character.GetUnit, levelGrid.GetUnitAtGridPosition(gridPosition), gridPosition, lastgridPosition);
-
-                }
+                CharacterDragging();
             }
 
             character.GetCollider.enabled = true;
@@ -150,6 +122,148 @@ public class DragAndDrop : MonoBehaviour
         }
     }
 
+    private void CharacterDragging()
+    {
+        InventoryGrid inventoryGrid = InventoryGrid.Instance;
+        GridPosition lastgridPosition;
+        GridPosition gridPosition;
+
+        if (!character.GetUnit.OnGrid)
+        {
+            lastgridPosition = inventoryGrid.GetInventoryPosition(_startDraggablePosition);
+        }
+        else
+        {
+            lastgridPosition = levelGrid.GetGridPosition(_startDraggablePosition);
+        }
+        if (lastfloor.GetComponent<GridSystemVisualSingle>().isInventory)
+        {
+            gridPosition = inventoryGrid.GetInventoryPosition(lastfloor.position);
+        }
+        else
+        {
+            gridPosition = levelGrid.GetGridPosition(lastfloor.position);
+        }
+        CalculateState();
+
+        DragUnit(lastgridPosition, gridPosition);
+    }
+
+    private void DragUnit(GridPosition lastgridPosition, GridPosition gridPosition)
+    {
+
+        Debug.Log($"{character.GetUnit.GetUnitName} moving from {lastgridPosition} to {gridPosition} at dragstate {dragState.ToString()}");
+        if(dragState == DragState.Grid2Grid)
+        {
+            if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
+            {
+                Unit unit = character.GetUnit;
+                levelGrid.UnitMovedGridPosition(unit, lastgridPosition, gridPosition);
+
+                unit.Move(levelGrid.GetWorldPosition(gridPosition));
+                levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
+                Debug.Log(levelGrid.HasAnyUnitOnGridPosition(lastgridPosition));
+            }
+            else
+            {
+                levelGrid.UnitSwappedGridPosition(character.GetUnit, levelGrid.GetUnitAtGridPosition(gridPosition), gridPosition, lastgridPosition);
+            }
+        }
+        else if(dragState == DragState.Inv2Inv)
+        {
+            if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))
+            {
+                Unit unit = character.GetUnit;
+                inventoryGrid.UnitMovedInventoryPosition(unit, lastgridPosition, gridPosition);
+
+                unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
+                inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
+                Debug.Log(inventoryGrid.HasAnyUnitOnInventoryPosition(lastgridPosition));
+            }
+            else
+            {
+                inventoryGrid.UnitSwappedInventoryPosition(character.GetUnit, inventoryGrid.GetUnitAtInventoryPosition(gridPosition), gridPosition, lastgridPosition);
+            }
+        }
+        else if (dragState == DragState.Inv2Grid)
+        {
+            if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
+            {
+                Unit unit = character.GetUnit;
+
+                unit.Move(levelGrid.GetWorldPosition(gridPosition));
+                inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
+
+                levelGrid.AddUnitAtGridPosition(gridPosition, unit);
+                unit.OnGrid = true;
+            }
+            else
+            {
+                Unit unitA = character.GetUnit;
+                Unit unitB = levelGrid.GetUnitAtGridPosition(gridPosition);
+
+                inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
+                levelGrid.RemoveAnyUnitAtGridPosition(gridPosition);
+
+                levelGrid.AddUnitAtGridPosition(gridPosition, unitA);
+                unitA.Move(levelGrid.GetWorldPosition(gridPosition));
+                unitA.OnGrid = true;
+
+                inventoryGrid.AddUnitAtInventoryPosition(lastgridPosition, unitB);
+                unitB.Move(inventoryGrid.GetInventoryWorldPosition(lastgridPosition));
+                unitB.OnGrid = false;
+            }
+        }
+        else if (dragState == DragState.Grid2Inv)
+        {
+            if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))
+            {
+                Unit unit = character.GetUnit;
+
+                unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
+                levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
+
+                inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
+                unit.OnGrid = false;
+            }
+            else
+            {
+                Unit unitA = character.GetUnit;
+                Unit unitB = inventoryGrid.GetUnitAtInventoryPosition(gridPosition);
+
+                inventoryGrid.RemoveAnyUnitAtInventoryPosition(gridPosition);
+                levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
+
+                inventoryGrid.AddUnitAtInventoryPosition(lastgridPosition, unitA);
+                unitA.Move(inventoryGrid.GetInventoryWorldPosition(lastgridPosition));
+                unitA.OnGrid = false;
+
+                levelGrid.AddUnitAtGridPosition(gridPosition, unitB);
+                unitB.Move(levelGrid.GetWorldPosition(gridPosition));
+                unitB.OnGrid = true;
+
+            }
+        }
+    }
+
+    private void CalculateState()
+    {
+        switch ((!character.GetUnit.OnGrid, lastfloor.GetComponent<GridSystemVisualSingle>().isInventory))
+        {
+            case (true, true):
+                dragState = DragState.Inv2Inv;
+                break;
+            case (true, false):
+                dragState = DragState.Inv2Grid;
+                break;
+            case (false, true):
+                dragState = DragState.Grid2Inv;
+                break;
+            default:
+                dragState = DragState.Grid2Grid;
+                break;
+        }
+    }
     private bool IsLayer(int gameObjectLayer, LayerMask layer)
     {
         return ((1 << gameObjectLayer) & layer) != 0;
