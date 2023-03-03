@@ -6,11 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public int PlayerLevel { get => playerLevel;  }
-    public int PlayerCoin { get => playerCoin; }
+    public int GetPlayerLevel { get; }
+    public int GetPlayerCoin { get; }
 
-    private int playerLevel;
-    private int playerCoin;
     public List<Unit> UnitsInGrid;
     public List<Unit> UnitsInInventory;
 
@@ -38,14 +36,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         if(UnitsInGrid.Count > 0)
-            AddToGrid();
+            AddUnitsToGrid();
         if (UnitsInInventory.Count > 0)
-            AddToInventory();
+            AddUnitsToInventory();
 
         UpdateMeText();
 
     }
-    private void AddToGrid()
+    private void AddUnitsToGrid()
     {
         int unitIndex = 0;
         LevelGrid levelGrid = LevelGrid.Instance;
@@ -68,7 +66,7 @@ public class GameManager : MonoBehaviour
             unit.Move(levelGrid.GetWorldPosition(gridPosition));
         }
     }
-    private void AddToInventory()
+    private void AddUnitsToInventory()
     {
         int unitIndex = 0;
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
@@ -89,6 +87,27 @@ public class GameManager : MonoBehaviour
             inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
             unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
         }
+    }
+    private void AddUnitToInventory(Unit unit)
+    {
+        InventoryGrid inventoryGrid = InventoryGrid.Instance;
+        int width = inventoryGrid.GetWidth() - 1;
+
+        if (UnitsInInventory.Count >= width)
+        {
+            Debug.LogError("Inventory is full!");
+            return;
+        }
+
+        unit.OnGrid = false;
+        int x = UnitsInInventory.Count;
+        int z = 0;
+
+        GridPosition gridPosition = new GridPosition(x, z);
+        inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
+        unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
+
+        UnitsInInventory.Add(unit);
     }
     void Update()
     {
