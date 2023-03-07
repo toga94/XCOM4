@@ -22,9 +22,35 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private List<Unit> alllUnits;
+
+
+    public List<Unit> GetAllUnits
+    {
+        get
+        {
+            List<Unit> units = new List<Unit>();
+            // Get all Units in the scene
+            Unit[] allUnits = FindObjectsOfType<Unit>();
+            // Add all Units to the list
+            foreach (Unit unit in allUnits)
+            {
+                units.Add(unit);
+            }
+            return units;
+        }
+    }
+
+    private void CalculateUnits(object sender, EventArgs e)
+    {
+        alllUnits = GetAllUnits;
+    }
+
     void UpdateMeText() {
         OnUpdateText?.Invoke(this, new UpdateTextArg { });
     }
+
+    
     void Awake()
     {
         if (Instance != null)
@@ -42,6 +68,9 @@ public class GameManager : MonoBehaviour
             AddUnitsToGrid();
         if (UnitsInInventory.Count > 0)
             AddUnitsToInventory();
+
+
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition += CalculateUnits;
 
         UpdateMeText();
         SpawnUnitAtInventory("Lina");

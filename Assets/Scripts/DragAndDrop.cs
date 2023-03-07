@@ -16,6 +16,7 @@ public class DragAndDrop : MonoBehaviour
 
 
     public Unit[] freeUnits;
+    public Unit[] allUnits;
 
 
     public enum DragState
