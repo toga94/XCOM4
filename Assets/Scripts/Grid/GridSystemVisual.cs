@@ -62,13 +62,13 @@ public class GridSystemVisual : MonoBehaviour
                 gridSystemVisualSingleArray[x, z] = gridSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
             }
         }
-
-        //UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
         levelGrid.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
-         
-        UpdateGridVisual();
-       
+        levelGrid.OnAnyUnitSwappedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
+        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += LevelGrid_OnAnyUnitMovedGridPosition;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += LevelGrid_OnAnyUnitMovedGridPosition;
 
+
+        UpdateGridVisual();
     }
 
     public void HideAllGridPosition()

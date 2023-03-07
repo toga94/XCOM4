@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public event EventHandler<UpdateTextArg> OnUpdateText;
 
 
+    public UnitObject[] unitObjects; 
+
+
     public class UpdateTextArg : EventArgs {
 
     }
@@ -41,7 +44,7 @@ public class GameManager : MonoBehaviour
             AddUnitsToInventory();
 
         UpdateMeText();
-
+        SpawnUnitAtInventory("Lina");
     }
     private void AddUnitsToGrid()
     {
@@ -88,6 +91,25 @@ public class GameManager : MonoBehaviour
             unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
         }
     }
+    public void SpawnUnitAtInventory(string unitName)
+    {
+        InventoryGrid inventoryGrid = InventoryGrid.Instance;
+        int width = inventoryGrid.GetWidth() - 1;
+        if (UnitsInInventory.Count >= width)
+        {
+            Debug.LogError("Inventory is full!");
+            return;
+        }
+        foreach (var item in unitObjects)
+        {
+            if (item.unitName == unitName) {
+                Unit SpawnedUnit = GameObject.Instantiate(item.Prefab, Vector3.zero, Quaternion.identity).GetComponent<Unit>();
+                AddUnitToInventory(SpawnedUnit);
+            }
+        }
+
+
+    }
     private void AddUnitToInventory(Unit unit)
     {
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
@@ -111,6 +133,9 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+           
+        }
     }
 }

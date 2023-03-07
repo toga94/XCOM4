@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -73,7 +72,6 @@ public class InventoryGrid : MonoBehaviour
     {
         GridObject gridObject = inventorySystem.GetGridObject(gridPosition);
         gridObject.RemoveAnyUnit();
-
     }
 
     public void UnitMovedInventoryPosition(Unit unit, GridPosition fromGridPosition, GridPosition toGridPosition)
