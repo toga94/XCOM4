@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public event EventHandler<UpdateTextArg> OnUpdateText;
 
 
-    public UnitObject[] unitObjects; 
+    public UnitObject[] unitObjects;
 
 
     public class UpdateTextArg : EventArgs {
@@ -30,9 +30,7 @@ public class GameManager : MonoBehaviour
         get
         {
             List<Unit> units = new List<Unit>();
-            // Get all Units in the scene
             Unit[] allUnits = FindObjectsOfType<Unit>();
-            // Add all Units to the list
             foreach (Unit unit in allUnits)
             {
                 units.Add(unit);
@@ -41,16 +39,64 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public List<Unit> GetUnitsByNameAndLevel(string name)
+    {
+        List<Unit> units = new List<Unit>();
+        Unit[] allUnits = FindObjectsOfType<Unit>();
+        foreach (Unit unit in allUnits)
+        {
+            if (unit.GetUnitName == name)
+            {
+                units.Add(unit);
+            }
+            if (units.Count == 3)
+            {
+                break;
+            }
+        }
+        return units;
+    }
+
+    public List<Unit> GetAllUnitsOnInventory
+    {
+        get
+        {
+            List<Unit> units = new List<Unit>();
+            Unit[] allUnits = FindObjectsOfType<Unit>();
+            foreach (Unit unit in allUnits)
+            {
+                if (!unit.OnGrid) units.Add(unit);
+            }
+            return units;
+        }
+    }
+    public List<Unit> GetAllUnitsOnGrid
+    {
+        get
+        {
+            List<Unit> units = new List<Unit>();
+            Unit[] allUnits = FindObjectsOfType<Unit>();
+            foreach (Unit unit in allUnits)
+            {
+                if (unit.OnGrid) units.Add(unit);
+            }
+            return units;
+        }
+    }
+
     private void CalculateUnits(object sender, EventArgs e)
     {
         alllUnits = GetAllUnits;
+
+
+
     }
 
     void UpdateMeText() {
         OnUpdateText?.Invoke(this, new UpdateTextArg { });
     }
 
-    
+
     void Awake()
     {
         if (Instance != null)
@@ -64,7 +110,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if(UnitsInGrid.Count > 0)
+        if (UnitsInGrid.Count > 0)
             AddUnitsToGrid();
         if (UnitsInInventory.Count > 0)
             AddUnitsToInventory();
@@ -73,7 +119,7 @@ public class GameManager : MonoBehaviour
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += CalculateUnits;
 
         UpdateMeText();
-        SpawnUnitAtInventory("Lina");
+        // SpawnUnitAtInventory("Lina");  Spawn unit with name
     }
     private void AddUnitsToGrid()
     {
@@ -124,7 +170,7 @@ public class GameManager : MonoBehaviour
     {
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
         int width = inventoryGrid.GetWidth() - 1;
-        if (UnitsInInventory.Count >= width)
+        if (GetAllUnitsOnInventory.Count >= width)
         {
             Debug.LogError("Inventory is full!");
             return;
@@ -144,7 +190,7 @@ public class GameManager : MonoBehaviour
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
         int width = inventoryGrid.GetWidth() - 1;
 
-        if (UnitsInInventory.Count >= width)
+        if (GetAllUnitsOnInventory.Count > width)
         {
             Debug.LogError("Inventory is full!");
             return;
@@ -152,19 +198,54 @@ public class GameManager : MonoBehaviour
 
         unit.OnGrid = false;
         int x = UnitsInInventory.Count;
-        int z = 0;
 
-        GridPosition gridPosition = new GridPosition(x, z);
+        GridPosition gridPosition = GetNextFreeGridPosition();
+
+        Debug.Log("gridpos: " + gridPosition);
         inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
         unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
-
         UnitsInInventory.Add(unit);
+
+        CheckForUpgrade(unit);
     }
-    void Update()
+    //Debug.Log(unit.GetUnitName + "Spawned count is " + GetUnitsByNameAndLevel(unit.GetUnitName).Count);
+
+    private void CheckForUpgrade(Unit unit)
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        var upgredableUnit = GetUnitsByNameAndLevel(unit.GetUnitName);
+        if (upgredableUnit.Count > 2)
         {
-           
+  
+            upgredableUnit = upgredableUnit.OrderBy(u => !u.OnGrid).ToList();
+
+            List<Unit> nonGridUnits = upgredableUnit.Where(u => !u.OnGrid).ToList();
+            if (nonGridUnits.Count >= 2)
+            {
+                Destroy(nonGridUnits[0].gameObject);
+                Destroy(nonGridUnits[1].gameObject);
+
+                Unit highestLevelUnit = upgredableUnit.OrderByDescending(u => u.GetUnitLevel).FirstOrDefault();
+                if (highestLevelUnit != null)
+                {
+                    highestLevelUnit.UpgradeLevel();
+                }
+            }
+
         }
+    }
+
+    private GridPosition GetNextFreeGridPosition()
+    {
+        InventoryGrid inventoryGrid = InventoryGrid.Instance;
+        for (int x = 0; x < UnitsInInventory.Count; x++)
+        {
+            GridPosition gridPosition = new GridPosition(x, 0);
+            if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))
+            {
+                return gridPosition;
+            }
+        }
+
+        return new GridPosition(UnitsInInventory.Count, 0);
     }
 }
