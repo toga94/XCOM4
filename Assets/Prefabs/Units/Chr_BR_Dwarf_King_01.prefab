@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 328477854113750616}
   - component: {fileID: 421675273676120818}
   - component: {fileID: 421675273676120823}
+  - component: {fileID: -5938326864877691176}
   m_Layer: 6
   m_Name: Chr_BR_Dwarf_King_01
   m_TagString: Untagged
@@ -346,7 +347,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Wrath  King
   unitLevel: 0
-  OnGrid: 0
+  type: 0
+  tier: 0
+  charState: 0
+--- !u!114 &-5938326864877691176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421576923844595220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40236b689e17c048a01a15e5fcbde29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &421576970679836112
 GameObject:
   m_ObjectHideFlags: 0

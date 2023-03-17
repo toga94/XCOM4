@@ -184,7 +184,7 @@ GameObject:
   m_Layer: 8
   m_Name: InventoryFloor
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
@@ -215,7 +215,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.0003223, y: 0.2504834, z: 5.000693}
+  m_Size: {x: 4.56, y: 0.2504834, z: 4.54}
   m_Center: {x: -0.28, y: -0.10384083, z: -0.02}
 --- !u!114 &9063088779874950275
 MonoBehaviour:
@@ -259,8 +259,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6124974019110275049}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.25, y: 0, z: -2.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.973, y: -0.023188, z: -2.259}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 701484816430573326}
   m_RootOrder: 0

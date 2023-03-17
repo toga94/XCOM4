@@ -2,15 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public int GetPlayerLevel { get; }
+
+    private int playerlevel = 1;
+    public int GetPlayerLevel => playerlevel; 
     public int GetPlayerCoin { get; }
 
     public List<Unit> UnitsInGrid;
     public List<Unit> UnitsInInventory;
+
+
+    private TextMeshPro gridSizeTextMesh;
+    private SpriteRenderer gridSizeIcon;
+
 
     public event EventHandler<UpdateTextArg> OnUpdateText;
 
@@ -87,14 +96,18 @@ public class GameManager : MonoBehaviour
     private void CalculateUnits(object sender, EventArgs e)
     {
         alllUnits = GetAllUnits;
-
-
-
+        Invoke("UpdateAll", 0.1f);
     }
 
-    void UpdateMeText() {
-        OnUpdateText?.Invoke(this, new UpdateTextArg { });
+    private void UpdateAll()
+    {
+        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{GetPlayerLevel}";
+        Color32 labelColor = GetAllUnitsOnGrid.Count < GetPlayerLevel ? new Color(1, 1, 1, 1) : new Color(0.5f, 0.5f, 0.5f, 1);
+        gridSizeTextMesh.faceColor = labelColor;
+        gridSizeIcon.color = labelColor;
     }
+
+    void UpdateMeText() => OnUpdateText?.Invoke(this, new UpdateTextArg { });
 
 
     void Awake()
@@ -117,9 +130,22 @@ public class GameManager : MonoBehaviour
 
 
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += CalculateUnits;
+        LevelGrid.Instance.OnAnyUnitSwappedGridPosition += CalculateUnits;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += CalculateUnits;
+        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += CalculateUnits;
 
+        gridSizeTextMesh = transform.GetComponentInChildren<TextMeshPro>();
+        gridSizeIcon = gridSizeTextMesh.transform.GetComponentInChildren<SpriteRenderer>();
         UpdateMeText();
+        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{GetPlayerLevel}";
         // SpawnUnitAtInventory("Lina");  Spawn unit with name
+    }
+    private void OnDestroy()
+    {
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= CalculateUnits;
+        LevelGrid.Instance.OnAnyUnitSwappedGridPosition -= CalculateUnits;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= CalculateUnits;
+        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition -= CalculateUnits;
     }
     private void AddUnitsToGrid()
     {
@@ -141,7 +167,7 @@ public class GameManager : MonoBehaviour
             unit.OnGrid = true;
             GridPosition gridPosition = new GridPosition(x, z);
             levelGrid.AddUnitAtGridPosition(gridPosition, unit);
-            unit.Move(levelGrid.GetWorldPosition(gridPosition));
+            unit.TeleportToPosition(levelGrid.GetWorldPosition(gridPosition), gridPosition);
         }
     }
     private void AddUnitsToInventory()
@@ -163,38 +189,44 @@ public class GameManager : MonoBehaviour
 
             GridPosition gridPosition = new GridPosition(x, z);
             inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
-            unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
+            unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(gridPosition), gridPosition);
         }
     }
+    InventoryGrid inventoryGrid;
+    LevelGrid levelgrid;
+    public bool InventoryIsFull() {
+        inventoryGrid = InventoryGrid.Instance;
+        int width = inventoryGrid.GetWidth() - 1;
+        bool isFull = GetAllUnitsOnInventory.Count >= width;
+
+        if(isFull) Debug.LogError("Inventory is full!");
+        return isFull;
+    }
+    public bool GridIsFull() {
+        levelgrid = LevelGrid.Instance;
+        int width = inventoryGrid.GetWidth() - 1;
+        int height = inventoryGrid.GetHeight() - 1;
+        bool isFull = GetAllUnitsOnGrid.Count >= width * height;
+
+        if (isFull) Debug.LogError("Grid is full!");
+        return isFull;
+    }
+
     public void SpawnUnitAtInventory(string unitName)
     {
-        InventoryGrid inventoryGrid = InventoryGrid.Instance;
-        int width = inventoryGrid.GetWidth() - 1;
-        if (GetAllUnitsOnInventory.Count >= width)
-        {
-            Debug.LogError("Inventory is full!");
-            return;
-        }
+        if (InventoryIsFull()) return;
         foreach (var item in unitObjects)
         {
             if (item.unitName == unitName) {
                 Unit SpawnedUnit = GameObject.Instantiate(item.Prefab, Vector3.zero, Quaternion.identity).GetComponent<Unit>();
+                SpawnedUnit.gameObject.name = SpawnedUnit.GetUnitName;
                 AddUnitToInventory(SpawnedUnit);
             }
         }
-
-
     }
     private void AddUnitToInventory(Unit unit)
     {
-        InventoryGrid inventoryGrid = InventoryGrid.Instance;
-        int width = inventoryGrid.GetWidth() - 1;
-
-        if (GetAllUnitsOnInventory.Count > width)
-        {
-            Debug.LogError("Inventory is full!");
-            return;
-        }
+        if (InventoryIsFull()) return;
 
         unit.OnGrid = false;
         int x = UnitsInInventory.Count;
@@ -203,34 +235,54 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("gridpos: " + gridPosition);
         inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
-        unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
+        unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(gridPosition), gridPosition);
         UnitsInInventory.Add(unit);
 
-        CheckForUpgrade(unit);
+        //CheckForUpgrade(unit);
+        CheckForUpgradeForAll();
     }
     //Debug.Log(unit.GetUnitName + "Spawned count is " + GetUnitsByNameAndLevel(unit.GetUnitName).Count);
 
+
+    private void CheckForUpgradeForAll()
+    {
+        var allUnits = GameManager.Instance.GetAllUnits;
+        foreach (var selectedUnit in alllUnits)
+        {
+            CheckForUpgrade(selectedUnit);
+        }
+    }
+
     private void CheckForUpgrade(Unit unit)
     {
-        var upgredableUnit = GetUnitsByNameAndLevel(unit.GetUnitName);
-        if (upgredableUnit.Count > 2)
+        List<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitName);
+
+        if (upgradableUnits.Count >= 3)
         {
-  
-            upgredableUnit = upgredableUnit.OrderBy(u => !u.OnGrid).ToList();
+            IOrderedEnumerable<Unit> highestLevelUnits = upgradableUnits.OrderByDescending(u => u.OnGrid);
+            Unit highestLevelUnit = highestLevelUnits.First();
 
-            List<Unit> nonGridUnits = upgredableUnit.Where(u => !u.OnGrid).ToList();
-            if (nonGridUnits.Count >= 2)
+            if (highestLevelUnit != null)
             {
-                Destroy(nonGridUnits[0].gameObject);
-                Destroy(nonGridUnits[1].gameObject);
-
-                Unit highestLevelUnit = upgredableUnit.OrderByDescending(u => u.GetUnitLevel).FirstOrDefault();
-                if (highestLevelUnit != null)
+                Instantiate(Resources.Load("FX_LevelUp_01"), highestLevelUnit.transform.position + Vector3.up / 2, Quaternion.identity);
+                highestLevelUnit.UpgradeLevel();
+                upgradableUnits.Remove(highestLevelUnit);
+                Debug.Log("upgrade list count" + upgradableUnits.Count);
+                if (upgradableUnits.Count >= 2)
                 {
-                    highestLevelUnit.UpgradeLevel();
+                        RemoveOtherUnitsFromList(upgradableUnits);
                 }
             }
+        }
+    }
 
+    private void RemoveOtherUnitsFromList(List<Unit> nonGridUnits)
+    {
+        foreach (Unit nonGridUnit in nonGridUnits)
+        {
+            if (nonGridUnit.OnGrid) levelgrid.RemoveUnitAtGridPosition(nonGridUnit.UnitGridPosition, nonGridUnit);
+            else inventoryGrid.RemoveAnyUnitAtInventoryPosition(nonGridUnit.UnitGridPosition);
+            Destroy(nonGridUnit.gameObject);
         }
     }
 
@@ -247,5 +299,11 @@ public class GameManager : MonoBehaviour
         }
 
         return new GridPosition(UnitsInInventory.Count, 0);
+    }
+
+
+    private void Update()
+    {
+
     }
 }

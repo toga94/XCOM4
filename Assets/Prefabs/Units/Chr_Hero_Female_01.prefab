@@ -2080,6 +2080,7 @@ GameObject:
   - component: {fileID: 507455329347692353}
   - component: {fileID: 457637287410408348}
   - component: {fileID: 457637287410408323}
+  - component: {fileID: -1737890715897108833}
   m_Layer: 6
   m_Name: Chr_Hero_Female_01
   m_TagString: Untagged
@@ -2160,7 +2161,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Lina
   unitLevel: 0
-  OnGrid: 0
+  type: 0
+  tier: 0
+  charState: 0
+--- !u!114 &-1737890715897108833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459109603624335791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40236b689e17c048a01a15e5fcbde29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &459110369867977217
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class GridObjectHex : MonoBehaviour
@@ -18,13 +19,15 @@ public class GridObjectHex : MonoBehaviour
 
     public override string ToString()
     {
-        string unitString = "";
+        StringBuilder sb = new StringBuilder();
+        sb.Append(gridPosition.ToString()).Append("\n");
+
         foreach (Unit unit in unitList)
         {
-            unitString += unit + "\n";
+            sb.Append(unit.ToString()).Append("\n");
         }
 
-        return gridPosition.ToString() + "\n" + unitString;
+        return sb.ToString();
     }
     public void RemoveAnyUnit()
     {

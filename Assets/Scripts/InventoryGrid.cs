@@ -25,7 +25,7 @@ public class InventoryGrid : MonoBehaviour
         public GridPosition gridPositionB;
     }
 
-    [SerializeField] private int inventoryWidth = 10;
+    [SerializeField] private int inventoryWidth = 6;
     [SerializeField] private int inventoryHeight = 10;
     [SerializeField] private float inventoryCellSize = 1;
 
@@ -73,7 +73,12 @@ public class InventoryGrid : MonoBehaviour
         GridObject gridObject = inventorySystem.GetGridObject(gridPosition);
         gridObject.RemoveAnyUnit();
     }
-
+    public void SellAnyUnitAtInventoryPosition(GridPosition gridPosition)
+    {
+        GridObject gridObject = inventorySystem.GetGridObject(gridPosition);
+        gridObject.RemoveAnyUnit();
+        Destroy(gridObject.GetUnit().gameObject);
+    }
     public void UnitMovedInventoryPosition(Unit unit, GridPosition fromGridPosition, GridPosition toGridPosition)
     {
         //  RemoveUnitAtGridPosition(fromGridPosition, unit);
@@ -101,8 +106,8 @@ public class InventoryGrid : MonoBehaviour
         AddUnitAtInventoryPosition(gridPositionB, unitA);
 
 
-        unitA.Move(GetInventoryWorldPosition(gridPositionA));
-        unitB.Move(GetInventoryWorldPosition(gridPositionB));
+        unitA.TeleportToPosition(GetInventoryWorldPosition(gridPositionA), gridPositionA);
+        unitB.TeleportToPosition(GetInventoryWorldPosition(gridPositionB), gridPositionB);
 
         OnAnyUnitSwappedInventoryPosition?.Invoke(this, new OnAnyUnitSwappedInventoryPositionEventArgs
         {

@@ -42,7 +42,7 @@ public class CardShop : MonoBehaviour
         onItemAdded?.Invoke(this, unitInShops);
     }
 
-    // Fisher-Yates shuffle algorithm to shuffle the list of allUnitObjects
+
     private void Shuffle<T>(IList<T> list)
     {
         int n = list.Count;
@@ -55,4 +55,10 @@ public class CardShop : MonoBehaviour
             list[n] = value;
         }
     }
+
+
+
+
+
+ 
 }

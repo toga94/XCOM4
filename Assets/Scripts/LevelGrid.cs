@@ -89,7 +89,17 @@ public class LevelGrid : MonoBehaviour
 
     public void RemoveUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
+        if (!IsValidGridPosition(gridPosition))
+        {
+            Debug.LogError("NotIsValidGridPosition");
+            return;
+        }
         GridObjectHex gridObject = gridSystem.GetGridObjectHex(gridPosition);
+        if (!gridObject.HasAnyUnit())
+        {
+            Debug.LogError( gridPosition.ToString() + " is empty");
+            return;
+        }
         gridObject.RemoveUnit(unit);
 
     }
@@ -97,9 +107,13 @@ public class LevelGrid : MonoBehaviour
     {
         GridObjectHex gridObject = gridSystem.GetGridObjectHex(gridPosition);
         gridObject.RemoveAnyUnit();
-
     }
-
+    public void SellAnyUnitAtGridPosition(GridPosition gridPosition)
+    {
+        GridObjectHex gridObject = gridSystem.GetGridObjectHex(gridPosition);
+        gridObject.RemoveAnyUnit();
+        Destroy(gridObject.GetUnit().gameObject);
+    }
     public void UnitMovedGridPosition(Unit unit, GridPosition fromGridPosition, GridPosition toGridPosition)
     {
         //  RemoveUnitAtGridPosition(fromGridPosition, unit);
@@ -126,8 +140,8 @@ public class LevelGrid : MonoBehaviour
         AddUnitAtGridPosition(gridPositionB, unitA);
 
 
-       unitA.Move(GetWorldPosition(gridPositionA));
-       unitB.Move(GetWorldPosition(gridPositionB));
+       unitA.TeleportToPosition(GetWorldPosition(gridPositionA), gridPositionA);
+       unitB.TeleportToPosition(GetWorldPosition(gridPositionB), gridPositionB);
 
         OnAnyUnitSwappedGridPosition?.Invoke(this, new OnAnyUnitSwappedGridPositionEventArgs
         {

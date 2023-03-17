@@ -5,14 +5,17 @@ public class CardWindow : MonoBehaviour
     [SerializeField] private CardShop cardShop;
     [SerializeField] private RectTransform itemPanel;
 
-    void Start()
+    private void Start()
     {
         cardShop = CardShop.Instance;
         cardShop.onItemAdded += ReDraw;
     }
+    private void OnDestroy()
+    {
+        cardShop.onItemAdded -= ReDraw;
+    }
 
-
-    void ReDraw(object sender, UnitObject[] e)
+    private void ReDraw(object sender, UnitObject[] e)
     {
         Transform itemPanelTransform = itemPanel.transform;
         foreach (Transform child in itemPanelTransform)
@@ -21,7 +24,7 @@ public class CardWindow : MonoBehaviour
         }
         foreach (UnitObject item in e)
         {
-            GameObject card = GameObject.Instantiate(Resources.Load("UnitCard"), transform.position, Quaternion.identity, itemPanel.transform ) as GameObject ;
+            GameObject card = Instantiate(Resources.Load("UnitCard"), transform.position, Quaternion.identity, itemPanel.transform) as GameObject;
             UnitCardButton cardButton = card.GetComponent<UnitCardButton>();
             cardButton.CharacterImage.sprite = item.unitImage;
             cardButton.CharacterName = item.unitName;

@@ -112,29 +112,16 @@ public class GridSystemVisual : MonoBehaviour
 
     public void ShowGridPositionList(List<GridPosition> gridPositionList, GridVisualType gridVisualType)
     {
-        foreach (GridPosition gridPosition in gridPositionList)
-        {
-            gridSystemVisualSingleArray[gridPosition.x, gridPosition.z].
-                Show(GetGridVisualTypeMaterial(gridVisualType));
-        }
+        //foreach (GridPosition gridPosition in gridPositionList)
+        //{
+        //    gridSystemVisualSingleArray[gridPosition.x, gridPosition.z].
+        //        Show(GetGridVisualTypeMaterial(gridVisualType));
+        //}
     }
    
-    public void UpdateGridVisual()
-    {
-        ShowGridPositionRange(new GridPosition(0, 0), 1000, GridVisualType.RedSoft);
-
-
-    }
-
-    private void UnitActionSystem_OnSelectedActionChanged(object sender, EventArgs e)
-    {
-        UpdateGridVisual();
-    }
-
-    private void LevelGrid_OnAnyUnitMovedGridPosition(object sender, EventArgs e)
-    {
-        UpdateGridVisual();
-    }
+    public void UpdateGridVisual() => ShowGridPositionRange(new GridPosition(0, 0), 1000, GridVisualType.RedSoft);
+    private void UnitActionSystem_OnSelectedActionChanged(object sender, EventArgs e) => UpdateGridVisual();
+    private void LevelGrid_OnAnyUnitMovedGridPosition(object sender, EventArgs e) => UpdateGridVisual();
 
     private Material GetGridVisualTypeMaterial(GridVisualType gridVisualType)
     {

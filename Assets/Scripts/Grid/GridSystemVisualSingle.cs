@@ -36,11 +36,25 @@ public class GridSystemVisualSingle : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
+        if (!isInventory)
+        {
+            LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
+        }
+        else
+        {
+            InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= OnAnyUnitMovedGridPosition;
+        }
     }
     private void OnDestroy()
     {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
+        if (!isInventory)
+        {
+            LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
+        }
+        else
+        {
+            InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= OnAnyUnitMovedGridPosition;
+        }
     }
 
     private void UpdateText(object sender, GameManager.UpdateTextArg e)

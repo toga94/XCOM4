@@ -48,20 +48,17 @@ public class InventorySystemVisual : MonoBehaviour
         inventoryGrid = InventoryGrid.Instance;
         gridSystemVisualSingleArray = new GridSystemVisualSingle[
             inventoryGrid.GetWidth(),
-            inventoryGrid.GetHeight()
+            1
         ];
 
         for (int x = 0; x < inventoryGrid.GetWidth(); x++)
         {
-            for (int z = 0; z < inventoryGrid.GetHeight(); z++)
-            {
-                GridPosition gridPosition = new GridPosition(x, z);
-                Vector3 offset = new Vector3(-2.5f, 0f, 2.5f);
-                Transform gridSystemVisualSingleTransform =
-                    Instantiate(inventorySystemVisualSinglePrefab, InventoryGrid.Instance.GetInventoryWorldPosition(gridPosition), Quaternion.identity);
+            GridPosition gridPosition = new GridPosition(x, 0);
+            Vector3 offset = new Vector3(-2.5f, 0f, 2.5f);
+            Transform gridSystemVisualSingleTransform =
+                Instantiate(inventorySystemVisualSinglePrefab, InventoryGrid.Instance.GetInventoryWorldPosition(gridPosition), Quaternion.identity);
 
-                gridSystemVisualSingleArray[x, z] = gridSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
-            }
+            gridSystemVisualSingleArray[x, 0] = gridSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
         }
 
         inventoryGrid.OnAnyUnitMovedInventoryPosition += InventoryGrid_OnAnyUnitMovedinventoryPosition;
@@ -84,30 +81,30 @@ public class InventorySystemVisual : MonoBehaviour
 
     private void ShowGridPositionRange(GridPosition gridPosition, int range, GridVisualType gridVisualType)
     {
-        List<GridPosition> gridPositionList = new List<GridPosition>();
+        //List<GridPosition> gridPositionList = new List<GridPosition>();
 
-        for (int x = -range; x <= range; x++)
-        {
-            for (int z = -range; z <= range; z++)
-            {
-                GridPosition testGridPosition = gridPosition + new GridPosition(x, z);
+        //for (int x = -range; x <= range; x++)
+        //{
+        //    for (int z = -range; z <= range; z++)
+        //    {
+        //        GridPosition testGridPosition = gridPosition + new GridPosition(x, z);
 
-                if (!inventoryGrid.IsValidInventoryPosition(testGridPosition))
-                {
-                    continue;
-                }
+        //        if (!inventoryGrid.IsValidInventoryPosition(testGridPosition))
+        //        {
+        //            continue;
+        //        }
 
-                int testDistance = Mathf.Abs(x) + Mathf.Abs(z);
-                if (testDistance > range)
-                {
-                    continue;
-                }
+        //        int testDistance = Mathf.Abs(x) + Mathf.Abs(z);
+        //        if (testDistance > range)
+        //        {
+        //            continue;
+        //        }
 
-                gridPositionList.Add(testGridPosition);
-            }
-        }
+        //        gridPositionList.Add(testGridPosition);
+        //    }
+        //}
 
-        ShowGridPositionList(gridPositionList, gridVisualType);
+        //ShowGridPositionList(gridPositionList, gridVisualType);
     }
 
     public void ShowGridPositionList(List<GridPosition> gridPositionList, GridVisualType gridVisualType)
@@ -121,9 +118,7 @@ public class InventorySystemVisual : MonoBehaviour
 
     public void UpdateInventoryGridVisual()
     {
-        ShowGridPositionRange(new GridPosition(0, 0), 1000, GridVisualType.RedSoft);
-
-
+        //ShowGridPositionRange(new GridPosition(0, 0), 1000, GridVisualType.RedSoft);
     }
 
     private void UnitActionSystem_OnSelectedActionChanged(object sender, EventArgs e)

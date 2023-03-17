@@ -18,7 +18,8 @@ public class DragAndDrop : MonoBehaviour
     public Unit[] freeUnits;
     public Unit[] allUnits;
 
-
+    [SerializeField] private GameObject sellUI;
+    [SerializeField] private GameObject marketUI;
     public enum DragState
     {
         Inv2Inv,
@@ -54,14 +55,17 @@ public class DragAndDrop : MonoBehaviour
 
         else if (_draggableObject && touch.phase == TouchPhase.Moved)
         {
-            character.GetAnimator.SetBool("fall", true);
+            character.GetUnit.charState = Unit.CharState.Fall;
             MoveDraggableObject(touch);
+
         }
 
         else if (_draggableObject && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
         {
-            character.GetAnimator.SetBool("fall", false);
+            character.GetUnit.charState = Unit.CharState.Idle;
             StopDragging();
+            sellUI.SetActive(false);
+            marketUI.SetActive(true);
         }
     }
 
@@ -70,12 +74,13 @@ public class DragAndDrop : MonoBehaviour
         Ray ray = _mainCamera.ScreenPointToRay(touch.position);
         if (Physics.Raycast(ray, out RaycastHit hit) && IsLayer(hit.collider.gameObject.layer, draggableLayer))
         {
+            sellUI.SetActive(true);
+            marketUI.SetActive(false);
             _draggableObject = hit.transform;
 
             character = new Character(
                 _draggableObject, 
                 hit.transform.GetComponent<Collider>(), 
-                hit.transform.GetComponent<Animator>(),
                 hit.transform.GetComponent<Unit>()
                 );
 
@@ -129,15 +134,17 @@ public class DragAndDrop : MonoBehaviour
         GridPosition lastgridPosition;
         GridPosition gridPosition;
 
-        if (!character.GetUnit.OnGrid)
-        {
-            lastgridPosition = inventoryGrid.GetInventoryPosition(_startDraggablePosition);
-        }
-        else
+        if (character.GetUnit.OnGrid)
         {
             lastgridPosition = levelGrid.GetGridPosition(_startDraggablePosition);
         }
-        if (lastfloor.GetComponent<GridSystemVisualSingle>().isInventory)
+        else
+        {
+            lastgridPosition = inventoryGrid.GetInventoryPosition(_startDraggablePosition);
+        }
+
+        var floorGridSystemVisual = lastfloor.GetComponent<GridSystemVisualSingle>();
+        if (floorGridSystemVisual.isInventory)
         {
             gridPosition = inventoryGrid.GetInventoryPosition(lastfloor.position);
         }
@@ -145,15 +152,16 @@ public class DragAndDrop : MonoBehaviour
         {
             gridPosition = levelGrid.GetGridPosition(lastfloor.position);
         }
-        CalculateState();
 
+        CalculateState();
         DragUnit(lastgridPosition, gridPosition);
     }
+
+
 
     private void DragUnit(GridPosition lastgridPosition, GridPosition gridPosition)
     {
 
-        Debug.Log($"{character.GetUnit.GetUnitName} moving from {lastgridPosition} to {gridPosition} at dragstate {dragState.ToString()}");
         switch (dragState)
         {
             case DragState.Grid2Grid:
@@ -163,7 +171,7 @@ public class DragAndDrop : MonoBehaviour
                         Unit unit = character.GetUnit;
                         levelGrid.UnitMovedGridPosition(unit, lastgridPosition, gridPosition);
 
-                        unit.Move(levelGrid.GetWorldPosition(gridPosition));
+                        unit.TeleportToPosition(levelGrid.GetWorldPosition(gridPosition), gridPosition);
                         levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
                     }
                     else
@@ -181,7 +189,7 @@ public class DragAndDrop : MonoBehaviour
                         Unit unit = character.GetUnit;
                         inventoryGrid.UnitMovedInventoryPosition(unit, lastgridPosition, gridPosition);
 
-                        unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
+                        unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(gridPosition), gridPosition);
                         inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
                     }
                     else
@@ -198,7 +206,7 @@ public class DragAndDrop : MonoBehaviour
                     {
                         Unit unit = character.GetUnit;
 
-                        unit.Move(levelGrid.GetWorldPosition(gridPosition));
+                        unit.TeleportToPosition(levelGrid.GetWorldPosition(gridPosition), gridPosition);
                         inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
 
                         levelGrid.AddUnitAtGridPosition(gridPosition, unit);
@@ -213,11 +221,11 @@ public class DragAndDrop : MonoBehaviour
                         levelGrid.RemoveAnyUnitAtGridPosition(gridPosition);
 
                         levelGrid.AddUnitAtGridPosition(gridPosition, unitA);
-                        unitA.Move(levelGrid.GetWorldPosition(gridPosition));
+                        unitA.TeleportToPosition(levelGrid.GetWorldPosition(gridPosition), gridPosition);
                         unitA.OnGrid = true;
 
                         inventoryGrid.AddUnitAtInventoryPosition(lastgridPosition, unitB);
-                        unitB.Move(inventoryGrid.GetInventoryWorldPosition(lastgridPosition));
+                        unitB.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(lastgridPosition), gridPosition);
                         unitB.OnGrid = false;
                     }
 
@@ -230,7 +238,7 @@ public class DragAndDrop : MonoBehaviour
                     {
                         Unit unit = character.GetUnit;
 
-                        unit.Move(inventoryGrid.GetInventoryWorldPosition(gridPosition));
+                        unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(gridPosition), gridPosition);
                         levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
 
                         inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
@@ -245,11 +253,11 @@ public class DragAndDrop : MonoBehaviour
                         levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
 
                         inventoryGrid.AddUnitAtInventoryPosition(lastgridPosition, unitA);
-                        unitA.Move(inventoryGrid.GetInventoryWorldPosition(lastgridPosition));
+                        unitA.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(lastgridPosition), gridPosition);
                         unitA.OnGrid = false;
 
                         levelGrid.AddUnitAtGridPosition(gridPosition, unitB);
-                        unitB.Move(levelGrid.GetWorldPosition(gridPosition));
+                        unitB.TeleportToPosition(levelGrid.GetWorldPosition(gridPosition), gridPosition);
                         unitB.OnGrid = true;
 
                     }
