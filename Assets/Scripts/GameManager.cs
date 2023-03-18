@@ -259,7 +259,7 @@ public class GameManager : MonoBehaviour
 
         if (upgradableUnits.Count >= 3)
         {
-            IOrderedEnumerable<Unit> highestLevelUnits = upgradableUnits.OrderByDescending(u => u.OnGrid);
+            IOrderedEnumerable<Unit> highestLevelUnits = upgradableUnits.OrderByDescending(u => u.OnGrid).ThenByDescending(u => u.UnitGridPosition.x).ThenByDescending(u => u.UnitGridPosition.z); ;
             Unit highestLevelUnit = highestLevelUnits.First();
 
             if (highestLevelUnit != null)
@@ -278,11 +278,21 @@ public class GameManager : MonoBehaviour
 
     private void RemoveOtherUnitsFromList(List<Unit> nonGridUnits)
     {
-        foreach (Unit nonGridUnit in nonGridUnits)
+
+        foreach (Unit unit in nonGridUnits)
         {
-            if (nonGridUnit.OnGrid) levelgrid.RemoveUnitAtGridPosition(nonGridUnit.UnitGridPosition, nonGridUnit);
-            else inventoryGrid.RemoveAnyUnitAtInventoryPosition(nonGridUnit.UnitGridPosition);
-            Destroy(nonGridUnit.gameObject);
+
+            if (unit.OnGrid)
+            {
+                    LevelGrid.Instance.RemoveAnyUnitAtGridPosition(unit.UnitGridPosition);
+            }
+            else
+            {
+
+                    inventoryGrid.RemoveAnyUnitAtInventoryPosition(unit.UnitGridPosition);
+            }
+
+            Destroy(unit.gameObject);
         }
     }
 

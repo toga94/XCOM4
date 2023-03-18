@@ -89,15 +89,16 @@ public class LevelGrid : MonoBehaviour
 
     public void RemoveUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
-        if (!IsValidGridPosition(gridPosition))
+        var unitPos = unit.UnitGridPosition;
+        if (!IsValidGridPosition(unitPos))
         {
             Debug.LogError("NotIsValidGridPosition");
             return;
         }
-        GridObjectHex gridObject = gridSystem.GetGridObjectHex(gridPosition);
+        GridObjectHex gridObject = gridSystem.GetGridObjectHex(unitPos);
         if (!gridObject.HasAnyUnit())
         {
-            Debug.LogError( gridPosition.ToString() + " is empty");
+            Debug.LogError(unitPos.ToString() + " is empty");
             return;
         }
         gridObject.RemoveUnit(unit);
