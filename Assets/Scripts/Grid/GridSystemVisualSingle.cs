@@ -85,6 +85,11 @@ public class GridSystemVisualSingle : MonoBehaviour
 
     private void OnAnyUnitMovedGridPosition(object sender, InventoryGrid.OnAnyUnitMovedInventoryPositionEventArgs e)
     {
+       Invoke("UpdateInventoryPosition", 0.1f);
+    }
+
+    private void UpdateInventoryPosition()
+    {
         if (!isInventory) return;
         string debugText;
         if (InventoryGrid.Instance.HasAnyUnitOnInventoryPosition(gridPosition))
@@ -97,7 +102,13 @@ public class GridSystemVisualSingle : MonoBehaviour
         }
         textmeshPro.text = debugText;
     }
+
     private void OnAnyUnitMovedGridPosition(object sender, LevelGrid.OnAnyUnitMovedGridPositionEventArgs e)
+    {
+        Invoke("UpdateGridPosition", 0.1f);
+    }
+
+    private void UpdateGridPosition()
     {
         if (isInventory) return;
         string debugText;

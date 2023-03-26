@@ -94,7 +94,7 @@ public class DragAndDrop : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, gridObjectLayer))
         {
             float x = Mathf.Floor(hit.point.x / gridSize) * gridSize;
-            float y = Mathf.Floor(hit.point.y / gridSize) * gridSize + 2;
+            float y = Mathf.Floor(hit.point.y / gridSize) * gridSize + 1.5f;
             float z = Mathf.Floor(hit.point.z / gridSize) * gridSize;
 
             Vector3 cursorPosition = new Vector3(x, y, z) + _offset;

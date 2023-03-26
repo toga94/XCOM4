@@ -12,16 +12,30 @@ public class TraitsUI : MonoBehaviour
 
     private void Start()
     {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition += UpdateList;
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += UpdateList;
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition += OnAnyUnitMovedGridPosition;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += OnAnyUnitMovedGridPosition;
 
     }
     private void OnDisable()
     {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= UpdateList;
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= UpdateList;
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= OnAnyUnitMovedGridPosition;
     }
+    private void OnAnyUnitMovedGridPosition(object sender, InventoryGrid.OnAnyUnitMovedInventoryPositionEventArgs e)
+    {
+      Invoke("UpdateTraits", 0.1f);
+    }
+    private void OnAnyUnitMovedGridPosition(object sender, LevelGrid.OnAnyUnitMovedGridPositionEventArgs e)
+    {
+        Invoke("UpdateTraits", 0.1f);
+    }
+
     void UpdateList(object sender, EventArgs e)
+    {
+        Invoke("UpdateTraits", 0.1f);
+    }
+
+    private void UpdateTraits()
     {
         units = GameManager.Instance.GetAllUnitsOnGrid;
         foreach (Transform child in traitList)

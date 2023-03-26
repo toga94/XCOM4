@@ -7,4 +7,5 @@ public class Ability : ScriptableObject
     public int manaCost;
     public int damage;
     public float cooldown;
+    public virtual void Activate() { }
 }
