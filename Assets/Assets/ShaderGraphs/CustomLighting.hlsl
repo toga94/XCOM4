@@ -3,7 +3,7 @@
 
 void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out half DistanceAtten, out half ShadowAtten)
 {
-#if SHADERGRAPH_PREVIEW
+#if defined(SHADERGRAPH_PREVIEW)
     Direction = half3(0.5, 0.5, 0);
     Color = 1;
     DistanceAtten = 1;
@@ -25,7 +25,7 @@ void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out h
 
 void DirectSpecular_half(half3 Specular, half Smoothness, half3 Direction, half3 Color, half3 WorldNormal, half3 WorldView, out half3 Out)
 {
-#if SHADERGRAPH_PREVIEW
+#if defined(SHADERGRAPH_PREVIEW)
     Out = 0;
 #else
     Smoothness = exp2(10 * Smoothness + 1);
