@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Random = UnityEngine.Random;
 
 public class CardShop : MonoBehaviour
 {
@@ -16,49 +17,35 @@ public class CardShop : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogError("There's more than one InventoryGrid! " + transform + " - " + Instance);
+            Debug.LogError("There's more than one CardShop! " + transform + " - " + Instance);
             Destroy(gameObject);
             return;
         }
         Instance = this;
     }
-
-
-
     public void RandomSelect5ItemForShop()
     {
-
         List<UnitObject> allUnitsList = new List<UnitObject>(allUnitObjects);
-
-
-        Shuffle(allUnitsList);
-
-
-        UnitObject[] selectedUnits = allUnitsList.GetRange(0, 5).ToArray();
-
-
-        unitInShops = selectedUnits;
-
-        onItemAdded?.Invoke(this, unitInShops);
+        UnitObject[] selectedUnits = RandomPick(allUnitObjects, 5).ToArray();
+        onItemAdded?.Invoke(this, selectedUnits);
     }
 
-
-    private void Shuffle<T>(IList<T> list)
+    private static List<T> RandomPick<T>(IList<T> list, int numItemsToSelect)
     {
-        int n = list.Count;
-        while (n > 1)
+        List<T> selectedItems = new List<T>();
+
+        for (int i = 0; i < numItemsToSelect; i++)
         {
-            n--;
-            int k = UnityEngine.Random.Range(0, n + 1);
-            T value = list[k];
-            list[k] = list[n];
-            list[n] = value;
+            int randomIndex = Random.Range(0, list.Count);
+            T selectedItem = list[randomIndex];
+            selectedItems.Add(selectedItem);
         }
+
+        return selectedItems;
     }
 
 
 
 
 
- 
 }

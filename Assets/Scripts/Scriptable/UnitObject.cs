@@ -10,16 +10,7 @@ public class UnitObject : ScriptableObject
     public int speed;
     public int mana;
     public Ability ability;
-    public List<ClassData> unitClassDataList;
+    public List<TraitType> traits;
     public GameObject Prefab;
-
-    public enum RareOptions
-    {
-        OneStarUnit,
-        TwoStarUnit,
-        ThreeStarUnit,
-        LegendaryUnit
-    }
     public RareOptions rareOptions = RareOptions.OneStarUnit;
-
 }

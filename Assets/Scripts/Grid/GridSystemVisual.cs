@@ -56,7 +56,7 @@ public class GridSystemVisual : MonoBehaviour
             for (int z = 0; z < levelGrid.GetHeight(); z++)
             {
                 GridPosition gridPosition = new GridPosition(x, z);
-                Transform gridSystemVisualSingleTransform = 
+                Transform gridSystemVisualSingleTransform =
                     Instantiate(gridSystemVisualSinglePrefab, LevelGrid.Instance.GetWorldPosition(gridPosition), Quaternion.identity);
 
                 gridSystemVisualSingleArray[x, z] = gridSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
@@ -112,13 +112,13 @@ public class GridSystemVisual : MonoBehaviour
 
     public void ShowGridPositionList(List<GridPosition> gridPositionList, GridVisualType gridVisualType)
     {
-        //foreach (GridPosition gridPosition in gridPositionList)
-        //{
-        //    gridSystemVisualSingleArray[gridPosition.x, gridPosition.z].
-        //        Show(GetGridVisualTypeMaterial(gridVisualType));
-        //}
+        foreach (GridPosition gridPosition in gridPositionList)
+        {
+            gridSystemVisualSingleArray[gridPosition.x, gridPosition.z].
+                Show(GetGridVisualTypeMaterial(gridVisualType));
+        }
     }
-   
+
     public void UpdateGridVisual() => ShowGridPositionRange(new GridPosition(0, 0), 1000, GridVisualType.RedSoft);
     private void UnitActionSystem_OnSelectedActionChanged(object sender, EventArgs e) => UpdateGridVisual();
     private void LevelGrid_OnAnyUnitMovedGridPosition(object sender, EventArgs e) => UpdateGridVisual();

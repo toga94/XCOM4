@@ -63,7 +63,7 @@ public class GridSystemVisualSingle : MonoBehaviour
         if (!isInventory)
             if (LevelGrid.Instance.HasAnyUnitOnGridPosition(gridPosition))
             {
-                debugText = $"{gridPosition.ToString()} \n {LevelGrid.Instance.GetUnitAtGridPosition(gridPosition).GetUnitName}";
+                debugText = $"{gridPosition.ToString()} \n {LevelGrid.Instance.GetUnitAtGridPosition(gridPosition).GetUnitNameWithLevel}";
             }
             else
             {
@@ -73,7 +73,7 @@ public class GridSystemVisualSingle : MonoBehaviour
         {
             if (InventoryGrid.Instance.HasAnyUnitOnInventoryPosition(gridPosition))
             {
-                debugText = $"{gridPosition.ToString()} \n {InventoryGrid.Instance.GetUnitAtInventoryPosition(gridPosition).GetUnitName}";
+                debugText = $"{gridPosition.ToString()} \n {InventoryGrid.Instance.GetUnitAtInventoryPosition(gridPosition).GetUnitNameWithLevel}";
             }
             else
             {
@@ -89,7 +89,7 @@ public class GridSystemVisualSingle : MonoBehaviour
         string debugText;
         if (InventoryGrid.Instance.HasAnyUnitOnInventoryPosition(gridPosition))
         {
-            debugText = $"{gridPosition.ToString()} \n {InventoryGrid.Instance.GetUnitAtInventoryPosition(gridPosition).GetUnitName}";
+            debugText = $"{gridPosition.ToString()} \n {InventoryGrid.Instance.GetUnitAtInventoryPosition(gridPosition).GetUnitNameWithLevel}";
         }
         else
         {
@@ -103,7 +103,7 @@ public class GridSystemVisualSingle : MonoBehaviour
         string debugText;
         if (LevelGrid.Instance.HasAnyUnitOnGridPosition(gridPosition))
         {
-            debugText = $"{gridPosition.ToString()} \n {LevelGrid.Instance.GetUnitAtGridPosition(gridPosition).GetUnitName}";
+            debugText = $"{gridPosition.ToString()} \n {LevelGrid.Instance.GetUnitAtGridPosition(gridPosition).GetUnitNameWithLevel}";
         }
         else
         {

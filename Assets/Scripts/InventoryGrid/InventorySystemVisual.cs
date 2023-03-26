@@ -115,6 +115,14 @@ public class InventorySystemVisual : MonoBehaviour
                 Show(GetGridVisualTypeMaterial(gridVisualType));
         }
     }
+    public void HideGridPositionList(List<GridPosition> gridPositionList)
+    {
+        foreach (GridPosition gridPosition in gridPositionList)
+        {
+            gridSystemVisualSingleArray[gridPosition.x, gridPosition.z].
+               Hide();
+        }
+    }
 
     public void UpdateInventoryGridVisual()
     {

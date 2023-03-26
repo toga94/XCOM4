@@ -1,0 +1,27 @@
+public enum TraitType
+{
+    Abomination,
+    Assassin,
+    Brawler,
+    Coven,
+    Cruel,
+    Dawnbringer,
+    Draconic,
+    Forgotten,
+    Hellion,
+    Invoker,
+    Ironclad,
+    Knight,
+    Legionnaire,
+    Mystic,
+    Nightbringer,
+    Redeemed,
+    Renewer,
+    Sentinel,
+    Skirmisher,
+    Spellweaver,
+    Syphoner,
+    Verdant,
+    Victorious,
+    Vigilant
+}

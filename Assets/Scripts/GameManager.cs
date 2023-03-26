@@ -7,10 +7,19 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
+    public enum GameState
+    {
+        SelectFortune,
+        TacticalFormation,
+        BattlePVE,
+        BattlePVP
+    }
+    private GameState gameState = GameState.SelectFortune;
+
     public static GameManager Instance { get; private set; }
 
     private int playerlevel = 1;
-    public int GetPlayerLevel => playerlevel; 
+    public int GetPlayerLevel => playerlevel;
     public int GetPlayerCoin { get; }
 
     public List<Unit> UnitsInGrid;
@@ -27,7 +36,8 @@ public class GameManager : MonoBehaviour
     public UnitObject[] unitObjects;
 
 
-    public class UpdateTextArg : EventArgs {
+    public class UpdateTextArg : EventArgs
+    {
 
     }
 
@@ -54,7 +64,7 @@ public class GameManager : MonoBehaviour
         Unit[] allUnits = FindObjectsOfType<Unit>();
         foreach (Unit unit in allUnits)
         {
-            if (unit.GetUnitName == name)
+            if (unit.GetUnitNameWithLevel == name)
             {
                 units.Add(unit);
             }
@@ -175,7 +185,7 @@ public class GameManager : MonoBehaviour
         int unitIndex = 0;
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
         int width = inventoryGrid.GetWidth() - 1;
-      
+
 
         foreach (var unit in UnitsInInventory)
         {
@@ -194,15 +204,17 @@ public class GameManager : MonoBehaviour
     }
     InventoryGrid inventoryGrid;
     LevelGrid levelgrid;
-    public bool InventoryIsFull() {
+    public bool InventoryIsFull()
+    {
         inventoryGrid = InventoryGrid.Instance;
         int width = inventoryGrid.GetWidth() - 1;
         bool isFull = GetAllUnitsOnInventory.Count >= width;
 
-        if(isFull) Debug.LogError("Inventory is full!");
+        if (isFull) Debug.LogError("Inventory is full!");
         return isFull;
     }
-    public bool GridIsFull() {
+    public bool GridIsFull()
+    {
         levelgrid = LevelGrid.Instance;
         int width = inventoryGrid.GetWidth() - 1;
         int height = inventoryGrid.GetHeight() - 1;
@@ -217,9 +229,10 @@ public class GameManager : MonoBehaviour
         if (InventoryIsFull()) return;
         foreach (var item in unitObjects)
         {
-            if (item.unitName == unitName) {
+            if (item.unitName == unitName)
+            {
                 Unit SpawnedUnit = GameObject.Instantiate(item.Prefab, Vector3.zero, Quaternion.identity).GetComponent<Unit>();
-                SpawnedUnit.gameObject.name = SpawnedUnit.GetUnitName;
+                SpawnedUnit.gameObject.name = SpawnedUnit.GetUnitNameWithLevel;
                 AddUnitToInventory(SpawnedUnit);
             }
         }
@@ -255,7 +268,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckForUpgrade(Unit unit)
     {
-        List<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitName);
+        List<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel);
 
         if (upgradableUnits.Count >= 3)
         {
@@ -270,7 +283,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("upgrade list count" + upgradableUnits.Count);
                 if (upgradableUnits.Count >= 2)
                 {
-                        RemoveOtherUnitsFromList(upgradableUnits);
+                    RemoveOtherUnitsFromList(upgradableUnits);
                 }
             }
         }
@@ -284,12 +297,12 @@ public class GameManager : MonoBehaviour
 
             if (unit.OnGrid)
             {
-                    LevelGrid.Instance.RemoveAnyUnitAtGridPosition(unit.UnitGridPosition);
+                LevelGrid.Instance.RemoveAnyUnitAtGridPosition(unit.UnitGridPosition);
             }
             else
             {
 
-                    inventoryGrid.RemoveAnyUnitAtInventoryPosition(unit.UnitGridPosition);
+                inventoryGrid.RemoveAnyUnitAtInventoryPosition(unit.UnitGridPosition);
             }
 
             Destroy(unit.gameObject);

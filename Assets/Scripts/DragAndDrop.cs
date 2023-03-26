@@ -20,13 +20,6 @@ public class DragAndDrop : MonoBehaviour
 
     [SerializeField] private GameObject sellUI;
     [SerializeField] private GameObject marketUI;
-    public enum DragState
-    {
-        Inv2Inv,
-        Inv2Grid,
-        Grid2Inv,
-        Grid2Grid
-    }
 
     [SerializeField] private DragState dragState = DragState.Inv2Inv;
 
@@ -55,14 +48,14 @@ public class DragAndDrop : MonoBehaviour
 
         else if (_draggableObject && touch.phase == TouchPhase.Moved)
         {
-            character.GetUnit.charState = Unit.CharState.Fall;
+            character.GetUnit.charState = CharState.Fall;
             MoveDraggableObject(touch);
 
         }
 
         else if (_draggableObject && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
         {
-            character.GetUnit.charState = Unit.CharState.Idle;
+            character.GetUnit.charState = CharState.Idle;
             StopDragging();
             sellUI.SetActive(false);
             marketUI.SetActive(true);
@@ -79,8 +72,8 @@ public class DragAndDrop : MonoBehaviour
             _draggableObject = hit.transform;
 
             character = new Character(
-                _draggableObject, 
-                hit.transform.GetComponent<Collider>(), 
+                _draggableObject,
+                hit.transform.GetComponent<Collider>(),
                 hit.transform.GetComponent<Unit>()
                 );
 
@@ -115,7 +108,7 @@ public class DragAndDrop : MonoBehaviour
     {
         if (_draggableObject)
         {
-            if(!lastfloor) 
+            if (!lastfloor)
                 character.GetTransform.position = _startDraggablePosition;
             else
             {

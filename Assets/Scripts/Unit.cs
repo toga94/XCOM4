@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -9,23 +10,18 @@ public class Unit : MonoBehaviour
     public bool OnGrid { get; set; }
     public float MaxHealth { get; set; }
     private Animator animator;
-    public string GetUnitName => $"{unitName}{unitLevel}";
+    public string GetUnitNameWithLevel => $"{unitName}{unitLevel}";
+    public string GetUnitName => $"{unitName}";
     public int GetUnitLevel => unitLevel;
     public Vector3 UnitPosition;
     public GridPosition UnitGridPosition;
-    public enum CharState
-    {
-        Idle,
-        Fall,
-        Fight,
-        MagicFight
-    }
+    public List<TraitType> traits;
     public CharState charState;
 
     public void UpgradeLevel()
     {
         unitLevel++;
-        gameObject.name = GetUnitName;
+        gameObject.name = GetUnitNameWithLevel;
     }
 
     public void TeleportToPosition(Vector3 targetPosition, GridPosition unitGridPosition)

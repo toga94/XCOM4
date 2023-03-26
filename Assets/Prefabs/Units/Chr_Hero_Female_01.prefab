@@ -2163,6 +2163,8 @@ MonoBehaviour:
   unitLevel: 0
   type: 0
   tier: 0
+  UnitPosition: {x: 0, y: 0, z: 0}
+  traits: 0d000000120000000900000013000000
   charState: 0
 --- !u!114 &-1737890715897108833
 MonoBehaviour:
