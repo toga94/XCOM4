@@ -19,5 +19,6 @@ MonoBehaviour:
   speed: 50
   mana: 50
   ability: {fileID: 0}
-  unitClassDataList: []
+  traits: 01000000020000000d000000
   Prefab: {fileID: 1846756657532275767, guid: 92a832f406881f34c97b9646a3a15ab6, type: 3}
+  rareOptions: 0

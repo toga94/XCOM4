@@ -18,6 +18,7 @@ public class Unit : MonoBehaviour
     public List<TraitType> traits;
     public CharState charState;
 
+    [SerializeField]private UnitObject unitObject;
     public void UpgradeLevel()
     {
         unitLevel++;
@@ -32,7 +33,12 @@ public class Unit : MonoBehaviour
         Instantiate(Resources.Load("DropUnitFX"), targetPosition + Vector3.up/2, Quaternion.identity);
 
     }
-
+    private void Awake()
+    {
+        string folderPath = "Data/Units";
+        //unitObject = Resources.Load<UnitObject>(folderPath + $"/{GetUnitName}");
+        traits = unitObject.traits;
+    }
     private void Start()
     {
         animator = GetComponent<Animator>();

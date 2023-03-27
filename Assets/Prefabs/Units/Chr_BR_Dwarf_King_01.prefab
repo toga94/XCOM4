@@ -350,8 +350,9 @@ MonoBehaviour:
   type: 0
   tier: 0
   UnitPosition: {x: 0, y: 0, z: 0}
-  traits: 020000000c0000000b000000
+  traits: 
   charState: 0
+  unitObject: {fileID: 11400000, guid: 6706e7593992fa74f9c15ac9e1950ef0, type: 2}
 --- !u!114 &-5938326864877691176
 MonoBehaviour:
   m_ObjectHideFlags: 0

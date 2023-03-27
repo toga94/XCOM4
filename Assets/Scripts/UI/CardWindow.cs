@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardWindow : MonoBehaviour
 {
@@ -25,9 +26,26 @@ public class CardWindow : MonoBehaviour
         foreach (UnitObject item in e)
         {
             GameObject card = Instantiate(Resources.Load("UnitCard"), transform.position, Quaternion.identity, itemPanel.transform) as GameObject;
+            GameObject traitPanel = card.transform.Find("traitPanel").gameObject;
+            foreach (var trait in item.traits)
+            {
+                GameObject traitUIItem = (GameObject)Instantiate(Resources.Load("traitCardItemUI"), traitPanel.transform);
+                Image traitUIImage = traitUIItem.transform.Find("traitImage").GetComponent<Image>();
+                traitUIImage.sprite = GetTraitSprite(trait);
+                Text traitText = traitUIItem.transform.Find("traitText").GetComponent<Text>();
+                traitText.text = trait.ToString();
+            }
             UnitCardButton cardButton = card.GetComponent<UnitCardButton>();
             cardButton.CharacterImage.sprite = item.unitImage;
             cardButton.CharacterName = item.unitName;
         }
     }
+
+    private Sprite GetTraitSprite(TraitType trait)
+    {
+        TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
+
+        return traitdata.traitSprite;
+    }
+
 }
