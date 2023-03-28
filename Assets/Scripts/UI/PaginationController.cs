@@ -1,65 +1,101 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PaginationController : MonoBehaviour
 {
-    [SerializeField]
-    private VerticalLayoutGroup verticalLayoutGroup;
+    [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
+    [SerializeField] private int itemsPerPage = 3;
+    [SerializeField] private Text nextTraitsCountText;
 
-
-    [SerializeField]
-    private int itemsPerPage = 3;
-    [SerializeField]
     private int currentPageIndex = 0;
     private int pageCount;
     private int itemCount;
-    void Start()
+
+    private void Start()
     {
-         itemCount = verticalLayoutGroup.transform.childCount;
-         pageCount = Mathf.CeilToInt((float)itemCount / (float)itemsPerPage);
+        itemCount = verticalLayoutGroup.transform.childCount;
+        pageCount = Mathf.CeilToInt((float)itemCount / (float)itemsPerPage);
+        RefreshLayout();
+        Debug.Log("LayoutRefresh");
     }
+
     private void OnEnable()
     {
-        
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition += UpdateTraitLayout;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += UpdateTraitLayout;
+        LevelGrid.Instance.OnAnyUnitSwappedGridPosition += UpdateTraitLayout;
+        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += UpdateTraitLayout;
     }
+
     private void OnDisable()
     {
-        
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= UpdateTraitLayout;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= UpdateTraitLayout;
     }
 
-    void RefreshLayout()
+    private void UpdateTraitLayout(object sender, LevelGrid.OnAnyUnitMovedGridPositionEventArgs e)
+    {
+        Start();
+    }
+
+    private void UpdateTraitLayout(object sender, InventoryGrid.OnAnyUnitMovedInventoryPositionEventArgs e)
+    {
+        Start();
+    }
+    private void UpdateTraitLayout(object sender, LevelGrid.OnAnyUnitSwappedGridPositionEventArgs e)
+    {
+        Start();
+    }
+
+    private void UpdateTraitLayout(object sender, InventoryGrid.OnAnyUnitSwappedInventoryPositionEventArgs e)
+    {
+        Start();
+    }
+    private void RefreshLayout()
     {
         int startIndex = currentPageIndex * itemsPerPage;
-        int endIndex = (currentPageIndex + 1) * itemsPerPage;
-        int childCount = verticalLayoutGroup.transform.childCount;
+        int endIndex = Mathf.Min(startIndex + itemsPerPage, itemCount);
 
-        for (int i = 0; i < childCount; i++)
+        int inactiveTraitsCount = 0;
+
+        for (int i = 0; i < itemCount; i++)
         {
-            var child = verticalLayoutGroup.transform.GetChild(i);
-            child.gameObject.SetActive(i >= startIndex && i < endIndex);
+            bool isActive = i >= startIndex && i < endIndex;
+            verticalLayoutGroup.transform.GetChild(i).gameObject.SetActive(isActive);
+            if (!isActive) inactiveTraitsCount++;
         }
 
-        verticalLayoutGroup.CalculateLayoutInputVertical();
-        verticalLayoutGroup.SetLayoutVertical();
-    }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(verticalLayoutGroup.GetComponent<RectTransform>());
 
+        int nextTraitsCount = Mathf.Max(0, itemCount - (endIndex - 1));
+        nextTraitsCountText.text = $"+{inactiveTraitsCount}";
+    }
 
     public void NextPage()
     {
-        currentPageIndex = Mathf.Min(currentPageIndex + 1, pageCount - 1);
-        RefreshLayout();
+        if (currentPageIndex < pageCount - 1)
+        {
+            currentPageIndex++;
+            Start();
+        }
     }
 
     public void PreviousPage()
     {
-        currentPageIndex = Mathf.Max(currentPageIndex - 1, 0);
-        RefreshLayout();
+        if (currentPageIndex > 0)
+        {
+            currentPageIndex--;
+            Start();
+        }
     }
 
-    void GoToPage(int pageIndex)
+    public void GoToPage(int pageIndex)
     {
-        currentPageIndex = Mathf.Clamp(pageIndex, 0, pageCount - 1);
-        RefreshLayout();
+        if (pageIndex >= 0 && pageIndex < pageCount)
+        {
+            currentPageIndex = pageIndex;
+            Start();
+        }
     }
 }

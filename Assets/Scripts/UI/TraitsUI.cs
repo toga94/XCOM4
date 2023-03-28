@@ -58,6 +58,7 @@ public class TraitsUI : MonoBehaviour
             Text traitStack = traitObject.transform.Find("TraitCount").GetComponent<Text>();
             traitStack.text = $"{kvp.Value} / {GetTraitMaxStack(kvp.Key)}";
         }
+
     }
 
     private Sprite GetTraitSprite(TraitType trait)
