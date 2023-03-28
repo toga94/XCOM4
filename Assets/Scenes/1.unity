@@ -2893,7 +2893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalLayoutGroup: {fileID: 1716284766}
-  itemsPerPage: 7
+  itemsPerPage: 3
   nextTraitsCountText: {fileID: 1506974524}
 --- !u!1 &1718928130
 GameObject:
