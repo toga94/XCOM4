@@ -15,5 +15,5 @@ MonoBehaviour:
   traitType: 11
   traitName: Knight
   traitDescription: Knight
-  traitEffectsLevel: 030000000500000007000000
+  traitEffectsLevel: 070000000500000003000000
   traitSprite: {fileID: 21300000, guid: 011a9b808bdd7493db5b80fcb0bcc68b, type: 3}

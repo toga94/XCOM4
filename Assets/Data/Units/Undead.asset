@@ -21,4 +21,4 @@ MonoBehaviour:
   ability: {fileID: 0}
   traits: 00000000020000000b000000
   Prefab: {fileID: 6626562363786806496, guid: 167541be3c3530343a90657132548ed1, type: 3}
-  rareOptions: 0
+  rareOptions: 3

@@ -288,7 +288,26 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    public bool OnlyCheckForUpgrade(Unit unit)
+    {
+        List<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel);
+        return upgradableUnits.Count >= 2;
+    }
+    public bool GetCountUpgradeTo2Star(Unit unit)
+    {
+        List<Unit> upgradableUnits = GetUnitsByNameAndLevel($"{unit.GetUnitName}{0}");
+        return upgradableUnits.Count >= 2;
+    }
+    public bool GetCountUpgradeTo2StarFrom3(Unit unit)
+    {
+        List<Unit> upgradableUnits = GetUnitsByNameAndLevel($"{unit.GetUnitName}{0}");
+        return upgradableUnits.Count >= 2;
+    }
+    public bool GetCountUpgradeTo3Star(Unit unit)
+    {
+        List<Unit> upgradableUnits = GetUnitsByNameAndLevel($"{unit.GetUnitName}{1}");
+        return upgradableUnits.Count >= 2 && GetCountUpgradeTo2StarFrom3(unit);
+    }
     private void RemoveOtherUnitsFromList(List<Unit> nonGridUnits)
     {
 
@@ -301,7 +320,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-
                 inventoryGrid.RemoveAnyUnitAtInventoryPosition(unit.UnitGridPosition);
             }
 
@@ -324,6 +342,24 @@ public class GameManager : MonoBehaviour
         return new GridPosition(UnitsInInventory.Count, 0);
     }
 
+    public float GetItemProbability(UnitObject item)
+    {
+        switch (item.rareOptions)
+        {
+            case RareOptions.Common:
+                return 0.4f;
+            case RareOptions.Uncommon:
+                return 0.3f;
+            case RareOptions.Rare:
+                return 0.2f;
+            case RareOptions.Epic:
+                return 0.075f;
+            case RareOptions.Legendary:
+                return 0.025f;
+            default:
+                return 0f;
+        }
+    }
 
     private void Update()
     {

@@ -12,5 +12,5 @@ public class UnitObject : ScriptableObject
     public Ability ability;
     public List<TraitType> traits;
     public GameObject Prefab;
-    public RareOptions rareOptions = RareOptions.OneStarUnit;
+    public RareOptions rareOptions = RareOptions.Common;
 }

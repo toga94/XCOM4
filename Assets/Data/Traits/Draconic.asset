@@ -15,5 +15,5 @@ MonoBehaviour:
   traitType: 6
   traitName: Draconic
   traitDescription: Draconic
-  traitEffectsLevel: 030000000600000009000000
+  traitEffectsLevel: 090000000600000003000000
   traitSprite: {fileID: 21300000, guid: 268ac875f9668439f9a1c8d5e6922839, type: 3}

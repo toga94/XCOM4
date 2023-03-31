@@ -15,5 +15,5 @@ MonoBehaviour:
   traitType: 19
   traitName: Spellweaver
   traitDescription: Spellweaver
-  traitEffectsLevel: 020000000400000006000000
+  traitEffectsLevel: 0300000001000000
   traitSprite: {fileID: 21300000, guid: b91cf1dbd490c41aab12079d0311cdf5, type: 3}

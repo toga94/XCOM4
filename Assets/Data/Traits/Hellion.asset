@@ -15,5 +15,5 @@ MonoBehaviour:
   traitType: 8
   traitName: Hellion
   traitDescription: Hellion
-  traitEffectsLevel: 020000000400000006000000
+  traitEffectsLevel: 060000000400000002000000
   traitSprite: {fileID: 21300000, guid: 6375ee604922547709d4cba093674eac, type: 3}

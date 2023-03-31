@@ -15,5 +15,5 @@ MonoBehaviour:
   traitType: 2
   traitName: Brawler
   traitDescription: Brawler
-  traitEffectsLevel: 02000000040000000600000007000000
+  traitEffectsLevel: 070000000500000002000000
   traitSprite: {fileID: 21300000, guid: 360c01700b76843a1aca829fce1f2b7e, type: 3}

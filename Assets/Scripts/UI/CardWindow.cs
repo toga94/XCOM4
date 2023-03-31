@@ -26,6 +26,31 @@ public class CardWindow : MonoBehaviour
         foreach (UnitObject item in e)
         {
             GameObject card = Instantiate(Resources.Load("UnitCard"), transform.position, Quaternion.identity, itemPanel.transform) as GameObject;
+            Image cardBgImage = card.transform.Find("TextFrame").GetComponent<Image>();
+            RareOptions cardRarity = item.rareOptions;
+            card.GetComponent<UnitCardButton>().unit = item.Prefab.GetComponent<Unit>();
+
+
+            switch (cardRarity)
+            {
+                case RareOptions.Common:
+                    cardBgImage.color = new Color(0.5f, 0.5f, 0.5f); // Grey
+                    break;
+                case RareOptions.Uncommon:
+                    cardBgImage.color = new Color(0.016f, 0.247f, 0.831f); // #043FD4
+                    break;
+                case RareOptions.Rare:
+                    cardBgImage.color = new Color(0.961f, 0f, 0.659f); // #F500A8
+                    break;
+                case RareOptions.Epic:
+                    cardBgImage.color = new Color(0.839f, 0.714f, 0.051f); // #D6B50D
+                    break;
+                case RareOptions.Legendary:
+                    cardBgImage.color = new Color(0.961f, 0.176f, 0.020f); // #F52D05
+                    break;
+            }
+
+
             GameObject traitPanel = card.transform.Find("traitPanel").gameObject;
             foreach (var trait in item.traits)
             {

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
+using System.Linq;
 
 public class CardShop : MonoBehaviour
 {
@@ -30,22 +31,30 @@ public class CardShop : MonoBehaviour
         onItemAdded?.Invoke(this, selectedUnits);
     }
 
-    private static List<T> RandomPick<T>(IList<T> list, int numItemsToSelect)
+    private static List<T> RandomPick<T>(IList<T> list, int numItemsToSelect) where T : UnitObject
     {
         List<T> selectedItems = new List<T>();
 
         for (int i = 0; i < numItemsToSelect; i++)
         {
-            int randomIndex = Random.Range(0, list.Count);
-            T selectedItem = list[randomIndex];
+            // Calculate the cumulative probability of selecting each item
+            var cumulativeProbabilities = new Dictionary<T, float>();
+            float cumulativeProbability = 0;
+            foreach (var item in list)
+            {
+                float itemProbability = GameManager.Instance.GetItemProbability(item);
+                cumulativeProbability += itemProbability;
+                cumulativeProbabilities[item] = cumulativeProbability;
+            }
+
+            // Select a random item based on the specified probabilities
+            float randomValue = Random.Range(0, cumulativeProbability);
+            T selectedItem = cumulativeProbabilities.First(pair => pair.Value >= randomValue).Key;
+
             selectedItems.Add(selectedItem);
         }
 
         return selectedItems;
     }
-
-
-
-
 
 }

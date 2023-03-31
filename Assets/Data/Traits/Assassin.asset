@@ -15,5 +15,5 @@ MonoBehaviour:
   traitType: 1
   traitName: Assasin
   traitDescription: Assasin
-  traitEffectsLevel: 020000000400000008000000
+  traitEffectsLevel: 0400000002000000
   traitSprite: {fileID: 21300000, guid: 6980abda02f3f46c7a9ceef8df7e4048, type: 3}

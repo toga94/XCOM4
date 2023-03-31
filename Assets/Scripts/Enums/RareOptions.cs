@@ -1,7 +1,8 @@
 public enum RareOptions
 {
-    OneStarUnit,
-    TwoStarUnit,
-    ThreeStarUnit,
-    LegendaryUnit
+    Common,
+    Uncommon,
+    Rare,
+    Epic,
+    Legendary
 }
