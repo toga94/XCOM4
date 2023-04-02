@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class DragAndDrop : MonoBehaviour
 {
@@ -114,7 +115,7 @@ public class DragAndDrop : MonoBehaviour
             {
                 CharacterDragging();
             }
-
+            
             character.GetCollider.enabled = true;
             character = null;
             _draggableObject = null;
@@ -136,15 +137,10 @@ public class DragAndDrop : MonoBehaviour
             lastgridPosition = inventoryGrid.GetInventoryPosition(_startDraggablePosition);
         }
 
-        var floorGridSystemVisual = lastfloor.GetComponent<GridSystemVisualSingle>();
-        if (floorGridSystemVisual.isInventory)
-        {
-            gridPosition = inventoryGrid.GetInventoryPosition(lastfloor.position);
-        }
-        else
-        {
-            gridPosition = levelGrid.GetGridPosition(lastfloor.position);
-        }
+        GridSystemVisualSingle floorGridSystemVisual = lastfloor.GetComponent<GridSystemVisualSingle>();
+        gridPosition = floorGridSystemVisual.isInventory
+            ? inventoryGrid.GetInventoryPosition(lastfloor.position)
+            : levelGrid.GetGridPosition(lastfloor.position);
 
         CalculateState();
         DragUnit(lastgridPosition, gridPosition);

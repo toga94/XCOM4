@@ -62,15 +62,21 @@ public class GridSystemVisual : MonoBehaviour
                 gridSystemVisualSingleArray[x, z] = gridSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
             }
         }
-        levelGrid.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
-        levelGrid.OnAnyUnitSwappedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
+        LevelGrid.Instance.OnAnyUnitSwappedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
         InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += LevelGrid_OnAnyUnitMovedGridPosition;
         InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += LevelGrid_OnAnyUnitMovedGridPosition;
 
 
         UpdateGridVisual();
     }
-
+    private void OnDisable()
+    {
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
+        LevelGrid.Instance.OnAnyUnitSwappedGridPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
+        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
+    }
     public void HideAllGridPosition()
     {
         for (int x = 0; x < levelGrid.GetWidth(); x++)
@@ -84,30 +90,30 @@ public class GridSystemVisual : MonoBehaviour
 
     private void ShowGridPositionRange(GridPosition gridPosition, int range, GridVisualType gridVisualType)
     {
-        List<GridPosition> gridPositionList = new List<GridPosition>();
+        //List<GridPosition> gridPositionList = new List<GridPosition>();
 
-        for (int x = -range; x <= range; x++)
-        {
-            for (int z = -range; z <= range; z++)
-            {
-                GridPosition testGridPosition = gridPosition + new GridPosition(x, z);
+        //for (int x = -range; x <= range; x++)
+        //{
+        //    for (int z = -range; z <= range; z++)
+        //    {
+        //        GridPosition testGridPosition = gridPosition + new GridPosition(x, z);
 
-                if (!levelGrid.IsValidGridPosition(testGridPosition))
-                {
-                    continue;
-                }
+        //        if (!levelGrid.IsValidGridPosition(testGridPosition))
+        //        {
+        //            continue;
+        //        }
 
-                int testDistance = Mathf.Abs(x) + Mathf.Abs(z);
-                if (testDistance > range)
-                {
-                    continue;
-                }
+        //        int testDistance = Mathf.Abs(x) + Mathf.Abs(z);
+        //        if (testDistance > range)
+        //        {
+        //            continue;
+        //        }
 
-                gridPositionList.Add(testGridPosition);
-            }
-        }
+        //        gridPositionList.Add(testGridPosition);
+        //    }
+        //}
 
-        ShowGridPositionList(gridPositionList, gridVisualType);
+        //ShowGridPositionList(gridPositionList, gridVisualType);
     }
 
     public void ShowGridPositionList(List<GridPosition> gridPositionList, GridVisualType gridVisualType)

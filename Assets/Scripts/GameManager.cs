@@ -7,16 +7,11 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GameState
-    {
-        SelectFortune,
-        TacticalFormation,
-        BattlePVE,
-        BattlePVP
-    }
+    public static GameManager Instance { get; private set; }
+
+
     private GameState gameState = GameState.SelectFortune;
 
-    public static GameManager Instance { get; private set; }
 
     private int playerlevel = 1;
     public int GetPlayerLevel => playerlevel;
@@ -28,7 +23,8 @@ public class GameManager : MonoBehaviour
 
     private TextMeshPro gridSizeTextMesh;
     private SpriteRenderer gridSizeIcon;
-
+    private InventoryGrid inventoryGrid;
+    private LevelGrid levelgrid;
 
     public event EventHandler<UpdateTextArg> OnUpdateText;
 
@@ -148,7 +144,6 @@ public class GameManager : MonoBehaviour
         gridSizeIcon = gridSizeTextMesh.transform.GetComponentInChildren<SpriteRenderer>();
         UpdateMeText();
         gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{GetPlayerLevel}";
-        // SpawnUnitAtInventory("Lina");  Spawn unit with name
     }
     private void OnDestroy()
     {
@@ -202,8 +197,7 @@ public class GameManager : MonoBehaviour
             unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(gridPosition), gridPosition);
         }
     }
-    InventoryGrid inventoryGrid;
-    LevelGrid levelgrid;
+
     public bool InventoryIsFull()
     {
         inventoryGrid = InventoryGrid.Instance;
@@ -246,16 +240,12 @@ public class GameManager : MonoBehaviour
 
         GridPosition gridPosition = GetNextFreeGridPosition();
 
-        Debug.Log("gridpos: " + gridPosition);
         inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
         unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(gridPosition), gridPosition);
         UnitsInInventory.Add(unit);
 
-        //CheckForUpgrade(unit);
         CheckForUpgradeForAll();
     }
-    //Debug.Log(unit.GetUnitName + "Spawned count is " + GetUnitsByNameAndLevel(unit.GetUnitName).Count);
-
 
     private void CheckForUpgradeForAll()
     {
@@ -361,8 +351,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
 
-    }
 }

@@ -6,12 +6,16 @@ public class CardWindow : MonoBehaviour
     [SerializeField] private CardShop cardShop;
     [SerializeField] private RectTransform itemPanel;
 
-    private void Start()
+    private void Awake()
     {
         cardShop = CardShop.Instance;
+
+    }
+    private void OnEnable()
+    {
         cardShop.onItemAdded += ReDraw;
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         cardShop.onItemAdded -= ReDraw;
     }

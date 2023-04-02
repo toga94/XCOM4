@@ -45,24 +45,11 @@ public class PaginationController : MonoBehaviour
         InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition -= UpdateTraitLayout;
     }
 
-    private void UpdateTraitLayout(object sender, LevelGrid.OnAnyUnitMovedGridPositionEventArgs e)
+    private void UpdateTraitLayout(object sender, EventArgs e)
     {
         StartCoroutine(UpdateTraits());
     }
 
-    private void UpdateTraitLayout(object sender, InventoryGrid.OnAnyUnitMovedInventoryPositionEventArgs e)
-    {
-        StartCoroutine(UpdateTraits());
-    }
-    private void UpdateTraitLayout(object sender, LevelGrid.OnAnyUnitSwappedGridPositionEventArgs e)
-    {
-        StartCoroutine(UpdateTraits());
-    }
-
-    private void UpdateTraitLayout(object sender, InventoryGrid.OnAnyUnitSwappedInventoryPositionEventArgs e)
-    {
-        StartCoroutine(UpdateTraits());
-    }
 
     IEnumerator UpdateTraits()
     {
@@ -94,7 +81,7 @@ public class PaginationController : MonoBehaviour
             nextTraitsCountText.text = $"+{inactiveTraitsCount}";
             lastitemTransform = verticalLayoutGroup.transform.GetChild(itemCount - inactiveTraitsCount - 1 ).GetComponent<RectTransform>();
             float offset = traitCountUIRect.rect.height + 40;
-            traitCountUIRect.transform.position = new Vector3(traitCountUIRect.transform.position.x, lastitemTransform.transform.position.y - offset , 0);
+            traitCountUIRect.transform.position = new Vector3(lastitemTransform.transform.position.x / 2.46f, lastitemTransform.transform.position.y - offset , 0);
         }
         else
         {
