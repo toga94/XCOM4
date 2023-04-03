@@ -79,9 +79,18 @@ public class PaginationController : MonoBehaviour
         {
             traitCountUIObj.SetActive(true);
             nextTraitsCountText.text = $"+{inactiveTraitsCount}";
-            lastitemTransform = verticalLayoutGroup.transform.GetChild(itemCount - inactiveTraitsCount - 1 ).GetComponent<RectTransform>();
-            float offset = traitCountUIRect.rect.height + 40;
-            traitCountUIRect.transform.position = new Vector3(lastitemTransform.transform.position.x / 2.46f, lastitemTransform.transform.position.y - offset , 0);
+            try
+            {
+                lastitemTransform = verticalLayoutGroup.transform.GetChild(itemCount - inactiveTraitsCount - 1).GetComponent<RectTransform>();
+                float offset = traitCountUIRect.rect.height + 40;
+                traitCountUIRect.transform.position = new Vector3(lastitemTransform.transform.position.x / 2.46f, lastitemTransform.transform.position.y - offset, 0);
+            }
+            catch (Exception)
+            {
+                GoToPage(0);
+                traitCountUIObj.SetActive(false);
+            } 
+
         }
         else
         {

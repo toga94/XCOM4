@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Lean.Pool;
 public class TraitsUI : MonoBehaviour
 {
     public List<Unit> units;
     public GameObject traitPrefab;
     public Transform traitList;
 
+    [SerializeField] private LeanGameObjectPool pool;
     private void Start()
     {
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += OnAnyUnitMovedGridPosition;
         InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += OnAnyUnitMovedGridPosition;
-
     }
     private void OnDisable()
     {
@@ -38,10 +38,8 @@ public class TraitsUI : MonoBehaviour
     private void UpdateTraits()
     {
         units = GameManager.Instance.GetAllUnitsOnGrid;
-        foreach (Transform child in traitList)
-        {
-            Destroy(child.gameObject);
-        }
+        pool.DespawnAll();
+
 
         Dictionary<TraitType, int> traitCounts = GetTraitsStacks(units);
 
@@ -50,8 +48,9 @@ public class TraitsUI : MonoBehaviour
         foreach (KeyValuePair<TraitType, int> kvp in sortedTraitCounts)
         {
             float stackRatio = GetTraitMaxStack(kvp.Key) - kvp.Value;
+            
+            GameObject traitObject = pool.Spawn(traitList) ;
 
-            GameObject traitObject = Instantiate(traitPrefab, traitList);
 
             Image traitIcon = traitObject.transform.Find("TraitIcon").GetComponent<Image>();
             traitIcon.sprite = GetTraitSprite(kvp.Key);

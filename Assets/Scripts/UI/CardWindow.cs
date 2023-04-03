@@ -1,15 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using Lean.Pool;
 public class CardWindow : MonoBehaviour
 {
     [SerializeField] private CardShop cardShop;
     [SerializeField] private RectTransform itemPanel;
-
+    //private GameObject unitCard;
+    [SerializeField]
+    private LeanGameObjectPool unitCardPool;
+    [SerializeField]
+    private LeanGameObjectPool traitCardItemUIPool;
     private void Awake()
     {
         cardShop = CardShop.Instance;
-
+        //unitCard = (GameObject)Resources.Load("UnitCard");
+        //traitCardItemUI = (GameObject)Resources.Load("traitCardItemUI");
     }
     private void OnEnable()
     {
@@ -23,13 +28,13 @@ public class CardWindow : MonoBehaviour
     private void ReDraw(object sender, UnitObject[] e)
     {
         Transform itemPanelTransform = itemPanel.transform;
-        foreach (Transform child in itemPanelTransform)
-        {
-            Destroy(child.gameObject);
-        }
+        traitCardItemUIPool.DespawnAll();
+        unitCardPool.DespawnAll();
+       
+       
         foreach (UnitObject item in e)
         {
-            GameObject card = Instantiate(Resources.Load("UnitCard"), transform.position, Quaternion.identity, itemPanel.transform) as GameObject;
+            GameObject card = unitCardPool.Spawn(transform.position, Quaternion.identity, itemPanel.transform) as GameObject;
             Image cardBgImage = card.transform.Find("TextFrame").GetComponent<Image>();
             RareOptions cardRarity = item.rareOptions;
             card.GetComponent<UnitCardButton>().unit = item.Prefab.GetComponent<Unit>();
@@ -56,9 +61,13 @@ public class CardWindow : MonoBehaviour
 
 
             GameObject traitPanel = card.transform.Find("traitPanel").gameObject;
+            GameObject DisabledPanel = card.transform.Find("Disabled").gameObject;
+            DisabledPanel.SetActive(false);
+            Button unitCardButton = card.GetComponent<Button>();
+            unitCardButton.enabled = true;
             foreach (var trait in item.traits)
             {
-                GameObject traitUIItem = (GameObject)Instantiate(Resources.Load("traitCardItemUI"), traitPanel.transform);
+                GameObject traitUIItem = traitCardItemUIPool.Spawn(traitPanel.transform);
                 Image traitUIImage = traitUIItem.transform.Find("traitImage").GetComponent<Image>();
                 traitUIImage.sprite = GetTraitSprite(trait);
                 Text traitText = traitUIItem.transform.Find("traitText").GetComponent<Text>();

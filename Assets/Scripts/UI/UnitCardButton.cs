@@ -18,26 +18,13 @@ public class UnitCardButton : MonoBehaviour
         CharacterLabelText.text = CharacterName;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
+        bool upgradeTo3Star = GameManager.Instance.GetCountUpgradeTo3Star(unit);
+        bool upgradeTo2Star = GameManager.Instance.GetCountUpgradeTo2Star(unit);
 
-        if (GameManager.Instance.GetCountUpgradeTo3Star(unit))
-        {
-            TreeStarPanel.SetActive(true);
-            TwoStarPanel.SetActive(false);
-        }
-        else
-        {
-            if (GameManager.Instance.GetCountUpgradeTo2Star(unit))
-            {
-                TwoStarPanel.SetActive(true);
-                TreeStarPanel.SetActive(false);
-            }
-            else {
-                TwoStarPanel.SetActive(false);
-                TreeStarPanel.SetActive(false);
-            }
-        }
+        TreeStarPanel.SetActive(upgradeTo3Star);
+        TwoStarPanel.SetActive(!upgradeTo3Star && upgradeTo2Star);
     }
 
 
