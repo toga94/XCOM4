@@ -24,13 +24,32 @@ public class GameManager : MonoBehaviour
     private TextMeshPro gridSizeTextMesh;
     private SpriteRenderer gridSizeIcon;
     private InventoryGrid inventoryGrid;
-    private LevelGrid levelgrid;
+    private LevelGrid levelgrid; 
     private UnityEngine.Object levelUpFx;
     public event EventHandler<UpdateTextArg> OnUpdateText;
+    public event Action<int> OnGoldChanged;
 
 
     public UnitObject[] unitObjects;
 
+    [SerializeField] private int gold;
+    public int GetGold => gold;
+
+
+    public void AddGold(int amount)
+    {
+        gold += amount;
+        OnGoldChanged?.Invoke(gold);
+    }
+    public bool CanIBuy(int amount)
+    {
+        return amount <= gold;
+    }
+    public void SubtractGold(int amount)
+    {
+        gold -= amount;
+        OnGoldChanged?.Invoke(gold);
+    }
 
     public class UpdateTextArg : EventArgs
     {

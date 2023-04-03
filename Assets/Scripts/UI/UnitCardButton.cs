@@ -9,7 +9,7 @@ public class UnitCardButton : MonoBehaviour
     [SerializeField] private Text CharacterLabelText;
     public GameObject TreeStarPanel;
     public GameObject TwoStarPanel;
-
+    public RareOptions rareOptions;
     public Unit unit;
 
     void Start()
@@ -30,6 +30,20 @@ public class UnitCardButton : MonoBehaviour
 
     public void OnClick()
     {
-        gameManager.SpawnUnitAtInventory(CharacterName);
+        gameManager = GameManager.Instance;
+
+        int unitCost = ((int)rareOptions) + 1;
+        bool sold = gameManager.CanIBuy(unitCost);
+        bool inventoryFree = !gameManager.InventoryIsFull();
+
+        if (sold && inventoryFree)
+        {
+            gameManager.SubtractGold(unitCost);
+            gameManager.SpawnUnitAtInventory(CharacterName);
+        }
+        else {
+            Debug.LogError("sold" + sold + " cost " + unitCost + " invFree" + inventoryFree);
+        }
+
     }
 }
