@@ -19,6 +19,8 @@ public class Unit : MonoBehaviour
     public CharState charState;
 
     [SerializeField]private UnitObject unitObject;
+    private Object dropUnitFX;
+
     public void UpgradeLevel()
     {
         unitLevel++;
@@ -30,7 +32,7 @@ public class Unit : MonoBehaviour
         UnitGridPosition = unitGridPosition;
         transform.position = targetPosition;
         UnitPosition = targetPosition;
-        Instantiate(Resources.Load("DropUnitFX"), targetPosition + Vector3.up/2, Quaternion.identity);
+        Instantiate(dropUnitFX, targetPosition + Vector3.up / 2, Quaternion.identity);
 
     }
     private void Awake()
@@ -38,6 +40,7 @@ public class Unit : MonoBehaviour
         string folderPath = "Data/Units";
         //unitObject = Resources.Load<UnitObject>(folderPath + $"/{GetUnitName}");
         traits = unitObject.traits;
+        dropUnitFX = Resources.Load("DropUnitFX");
     }
     private void Start()
     {
@@ -50,14 +53,7 @@ public class Unit : MonoBehaviour
 
     private void AnimationStates()
     {
-        if (charState == CharState.Fall)
-        {
-            animator.SetBool("fall", true);
-        }
-        else
-        {
-            animator.SetBool("fall", false);
-        }
+        animator.SetBool("fall", charState == CharState.Fall);
     }
 
 
