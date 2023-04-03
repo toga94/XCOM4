@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     private SpriteRenderer gridSizeIcon;
     private InventoryGrid inventoryGrid;
     private LevelGrid levelgrid;
-
+    private UnityEngine.Object levelUpFx;
     public event EventHandler<UpdateTextArg> OnUpdateText;
 
 
@@ -129,17 +129,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (UnitsInGrid.Count > 0)
-            AddUnitsToGrid();
-        if (UnitsInInventory.Count > 0)
-            AddUnitsToInventory();
-
-
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += CalculateUnits;
         LevelGrid.Instance.OnAnyUnitSwappedGridPosition += CalculateUnits;
         InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += CalculateUnits;
         InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += CalculateUnits;
 
+        if (UnitsInGrid.Count > 0)
+            AddUnitsToGrid();
+        if (UnitsInInventory.Count > 0)
+            AddUnitsToInventory();
+
+        levelUpFx = Resources.Load("FX_LevelUp_01");
         gridSizeTextMesh = transform.GetComponentInChildren<TextMeshPro>();
         gridSizeIcon = gridSizeTextMesh.transform.GetComponentInChildren<SpriteRenderer>();
         UpdateMeText();
@@ -266,7 +266,8 @@ public class GameManager : MonoBehaviour
 
             if (highestLevelUnit != null)
             {
-                Instantiate(Resources.Load("FX_LevelUp_01"), highestLevelUnit.transform.position + Vector3.up / 2, Quaternion.identity);
+
+                Instantiate(levelUpFx, highestLevelUnit.transform.position + Vector3.up / 2, Quaternion.identity);
                 highestLevelUnit.UpgradeLevel();
                 upgradableUnits.Remove(highestLevelUnit);
                 Debug.Log("upgrade list count" + upgradableUnits.Count);
