@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 483126893}
-  m_IndirectSpecularColor: {r: 0.081702866, g: 0.29065746, b: 0.35906187, a: 1}
+  m_IndirectSpecularColor: {r: 0.08135977, g: 0.29101902, b: 0.36364216, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 359631337}
   - component: {fileID: 359631339}
   - component: {fileID: 359631338}
+  - component: {fileID: 359631340}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -605,7 +606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 67.18695, y: 0.0000047684}
+  m_AnchoredPosition: {x: 89.2, y: 0.0000047684}
   m_SizeDelta: {x: 111.5792, y: 70.9811}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &359631338
@@ -635,7 +636,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 60
-    m_Alignment: 5
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -650,6 +651,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359631336}
   m_CullTransparentMesh: 1
+--- !u!114 &359631340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359631336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83b756019518f040ac79ee30d936d1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &454613124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2345,6 +2358,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e4c23bf3a50d5649aeab529cadd3f8d, type: 2}
   - {fileID: 11400000, guid: 6c9d5226ad52d474588766be93f96535, type: 2}
   - {fileID: 11400000, guid: e4c93b4312d78164ab15609185082dfb, type: 2}
+  gold: 20
 --- !u!114 &1502524553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2810,7 +2824,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 59.939972, y: -238.86134}
+  m_AnchoredPosition: {x: 59.939972, y: -238.8613}
   m_SizeDelta: {x: 119.880005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716284766
