@@ -144,6 +144,9 @@ public class GameManager : MonoBehaviour
         gridSizeIcon = gridSizeTextMesh.transform.GetComponentInChildren<SpriteRenderer>();
         UpdateMeText();
         gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{GetPlayerLevel}";
+
+        Application.targetFrameRate = 60;
+
     }
     private void OnDestroy()
     {
