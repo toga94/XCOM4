@@ -12,8 +12,10 @@ public class CurrencyUI : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.Instance.OnGoldChanged += UpdateGoldText;
+        GameManager gm = GameManager.Instance;
+        gm.OnGoldChanged += UpdateGoldText;
         goldText = GetComponent<Text>();
+        goldText.text = gm.GetGold.ToString();
     }
     private void UpdateGoldText(int gold)
     {
