@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
         int width = levelGrid.GetWidth() - 1;
         int height = levelGrid.GetHeight() - 1;
 
-        foreach (var unit in UnitsInGrid)
+        foreach (Unit unit in UnitsInGrid)
         {
             if (unitIndex >= width * height)
             {
@@ -225,7 +225,7 @@ public class GameManager : MonoBehaviour
         {
             if (item.unitName == unitName)
             {
-                Unit SpawnedUnit = GameObject.Instantiate(item.Prefab, Vector3.zero, Quaternion.identity).GetComponent<Unit>();
+                Unit SpawnedUnit = Instantiate(item.Prefab, Vector3.zero, Quaternion.identity).GetComponent<Unit>();
                 SpawnedUnit.gameObject.name = SpawnedUnit.GetUnitNameWithLevel;
                 AddUnitToInventory(SpawnedUnit);
             }
@@ -249,8 +249,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckForUpgradeForAll()
     {
-        var allUnits = GameManager.Instance.GetAllUnits;
-        foreach (var selectedUnit in alllUnits)
+        foreach (var selectedUnit in GetAllUnits)
         {
             CheckForUpgrade(selectedUnit);
         }
@@ -310,7 +309,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                inventoryGrid.RemoveAnyUnitAtInventoryPosition(unit.UnitGridPosition);
+                InventoryGrid.Instance.RemoveAnyUnitAtInventoryPosition(unit.UnitGridPosition);
             }
 
             Destroy(unit.gameObject);
