@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
         UpdateMeText();
         gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{GetPlayerLevel}";
 
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
 
     }
     private void OnDestroy()
@@ -223,7 +223,7 @@ public class GameManager : MonoBehaviour
     public bool InventoryIsFull()
     {
         inventoryGrid = InventoryGrid.Instance;
-        int width = inventoryGrid.GetWidth() - 1;
+        int width = inventoryGrid.GetWidth() + 1;
         bool isFull = GetAllUnitsOnInventory.Count >= width;
 
         if (isFull) Debug.LogError("Inventory is full!");

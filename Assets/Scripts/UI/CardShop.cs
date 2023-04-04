@@ -26,9 +26,16 @@ public class CardShop : MonoBehaviour
     }
     public void RandomSelect5ItemForShop()
     {
-        List<UnitObject> allUnitsList = new List<UnitObject>(allUnitObjects);
-        UnitObject[] selectedUnits = RandomPick(allUnitObjects, 5).ToArray();
-        onItemAdded?.Invoke(this, selectedUnits);
+        GameManager gm = GameManager.Instance;
+        int cost = 2;
+        if (gm.CanIBuy(cost))
+        {
+            List<UnitObject> allUnitsList = new List<UnitObject>(allUnitObjects);
+            UnitObject[] selectedUnits = RandomPick(allUnitObjects, 5).ToArray();
+            gm.SubtractGold(cost);
+            onItemAdded?.Invoke(this, selectedUnits);
+        }
+
     }
 
     private static List<T> RandomPick<T>(IList<T> list, int numItemsToSelect) where T : UnitObject
