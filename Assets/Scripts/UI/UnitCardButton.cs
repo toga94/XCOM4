@@ -11,12 +11,12 @@ public class UnitCardButton : MonoBehaviour
     public GameObject TwoStarPanel;
     public RareOptions rareOptions;
     public Unit unit;
-
-    void Start()
+    private void OnEnable()
     {
         gameManager = GameManager.Instance;
-        CharacterLabelText.text = CharacterName;
+
     }
+
 
     private void LateUpdate()
     {
@@ -25,6 +25,8 @@ public class UnitCardButton : MonoBehaviour
 
         TreeStarPanel.SetActive(upgradeTo3Star);
         TwoStarPanel.SetActive(!upgradeTo3Star && upgradeTo2Star);
+
+        CharacterLabelText.text = CharacterName;
     }
 
 
@@ -32,7 +34,8 @@ public class UnitCardButton : MonoBehaviour
     {
         gameManager = GameManager.Instance;
 
-        int unitCost = ((int)rareOptions) + 1;
+       // int unitCost = ((int)rareOptions) + 1;
+        int unitCost = gameManager.GetUnitCost(0, rareOptions);
         bool sold = gameManager.CanIBuy(unitCost);
         bool inventoryFree = !gameManager.InventoryIsFull();
 

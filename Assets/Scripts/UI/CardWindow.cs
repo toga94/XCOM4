@@ -39,21 +39,23 @@ public class CardWindow : MonoBehaviour
             UnitCardButton unitCardButton = card.GetComponent<UnitCardButton>();
             unitCardButton.unit = item.Prefab.GetComponent<Unit>();
 
+
             RareOptions cardRarity = item.rareOptions;
             RarityColor(cardBgImage, cardRarity);
             RarityGold(card, cardRarity);
             unitCardButton.rareOptions = cardRarity;
 
-            GameObject traitPanel = card.transform.Find("traitPanel").gameObject;
-            GameObject DisabledPanel = card.transform.Find("Disabled").gameObject;
-            ReEnableUI(card, DisabledPanel);
-            TraitUI(item, traitPanel);
-
-
 
             UnitCardButton cardButton = card.GetComponent<UnitCardButton>();
             cardButton.CharacterImage.sprite = item.unitImage;
             cardButton.CharacterName = item.unitName;
+
+
+            GameObject traitPanel = card.transform.Find("traitPanel").gameObject;
+            GameObject DisabledPanel = card.transform.Find("Disabled").gameObject;
+
+            TraitUI(item, traitPanel);
+            ReEnableUI(card, DisabledPanel);
         }
     }
 

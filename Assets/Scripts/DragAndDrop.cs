@@ -23,7 +23,9 @@ public class DragAndDrop : MonoBehaviour
     [SerializeField] private GameObject marketUI;
 
     [SerializeField] private DragState dragState = DragState.Inv2Inv;
+    private bool selling;
 
+    public void SetSelling(bool value) => selling = value;
     private void Start()
     {
         levelGrid = LevelGrid.Instance;
@@ -56,11 +58,49 @@ public class DragAndDrop : MonoBehaviour
 
         else if (_draggableObject && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
         {
-            character.GetUnit.charState = CharState.Idle;
-            StopDragging();
-            sellUI.SetActive(false);
-            marketUI.SetActive(true);
+            if (selling)
+            {
+                SellUnit();
+                ResetUI();
+            }
+            else
+            {
+                character.GetUnit.charState = CharState.Idle;
+                StopDragging();
+                ResetUI();
+            }
+
+
+
         }
+    }
+
+    private void SellUnit()
+    {
+        GameManager gameManager = GameManager.Instance;
+        Unit unit = character.GetUnit;
+        RareOptions rareOptions = unit.GetUnitObject.rareOptions ;
+
+        int unitCost = gameManager.GetUnitCost(unit.GetUnitLevel, rareOptions);
+        GameManager.Instance.AddGold(unitCost );
+
+        if (unit.OnGrid)
+        {
+            levelGrid.RemoveUnitAtGridPosition(levelGrid.GetGridPosition(_startDraggablePosition), unit);
+        }
+        else
+        {
+            inventoryGrid.RemoveUnitAtInventoryPosition(inventoryGrid.GetInventoryPosition(_startDraggablePosition), unit);
+        }
+        Destroy(character.GetTransform.gameObject);
+        selling = false;
+
+    }
+
+    private void ResetUI()
+    {
+        sellUI.SetActive(false);
+        marketUI.SetActive(true);
     }
 
     private void StartDragging(Touch touch)
@@ -121,12 +161,12 @@ public class DragAndDrop : MonoBehaviour
             _draggableObject = null;
         }
     }
-
+    GridPosition lastgridPosition;
+    GridPosition gridPosition;
     private void CharacterDragging()
     {
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
-        GridPosition lastgridPosition;
-        GridPosition gridPosition;
+
 
         if (character.GetUnit.OnGrid)
         {
@@ -142,7 +182,7 @@ public class DragAndDrop : MonoBehaviour
             ? inventoryGrid.GetInventoryPosition(lastfloor.position)
             : levelGrid.GetGridPosition(lastfloor.position);
 
-        CalculateState();
+       // CalculateState();
         DragUnit(lastgridPosition, gridPosition);
     }
 
@@ -151,7 +191,7 @@ public class DragAndDrop : MonoBehaviour
     private void DragUnit(GridPosition lastgridPosition, GridPosition gridPosition)
     {
 
-        switch (dragState)
+        switch (GetDragState())
         {
             case DragState.Grid2Grid:
                 {
@@ -253,26 +293,23 @@ public class DragAndDrop : MonoBehaviour
 
                     break;
                 }
+
+            case DragState.Inv2Shop:
+                break;
+            case DragState.Grid2Shop:
+                break;
         }
     }
 
-    private void CalculateState()
+    private DragState GetDragState()
     {
-        switch ((!character.GetUnit.OnGrid, lastfloor.GetComponent<GridSystemVisualSingle>().isInventory))
+       return dragState = (!character.GetUnit.OnGrid, lastfloor.GetComponent<GridSystemVisualSingle>().isInventory) switch
         {
-            case (true, true):
-                dragState = DragState.Inv2Inv;
-                break;
-            case (true, false):
-                dragState = DragState.Inv2Grid;
-                break;
-            case (false, true):
-                dragState = DragState.Grid2Inv;
-                break;
-            default:
-                dragState = DragState.Grid2Grid;
-                break;
-        }
+            (true, true) => DragState.Inv2Inv,
+            (true, false) => DragState.Inv2Grid,
+            (false, true) => DragState.Grid2Inv,
+            _ => DragState.Grid2Grid,
+        };
     }
     private bool IsLayer(int gameObjectLayer, LayerMask layer)
     {

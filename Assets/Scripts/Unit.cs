@@ -21,6 +21,8 @@ public class Unit : MonoBehaviour
     [SerializeField]private UnitObject unitObject;
     private Object dropUnitFX;
 
+    public UnitObject GetUnitObject => unitObject;
+
     public void UpgradeLevel()
     {
         unitLevel++;
