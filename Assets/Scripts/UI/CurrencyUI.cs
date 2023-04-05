@@ -8,14 +8,14 @@ public class CurrencyUI : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.Instance.OnGoldChanged += UpdateGoldText;
+       // Economy.OnGoldChanged -= UpdateGoldText;
     }
     private void Start()
     {
         GameManager gm = GameManager.Instance;
-        gm.OnGoldChanged += UpdateGoldText;
+        Economy.OnGoldChanged += UpdateGoldText;
         goldText = GetComponent<Text>();
-        goldText.text = gm.GetGold.ToString();
+        goldText.text = Economy.GetGold().ToString();
     }
     private void UpdateGoldText(int gold)
     {

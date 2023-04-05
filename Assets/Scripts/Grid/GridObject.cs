@@ -40,7 +40,6 @@ public class GridObject
     {
         unitList.Remove(unit);
         RemoveAnyUnit();
-        Debug.Log(unitList.Count);
     }
     public void RemoveAnyUnit()
     {

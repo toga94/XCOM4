@@ -28,11 +28,11 @@ public class CardShop : MonoBehaviour
     {
         GameManager gm = GameManager.Instance;
         int cost = 2;
-        if (gm.CanIBuy(cost))
+        if (Economy.CanIBuy(cost))
         {
             List<UnitObject> allUnitsList = new List<UnitObject>(allUnitObjects);
             UnitObject[] selectedUnits = RandomPick(allUnitObjects, 5).ToArray();
-            gm.SubtractGold(cost);
+            Economy.SubtractGold(cost);
             onItemAdded?.Invoke(this, selectedUnits);
         }
 
@@ -49,7 +49,7 @@ public class CardShop : MonoBehaviour
             float cumulativeProbability = 0;
             foreach (var item in list)
             {
-                float itemProbability = GameManager.Instance.GetItemProbability(item);
+                float itemProbability = Economy.GetItemProbability(item);
                 cumulativeProbability += itemProbability;
                 cumulativeProbabilities[item] = cumulativeProbability;
             }

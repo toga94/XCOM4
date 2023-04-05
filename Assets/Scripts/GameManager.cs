@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using TMPro;
-using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,7 +26,6 @@ public class GameManager : MonoBehaviour
     private LevelGrid levelgrid; 
     private UnityEngine.Object levelUpFx;
     public event EventHandler<UpdateTextArg> OnUpdateText;
-    public event Action<int> OnGoldChanged;
 
 
     public UnitObject[] unitObjects;
@@ -35,21 +33,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int gold;
     public int GetGold => gold;
 
-
-    public void AddGold(int amount)
-    {
-        gold += amount;
-        OnGoldChanged?.Invoke(gold);
-    }
-    public bool CanIBuy(int amount)
-    {
-        return amount <= gold;
-    }
-    public void SubtractGold(int amount)
-    {
-        gold -= amount;
-        OnGoldChanged?.Invoke(gold);
-    }
 
     public class UpdateTextArg : EventArgs
     {
@@ -354,24 +337,7 @@ public class GameManager : MonoBehaviour
         return new GridPosition(UnitsInInventory.Count, 0);
     }
 
-    public float GetItemProbability(UnitObject item)
-    {
-        switch (item.rareOptions)
-        {
-            case RareOptions.Common:
-                return 0.4f;
-            case RareOptions.Uncommon:
-                return 0.3f;
-            case RareOptions.Rare:
-                return 0.2f;
-            case RareOptions.Epic:
-                return 0.075f;
-            case RareOptions.Legendary:
-                return 0.025f;
-            default:
-                return 0f;
-        }
-    }
+
 
 
 }

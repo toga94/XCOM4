@@ -33,19 +33,16 @@ public class UnitCardButton : MonoBehaviour
     public void OnClick()
     {
         gameManager = GameManager.Instance;
-
-       // int unitCost = ((int)rareOptions) + 1;
-        int unitCost = Economy.GetUnitCost(0, rareOptions);
-        bool sold = gameManager.CanIBuy(unitCost);
         bool inventoryFree = !gameManager.InventoryIsFull();
 
-        if (sold && inventoryFree)
+        if (inventoryFree)
         {
-            gameManager.SubtractGold(unitCost);
-            gameManager.SpawnUnitAtInventory(CharacterName);
+            if(Economy.BuyUnit(unit))
+                gameManager.SpawnUnitAtInventory(CharacterName);
+
         }
         else {
-            Debug.LogError("sold" + sold + " cost " + unitCost + " invFree" + inventoryFree);
+          Debug.LogError(" invFree" + inventoryFree);
         }
 
     }

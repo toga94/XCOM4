@@ -36,7 +36,6 @@ public class DragAndDrop : MonoBehaviour
         levelGrid = LevelGrid.Instance;
         inventoryGrid = InventoryGrid.Instance;
         _mainCamera = Camera.main;
-
     }
 
     private void Update()
@@ -81,12 +80,14 @@ public class DragAndDrop : MonoBehaviour
 
     private void SellUnit()
     {
-        GameManager gameManager = GameManager.Instance;
+     //   GameManager gameManager = GameManager.Instance;
         Unit unit = character.GetUnit;
-        RareOptions rareOptions = unit.GetUnitObject.rareOptions ;
+        Economy.SellUnit(unit);
 
-        int unitCost = Economy.GetUnitCost(unit.GetUnitLevel, rareOptions);
-        GameManager.Instance.AddGold(unitCost );
+       // RareOptions rareOptions = unit.GetUnitObject.rareOptions ;
+
+      //  int unitCost = Economy.GetUnitCost(unit.GetUnitLevel, rareOptions);
+      //  Economy.AddGold(unitCost);
 
         if (unit.OnGrid)
         {
@@ -116,12 +117,12 @@ public class DragAndDrop : MonoBehaviour
             marketUI.SetActive(false);
             _draggableObject = hit.transform;
 
-            character = new Character(
-                _draggableObject,
-                hit.transform.GetComponent<Collider>(),
-                hit.transform.GetComponent<Unit>()
+            character = 
+                new Character(
+                    _draggableObject,
+                    hit.transform.GetComponent<Collider>(),
+                    hit.transform.GetComponent<Unit>()
                 );
-
 
             _startDraggablePosition = _draggableObject.position;
             _dragDistance = character.GetTransform.position.z - _mainCamera.transform.position.z;
@@ -143,7 +144,7 @@ public class DragAndDrop : MonoBehaviour
             float z = Mathf.Floor(hit.point.z / gridSize) * gridSize;
 
             Vector3 cursorPosition = new Vector3(x, y, z) + _offset;
-            character.GetTransform.position = cursorPosition;
+            character.GetTransform.position =  cursorPosition;
             lastfloor = hit.transform;
         }
         character.GetCollider.enabled = false;
