@@ -35,7 +35,7 @@ public class UnitCardButton : MonoBehaviour
         gameManager = GameManager.Instance;
 
        // int unitCost = ((int)rareOptions) + 1;
-        int unitCost = gameManager.GetUnitCost(0, rareOptions);
+        int unitCost = Economy.GetUnitCost(0, rareOptions);
         bool sold = gameManager.CanIBuy(unitCost);
         bool inventoryFree = !gameManager.InventoryIsFull();
 

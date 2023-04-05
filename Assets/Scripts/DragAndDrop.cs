@@ -26,6 +26,11 @@ public class DragAndDrop : MonoBehaviour
     private bool selling;
 
     public void SetSelling(bool value) => selling = value;
+
+
+    private GridPosition lastgridPosition;
+    private GridPosition gridPosition;
+
     private void Start()
     {
         levelGrid = LevelGrid.Instance;
@@ -43,34 +48,33 @@ public class DragAndDrop : MonoBehaviour
         }
 
         Touch touch = Input.GetTouch(0);
+        TouchPhase touchPhase = touch.phase;
 
-        if (touch.phase == TouchPhase.Began)
+        if (touchPhase == TouchPhase.Began)
         {
             StartDragging(touch);
         }
 
-        else if (_draggableObject && touch.phase == TouchPhase.Moved)
+        else if (_draggableObject && touchPhase == TouchPhase.Moved)
         {
             character.GetUnit.charState = CharState.Fall;
             MoveDraggableObject(touch);
 
         }
 
-        else if (_draggableObject && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
+        else if (_draggableObject && (touchPhase == TouchPhase.Ended || touchPhase == TouchPhase.Canceled))
         {
             if (selling)
             {
                 SellUnit();
                 ResetUI();
             }
-            else
+            else if (!selling)
             {
                 character.GetUnit.charState = CharState.Idle;
                 StopDragging();
                 ResetUI();
             }
-
-
 
         }
     }
@@ -81,7 +85,7 @@ public class DragAndDrop : MonoBehaviour
         Unit unit = character.GetUnit;
         RareOptions rareOptions = unit.GetUnitObject.rareOptions ;
 
-        int unitCost = gameManager.GetUnitCost(unit.GetUnitLevel, rareOptions);
+        int unitCost = Economy.GetUnitCost(unit.GetUnitLevel, rareOptions);
         GameManager.Instance.AddGold(unitCost );
 
         if (unit.OnGrid)
@@ -161,8 +165,7 @@ public class DragAndDrop : MonoBehaviour
             _draggableObject = null;
         }
     }
-    GridPosition lastgridPosition;
-    GridPosition gridPosition;
+
     private void CharacterDragging()
     {
         InventoryGrid inventoryGrid = InventoryGrid.Instance;

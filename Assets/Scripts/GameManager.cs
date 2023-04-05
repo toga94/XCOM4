@@ -219,13 +219,7 @@ public class GameManager : MonoBehaviour
             unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(gridPosition), gridPosition);
         }
     }
-    public int GetUnitCost(int unitLevel, RareOptions rareOptions)
-    {
-        int rarityCost = (int)rareOptions + 1;
-        int result = ((int)Mathf.Pow(3, unitLevel)) * rarityCost;
-        Debug.Log($"rarityCost: {rarityCost}, unitLevel: {unitLevel}, result: {result}");
-        return result; 
-    }
+
     public bool InventoryIsFull()
     {
         inventoryGrid = InventoryGrid.Instance;
