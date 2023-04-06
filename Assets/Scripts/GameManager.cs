@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour
     private GameState gameState = GameState.SelectFortune;
 
 
-    private int playerlevel = 1;
-    public int GetPlayerLevel => playerlevel;
+    //private int playerlevel = 1;
+    //public int GetPlayerLevel => playerlevel;
+    public int GetPlayerLevel = 1;
     public int GetPlayerCoin { get; }
 
     public List<Unit> UnitsInGrid;

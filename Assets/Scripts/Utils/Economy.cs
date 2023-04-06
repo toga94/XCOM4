@@ -123,7 +123,7 @@ public static class Economy
 
     private static int GetExperienceNeededForNextLevel()
     {
-        int experienceNeeded = (Level * Level * 10) + (Level * 5);
+        int experienceNeeded = Level * 2;
         return experienceNeeded;
     }
 }
