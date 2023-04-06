@@ -244,6 +244,17 @@ public class DragAndDrop : MonoBehaviour
 
                         levelGrid.AddUnitAtGridPosition(gridPosition, unit);
                         unit.OnGrid = true;
+
+                        if (!GameManager.Instance.GridisFree())
+                        {
+                            unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(lastgridPosition), lastgridPosition);
+                            levelGrid.RemoveAnyUnitAtGridPosition(gridPosition);
+
+                            inventoryGrid.AddUnitAtInventoryPosition(lastgridPosition, unit);
+                            unit.OnGrid = false;
+
+                        }
+
                     }
                     else
                     {

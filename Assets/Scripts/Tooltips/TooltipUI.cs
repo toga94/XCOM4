@@ -33,7 +33,10 @@ public class TooltipUI : MonoBehaviour
             int currentTypeCount = 0;
             if (countGrid > 0)
             {
-                currentTypeCount = traitCount[traitData.traitType];
+                if (traitCount.ContainsKey(traitData.traitType))
+                {
+                    currentTypeCount = traitCount[traitData.traitType];
+                }
             }
 
             string colorTag = currentTypeCount >= traitData.traitEffectsLevel[i] ? "<color=white>" : "<color=grey>";

@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
         Invoke("UpdateAll", 0.1f);
     }
 
+
     private void UpdateAll()
     {
         gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{GetPlayerLevel}";
@@ -212,14 +213,20 @@ public class GameManager : MonoBehaviour
         if (isFull) Debug.LogError("Inventory is full!");
         return isFull;
     }
+
+    public bool GridisFree()
+    {
+        return GetAllUnitsOnGrid.Count <= GetPlayerLevel;
+    }
+
     public bool GridIsFull()
     {
         levelgrid = LevelGrid.Instance;
-        int width = inventoryGrid.GetWidth() - 1;
-        int height = inventoryGrid.GetHeight() - 1;
-        bool isFull = GetAllUnitsOnGrid.Count >= width * height;
+        int width = levelgrid.GetWidth() - 1;
+        int height = levelgrid.GetHeight() - 1;
+        bool isFull = GetAllUnitsOnGrid.Count + 1 > width * height;
 
-        if (isFull) Debug.LogError("Grid is full!");
+        //if (isFull) Debug.LogError("Grid is full!");
         return isFull;
     }
 

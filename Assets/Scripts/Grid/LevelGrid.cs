@@ -98,7 +98,7 @@ public class LevelGrid : MonoBehaviour
         GridObjectHex gridObject = gridSystem.GetGridObjectHex(unitPos);
         if (!gridObject.HasAnyUnit())
         {
-            Debug.LogError(unitPos.ToString() + " is empty");
+           // Debug.LogError(unitPos.ToString() + " is empty");
             return;
         }
         gridObject.RemoveUnit(unit);
