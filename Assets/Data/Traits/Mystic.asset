@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traitType: 13
   traitName: Mystic
-  traitDescription: Mystic
+  traitDescription: Units with this trait grant bonus magic resistance to all allies.
   traitEffectsLevel: 050000000300000002000000
   traitSprite: {fileID: 21300000, guid: 6eae971d04e1846e7a68b635caa8dd26, type: 3}

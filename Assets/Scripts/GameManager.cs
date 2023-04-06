@@ -115,10 +115,10 @@ public class GameManager : MonoBehaviour
         gridSizeIcon.color = labelColor;
     }
 
-    void UpdateMeText() => OnUpdateText?.Invoke(this, new UpdateTextArg { });
+    private void UpdateMeText() => OnUpdateText?.Invoke(this, new UpdateTextArg { });
 
 
-    void Awake()
+    private void Awake()
     {
         if (Instance != null)
         {

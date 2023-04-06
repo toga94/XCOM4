@@ -51,6 +51,8 @@ public class TraitsUI : MonoBehaviour
             
             GameObject traitObject = pool.Spawn(traitList) ;
 
+            var traitUITrigger = traitObject.GetComponent<TraitTooltipTrigger>();
+            traitUITrigger.traitData = TraitDataManager.Instance.GetTraitData(kvp.Key);
 
             Image traitIcon = traitObject.transform.Find("TraitIcon").GetComponent<Image>();
             traitIcon.sprite = GetTraitSprite(kvp.Key);

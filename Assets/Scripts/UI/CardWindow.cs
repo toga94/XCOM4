@@ -86,6 +86,8 @@ public class CardWindow : MonoBehaviour
         foreach (TraitType trait in item.traits)
         {
             GameObject traitUIItem = traitCardItemUIPool.Spawn(traitPanel.transform);
+            var traitTooltip = traitUIItem.GetComponent<TraitTooltipTrigger>();
+            traitTooltip.traitData = TraitDataManager.Instance.GetTraitData(trait);
             traitUIItem.transform.localScale = new Vector3(2.5f, 2.5f, 0);
             Image traitUIImage = traitUIItem.transform.Find("traitImage").GetComponent<Image>();
             traitUIImage.sprite = GetTraitSprite(trait);
