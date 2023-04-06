@@ -16,5 +16,8 @@ MonoBehaviour:
   traitName: Legionnaire
   traitDescription: Units with this trait gain bonus attack speed and can stack up
     to four times.
-  traitEffectsLevel: 060000000400000001000000
+  traitEffectsLevel: 0400000001000000
   traitSprite: {fileID: 21300000, guid: 563522f3e1a7e4cfcb6edd2dbff14153, type: 3}
+  traitEffects:
+  - effectDescription: All allies gain bonus attack speed.
+  - effectDescription: Gain bonus attack speed.

@@ -16,5 +16,8 @@ MonoBehaviour:
   traitName: Hellion
   traitDescription: Units with this trait gain bonus attack speed and can summon
     a powerful unit when four are combined.
-  traitEffectsLevel: 060000000400000002000000
+  traitEffectsLevel: 0400000003000000
   traitSprite: {fileID: 21300000, guid: 6375ee604922547709d4cba093674eac, type: 3}
+  traitEffects:
+  - effectDescription: Summon a powerful unit with bonus health and attack damage.
+  - effectDescription: All Hellions gain bonus attack speed.

@@ -18,3 +18,5 @@ MonoBehaviour:
     and can stack up to six times.
   traitEffectsLevel: 01000000
   traitSprite: {fileID: 21300000, guid: 9e23c74e16b244bb19edf0175baaa545, type: 3}
+  traitEffects:
+  - effectDescription: Gain bonus attack damage

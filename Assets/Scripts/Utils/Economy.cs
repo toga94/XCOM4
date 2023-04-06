@@ -4,8 +4,20 @@ using UnityEngine;
 public static class Economy
 {
     public static int gold = 80;
-    private static Action<int> goldChanged;
+    public static int Level { get; set; }
+    public static int Exp { get; set; }
 
+    private static Action<int> goldChanged;
+    private static Action<int> experienceChanged;
+    private static Action<int> levelChanged;
+    public static Action<int> OnExperienceChanged
+    {
+        get { return experienceChanged; }
+        set
+        {
+            experienceChanged = value;
+        }
+    }
     public static Action<int> OnGoldChanged
     {
         get { return goldChanged; }
@@ -15,7 +27,14 @@ public static class Economy
             goldChanged = value;
         }
     }
-
+    public static Action<int> OnLevelChanged
+    {
+        get { return levelChanged; }
+        set
+        {
+            levelChanged = value;
+        }
+    }
 
     public static int GetUnitCost(int unitLevel, RareOptions rareOptions)
     {
@@ -81,5 +100,30 @@ public static class Economy
     {
         OnGoldChanged?.Invoke(gold);
         return gold;
+    }
+
+
+
+    public static void GainExperience(int amount)
+    {
+        Exp += amount;
+        while (Exp >= GetExperienceNeededForNextLevel())
+        {
+            LevelUp();
+        }
+        OnExperienceChanged?.Invoke(Exp);
+    }
+    private static void LevelUp()
+    {
+        Level++;
+        Exp -= GetExperienceNeededForNextLevel();
+        OnExperienceChanged?.Invoke(Exp);
+        OnLevelChanged?.Invoke(Level);
+    }
+
+    private static int GetExperienceNeededForNextLevel()
+    {
+        int experienceNeeded = (Level * Level * 10) + (Level * 5);
+        return experienceNeeded;
     }
 }

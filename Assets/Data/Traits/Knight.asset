@@ -16,5 +16,10 @@ MonoBehaviour:
   traitName: Knight
   traitDescription: Units with this trait gain a shield that blocks incoming damage
     for a short period when they first start combat.
-  traitEffectsLevel: 070000000500000003000000
+  traitEffectsLevel: 0500000003000000
   traitSprite: {fileID: 21300000, guid: 011a9b808bdd7493db5b80fcb0bcc68b, type: 3}
+  traitEffects:
+  - effectDescription: 'All allies gain a shield that blocks incoming damage for
+      a short period when combat '
+  - effectDescription: Gain a shield that blocks incoming damage for a short period
+      when combat starts.

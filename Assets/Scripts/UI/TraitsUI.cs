@@ -6,11 +6,26 @@ using UnityEngine.UI;
 using Lean.Pool;
 public class TraitsUI : MonoBehaviour
 {
+    public static TraitsUI Instance { get; private set; }
+
     public List<Unit> units;
     public GameObject traitPrefab;
     public Transform traitList;
 
     [SerializeField] private LeanGameObjectPool pool;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("There's more than one TooltipSystem! " + transform + " - " + Instance);
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+
     private void Start()
     {
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += OnAnyUnitMovedGridPosition;
@@ -34,16 +49,17 @@ public class TraitsUI : MonoBehaviour
     {
         Invoke("UpdateTraits", 0.001f);
     }
-
+    private IOrderedEnumerable<KeyValuePair<TraitType, int>> sortedTraitCounts;
+    public Dictionary<TraitType, int> traitCounts;
     private void UpdateTraits()
     {
         units = GameManager.Instance.GetAllUnitsOnGrid;
         pool.DespawnAll();
 
 
-        Dictionary<TraitType, int> traitCounts = GetTraitsStacks(units);
+       traitCounts = GetTraitsStacks(units);
 
-        var sortedTraitCounts = traitCounts.OrderBy(kvp => (GetTraitMaxStack(kvp.Key) / kvp.Value)).ThenByDescending(kvp => kvp.Value);
+        sortedTraitCounts = traitCounts.OrderBy(kvp => (GetTraitMaxStack(kvp.Key) / kvp.Value)).ThenByDescending(kvp => kvp.Value);
 
         foreach (KeyValuePair<TraitType, int> kvp in sortedTraitCounts)
         {
@@ -76,7 +92,7 @@ public class TraitsUI : MonoBehaviour
 
         return traitdata.traitSprite;
     }
-    private Color GetTraitSpriteColor(TraitType trait, int level)
+    public Color GetTraitSpriteColor(TraitType trait, int level)
     {
         TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
         int maxStack = GetTraitMaxStack(trait);
@@ -110,7 +126,7 @@ public class TraitsUI : MonoBehaviour
         TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
         return traitdata.traitEffectsLevel[traitdata.traitEffectsLevel.Length - 1];
     }
-    private Dictionary<TraitType, int> GetTraitsStacks(List<Unit> units)
+    public Dictionary<TraitType, int> GetTraitsStacks(List<Unit> units)
     {
         Dictionary<TraitType, int> traitStack = new Dictionary<TraitType, int>();
         HashSet<string> unitNames = new HashSet<string>();

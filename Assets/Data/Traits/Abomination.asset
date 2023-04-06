@@ -18,3 +18,5 @@ MonoBehaviour:
     three are combined.
   traitEffectsLevel: 01000000
   traitSprite: {fileID: 21300000, guid: 8891ef835ab2544528186353ddf3aa5f, type: 3}
+  traitEffects:
+  - effectDescription: Gain bonus health

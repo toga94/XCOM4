@@ -3,7 +3,7 @@
 [CreateAssetMenu(menuName = "Game Data/Ability")]
 public class Ability : ScriptableObject
 {
-    public string name;
+    public string abilityName;
     public int manaCost;
     public int damage;
     public float cooldown;

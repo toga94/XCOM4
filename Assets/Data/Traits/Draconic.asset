@@ -16,5 +16,8 @@ MonoBehaviour:
   traitName: Draconic
   traitDescription: Units with this trait have a chance to spawn additional gold
     and/or a free egg that hatches into a powerful dragon.
-  traitEffectsLevel: 090000000600000003000000
+  traitEffectsLevel: 03000000
   traitSprite: {fileID: 21300000, guid: 268ac875f9668439f9a1c8d5e6922839, type: 3}
+  traitEffects:
+  - effectDescription: Spawn a free egg that hatches into a powerful dragon after
+      a certain number of rounds.
