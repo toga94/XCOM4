@@ -844,6 +844,7 @@ GameObject:
   - component: {fileID: 1848444482009911157}
   - component: {fileID: 1848444482009911152}
   - component: {fileID: 7667167320765840440}
+  - component: {fileID: 816371367519379332}
   m_Layer: 6
   m_Name: Chr_BR_ff_Male_01
   m_TagString: Untagged
@@ -939,6 +940,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40236b689e17c048a01a15e5fcbde29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &816371367519379332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846756657532275767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1654a00933fb92247974ad4e83934163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDie: 0
 --- !u!1 &1847040064277917399
 GameObject:
   m_ObjectHideFlags: 0

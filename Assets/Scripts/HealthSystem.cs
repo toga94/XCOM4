@@ -1,38 +1,49 @@
 using System;
 using UnityEngine;
 
-public class HealthSystem : IDamageable
+public class HealthSystem : MonoBehaviour, IDamageable
 {
-    private float health;
+
+    private float curHealth;
     private float healthMax;
     public bool isDie;
-    public EventHandler OnHealthChanged;
-    public HealthSystem(float health)
+    public Action<float> OnHealthChanged;
+    private Unit unit;
+    private UnitObject unitObj;
+
+    private void Awake()
     {
-        this.health = health;
-        healthMax = health;
     }
+    private void Start()
+    {
+        unit = GetComponent<Unit>();
+        unitObj = unit.GetUnitObject;
+
+        healthMax = unitObj.health;
+        curHealth = healthMax;
+    }
+
 
     public float Health
     {
         get
         {
-            return health;
+            return curHealth;
         }
     }
 
     public void Damage(float value)
     {
-        health -= value;
-        if (health < 0) health = 0;
-        if(OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
+        curHealth -= value;
+        if (curHealth < 0) curHealth = 0;
+        if(OnHealthChanged != null) OnHealthChanged(curHealth);
         Debug.Log("Damage  "+ Health);
     }
 
     public void Heal(float value)
     {
-        health += value;
-        if (health > healthMax) health = healthMax;
-        if(OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
+        curHealth += value;
+        if (curHealth > healthMax) curHealth = healthMax;
+        if(OnHealthChanged != null) OnHealthChanged(curHealth);
     }
 }

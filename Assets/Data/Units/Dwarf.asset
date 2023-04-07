@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Dwarf King
   unitImage: {fileID: -5152577420098158308, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
-  health: 100
+  health: 150
   attackPower: 50
   speed: 50
   mana: 50

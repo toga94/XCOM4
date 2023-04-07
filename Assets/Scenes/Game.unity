@@ -3660,6 +3660,7 @@ MonoBehaviour:
   costText: {fileID: 1608683725}
   minMaxExp: {fileID: 1443453236}
   xpBar: {fileID: 682593409}
+  fillRatio: 0
 --- !u!114 &1822321299
 MonoBehaviour:
   m_ObjectHideFlags: 0
