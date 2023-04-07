@@ -7,7 +7,7 @@ public class GridSystem<TGridObject>
     private int height;
     private float cellSize;
     private TGridObject[,] gridObjectArray;
-    private Vector3 GlobalOffset = new Vector3(-3.33f, 0, -6);
+    private Vector3 GlobalOffset = new Vector3(-4.50f, 0, -6);
   
     public GridSystem(int width, int height, float cellSize, Func<GridSystem<TGridObject>, GridPosition, TGridObject> createGridObject, Vector3Int offset)
     {
