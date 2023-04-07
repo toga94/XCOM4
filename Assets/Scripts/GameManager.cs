@@ -12,9 +12,6 @@ public class GameManager : MonoBehaviour
     private GameState gameState = GameState.SelectFortune;
 
 
-    //private int playerlevel = 1;
-    //public int GetPlayerLevel => playerlevel;
-    public int GetPlayerLevel = 1;
     public int GetPlayerCoin { get; }
 
     public List<Unit> UnitsInGrid;
@@ -111,8 +108,8 @@ public class GameManager : MonoBehaviour
 
     private void UpdateAll()
     {
-        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{GetPlayerLevel}";
-        Color32 labelColor = GetAllUnitsOnGrid.Count < GetPlayerLevel ? new Color(1, 1, 1, 1) : new Color(0.5f, 0.5f, 0.5f, 1);
+        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{Economy.Level}";
+        Color32 labelColor = GetAllUnitsOnGrid.Count < Economy.Level ? new Color(1, 1, 1, 1) : new Color(0.5f, 0.5f, 0.5f, 1);
         gridSizeTextMesh.faceColor = labelColor;
         gridSizeIcon.color = labelColor;
     }
@@ -147,7 +144,7 @@ public class GameManager : MonoBehaviour
         gridSizeTextMesh = transform.GetComponentInChildren<TextMeshPro>();
         gridSizeIcon = gridSizeTextMesh.transform.GetComponentInChildren<SpriteRenderer>();
         UpdateMeText();
-        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{GetPlayerLevel}";
+        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{Economy.Level}";
 
         //Application.targetFrameRate = 60;
 
@@ -217,7 +214,7 @@ public class GameManager : MonoBehaviour
 
     public bool GridisFree()
     {
-        return GetAllUnitsOnGrid.Count <= GetPlayerLevel;
+        return GetAllUnitsOnGrid.Count <= Economy.Level;
     }
 
     public bool GridIsFull()

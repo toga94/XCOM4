@@ -4,7 +4,8 @@ using UnityEngine;
 public static class Economy
 {
     public static int gold = 80;
-    public static int Level { get; set; }
+    public static int xpCost = 4;
+    public static int Level { get; set; } = 1;
     public static int Exp { get; set; }
 
     private static Action<int> goldChanged;
