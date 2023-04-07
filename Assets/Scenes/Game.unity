@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 303743956}
   - component: {fileID: 303743955}
   m_Layer: 5
-  m_Name: Image
+  m_Name: xpbarBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1279,7 +1279,7 @@ GameObject:
   - component: {fileID: 682593410}
   - component: {fileID: 682593409}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: xpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2657,7 +2657,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10/20
+  m_text: 0/5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3658,6 +3658,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelText: {fileID: 1060601528}
   costText: {fileID: 1608683725}
+  minMaxExp: {fileID: 1443453236}
+  xpBar: {fileID: 682593409}
 --- !u!114 &1822321299
 MonoBehaviour:
   m_ObjectHideFlags: 0

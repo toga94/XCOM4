@@ -116,15 +116,15 @@ public static class Economy
     }
     private static void LevelUp()
     {
-        Level++;
         Exp -= GetExperienceNeededForNextLevel();
+        Level++;
         OnExperienceChanged?.Invoke(Exp);
         OnLevelChanged?.Invoke(Level);
     }
 
-    private static int GetExperienceNeededForNextLevel()
+    public static int GetExperienceNeededForNextLevel()
     {
-        int experienceNeeded = Level * 2;
+        int experienceNeeded = Level + 4;
         return experienceNeeded;
     }
 }
