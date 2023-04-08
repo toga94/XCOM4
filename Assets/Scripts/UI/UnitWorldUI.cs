@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
@@ -69,6 +68,7 @@ public class UnitWorldUI : MonoBehaviour
 
      
     }
+
     private IEnumerator UpdateElement() {
         yield return new WaitForSeconds(0.013f);
         levelText.text = unit.GetUnitLevel.ToString();

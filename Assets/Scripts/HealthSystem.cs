@@ -10,10 +10,6 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public Action<float> OnHealthChanged;
     private Unit unit;
     private UnitObject unitObj;
-
-    private void Awake()
-    {
-    }
     private void Start()
     {
         unit = GetComponent<Unit>();
