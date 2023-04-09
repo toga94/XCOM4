@@ -60,18 +60,17 @@ public class UnitWorldUI : MonoBehaviour
 
         
         int numBars = unit.GetUnitObject.health / healthPerBar;
-        
+        while (hpLinePool.Spawned < numBars)
+        {
+            GameObject hpLine = hpLinePool.Spawn(hpSldier.transform);
+            hpLine.transform.rotation = Quaternion.identity;
+        }
 
     }
 
 
     private void Update()
     {
-        int numBars = unit.GetUnitObject.health / healthPerBar;
-        if (hpLinePool.Spawned < numBars)
-        {
-            GameObject hpLine = hpLinePool.Spawn(hpSldier.transform);
-        }
 
         if (hpDamageSldier.fillAmount != hpSldier.fillAmount)
         {
