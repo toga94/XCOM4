@@ -38,6 +38,8 @@ public class DragAndDrop : MonoBehaviour
         _mainCamera = Camera.main;
     }
 
+
+
     private void Update()
     {
         if (Input.touchCount != 1)
@@ -74,7 +76,46 @@ public class DragAndDrop : MonoBehaviour
                 StopDragging();
                 ResetUI();
             }
+        }
+    }
+        private void MoveDraggableObject(Touch touch)
+    {
+        Ray ray = _mainCamera.ScreenPointToRay(touch.position);
+        RaycastHit hit;
 
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, gridObjectLayer))
+        {
+            float x = Mathf.Floor(hit.point.x / gridSize) * gridSize;
+            float y = Mathf.Floor(hit.point.y / gridSize) * gridSize + 1.5f;
+            float z = Mathf.Floor(hit.point.z / gridSize) * gridSize;
+
+            Vector3 cursorPosition = new Vector3(x, y, z) + _offset;
+            character.GetTransform.position =  cursorPosition;
+            lastfloor = hit.transform;
+        }
+        character.GetCollider.enabled = false;
+    }
+        private void StartDragging(Touch touch)
+    {
+        Ray ray = _mainCamera.ScreenPointToRay(touch.position);
+        if (Physics.Raycast(ray, out RaycastHit hit) && IsLayer(hit.collider.gameObject.layer, draggableLayer))
+        {
+            sellUI.SetActive(true);
+            marketUI.SetActive(false);
+            _draggableObject = hit.transform;
+
+            character = 
+                new Character(
+                    _draggableObject,
+                    hit.transform.GetComponent<Collider>(),
+                    hit.transform.GetComponent<Unit>()
+                );
+
+            _startDraggablePosition = _draggableObject.position;
+            _dragDistance = character.GetTransform.position.z - _mainCamera.transform.position.z;
+            Vector3 position = new Vector3(touch.position.x, touch.position.y, _dragDistance);
+            position = _mainCamera.WorldToScreenPoint(character.GetTransform.position);
+            _offset = character.GetTransform.position - _mainCamera.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, position.z));
         }
     }
 
@@ -108,47 +149,9 @@ public class DragAndDrop : MonoBehaviour
         marketUI.SetActive(true);
     }
 
-    private void StartDragging(Touch touch)
-    {
-        Ray ray = _mainCamera.ScreenPointToRay(touch.position);
-        if (Physics.Raycast(ray, out RaycastHit hit) && IsLayer(hit.collider.gameObject.layer, draggableLayer))
-        {
-            sellUI.SetActive(true);
-            marketUI.SetActive(false);
-            _draggableObject = hit.transform;
 
-            character = 
-                new Character(
-                    _draggableObject,
-                    hit.transform.GetComponent<Collider>(),
-                    hit.transform.GetComponent<Unit>()
-                );
-
-            _startDraggablePosition = _draggableObject.position;
-            _dragDistance = character.GetTransform.position.z - _mainCamera.transform.position.z;
-            Vector3 position = new Vector3(touch.position.x, touch.position.y, _dragDistance);
-            position = _mainCamera.WorldToScreenPoint(character.GetTransform.position);
-            _offset = character.GetTransform.position - _mainCamera.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, position.z));
-        }
-    }
     private Transform lastfloor;
-    private void MoveDraggableObject(Touch touch)
-    {
-        Ray ray = _mainCamera.ScreenPointToRay(touch.position);
-        RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, gridObjectLayer))
-        {
-            float x = Mathf.Floor(hit.point.x / gridSize) * gridSize;
-            float y = Mathf.Floor(hit.point.y / gridSize) * gridSize + 1.5f;
-            float z = Mathf.Floor(hit.point.z / gridSize) * gridSize;
-
-            Vector3 cursorPosition = new Vector3(x, y, z) + _offset;
-            character.GetTransform.position =  cursorPosition;
-            lastfloor = hit.transform;
-        }
-        character.GetCollider.enabled = false;
-    }
 
     private void StopDragging()
     {

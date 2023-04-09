@@ -29,11 +29,11 @@ RectTransform:
   m_Children:
   - {fileID: 234106897542944435}
   - {fileID: 5353338538657420484}
+  - {fileID: 7174759943914348004}
   - {fileID: 832001549923389773}
   - {fileID: 3858500169614701789}
   - {fileID: 4589873248578718804}
   - {fileID: 6023384525422485765}
-  - {fileID: 7174759943914348004}
   m_Father: {fileID: 7126108065734106483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72,7 +72,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6688389930802420628}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -148,7 +148,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6688389930802420628}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -184,10 +184,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 8b52f54d6bcb44bfb83c0e1b790eda8b, type: 3}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -442,7 +442,6 @@ GameObject:
   - component: {fileID: 4583851341757093450}
   - component: {fileID: 6670415186813302581}
   - component: {fileID: 2480079346174020437}
-  - component: {fileID: 7123999713374411850}
   m_Layer: 5
   m_Name: UnitWorldUI
   m_TagString: Untagged
@@ -531,7 +530,8 @@ MonoBehaviour:
   unit: {fileID: 0}
   healthSystem: {fileID: 0}
   hpLinePool: {fileID: 0}
-  hpSldier: {fileID: 832001549923389773}
+  hpSldier: {fileID: 795989851512036568}
+  hpDamageSldier: {fileID: 7977040515169983578}
 --- !u!114 &6670415186813302581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,7 +562,7 @@ MonoBehaviour:
   strategy: 0
   preload: 0
   capacity: 12
-  recycle: 0
+  recycle: 1
   persist: 0
   stamp: 0
   warnings: 1
@@ -570,21 +570,6 @@ MonoBehaviour:
   despawnedClones: []
   delays: []
   deactivatedChild: {fileID: 0}
---- !u!114 &7123999713374411850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6882975772807749723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba56905c7f7326409195a5992221c0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foregroundImage: {fileID: 795989851512036568}
-  damageEffectImage: {fileID: 7977040515169983578}
-  damageEffectDuration: 0.5
 --- !u!1 &6903011700682352414
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +600,7 @@ RectTransform:
   m_LocalScale: {x: 0.46, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6688389930802420628}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -690,7 +675,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6688389930802420628}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -837,10 +822,10 @@ RectTransform:
   m_GameObject: {fileID: 9103071734234474298}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.18, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6688389930802420628}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -876,10 +861,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: d1f29da68827244588cb359f0fedd59a, type: 3}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0

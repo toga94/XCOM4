@@ -12,8 +12,9 @@ public class UnitWorldUI : MonoBehaviour
     [SerializeField] private LeanGameObjectPool hpLinePool;
     private Transform root;
     private UnityEngine.Object hplineRes;
-    [SerializeField] private RectTransform hpSldier;
-
+    [SerializeField] private Image hpSldier;
+    [SerializeField] private Image hpDamageSldier;
+    private int healthPerBar = 50;
     private void Awake()
     {
         root = transform.root;
@@ -34,7 +35,7 @@ public class UnitWorldUI : MonoBehaviour
         hplineRes = Resources.Load("hpLine");
 
         healthSystem.OnHealthChanged += UpdateHp;
-        UpdateHp(100);
+        UpdateHp(unit.GetUnitObject.health);
 
     }
     private void OnDisable()
@@ -55,19 +56,30 @@ public class UnitWorldUI : MonoBehaviour
     private void UpdateHp(float curHp)
     {
         float value = Mathf.Clamp( curHp / unit.GetUnitObject.health , 0 , 1);
-        hpSldier.localScale = new Vector3(value, 1, 1);
+        hpSldier.fillAmount = value;
 
-        int healthPerBar = 50; 
+        
         int numBars = unit.GetUnitObject.health / healthPerBar;
+        
 
-        for (int i = 0; i < numBars; i++)
+    }
+
+
+    private void Update()
+    {
+        int numBars = unit.GetUnitObject.health / healthPerBar;
+        if (hpLinePool.Spawned < numBars)
         {
-            GameObject hpLine = hpLinePool.Spawn(hpSldier);
+            GameObject hpLine = hpLinePool.Spawn(hpSldier.transform);
         }
 
-
-     
+        if (hpDamageSldier.fillAmount != hpSldier.fillAmount)
+        {
+            hpDamageSldier.fillAmount = Mathf.Lerp(hpDamageSldier.fillAmount, hpSldier.fillAmount, Time.deltaTime * 2f);
+        }
     }
+
+
 
     private IEnumerator UpdateElement() {
         yield return new WaitForSeconds(0.013f);

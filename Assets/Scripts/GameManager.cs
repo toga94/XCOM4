@@ -149,6 +149,18 @@ public class GameManager : MonoBehaviour
         //Application.targetFrameRate = 60;
 
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            foreach (var unit in GetAllUnits)
+            {
+                unit.GetComponent<IDamageable>().Damage(10);
+            }
+        }
+    }
     private void OnDestroy()
     {
         LevelGrid.Instance.OnAnyUnitMovedGridPosition -= CalculateUnits;
