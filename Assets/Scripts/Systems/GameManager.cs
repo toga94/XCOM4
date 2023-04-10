@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public List<TransformData> SavedUnitTransforms { get;  set; }
+
     private void CalculateUnits(object sender, EventArgs e)
     {
         alllUnits = GetAllUnits;

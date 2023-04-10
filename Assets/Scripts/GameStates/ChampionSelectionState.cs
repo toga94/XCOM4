@@ -17,6 +17,7 @@ public class ChampionSelectionState : GameState
     // Logic for exiting Champion Selection state
     public override void OnExitState()
     {
+        GridSystemVisual.Instance.HideAllGridPosition();
         GameManager.Instance.gridSizeTextMesh.gameObject.SetActive(false);
     }
 }
