@@ -79,6 +79,7 @@ public class GridSystemVisual : MonoBehaviour
     }
     public void HideAllGridPosition()
     {
+        Debug.Log("Hide All grid");
         for (int x = 0; x < levelGrid.GetWidth(); x++)
         {
             for (int z = 0; z < levelGrid.GetHeight(); z++)
@@ -87,7 +88,17 @@ public class GridSystemVisual : MonoBehaviour
             }
         }
     }
-
+    public void ShowAllGridPosition()
+    {
+        Debug.Log("Show All grid");
+        for (int x = 0; x < levelGrid.GetWidth(); x++)
+        {
+            for (int z = 0; z < levelGrid.GetHeight(); z++)
+            {
+                gridSystemVisualSingleArray[x, z].Show();
+            }
+        }
+    }
     private void ShowGridPositionRange(GridPosition gridPosition, int range, GridVisualType gridVisualType)
     {
         //List<GridPosition> gridPositionList = new List<GridPosition>();

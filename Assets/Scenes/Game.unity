@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08200258, g: 0.29162103, b: 0.3639054, a: 1}
+  m_IndirectSpecularColor: {r: 0.081702866, g: 0.29065746, b: 0.35906187, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2754,6 +2754,7 @@ GameObject:
   - component: {fileID: 1502524557}
   - component: {fileID: 1502524558}
   - component: {fileID: 1502524559}
+  - component: {fileID: 1502524560}
   m_Layer: 0
   m_Name: __Grid
   m_TagString: Untagged
@@ -2854,6 +2855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitsInGrid: []
   UnitsInInventory: []
+  gridSizeTextMesh: {fileID: 0}
   unitObjects:
   - {fileID: 11400000, guid: 4b924d13aa788f2459b96a61a95cc6de, type: 2}
   - {fileID: 11400000, guid: 6706e7593992fa74f9c15ac9e1950ef0, type: 2}
@@ -2988,6 +2990,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadSceneIndex: 1
+--- !u!114 &1502524560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502524547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b7d2ba13ebb07b45a568f35d2c6bfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1506974524 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 643966055527263034, guid: 45f7c61e0d2347240827cb6ad8e39286, type: 3}
@@ -3418,7 +3432,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -238.8613}
+  m_AnchoredPosition: {x: 60, y: -238.79227}
   m_SizeDelta: {x: 119.880005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716284766

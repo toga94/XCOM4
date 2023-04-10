@@ -6,6 +6,7 @@ public class UnitObject : ScriptableObject
     public string unitName;
     public Sprite unitImage;
     public int health;
+    public int defence;
     public int attackPower;
     public int speed;
     public int mana;

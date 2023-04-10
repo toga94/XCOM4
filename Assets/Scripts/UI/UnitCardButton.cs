@@ -9,6 +9,7 @@ public class UnitCardButton : MonoBehaviour
     [SerializeField] private Text CharacterLabelText;
     public GameObject TreeStarPanel;
     public GameObject TwoStarPanel;
+    public GameObject HaveStarPanel;
     public RareOptions rareOptions;
     public Unit unit;
     private void OnEnable()
@@ -25,6 +26,7 @@ public class UnitCardButton : MonoBehaviour
 
         TreeStarPanel.SetActive(upgradeTo3Star);
         TwoStarPanel.SetActive(!upgradeTo3Star && upgradeTo2Star);
+        HaveStarPanel.SetActive(upgradeTo3Star || upgradeTo2Star);
 
         CharacterLabelText.text = CharacterName;
     }

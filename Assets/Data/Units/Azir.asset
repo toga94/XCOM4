@@ -15,6 +15,7 @@ MonoBehaviour:
   unitName: Azir
   unitImage: {fileID: 3774759999125446255, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
   health: 100
+  defence: 0
   attackPower: 50
   speed: 50
   mana: 50
