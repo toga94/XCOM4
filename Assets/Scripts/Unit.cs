@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Unit : MonoBehaviour
 {
@@ -23,6 +24,15 @@ public class Unit : MonoBehaviour
 
     public UnitObject GetUnitObject => unitObject;
 
+
+
+    private GameStateSystem stateSystem;
+
+    private NavMeshAgent agent;
+    private GameObject currentTarget = null;
+    private float attackRange = 1f;
+    private float attackDelay = 1f;
+    private float lastAttackTime = 0f;
     public void UpgradeLevel()
     {
         unitLevel++;
@@ -47,10 +57,85 @@ public class Unit : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        stateSystem = GameStateSystem.Instance;
+        stateSystem.OnGameStateChanged += GameStateChanged;
     }
+    private void OnDestroy()
+    {
+        stateSystem.OnGameStateChanged -= GameStateChanged;
+    }
+    public void UpdatePos(TransformData data)
+    {
+        if (!OnGrid) return;
+
+        if (agent == null)
+        {
+            transform.SetPositionAndRotation(data.position, data.rotation);
+        }
+        else
+        {
+            agent.Warp(data.position);
+            agent.enabled = false;
+            transform.SetPositionAndRotation(data.position, data.rotation);
+        }
+    }
+
+    private void GameStateChanged(GameState gameState)
+    {
+        if (!OnGrid) return;
+        if (gameState is CombatPhaseState)
+        {
+            if(agent == null) agent = GetComponent<NavMeshAgent>();
+            agent.enabled = true;
+            Vector3 destination = DetermineDestination();
+            agent.SetDestination(destination);
+        }
+        else {
+            if(!agent.isStopped) agent.isStopped = true;
+            agent.enabled = false;
+        }
+    }
+
     private void Update()
     {
-        AnimationStates();
+        GameState currentState = GameStateSystem.Instance.GetCurrentState();
+
+        switch (currentState)
+        {
+            case ChampionSelectionState _:
+                AnimationStates();
+                break;
+            case CombatPhaseState _:
+                {
+
+                    if (!OnGrid) { animator.SetBool("fall", charState == CharState.Fall); return; }
+                    animator.SetBool("fall", false);
+                    Vector3 destination = DetermineDestination();
+                    GameObject target = DetermineTarget();
+                    // Set NavMeshAgent destination
+                    agent.SetDestination(destination);
+                    // Attack target if within attack range
+                    if (target != null)
+                    {
+                        if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
+                        {
+                            if (Time.time > lastAttackTime + attackDelay)
+                            {
+                                Attack(target);
+                                lastAttackTime = Time.time;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        agent.isStopped = true;
+                    }
+
+                    break;
+                }
+        }
+
     }
 
     private void AnimationStates()
@@ -58,6 +143,82 @@ public class Unit : MonoBehaviour
         animator.SetBool("fall", charState == CharState.Fall);
     }
 
+    private void Attack(GameObject target)
+    {
+        // Perform attack on target
+        // Here's a simple example implementation:
+
+        Debug.Log(gameObject.name + " attacks " + target.name);
+        target.GetComponent<IDamageable>().TakeDamage(10);
+    }
+
+    private GameObject DetermineTarget()
+    {
+        // Determine target based on current situation
+        // This could involve factors like the unit's health, position, etc.
+        // Here's a simple example implementation:
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length > 0)
+        {
+            // If there are enemies, target the nearest one within attack range
+            GameObject nearestEnemy = FindNearestEnemy(enemies);
+            if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
+            {
+                return nearestEnemy;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            // If there are no enemies, clear current target
+            currentTarget = null;
+            return null;
+        }
+    }
+
+
+
+
+    private Vector3 DetermineDestination()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length > 0)
+        {
+            // If there are enemies, move towards the nearest one
+            GameObject nearestEnemy = FindNearestEnemy(enemies);
+            return nearestEnemy.transform.position;
+        }
+        else
+        {
+            // If there are no enemies, move towards a random point within a certain range
+            float range = 10f;
+            Vector3 randomDirection = Random.insideUnitSphere * range;
+            randomDirection += transform.position;
+            NavMeshHit navMeshHit;
+            NavMesh.SamplePosition(randomDirection, out navMeshHit, range, NavMesh.AllAreas);
+            return navMeshHit.position;
+        }
+    }
+
+    private GameObject FindNearestEnemy(GameObject[] enemies)
+    {
+        float closestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+        return nearestEnemy;
+    }
 
 
 }

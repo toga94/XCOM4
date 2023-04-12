@@ -22,6 +22,13 @@ public class CombatPhaseState : GameState
             unitTransforms.Add(new TransformData(unit.transform.position, unit.transform.rotation));
         }
         GameManager.Instance.SavedUnitTransforms = unitTransforms;
+
+
+        GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
+        foreach (var floor in floors)
+        {
+            floor.GetComponent<BoxCollider>().enabled = false;
+        }
     }
 
     // Logic for updating Combat Phase state
@@ -36,12 +43,16 @@ public class CombatPhaseState : GameState
         GameManager gm = GameManager.Instance;
         List<Unit> units = GameManager.Instance.GetAllUnitsOnGrid;
         List<TransformData> savedTransforms = GameManager.Instance.SavedUnitTransforms;
-
         // Move units back to saved positions and rotations
         for (int i = 0; i < units.Count; i++)
         {
             units[i].transform.position = savedTransforms[i].position;
             units[i].transform.rotation = savedTransforms[i].rotation;
+        }
+        GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
+        foreach (var floor in floors)
+        {
+            floor.GetComponent<BoxCollider>().enabled = true;
         }
     }
 }

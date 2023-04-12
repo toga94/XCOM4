@@ -19,7 +19,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         health = healthMax;
     }
 
-    public void Damage(float value)
+    public void TakeDamage(float value)
     {
         float damage = value - unitObj.defence;
         if (damage > 0)

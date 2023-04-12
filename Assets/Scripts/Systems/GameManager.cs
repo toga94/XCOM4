@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
 
             foreach (var unit in GetAllUnits)
             {
-                unit.GetComponent<IDamageable>().Damage(10);
+                unit.GetComponent<IDamageable>().TakeDamage(10);
             }
         }
     }
