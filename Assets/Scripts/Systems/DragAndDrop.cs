@@ -30,17 +30,64 @@ public class DragAndDrop : MonoBehaviour
 
     private GridPosition lastgridPosition;
     private GridPosition gridPosition;
-
+    private void Awake()
+    {
+        Input.simulateMouseWithTouches = true;
+    }
     private void Start()
     {
         levelGrid = LevelGrid.Instance;
         inventoryGrid = InventoryGrid.Instance;
         _mainCamera = Camera.main;
+
     }
 
 
 
     private void Update()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            TouchAndroid();
+        }
+        else
+        {
+            TouchMouse();
+        }
+
+      
+
+    }
+    private void TouchMouse()
+    {
+        if (!Input.GetMouseButton(0))
+        {
+            StopDragging();
+            return;
+        }
+
+        Vector2 touchPosition = Input.mousePosition;
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartDragging(touchPosition);
+        }
+        else if (_draggableObject && Input.GetMouseButton(0))
+        {
+            MoveDraggableObject(touchPosition);
+        }
+        else if (_draggableObject && Input.GetMouseButtonUp(0))
+        {
+            if (selling)
+            {
+                DropToSell();
+            }
+            else
+            {
+                DropWithOutSell();
+            }
+        }
+    }
+    private void TouchAndroid()
     {
         if (Input.touchCount != 1)
         {
@@ -50,37 +97,51 @@ public class DragAndDrop : MonoBehaviour
 
         Touch touch = Input.GetTouch(0);
         TouchPhase touchPhase = touch.phase;
+        Vector2 touchPosition = touch.position;
 
         if (touchPhase == TouchPhase.Began)
         {
-            StartDragging(touch);
+            StartDragging(touchPosition);
         }
-
         else if (_draggableObject && touchPhase == TouchPhase.Moved)
         {
-            character.GetUnit.charState = CharState.Fall;
-            MoveDraggableObject(touch);
+
+            MoveDraggableObject(touchPosition);
 
         }
-
-        else if (_draggableObject && (touchPhase == TouchPhase.Ended || touchPhase == TouchPhase.Canceled))
+        else if (_draggableObject && touchPhase == TouchPhase.Ended)
         {
             if (selling)
             {
-                SellUnit();
-                ResetUI();
+                DropToSell();
             }
             else if (!selling)
             {
-                character.GetUnit.charState = CharState.Idle;
-                StopDragging();
-                ResetUI();
+                DropWithOutSell();
             }
         }
+        else if (_draggableObject && touchPhase == TouchPhase.Canceled)
+        {
+            DropWithOutSell();
+        }
     }
-    private void MoveDraggableObject(Touch touch)
+
+    private void DropWithOutSell()
     {
-        Ray ray = _mainCamera.ScreenPointToRay(touch.position);
+        StopDragging();
+        ResetUI();
+    }
+
+    private void DropToSell()
+    {
+        SellUnit();
+        ResetUI();
+    }
+
+    private void MoveDraggableObject(Vector2 touchPosition)
+    {
+        character.GetUnit.charState = CharState.Fall;
+        Ray ray = _mainCamera.ScreenPointToRay(touchPosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, gridObjectLayer))
@@ -95,9 +156,9 @@ public class DragAndDrop : MonoBehaviour
         }
         character.GetCollider.enabled = false;
     }
-    private void StartDragging(Touch touch)
+    private void StartDragging(Vector2 touchPosition)
     {
-        Ray ray = _mainCamera.ScreenPointToRay(touch.position);
+        Ray ray = _mainCamera.ScreenPointToRay(touchPosition);
         if (Physics.Raycast(ray, out RaycastHit hit) && IsLayer(hit.collider.gameObject.layer, draggableLayer))
         {
             _draggableObject = hit.transform;
@@ -116,9 +177,9 @@ public class DragAndDrop : MonoBehaviour
 
             _startDraggablePosition = _draggableObject.position;
             _dragDistance = character.GetTransform.position.z - _mainCamera.transform.position.z;
-            Vector3 position = new Vector3(touch.position.x, touch.position.y, _dragDistance);
+            Vector3 position = new Vector3(touchPosition.x, touchPosition.y, _dragDistance);
             position = _mainCamera.WorldToScreenPoint(character.GetTransform.position);
-            _offset = character.GetTransform.position - _mainCamera.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, position.z));
+            _offset = character.GetTransform.position - _mainCamera.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, position.z));
         }
     }
 
@@ -151,8 +212,10 @@ public class DragAndDrop : MonoBehaviour
 
     private void StopDragging()
     {
+
         if (_draggableObject)
         {
+            character.GetUnit.charState = CharState.Idle;
             if (!lastfloor)
                 character.GetTransform.position = _startDraggablePosition;
             else
