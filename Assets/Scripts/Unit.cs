@@ -63,7 +63,7 @@ public class Unit : MonoBehaviour
     }
     private void OnDestroy()
     {
-        stateSystem.OnGameStateChanged -= GameStateChanged;
+       // stateSystem.OnGameStateChanged -= GameStateChanged;
     }
     public void UpdatePos(TransformData data)
     {
