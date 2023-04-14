@@ -1563,7 +1563,6 @@ GameObject:
   - component: {fileID: 6625403454894538731}
   - component: {fileID: 3467676677698262277}
   - component: {fileID: -3139999342413562813}
-  - component: {fileID: -9198046353923579745}
   m_Layer: 6
   m_Name: Chr_Undead_Knight_01
   m_TagString: Unit
@@ -1609,8 +1608,8 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 9ad76de1617627d45ba4fa8ddf255af4, type: 3}
   m_Controller: {fileID: 9100000, guid: 9fad13e8ff3618f438fd80ee7856809a, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1650,6 +1649,9 @@ MonoBehaviour:
   traits: 
   charState: 0
   unitObject: {fileID: 11400000, guid: e4c93b4312d78164ab15609185082dfb, type: 2}
+  agent: {fileID: 0}
+  targetObject: {fileID: 0}
+  enemies: []
 --- !u!114 &3467676677698262277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1674,28 +1676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1654a00933fb92247974ad4e83934163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!195 &-9198046353923579745
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6626562363786806496}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
 --- !u!1 &6626569079456072960
 GameObject:
   m_ObjectHideFlags: 0

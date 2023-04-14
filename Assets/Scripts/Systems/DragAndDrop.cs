@@ -23,6 +23,8 @@ public class DragAndDrop : MonoBehaviour
     [SerializeField] private GameObject marketUI;
 
     [SerializeField] private DragState dragState = DragState.Inv2Inv;
+
+
     private bool selling;
 
     public void SetSelling(bool value) => selling = value;
@@ -60,11 +62,7 @@ public class DragAndDrop : MonoBehaviour
     }
     private void TouchMouse()
     {
-        if (!Input.GetMouseButton(0))
-        {
-            StopDragging();
-            return;
-        }
+
 
         Vector2 touchPosition = Input.mousePosition;
         if (Input.GetMouseButtonDown(0))

@@ -2082,7 +2082,6 @@ GameObject:
   - component: {fileID: 457637287410408323}
   - component: {fileID: -1737890715897108833}
   - component: {fileID: -4928619438301392716}
-  - component: {fileID: 433620775996644605}
   m_Layer: 6
   m_Name: Chr_Hero_Female_01
   m_TagString: Unit
@@ -2128,8 +2127,8 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 9ad76de1617627d45ba4fa8ddf255af4, type: 3}
   m_Controller: {fileID: 9100000, guid: 9fad13e8ff3618f438fd80ee7856809a, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -2169,6 +2168,9 @@ MonoBehaviour:
   traits: 
   charState: 0
   unitObject: {fileID: 11400000, guid: 0e4c23bf3a50d5649aeab529cadd3f8d, type: 2}
+  agent: {fileID: 0}
+  targetObject: {fileID: 0}
+  enemies: []
 --- !u!114 &-1737890715897108833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2193,28 +2195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1654a00933fb92247974ad4e83934163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!195 &433620775996644605
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 459109603624335791}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
 --- !u!1 &459110369867977217
 GameObject:
   m_ObjectHideFlags: 0
