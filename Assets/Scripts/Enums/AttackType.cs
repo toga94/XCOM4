@@ -1,0 +1,6 @@
+﻿enum AttackType
+    {
+    Melee,
+    Ranked
+    }
+

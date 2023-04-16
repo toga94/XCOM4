@@ -37,6 +37,8 @@ public class Unit : MonoBehaviour
     {
         unitLevel++;
         gameObject.name = GetUnitNameWithLevel;
+        if (animator == null) animator = GetComponent<Animator>();
+        animator?.Play("level_up");
     }
 
     public void TeleportToPosition(Vector3 targetPosition, GridPosition unitGridPosition)
@@ -82,6 +84,7 @@ public class Unit : MonoBehaviour
         if (gameState is CombatPhaseState)
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
+            agent.speed = unitObject.speed;
         }
         else {
             Destroy(agent);
@@ -92,54 +95,43 @@ public class Unit : MonoBehaviour
     {
         GameState currentState = GameStateSystem.Instance.GetCurrentState();
 
+        AnimateState(currentState);
+
+    }
+
+    private void AnimateState(GameState currentState)
+    {
         switch (currentState)
         {
             case ChampionSelectionState _:
-                AnimationStates();
+                DefaultMethod();
                 break;
             case CombatPhaseState _:
                 {
-
-                    if (!OnGrid) { animator.SetBool("fall", charState == CharState.Fall);
+                    if (!OnGrid)
+                    {
+                        DefaultMethod();
                     }
                     else
                     {
-
+                        agent.isStopped = false;
                         animator.SetBool("fall", false);
                         Vector3 destination = DetermineDestination();
                         GameObject target = DetermineTarget();
-
+                        animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
                         targetObject.transform.position = destination;
                         agent.SetDestination(destination);
-                        //Debug.Log("fight");
-
-                        if (target != null)
-                        {
-                            if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
-                            {
-                                if (Time.time > lastAttackTime + attackDelay)
-                                {
-                                    Attack(target);
-                                    lastAttackTime = Time.time;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            agent.isStopped = true;
-                        }
-
                     }
 
                     break;
                 }
         }
-
     }
 
-    private void AnimationStates()
+    private void DefaultMethod()
     {
         animator.SetBool("fall", charState == CharState.Fall);
+        animator.SetBool("moving", false);
     }
 
     private void Attack(GameObject target)
