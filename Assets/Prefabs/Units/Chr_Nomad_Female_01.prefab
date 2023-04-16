@@ -983,6 +983,7 @@ GameObject:
   - component: {fileID: 1232525818643364006}
   - component: {fileID: -3435951666626905220}
   - component: {fileID: -2325593616025480127}
+  - component: {fileID: -7651450747694773949}
   m_Layer: 6
   m_Name: Chr_Nomad_Female_01
   m_TagString: Unit
@@ -1094,6 +1095,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1654a00933fb92247974ad4e83934163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7651450747694773949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233003953755296913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2aef111765e448a8d4c16b255b5e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1233028406902195865
