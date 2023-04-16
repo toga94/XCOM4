@@ -48,6 +48,12 @@ public class DragAndDrop : MonoBehaviour
 
     private void Update()
     {
+        SwitchTouchMethod();
+
+    }
+
+    private void SwitchTouchMethod()
+    {
         if (Application.platform == RuntimePlatform.Android)
         {
             TouchAndroid();
@@ -56,14 +62,10 @@ public class DragAndDrop : MonoBehaviour
         {
             TouchMouse();
         }
-
-      
-
     }
+
     private void TouchMouse()
     {
-
-
         Vector2 touchPosition = Input.mousePosition;
         if (Input.GetMouseButtonDown(0))
         {

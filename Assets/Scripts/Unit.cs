@@ -85,6 +85,7 @@ public class Unit : MonoBehaviour
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
             agent.speed = unitObject.speed;
+            agent.stoppingDistance = unitObject.attackType == AttackType.Melee ? 2f : 20f;
         }
         else {
             Destroy(agent);

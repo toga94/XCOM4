@@ -21,8 +21,8 @@ public class UnitCardButton : MonoBehaviour
 
     private void LateUpdate()
     {
-        bool upgradeTo3Star = GameManager.Instance.GetCountUpgradeTo3Star(unit);
-        bool upgradeTo2Star = GameManager.Instance.GetCountUpgradeTo2Star(unit);
+        bool upgradeTo3Star = GameManager.Instance.CanIUpgradeTo3Star(unit);
+        bool upgradeTo2Star = GameManager.Instance.CanIUpgradeTo2Star(unit);
 
         TreeStarPanel.SetActive(upgradeTo3Star);
         TwoStarPanel.SetActive(!upgradeTo3Star && upgradeTo2Star);

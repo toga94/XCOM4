@@ -149,8 +149,10 @@ public class GameManager : MonoBehaviour
         UpdateMeText();
         gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{Economy.Level}";
 
-        //Application.targetFrameRate = 60;
-
+        if(Application.platform == RuntimePlatform.Android)
+        {
+            Application.targetFrameRate = 60;
+        }
     }
 
     private void Update()
@@ -300,7 +302,7 @@ public class GameManager : MonoBehaviour
 
         if (upgradableUnits.Count >= 3)
         {
-            IOrderedEnumerable<Unit> highestLevelUnits = upgradableUnits.OrderByDescending(u => u.OnGrid).ThenByDescending(u => u.UnitGridPosition.x).ThenByDescending(u => u.UnitGridPosition.z);
+            IOrderedEnumerable<Unit> highestLevelUnits = upgradableUnits.OrderByDescending(u => u.OnGrid).ThenBy(u => u.UnitGridPosition.x).ThenBy(u => u.UnitGridPosition.z);
 
 
             Unit highestLevelUnit = highestLevelUnits.First();
@@ -324,20 +326,20 @@ public class GameManager : MonoBehaviour
         List<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel);
         return upgradableUnits.Count >= 2;
     }
-    public bool GetCountUpgradeTo2Star(Unit unit)
+    public bool CanIUpgradeTo2Star(Unit unit)
     {
         List<Unit> upgradableUnits = GetUnitsByNameAndLevel($"{unit.GetUnitName}{0}");
         return upgradableUnits.Count >= 2;
     }
-    public bool GetCountUpgradeTo2StarFrom3(Unit unit)
+    public bool CanIUpgradeTo2StarFrom3(Unit unit)
     {
         List<Unit> upgradableUnits = GetUnitsByNameAndLevel($"{unit.GetUnitName}{0}");
         return upgradableUnits.Count >= 2;
     }
-    public bool GetCountUpgradeTo3Star(Unit unit)
+    public bool CanIUpgradeTo3Star(Unit unit)
     {
         List<Unit> upgradableUnits = GetUnitsByNameAndLevel($"{unit.GetUnitName}{1}");
-        return upgradableUnits.Count >= 2 && GetCountUpgradeTo2StarFrom3(unit);
+        return upgradableUnits.Count >= 2 && CanIUpgradeTo2StarFrom3(unit);
     }
     private void RemoveOtherUnitsFromList(List<Unit> nonGridUnits)
     {

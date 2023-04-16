@@ -14,4 +14,5 @@ public class UnitObject : ScriptableObject
     public List<TraitType> traits;
     public GameObject Prefab;
     public RareOptions rareOptions = RareOptions.Common;
+    public AttackType attackType = AttackType.Melee;
 }

@@ -65,7 +65,7 @@ public class UnitWorldUI : MonoBehaviour
             GameObject hpLine = hpLinePool.Spawn(hpSldier.transform);
             hpLine.transform.rotation = Quaternion.identity;
         }
-
+        levelText.text = unit.GetUnitLevel.ToString();
     }
 
 
@@ -81,7 +81,7 @@ public class UnitWorldUI : MonoBehaviour
 
 
     private IEnumerator UpdateElement() {
-        yield return new WaitForSeconds(0.013f);
+        yield return new WaitForSeconds(0.015f);
         levelText.text = unit.GetUnitLevel.ToString();
     }
 }

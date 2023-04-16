@@ -1,6 +1,6 @@
-﻿enum AttackType
-    {
+﻿public enum AttackType
+{
     Melee,
     Ranked
-    }
+}
 
