@@ -21,7 +21,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         unitObj = unit.GetUnitObject;
         healthMax = unitObj.health * (unit.GetUnitLevel + 1);
         health = healthMax;
-        canvas = GameObject.Find("Canvas");
+        canvas = GameObject.Find("BarCanvas");
         canvasBar = (GameObject) Instantiate(Resources.Load("UnitWorldUI2D"), canvas.transform);
         unitWorldUI = canvasBar.GetComponent<UnitWorldUI>();
         unitWorldUI.SetRoot( transform , canvas);

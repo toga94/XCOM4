@@ -62,7 +62,7 @@ public class UnitWorldUI : MonoBehaviour
         InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += UpdateText;
         InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += UpdateText;
 
-        HealthBarOffsetZ = 7f;
+        //HealthBarOffsetZ = 7f;
     }
 
 
@@ -112,11 +112,15 @@ public class UnitWorldUI : MonoBehaviour
         {
             hpDamageSldier.fillAmount = Mathf.Lerp(hpDamageSldier.fillAmount, hpSldier.fillAmount, Time.deltaTime * 2f);
         }
+        Vector3 headPosition = unit.transform.position;
 
-        Vector3 healthBarPos = mainCamera.WorldToScreenPoint(unit.transform.position + new Vector3(0, 0, HealthBarOffsetZ));
-        Vector2 anchoredPos;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, healthBarPos, canvas.worldCamera, out anchoredPos);
-        (transform as RectTransform).anchoredPosition = anchoredPos;
+        // Calculate the position of the health bar in screen space
+        Vector3 healthBarPosition = mainCamera.WorldToScreenPoint(headPosition);
+        healthBarPosition.y += HealthBarOffsetZ;
+        healthBarPosition.z = 0;
+
+        // Set the position of the health bar
+        transform.position = healthBarPosition;
     }
 
 
