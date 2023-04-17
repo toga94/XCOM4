@@ -4,7 +4,7 @@ using UnityEngine;
 public class GridSystemHex<TGridObjectHex>
 {
 
-    private  float HEX_VERTICAL_OFFSET_MULTIPLIER = 0.75f;
+    private  float HEX_VERTICAL_OFFSET_MULTIPLIER = 0.85f;
     private  float HEX_HORIZONTAL_OFFSET_MULTIPLIER = 0.75f;
 
 

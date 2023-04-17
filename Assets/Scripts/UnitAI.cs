@@ -5,14 +5,14 @@ public class UnitAI : MonoBehaviour
 {
     private Unit unit;
     private UnitObject unitObject;
-    private Animator animator;
+    [SerializeField] private Animator animator;
     private GameStateSystem stateSystem;
     [SerializeField] private NavMeshAgent agent;
     private GameObject currentTarget = null;
     private float attackRange = 1f;
     private float attackDelay = 1f;
     private float lastAttackTime = 0f;
-    private CharState charState;
+    [SerializeField] private CharState charState;
     private GameState currentState;
 
 
@@ -33,12 +33,14 @@ public class UnitAI : MonoBehaviour
     }
     private void Update()
     {
-        
+        currentState = GameStateSystem.Instance.GetCurrentState();
+        charState = unit.charState;
         AnimateState(currentState);
     }
     private void GameStateChanged(GameState gameState)
     {
-        currentState = GameStateSystem.Instance.GetCurrentState();
+  
+
         if (!unit.OnGrid) return;
         if (gameState is CombatPhaseState)
         {
@@ -59,6 +61,7 @@ public class UnitAI : MonoBehaviour
 
     private void DefaultMethod()
     {
+        Debug.LogWarning("DefaultMethod");
         animator.SetBool("fall", charState == CharState.Fall);
         animator.SetBool("moving", false);
     }

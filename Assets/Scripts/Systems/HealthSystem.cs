@@ -11,12 +11,20 @@ public class HealthSystem : MonoBehaviour, IDamageable
     private float health;
     private float healthMax;
 
+    [SerializeField] private GameObject canvasBar;
+    [SerializeField] private UnitWorldUI unitWorldUI;
+    [SerializeField] private GameObject canvas;
+
     private void Start()
     {
         unit = GetComponent<Unit>();
         unitObj = unit.GetUnitObject;
         healthMax = unitObj.health * (unit.GetUnitLevel + 1);
         health = healthMax;
+        canvas = GameObject.Find("Canvas");
+        canvasBar = (GameObject) Instantiate(Resources.Load("UnitWorldUI2D"), canvas.transform);
+        unitWorldUI = canvasBar.GetComponent<UnitWorldUI>();
+        unitWorldUI.SetRoot( transform , canvas);
     }
 
     public void TakeDamage(float value)
@@ -37,4 +45,15 @@ public class HealthSystem : MonoBehaviour, IDamageable
     }
 
     public float Health => health;
+
+
+    private void Update()
+    {
+        
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(canvasBar);
+    }
 }

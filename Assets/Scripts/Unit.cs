@@ -49,10 +49,10 @@ public class Unit : MonoBehaviour
     {
         traits = unitObject.traits;
         dropUnitFX = Resources.Load("DropUnitFX");
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
-        animator = GetComponent<Animator>();
         stateSystem = GameStateSystem.Instance;
     }
     public void UpdatePos(TransformData data)
