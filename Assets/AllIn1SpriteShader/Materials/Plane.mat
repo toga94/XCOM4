@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PolygonParticleFX_Hexagon 1
+  m_Name: Plane
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: GLITCH_ON RADIALGRADIENT_ON _COLORCOLOR_ON _GRADISRADIAL_ON
+  m_ShaderKeywords: GLITCH_ON HOLOGRAM_ON ZOOMUV_ON _COLORCOLOR_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -112,12 +112,12 @@ Material:
     - PixelSnap: 0
     - _Alpha: 1
     - _AlphaClip: 0
-    - _AlphaCutoffValue: 0.25
+    - _AlphaCutoffValue: 0
     - _AlphaOutlineBlend: 1
     - _AlphaOutlineGlow: 5
     - _AlphaOutlineMinAlpha: 0
     - _AlphaOutlinePower: 1
-    - _AlphaRoundThreshold: 0.5
+    - _AlphaRoundThreshold: 1
     - _BillboardY: 0
     - _Blend: 0
     - _BlendOp: 0
@@ -174,18 +174,18 @@ Material:
     - _FlipbookMode: 0
     - _GhostBlend: 1
     - _GhostColorBoost: 1
-    - _GhostTransparency: 0.423
-    - _GlitchAmount: 3
-    - _GlitchSize: 1
+    - _GhostTransparency: 0.817
+    - _GlitchAmount: 4.7
+    - _GlitchSize: 0.25
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Glow: 10
+    - _Glow: 16.8
     - _GlowGlobal: 1
-    - _GradBlend: 0
+    - _GradBlend: 1
     - _GradBoostX: 1.2
     - _GradBoostY: 1.2
-    - _GradIsRadial: 1
+    - _GradIsRadial: 0
     - _GrassManualAnim: 1
     - _GrassManualToggle: 0
     - _GrassRadialBend: 0.1
@@ -196,7 +196,7 @@ Material:
     - _GreyscaleOutline: 0
     - _HandDrawnAmount: 10
     - _HandDrawnSpeed: 5
-    - _HitEffectBlend: 1
+    - _HitEffectBlend: 0
     - _HitEffectGlow: 5
     - _HologramBlend: 1
     - _HologramMaxAlpha: 0.75
@@ -224,7 +224,7 @@ Material:
     - _MySrcMode: 5
     - _NegativeAmount: 1
     - _OcclusionStrength: 1
-    - _OffsetUvX: 0
+    - _OffsetUvX: 1
     - _OffsetUvY: 0
     - _OnlyInnerOutline: 0
     - _OnlyOutline: 0
@@ -240,7 +240,7 @@ Material:
     - _OverlayBlend: 1
     - _OverlayGlow: 1
     - _Parallax: 0.02
-    - _PinchUvAmount: 0.35
+    - _PinchUvAmount: 0
     - _PixelateSize: 32
     - _PosterizeGamma: 0.75
     - _PosterizeNumColors: 8
@@ -250,7 +250,7 @@ Material:
     - _RectSize: 1
     - _RotateUvAmount: 0
     - _RoundWaveSpeed: 2
-    - _RoundWaveStrength: 0.7
+    - _RoundWaveStrength: 0
     - _SampleGI: 0
     - _ShadowAlpha: 0.5
     - _ShadowX: 0.1
@@ -258,10 +258,10 @@ Material:
     - _ShakeUvSpeed: 2.5
     - _ShakeUvX: 1.5
     - _ShakeUvY: 1
-    - _ShineGlow: 1
-    - _ShineLocation: 0.5
-    - _ShineRotate: 0
-    - _ShineWidth: 0.1
+    - _ShineGlow: 63.5
+    - _ShineLocation: 0.35
+    - _ShineRotate: 0.28
+    - _ShineWidth: 0.05
     - _SmoothnessTextureChannel: 0
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
@@ -283,7 +283,7 @@ Material:
     - _WaveY: 0.5
     - _ZTestMode: 4
     - _ZWrite: 0
-    - _ZoomUvAmount: 0.5
+    - _ZoomUvAmount: 0.93
     m_Colors:
     - _AlphaOutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0.29803923}
@@ -309,27 +309,14 @@ Material:
     - _GradTopLeftCol: {r: 1, g: 0, b: 0, a: 1}
     - _GradTopRightCol: {r: 1, g: 1, b: 0, a: 1}
     - _GreyscaleTintColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HitEffectColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HitEffectColor: {r: 0, g: 0.5332246, b: 1, a: 1}
     - _HologramStripeColor: {r: 0, g: 1, b: 1, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShineColor: {r: 0.25875998, g: 0.9056604, b: 0, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
---- !u!114 &2470419365008970941
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 4

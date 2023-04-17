@@ -23,6 +23,7 @@ public class UnitWorldUI : MonoBehaviour
     private float _healthBarOffsetZ;
     private Camera mainCamera;
     public float HealthBarOffsetZ;
+    public float HealthBarOffsetYPercent = 10f;
     private List<GameObject> hpLine;
     private Canvas canvas;
 
