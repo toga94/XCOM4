@@ -21,8 +21,9 @@ public class UnitCardButton : MonoBehaviour
 
     private void LateUpdate()
     {
-        bool upgradeTo3Star = GameManager.Instance.CanIUpgradeTo3Star(unit);
-        bool upgradeTo2Star = GameManager.Instance.CanIUpgradeTo2Star(unit);
+        gameManager = GameManager.Instance;
+        bool upgradeTo3Star = gameManager.CanIUpgradeTo3Star(unit);
+        bool upgradeTo2Star = gameManager.CanIUpgradeTo2Star(unit);
 
         TreeStarPanel.SetActive(upgradeTo3Star);
         TwoStarPanel.SetActive(!upgradeTo3Star && upgradeTo2Star);
@@ -30,8 +31,6 @@ public class UnitCardButton : MonoBehaviour
 
         CharacterLabelText.text = CharacterName;
     }
-
-
     public void OnClick()
     {
         gameManager = GameManager.Instance;

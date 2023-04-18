@@ -25,7 +25,6 @@ public class UnitAI : MonoBehaviour
         unitObject = unit.GetUnitObject;
         animator = GetComponent<Animator>();
 
-
         stateSystem = GameStateSystem.Instance;
         stateSystem.OnGameStateChanged += GameStateChanged;
 
@@ -39,8 +38,6 @@ public class UnitAI : MonoBehaviour
     }
     private void GameStateChanged(GameState gameState)
     {
-  
-
         if (!unit.OnGrid) return;
         if (gameState is CombatPhaseState)
         {
@@ -55,13 +52,11 @@ public class UnitAI : MonoBehaviour
     }
     private void Attack(GameObject target)
     {
-        Debug.Log(gameObject.name + " attacks " + target.name);
         target.GetComponent<IDamageable>().TakeDamage(10);
     }
 
     private void DefaultMethod()
     {
-        Debug.LogWarning("DefaultMethod");
         animator.SetBool("fall", charState == CharState.Fall);
         animator.SetBool("moving", false);
     }

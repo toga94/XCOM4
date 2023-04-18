@@ -6,14 +6,12 @@ using System.Linq;
 
 public class CardShop : MonoBehaviour
 {
-
-    public event EventHandler<UnitObject[]> onItemAdded;
-
+    public event EventHandler<UnitObject[]> onItemsChanged;
     public static CardShop Instance { get; private set; }
-
     [SerializeField] private UnitObject[] allUnitObjects;
     [SerializeField] private UnitObject[] unitInShops;
-
+    [SerializeField] private GameObject shopMenuUI;
+    [SerializeField] private GameObject shopMenuRefreshUI;
     private void Awake()
     {
         if (Instance != null)
@@ -24,18 +22,31 @@ public class CardShop : MonoBehaviour
         }
         Instance = this;
     }
+
+    public void OpenShopMenu()
+    {
+        shopMenuUI.SetActive(true);
+    }
+
     public void RandomSelect5ItemForShop()
     {
-        GameManager gm = GameManager.Instance;
         int cost = 2;
+        Refresh(cost);
+    }
+    public void RandomSelect5ItemForShopFree()
+    {
+        int cost = 0;
+        Refresh(cost);
+    }
+    private void Refresh(int cost)
+    {
         if (Economy.CanIBuy(cost))
         {
             List<UnitObject> allUnitsList = new List<UnitObject>(allUnitObjects);
             UnitObject[] selectedUnits = RandomPick(allUnitObjects, 5).ToArray();
             Economy.SubtractGold(cost);
-            onItemAdded?.Invoke(this, selectedUnits);
+            onItemsChanged?.Invoke(this, selectedUnits);
         }
-
     }
 
     private static List<T> RandomPick<T>(IList<T> list, int numItemsToSelect) where T : UnitObject

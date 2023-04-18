@@ -17,11 +17,11 @@ public class CardWindow : MonoBehaviour
     }
     private void OnEnable()
     {
-        cardShop.onItemAdded += ReDraw;
+        cardShop.onItemsChanged += ReDraw;
     }
     private void OnDisable()
     {
-        cardShop.onItemAdded -= ReDraw;
+        cardShop.onItemsChanged -= ReDraw;
     }
 
     private void ReDraw(object sender, UnitObject[] e)
@@ -29,30 +29,25 @@ public class CardWindow : MonoBehaviour
         Transform itemPanelTransform = itemPanel.transform;
         traitCardItemUIPool.DespawnAll();
         unitCardPool.DespawnAll();
-       
-       
+
         foreach (UnitObject item in e)
         {
             GameObject card = unitCardPool.Spawn(transform.position, Quaternion.identity, itemPanel.transform) as GameObject;
-            Image cardBgImage = card.transform.Find("TextFrame").GetComponent<Image>();
+            Transform cardTransform = card.transform;
+            Image cardBgImage = cardTransform.Find("TextFrame").GetComponent<Image>();
 
             UnitCardButton unitCardButton = card.GetComponent<UnitCardButton>();
             unitCardButton.unit = item.Prefab.GetComponent<Unit>();
-
+            unitCardButton.CharacterImage.sprite = item.unitImage;
+            unitCardButton.CharacterName = item.unitName;
 
             RareOptions cardRarity = item.rareOptions;
             RarityColor(cardBgImage, cardRarity);
             RarityGold(card, cardRarity);
             unitCardButton.rareOptions = cardRarity;
 
-
-            UnitCardButton cardButton = card.GetComponent<UnitCardButton>();
-            cardButton.CharacterImage.sprite = item.unitImage;
-            cardButton.CharacterName = item.unitName;
-
-
-            GameObject traitPanel = card.transform.Find("traitPanel").gameObject;
-            GameObject DisabledPanel = card.transform.Find("Disabled").gameObject;
+            GameObject traitPanel = cardTransform.Find("traitPanel").gameObject;
+            GameObject DisabledPanel = cardTransform.Find("Disabled").gameObject;
 
             TraitUI(item, traitPanel);
             ReEnableUI(card, DisabledPanel);
@@ -83,15 +78,18 @@ public class CardWindow : MonoBehaviour
 
     private void TraitUI(UnitObject item, GameObject traitPanel)
     {
+        TraitDataManager traitManager = TraitDataManager.Instance;
         foreach (TraitType trait in item.traits)
         {
             GameObject traitUIItem = traitCardItemUIPool.Spawn(traitPanel.transform);
             var traitTooltip = traitUIItem.GetComponent<TraitTooltipTrigger>();
-            traitTooltip.traitData = TraitDataManager.Instance.GetTraitData(trait);
-            traitUIItem.transform.localScale = new Vector3(2.5f, 2.5f, 0);
-            Image traitUIImage = traitUIItem.transform.Find("traitImage").GetComponent<Image>();
+
+            traitTooltip.traitData = traitManager.GetTraitData(trait);
+            Transform traitUITransform = traitUIItem.transform;
+            traitUITransform.localScale = new Vector3(2.5f, 2.5f, 0);
+            Image traitUIImage = traitUITransform.Find("traitImage").GetComponent<Image>();
             traitUIImage.sprite = GetTraitSprite(trait);
-            Text traitText = traitUIItem.transform.Find("traitText").GetComponent<Text>();
+            Text traitText = traitUITransform.Find("traitText").GetComponent<Text>();
             traitText.text = trait.ToString();
         }
     }

@@ -8,6 +8,9 @@ public class ChampionSelectionState : GameState
     {
         GridSystemVisual.Instance.ShowAllGridPosition();
         GameManager.Instance.gridSizeTextMesh.gameObject.SetActive(true);
+        CardShop cardShop = CardShop.Instance;
+        cardShop.OpenShopMenu();
+        cardShop.RandomSelect5ItemForShopFree();
     }
     // Logic for updating Champion Selection state
     public override void OnUpdate()
