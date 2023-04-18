@@ -13,114 +13,108 @@ public class GridSystemVisualSingle : MonoBehaviour
     private InventoryGrid inventoryGrid;
     private GridPosition gridPosition;
     [SerializeField] private List<Unit> unityList;
+    private Material material;
 
     public bool isInventory;
     private void Start()
     {
-        
+
         isInventory = this.name.Contains("Inventory");
+
+        levelGrid = LevelGrid.Instance;
+        levelGrid.OnAnyUnitMovedGridPosition += OnAnyUnitMovedGridPosition;
+        inventoryGrid = InventoryGrid.Instance;
+        inventoryGrid.OnAnyUnitMovedInventoryPosition += OnAnyUnitMovedGridPosition;
+
         if (!isInventory)
         {
-            levelGrid = LevelGrid.Instance;
-            LevelGrid.Instance.OnAnyUnitMovedGridPosition += OnAnyUnitMovedGridPosition;
+
             gridPosition = levelGrid.GetGridPosition(transform.position);
         }
         else
         {
-            inventoryGrid = InventoryGrid.Instance;
-            InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += OnAnyUnitMovedGridPosition;
+
             gridPosition = inventoryGrid.GetInventoryPosition(transform.position);
         }
         GameManager.Instance.OnUpdateText += UpdateText;
+
+        material = meshRenderer.material;
     }
 
     private void OnApplicationQuit()
     {
-        if (!isInventory)
-        {
-            LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
-        }
-        else
-        {
-            InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= OnAnyUnitMovedGridPosition;
-        }
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= OnAnyUnitMovedGridPosition;
     }
     private void OnDestroy()
     {
-        if (!isInventory)
-        {
-            LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
-        }
-        else
-        {
-            InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= OnAnyUnitMovedGridPosition;
-        }
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= OnAnyUnitMovedGridPosition;
     }
 
     private void UpdateText(object sender, GameManager.UpdateTextArg e)
     {
-        string debugText;
-        if (!isInventory)
-            if (LevelGrid.Instance.HasAnyUnitOnGridPosition(gridPosition))
-            {
-                debugText = $"{gridPosition.ToString()} \n {LevelGrid.Instance.GetUnitAtGridPosition(gridPosition).GetUnitNameWithLevel}";
-            }
-            else
-            {
-                debugText = gridPosition.ToString();
-            }
-        else
-        {
-            if (InventoryGrid.Instance.HasAnyUnitOnInventoryPosition(gridPosition))
-            {
-                debugText = $"{gridPosition.ToString()} \n {InventoryGrid.Instance.GetUnitAtInventoryPosition(gridPosition).GetUnitNameWithLevel}";
-            }
-            else
-            {
-                debugText = gridPosition.ToString();
-            }
-        }
-        textmeshPro.text = debugText;
+        textmeshPro.text = isInventory ? InventoryGridUpdate() : LevelGridUpdate();
     }
 
     private void OnAnyUnitMovedGridPosition(object sender, InventoryGrid.OnAnyUnitMovedInventoryPositionEventArgs e)
     {
-       Invoke("UpdateInventoryPosition", 0.1f);
+        Invoke("UpdateInventoryPosition", 0.1f);
+        Invoke("UpdateGridPosition", 0.1f);
     }
-
+    private void OnAnyUnitMovedGridPosition(object sender, LevelGrid.OnAnyUnitMovedGridPositionEventArgs e)
+    {
+        Invoke("UpdateGridPosition", 0.1f);
+        Invoke("UpdateInventoryPosition", 0.1f);
+    }
     private void UpdateInventoryPosition()
     {
         if (!isInventory) return;
         string debugText;
+        debugText = InventoryGridUpdate();
+        textmeshPro.text = debugText;
+    }
+
+    private string InventoryGridUpdate()
+    {
+        string debugText;
         if (InventoryGrid.Instance.HasAnyUnitOnInventoryPosition(gridPosition))
         {
             debugText = $"{gridPosition.ToString()} \n {InventoryGrid.Instance.GetUnitAtInventoryPosition(gridPosition).GetUnitNameWithLevel}";
+            //material.SetFloat("_NegativeAmount", 1f);
         }
         else
         {
             debugText = gridPosition.ToString();
+            // material.SetFloat("_NegativeAmount", 0f);
         }
-        textmeshPro.text = debugText;
-    }
 
-    private void OnAnyUnitMovedGridPosition(object sender, LevelGrid.OnAnyUnitMovedGridPositionEventArgs e)
-    {
-        Invoke("UpdateGridPosition", 0.1f);
+        return debugText;
     }
 
     private void UpdateGridPosition()
     {
         if (isInventory) return;
         string debugText;
+        debugText = LevelGridUpdate();
+        textmeshPro.text = debugText;
+    }
+
+    private string LevelGridUpdate()
+    {
+        string debugText;
         if (LevelGrid.Instance.HasAnyUnitOnGridPosition(gridPosition))
         {
             debugText = $"{gridPosition.ToString()} \n {LevelGrid.Instance.GetUnitAtGridPosition(gridPosition).GetUnitNameWithLevel}";
+            material.SetFloat("_NegativeAmount", 1f);
         }
         else
         {
             debugText = gridPosition.ToString();
+            material.SetFloat("_NegativeAmount", 0f);
         }
-        textmeshPro.text = debugText;
+
+        return debugText;
     }
 
     public void SetDebugObject(GridObject gridObject)
