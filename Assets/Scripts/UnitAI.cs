@@ -52,7 +52,7 @@ public class UnitAI : MonoBehaviour
     }
     private void Attack(GameObject target)
     {
-        target.GetComponent<IDamageable>().TakeDamage(10);
+     //   target?.GetComponent<IDamageable>().TakeDamage(10);
     }
 
     private void DefaultMethod()
@@ -91,6 +91,7 @@ public class UnitAI : MonoBehaviour
         if (enemies.Length > 0)
         {
             GameObject nearestEnemy = FindNearestEnemy(enemies);
+            target = nearestEnemy;
             return nearestEnemy.transform.position;
         }
         else
@@ -134,17 +135,33 @@ public class UnitAI : MonoBehaviour
                     }
                     else
                     {
-                        agent.isStopped = false;
-                        animator.SetBool("fall", false);
-                        Vector3 destination = DetermineDestination();
-                        GameObject target = DetermineTarget();
-                        animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
-                        targetObject.transform.position = destination;
-                        agent.SetDestination(destination);
+                        CombatPhase();
                     }
 
                     break;
                 }
+        }
+    }
+   [SerializeField] private GameObject target;
+    private void CombatPhase()
+    {
+        agent.isStopped = false;
+        animator.SetBool("fall", false);
+        Vector3 destination = DetermineDestination();
+
+        animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
+        targetObject.transform.position = destination;
+        agent.SetDestination(destination);
+
+
+        if (agent.remainingDistance < agent.stoppingDistance)
+        {
+            if (Time.time - lastAttackTime >= attackDelay)
+            {
+                animator.SetTrigger("attack");
+                Attack(target);
+                lastAttackTime = Time.time;
+            }
         }
     }
 }

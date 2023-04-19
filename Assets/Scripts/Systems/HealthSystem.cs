@@ -4,7 +4,7 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour, IDamageable
 {
     public bool IsDie => Health <= 0;
-    public event Action<float> OnHealthChanged;
+    public event Action<float, int, float> OnHealthChanged;
 
     private UnitObject unitObj;
     private Unit unit;
@@ -26,6 +26,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         canvasBar = (GameObject)Instantiate(unitWorldUIPrefab, canvas.transform);
         this.unitWorldUI = canvasBar.GetComponent<UnitWorldUI>();
         this.unitWorldUI.SetRoot(transform, canvas);
+        OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
     }
 
     public void TakeDamage(float value)
@@ -34,15 +35,17 @@ public class HealthSystem : MonoBehaviour, IDamageable
         if (damage > 0)
         {
             health = Mathf.Max(health - damage, 0);
-            OnHealthChanged?.Invoke(health);
+            healthMax = unitObj.health * (unit.GetUnitLevel + 1);
+            OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
             Debug.Log($"Damage: {damage}, Health: {health}");
         }
     }
 
     public void Heal(float value)
     {
+        healthMax = unitObj.health * (unit.GetUnitLevel + 1);
         health = Mathf.Min(health + value, healthMax);
-        OnHealthChanged?.Invoke(health);
+        OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
     }
 
     public float Health => health;

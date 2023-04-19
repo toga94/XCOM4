@@ -155,7 +155,13 @@ public class GameManager : Singleton<GameManager>
         LevelGrid.Instance.OnAnyUnitSwappedGridPosition -= CalculateUnits;
         InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= CalculateUnits;
         InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition -= CalculateUnits;
-        GameStateSystem.Instance.OnGameStateChanged -= OnStateChanged;
+        try
+        {
+            GameStateSystem.Instance.OnGameStateChanged -= OnStateChanged;
+        }
+        catch (Exception)
+        {
+        } 
     }
 
     private void OnStateChanged(GameState gameState)

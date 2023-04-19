@@ -27,6 +27,8 @@ public class UnitWorldUI : MonoBehaviour
     private List<GameObject> hpLine;
     private Canvas canvas;
     private RectTransform rectTransform;
+    private string curLevel;
+    private float maxHp;
     public void SetRoot(Transform value, GameObject canvasObj)
     {
         canvas = canvasObj.GetComponent<Canvas>();
@@ -51,7 +53,7 @@ public class UnitWorldUI : MonoBehaviour
         hpLine = new List<GameObject>();
         canvasRect = canvas.GetComponent<RectTransform>();
         healthSystem.OnHealthChanged += UpdateHp;
-        UpdateHp(unit.GetUnitObject.health);
+
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += UpdateText;
         LevelGrid.Instance.OnAnyUnitSwappedGridPosition += UpdateText;
 
@@ -59,6 +61,7 @@ public class UnitWorldUI : MonoBehaviour
         InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += UpdateText;
         rectTransform = GetComponent<RectTransform>();
         //HealthBarOffsetZ = 7f;
+       UpdateHp(healthSystem.Health, unit.GetUnitLevel, healthSystem.Health);
     }
 
 
@@ -78,28 +81,30 @@ public class UnitWorldUI : MonoBehaviour
         StartCoroutine(UpdateElement());
     }
 
-    private void UpdateHp(float curHp)
+    private void UpdateHp(float curHp, int level, float maxhp)
     {
         if (!uiInit) return;
 
 
-        float value = Mathf.Clamp(curHp / unit.GetUnitObject.health, 0, 1);
+        float value = Mathf.Clamp(curHp / maxhp, 0, 1);
         hpSldier.fillAmount = value;
 
 
-        int numBars = unit.GetUnitObject.health / healthPerBar;
+        int numBars = Mathf.FloorToInt(maxhp) / healthPerBar;
 
-
+        maxHp = maxhp;
         horizontalLayoutGroup.CalculateLayoutInputHorizontal();
         while (hpLinePool.Spawned < numBars)
         {
             hpLine.Clear();
             GameObject item = hpLinePool.Spawn(hpSldier.transform);
             hpLine.Add(item);
-            item.transform.rotation = Quaternion.identity;
-            item.transform.position = new Vector3(transform.position.x, 0, 0);
+            item.transform.SetPositionAndRotation(
+                new Vector3(transform.position.x, 0, 0),
+                Quaternion.identity);
         }
-        levelText.text = unit.GetUnitLevel.ToString();
+        curLevel = level.ToString();
+        levelText.text = curLevel;
     }
     public Vector3 offset;
     RectTransform canvasRect;
@@ -112,8 +117,6 @@ public class UnitWorldUI : MonoBehaviour
         Vector3 headPosition = unit.transform.position;
 
         rectTransform.anchoredPosition = WorldToCanvasPosition(canvasRect, mainCamera, headPosition + offset);
-
-      //  rectTransform.anchoredPosition = new Vector2(unit.transform.position.x, unit.transform.position.y);
     }
 
     private Vector2 WorldToCanvasPosition(RectTransform canvas, Camera camera, Vector3 position)
@@ -131,11 +134,12 @@ public class UnitWorldUI : MonoBehaviour
     private IEnumerator UpdateElement()
     {
         yield return new WaitForSeconds(0.015f);
-        levelText.text = unit.GetUnitLevel.ToString();
-        int numBars = unit.GetUnitObject.health / healthPerBar;
-        foreach (var item in hpLine) {
+        levelText.text = curLevel;
+        int numBars =  Mathf.FloorToInt(maxHp) / healthPerBar;
+        foreach (var item in hpLine)
+        {
             item.transform.SetPositionAndRotation(
-                new Vector3(transform.position.x, 0, 0), 
+                new Vector3(transform.position.x, 0, 0),
                 Quaternion.identity);
         }
         horizontalLayoutGroup.enabled = false;
