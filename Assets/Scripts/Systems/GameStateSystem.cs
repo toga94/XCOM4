@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStateSystem : MonoBehaviour
+public class GameStateSystem : Singleton<GameStateSystem>
 {
-    public static GameStateSystem Instance { get; private set; }
     public event Action<GameState> OnGameStateChanged;
 
     private List<GameState> gameStates = new List<GameState>();
@@ -16,16 +15,6 @@ public class GameStateSystem : MonoBehaviour
         gameStates.Add(new CombatPhaseState());
     }
 
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("There's more than one GameStateSystem! " + transform + " - " + Instance);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
     public GameState GetCurrentState()
     {
         return gameStates[currentStateIndex];

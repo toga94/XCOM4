@@ -4,24 +4,14 @@ using System;
 using Random = UnityEngine.Random;
 using System.Linq;
 
-public class CardShop : MonoBehaviour
+public class CardShop : Singleton<CardShop>
 {
     public event EventHandler<UnitObject[]> onItemsChanged;
-    public static CardShop Instance { get; private set; }
     [SerializeField] private UnitObject[] allUnitObjects;
     [SerializeField] private UnitObject[] unitInShops;
     [SerializeField] private GameObject shopMenuUI;
     [SerializeField] private GameObject shopMenuRefreshUI;
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("There's more than one CardShop! " + transform + " - " + Instance);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
+ 
 
     public void OpenShopMenu()
     {

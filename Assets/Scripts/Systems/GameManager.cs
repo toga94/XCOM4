@@ -4,13 +4,8 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance { get; private set; }
-
-
-
-
     public int GetPlayerCoin { get; }
 
     public List<Unit> UnitsInGrid;
@@ -115,18 +110,6 @@ public class GameManager : MonoBehaviour
     }
 
     private void UpdateMeText() => OnUpdateText?.Invoke(this, new UpdateTextArg { });
-
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("There's more than one GameManager! " + transform + " - " + Instance);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
 
     private void Start()
     {

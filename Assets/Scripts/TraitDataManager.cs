@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TraitDataManager : MonoBehaviour
+public class TraitDataManager : Singleton<TraitDataManager>
 {
-    public static TraitDataManager Instance { get; private set; }
 
     public List<TraitData> traitDataList;
 
@@ -11,18 +10,10 @@ public class TraitDataManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        traitDataDict = new Dictionary<TraitType, TraitData>();
+        foreach (TraitData traitData in traitDataList)
         {
-            Instance = this;
-            traitDataDict = new Dictionary<TraitType, TraitData>();
-            foreach (TraitData traitData in traitDataList)
-            {
-                traitDataDict.Add(traitData.traitType, traitData);
-            }
-        }
-        else
-        {
-            Destroy(gameObject);
+            traitDataDict.Add(traitData.traitType, traitData);
         }
     }
 

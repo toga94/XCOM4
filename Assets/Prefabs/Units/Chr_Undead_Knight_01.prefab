@@ -1650,9 +1650,6 @@ MonoBehaviour:
   traits: 
   charState: 0
   unitObject: {fileID: 11400000, guid: e4c93b4312d78164ab15609185082dfb, type: 2}
-  agent: {fileID: 0}
-  targetObject: {fileID: 0}
-  enemies: []
 --- !u!114 &3467676677698262277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1665,6 +1662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40236b689e17c048a01a15e5fcbde29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is3D: 0
 --- !u!114 &-3139999342413562813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1677,6 +1675,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1654a00933fb92247974ad4e83934163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasBar: {fileID: 0}
+  unitWorldUI: {fileID: 0}
+  canvas: {fileID: 0}
+  unitWorldUIPrefab: {fileID: 6882975772807749723, guid: 50dcae36a2db2744e866027fc7f95cf2, type: 3}
 --- !u!114 &-3451030959325905955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1689,6 +1691,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc2aef111765e448a8d4c16b255b5e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  agent: {fileID: 0}
+  charState: 0
+  targetObject: {fileID: 0}
+  enemies: []
 --- !u!1 &6626569079456072960
 GameObject:
   m_ObjectHideFlags: 0
