@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryGrid : MonoBehaviour
+public class InventoryGrid : Singleton<InventoryGrid>
 {
-    public static InventoryGrid Instance { get; private set; }
+
 
     public event EventHandler<OnAnyUnitMovedInventoryPositionEventArgs> OnAnyUnitMovedInventoryPosition;
 
@@ -34,14 +34,6 @@ public class InventoryGrid : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Debug.LogError("There's more than one InventoryGrid! " + transform + " - " + Instance);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-
         inventorySystem = new GridSystem<GridObject>(inventoryWidth, inventoryHeight, inventoryCellSize,
         (GridSystem<GridObject> g, GridPosition gridPosition) => new GridObject(g, gridPosition), new Vector3Int(-Mathf.FloorToInt(inventoryCellSize * 5), 0, -Mathf.FloorToInt(inventoryCellSize * 5)));
     }

@@ -29,6 +29,7 @@ public class UnitWorldUI : MonoBehaviour
     private RectTransform rectTransform;
     private string curLevel;
     private float maxHp;
+    private Transform unitTransform;
     public void SetRoot(Transform value, GameObject canvasObj)
     {
         canvas = canvasObj.GetComponent<Canvas>();
@@ -41,7 +42,10 @@ public class UnitWorldUI : MonoBehaviour
             root = value;
         }
         unit = root.GetComponent<Unit>();
+        maxHp = unit.MaxHealth;
+        curLevel = unit.GetUnitLevel.ToString();
         healthSystem = root.GetComponent<HealthSystem>();
+
         uiInit = true;
     }
     private void Start()
@@ -54,32 +58,15 @@ public class UnitWorldUI : MonoBehaviour
         canvasRect = canvas.GetComponent<RectTransform>();
         healthSystem.OnHealthChanged += UpdateHp;
 
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition += UpdateText;
-        LevelGrid.Instance.OnAnyUnitSwappedGridPosition += UpdateText;
 
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += UpdateText;
-        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += UpdateText;
+
+        unitTransform = unit.transform;
+
+
         rectTransform = GetComponent<RectTransform>();
-        //HealthBarOffsetZ = 7f;
-       UpdateHp(healthSystem.Health, unit.GetUnitLevel, healthSystem.Health);
     }
 
 
-
-    private void OnDisable()
-    {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= UpdateText;
-        LevelGrid.Instance.OnAnyUnitSwappedGridPosition -= UpdateText;
-
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= UpdateText;
-        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition -= UpdateText;
-
-        healthSystem.OnHealthChanged -= UpdateHp;
-    }
-    private void UpdateText(object sender, EventArgs e)
-    {
-        StartCoroutine(UpdateElement());
-    }
 
     private void UpdateHp(float curHp, int level, float maxhp)
     {
@@ -114,9 +101,11 @@ public class UnitWorldUI : MonoBehaviour
         {
             hpDamageSldier.fillAmount = Mathf.Lerp(hpDamageSldier.fillAmount, hpSldier.fillAmount, Time.deltaTime * 2f);
         }
-        Vector3 headPosition = unit.transform.position;
+        Vector3 headPosition = unitTransform.position;
 
         rectTransform.anchoredPosition = WorldToCanvasPosition(canvasRect, mainCamera, headPosition + offset);
+
+        UpdateElement();
     }
 
     private Vector2 WorldToCanvasPosition(RectTransform canvas, Camera camera, Vector3 position)
@@ -131,9 +120,9 @@ public class UnitWorldUI : MonoBehaviour
 
         return temp;
     }
-    private IEnumerator UpdateElement()
+    private void UpdateElement()
     {
-        yield return new WaitForSeconds(0.015f);
+
         levelText.text = curLevel;
         int numBars =  Mathf.FloorToInt(maxHp) / healthPerBar;
         foreach (var item in hpLine)
@@ -143,8 +132,10 @@ public class UnitWorldUI : MonoBehaviour
                 Quaternion.identity);
         }
         horizontalLayoutGroup.enabled = false;
-        yield return new WaitForSeconds(0.015f);
+
         horizontalLayoutGroup.enabled = true;
         horizontalLayoutGroup.CalculateLayoutInputHorizontal();
+
+        UpdateHp(healthSystem.Health, unit.GetUnitLevel, healthSystem.HealthMax);
     }
 }

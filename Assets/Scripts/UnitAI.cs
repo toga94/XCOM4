@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-
+using Lean.Pool;
 public class UnitAI : MonoBehaviour
 {
     private Unit unit;
@@ -14,8 +14,8 @@ public class UnitAI : MonoBehaviour
     private float lastAttackTime = 0f;
     [SerializeField] private CharState charState;
     private GameState currentState;
-
-
+    private LeanGameObjectPool fireballpool;
+    private AttackType attackType;
     [SerializeField] private GameObject targetObject;
 
 
@@ -27,8 +27,22 @@ public class UnitAI : MonoBehaviour
 
         stateSystem = GameStateSystem.Instance;
         stateSystem.OnGameStateChanged += GameStateChanged;
-
+        
         targetObject = GameObject.Find("target");
+        attackType = unitObject.attackType;
+
+        fireballpool = GameObject.Find("_Pooling").
+            transform.Find("fireballUIPool").GetComponent<LeanGameObjectPool>();
+
+
+        if (attackType == AttackType.Melee)
+        {
+            animator.SetFloat("attackAnim", 0);
+        }
+        else if (attackType == AttackType.Ranked)
+        {
+            animator.SetFloat("attackAnim", 1);
+        }
     }
     private void Update()
     {
@@ -52,7 +66,27 @@ public class UnitAI : MonoBehaviour
     }
     private void Attack(GameObject target)
     {
-     //   target?.GetComponent<IDamageable>().TakeDamage(10);
+        // Calculate the direction to the target
+        Vector3 direction = (target.transform.position - transform.position).normalized;
+
+        // Calculate the rotation to face the target
+        Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
+        IDamageable damagableTarget = target.GetComponent<IDamageable>();
+        if (damagableTarget == null) return;
+
+
+
+        if (attackType == AttackType.Ranked)
+        {
+            // Spawn the fireball
+            GameObject fireball = fireballpool.Spawn(transform.position + Vector3.up * 3, to_Target_Quaternion);
+
+            damagableTarget.TakeDamage(15f);
+        }
+        else {
+            damagableTarget.TakeDamage(15f);
+        }
+
     }
 
     private void DefaultMethod()

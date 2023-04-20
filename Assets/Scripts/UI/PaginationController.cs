@@ -37,13 +37,6 @@ public class PaginationController : MonoBehaviour
         StartCoroutine(UpdateTraits());
     }
 
-    private void OnDisable()
-    {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= UpdateTraitLayout;
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= UpdateTraitLayout;
-        LevelGrid.Instance.OnAnyUnitSwappedGridPosition -= UpdateTraitLayout;
-        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition -= UpdateTraitLayout;
-    }
 
     private void UpdateTraitLayout(object sender, EventArgs e)
     {

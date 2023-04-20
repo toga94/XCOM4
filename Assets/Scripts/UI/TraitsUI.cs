@@ -4,9 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Lean.Pool;
-public class TraitsUI : MonoBehaviour
+public class TraitsUI : Singleton<TraitsUI>
 {
-    public static TraitsUI Instance { get; private set; }
 
     public List<Unit> units;
     public GameObject traitPrefab;
@@ -14,27 +13,10 @@ public class TraitsUI : MonoBehaviour
 
     [SerializeField] private LeanGameObjectPool pool;
 
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("There's more than one TooltipSystem! " + transform + " - " + Instance);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
-
-
     private void Start()
     {
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += OnAnyUnitMovedGridPosition;
         InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += OnAnyUnitMovedGridPosition;
-    }
-    private void OnDisable()
-    {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= OnAnyUnitMovedGridPosition;
     }
     private void OnAnyUnitMovedGridPosition(object sender, InventoryGrid.OnAnyUnitMovedInventoryPositionEventArgs e)
     {

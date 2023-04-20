@@ -228,8 +228,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.3069516, y: -0.0509}
-  m_SizeDelta: {x: 0.9844, y: 0.0697}
+  m_AnchoredPosition: {x: -0.3069516, y: -0.0364}
+  m_SizeDelta: {x: 0.9844, y: 0.0407}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4748905560909146027
 CanvasRenderer:
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 1316734849}
   - component: {fileID: 1316734848}
   m_Layer: 5
-  m_Name: UnitWorldUI2D
+  m_Name: EnemyWorldUI2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -741,8 +741,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.2826669, y: -0.0509}
-  m_SizeDelta: {x: 0.9533, y: 0.0697}
+  m_AnchoredPosition: {x: -0.2826669, y: -0.0364}
+  m_SizeDelta: {x: 0.9533, y: 0.0407}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &9047195168584708394
 CanvasRenderer:

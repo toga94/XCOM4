@@ -49,6 +49,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
     }
 
     public float Health => health;
+    public float HealthMax => healthMax;
 
     private void OnDestroy()
     {

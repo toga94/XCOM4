@@ -19,11 +19,6 @@ public class CardWindow : MonoBehaviour
     {
         cardShop.onItemsChanged += ReDraw;
     }
-    private void OnDisable()
-    {
-        cardShop.onItemsChanged -= ReDraw;
-    }
-
     private void ReDraw(object sender, UnitObject[] e)
     {
         Transform itemPanelTransform = itemPanel.transform;
@@ -40,6 +35,8 @@ public class CardWindow : MonoBehaviour
             unitCardButton.unit = item.Prefab.GetComponent<Unit>();
             unitCardButton.CharacterImage.sprite = item.unitImage;
             unitCardButton.CharacterName = item.unitName;
+            Text unitNameText = cardTransform.Find("Text").GetComponent<Text>();
+            unitNameText.text = item.unitName;
 
             RareOptions cardRarity = item.rareOptions;
             RarityColor(cardBgImage, cardRarity);
@@ -51,6 +48,8 @@ public class CardWindow : MonoBehaviour
 
             TraitUI(item, traitPanel);
             ReEnableUI(card, DisabledPanel);
+
+            unitCardButton.CheckUpgrade();
         }
     }
 

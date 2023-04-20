@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Plane
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: GLITCH_ON HOLOGRAM_ON NEGATIVE_ON ZOOMUV_ON _COLORCOLOR_ON
+  m_ShaderKeywords: FLICKER_ON GLITCH_ON HOLOGRAM_ON NEGATIVE_ON ZOOMUV_ON _COLORCOLOR_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -167,7 +167,7 @@ Material:
     - _FadeBurnTransition: 0.075
     - _FadeBurnWidth: 0.025
     - _FishEyeUvAmount: 0.35
-    - _FlickerAlpha: 0
+    - _FlickerAlpha: 0.5
     - _FlickerFreq: 0.2
     - _FlickerPercent: 0.05
     - _FlipbookBlending: 0

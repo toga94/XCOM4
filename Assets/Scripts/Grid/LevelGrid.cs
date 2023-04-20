@@ -2,12 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelGrid : MonoBehaviour
+public class LevelGrid : Singleton<LevelGrid>
 {
-
-    public static LevelGrid Instance { get; private set; }
-
-
     public event EventHandler<OnAnyUnitMovedGridPositionEventArgs> OnAnyUnitMovedGridPosition;
 
     public event EventHandler<OnAnyUnitSwappedGridPositionEventArgs> OnAnyUnitSwappedGridPosition;
@@ -44,20 +40,10 @@ public class LevelGrid : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Debug.LogError("There's more than one LevelGrid! " + transform + " - " + Instance);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
 
         gridSystem = new GridSystemHex<GridObjectHex>(width, height, cellSize,
                  (GridSystemHex<GridObjectHex> g, GridPosition gridPosition) => new GridObjectHex(g, gridPosition));
 
-
-
-        //gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
     }
 
 

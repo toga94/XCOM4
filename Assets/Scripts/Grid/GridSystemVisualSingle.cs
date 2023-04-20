@@ -41,16 +41,6 @@ public class GridSystemVisualSingle : MonoBehaviour
         material = meshRenderer.material;
     }
 
-    private void OnApplicationQuit()
-    {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= OnAnyUnitMovedGridPosition;
-    }
-    private void OnDestroy()
-    {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= OnAnyUnitMovedGridPosition;
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= OnAnyUnitMovedGridPosition;
-    }
 
     private void UpdateText(object sender, GameManager.UpdateTextArg e)
     {

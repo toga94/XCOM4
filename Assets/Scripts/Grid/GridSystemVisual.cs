@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridSystemVisual : MonoBehaviour
+public class GridSystemVisual : Singleton<GridSystemVisual>
 {
-
-    public static GridSystemVisual Instance { get; private set; }
     private LevelGrid levelGrid;
 
     [Serializable]
@@ -30,18 +28,6 @@ public class GridSystemVisual : MonoBehaviour
 
 
     private GridSystemVisualSingle[,] gridSystemVisualSingleArray;
-
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("There's more than one GridSystemVisual! " + transform + " - " + Instance);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
 
     private void Start()
     {
@@ -69,13 +55,6 @@ public class GridSystemVisual : MonoBehaviour
 
 
         UpdateGridVisual();
-    }
-    private void OnDisable()
-    {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
-        LevelGrid.Instance.OnAnyUnitSwappedGridPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
-        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
     }
     public void HideAllGridPosition()
     {

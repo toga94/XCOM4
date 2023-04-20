@@ -149,20 +149,6 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
-    private void OnDestroy()
-    {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= CalculateUnits;
-        LevelGrid.Instance.OnAnyUnitSwappedGridPosition -= CalculateUnits;
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition -= CalculateUnits;
-        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition -= CalculateUnits;
-        try
-        {
-            GameStateSystem.Instance.OnGameStateChanged -= OnStateChanged;
-        }
-        catch (Exception)
-        {
-        } 
-    }
 
     private void OnStateChanged(GameState gameState)
     {

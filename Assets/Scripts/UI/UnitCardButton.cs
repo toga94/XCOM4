@@ -1,10 +1,10 @@
+using Lean.Pool;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UnitCardButton : MonoBehaviour
 {
-    public event Action<UnitCardButton> OnClicked;
     private GameManager gameManager;
     public string CharacterName = "Lina";
     public Image CharacterImage;
@@ -17,22 +17,37 @@ public class UnitCardButton : MonoBehaviour
     private void OnEnable()
     {
         gameManager = GameManager.Instance;
+    }
+    private void Start()
+    {
+        Economy.OnGoldChanged += UpdateUI;
+        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += UpdateUI;
+        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += UpdateUI;
 
     }
+    private void UpdateUI(object sender, EventArgs e)
+    {
+        CheckUpgrade();
+    }
+    private void UpdateUI(int value)
+    {
+        CheckUpgrade();
+    }
 
-    private void Update()
+    public void CheckUpgrade()
     {
         bool upgradeTo3Star = gameManager.CanIUpgradeTo3Star(unit);
         bool upgradeTo2Star = gameManager.CanIUpgradeTo2Star(unit);
-        CharacterLabelText.text = CharacterName;
+
         TreeStarPanel.SetActive(upgradeTo3Star);
         TwoStarPanel.SetActive(!upgradeTo3Star && upgradeTo2Star);
         HaveStarPanel.SetActive(upgradeTo3Star || upgradeTo2Star);
     }
 
+
+
     public void OnClick()
     {
-        OnClicked?.Invoke(this);
         gameManager = GameManager.Instance;
         bool inventoryFree = !gameManager.InventoryIsFull();
 
