@@ -8,34 +8,11 @@ public static class Economy
     public static int Level { get; set; } = 1;
     public static int Exp { get; set; }
 
-    private static Action<int> goldChanged;
-    private static Action<int> experienceChanged;
-    private static Action<int> levelChanged;
-    public static Action<int> OnExperienceChanged
-    {
-        get { return experienceChanged; }
-        set
-        {
-            experienceChanged = value;
-        }
-    }
-    public static Action<int> OnGoldChanged
-    {
-        get { return goldChanged; }
-        set
-        {
-            Debug.Log("GoldChanged event set to: " + (value != null));
-            goldChanged = value;
-        }
-    }
-    public static Action<int> OnLevelChanged
-    {
-        get { return levelChanged; }
-        set
-        {
-            levelChanged = value;
-        }
-    }
+    public static Action<int> OnGoldChanged;
+    public static Action<int> OnExperienceChanged;
+    public static Action<int> OnLevelChanged;
+
+
 
     public static int GetUnitCost(int unitLevel, RareOptions rareOptions)
     {

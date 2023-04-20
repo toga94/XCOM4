@@ -20,16 +20,16 @@ public class TraitsUI : Singleton<TraitsUI>
     }
     private void OnAnyUnitMovedGridPosition(object sender, InventoryGrid.OnAnyUnitMovedInventoryPositionEventArgs e)
     {
-        Invoke("UpdateTraits", 0.001f);
+        Invoke(nameof(UpdateTraits), 0.001f);
     }
     private void OnAnyUnitMovedGridPosition(object sender, LevelGrid.OnAnyUnitMovedGridPositionEventArgs e)
     {
-        Invoke("UpdateTraits", 0.001f);
+        Invoke(nameof(UpdateTraits), 0.001f);
     }
 
     void UpdateList(object sender, EventArgs e)
     {
-        Invoke("UpdateTraits", 0.001f);
+        Invoke(nameof(UpdateTraits), 0.001f);
     }
     private IOrderedEnumerable<KeyValuePair<TraitType, int>> sortedTraitCounts;
     public Dictionary<TraitType, int> traitCounts;

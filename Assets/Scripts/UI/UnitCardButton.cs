@@ -23,15 +23,20 @@ public class UnitCardButton : MonoBehaviour
         Economy.OnGoldChanged += UpdateUI;
         InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += UpdateUI;
         InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += UpdateUI;
+        InventoryGrid.Instance.OnAnyUnitAddedInventoryPosition += UpdateUI;
 
     }
     private void UpdateUI(object sender, EventArgs e)
     {
         CheckUpgrade();
     }
-    private void UpdateUI(int value)
+    private void UpdateUI(object sender, Unit e)
     {
         CheckUpgrade();
+    }
+    private void UpdateUI(int value)
+    {
+     Invoke(nameof(CheckUpgrade), 0.1f);
     }
 
     public void CheckUpgrade()

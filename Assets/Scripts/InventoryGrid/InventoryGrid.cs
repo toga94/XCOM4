@@ -10,6 +10,8 @@ public class InventoryGrid : Singleton<InventoryGrid>
 
     public event EventHandler<OnAnyUnitSwappedInventoryPositionEventArgs> OnAnyUnitSwappedInventoryPosition;
 
+    public event EventHandler<Unit> OnAnyUnitAddedInventoryPosition;
+
     public class OnAnyUnitMovedInventoryPositionEventArgs : EventArgs
     {
         public Unit unit;
@@ -48,6 +50,8 @@ public class InventoryGrid : Singleton<InventoryGrid>
             fromGridPosition = new GridPosition(0, 0),
             toGridPosition = gridPosition,
         });
+
+        OnAnyUnitAddedInventoryPosition?.Invoke(this, unit);
     }
     public List<Unit> GetUnitListAtInventoryPosition(GridPosition gridPosition)
     {
