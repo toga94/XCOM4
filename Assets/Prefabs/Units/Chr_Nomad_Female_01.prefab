@@ -1029,7 +1029,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 9ad76de1617627d45ba4fa8ddf255af4, type: 3}
   m_Controller: {fileID: 9100000, guid: 9fad13e8ff3618f438fd80ee7856809a, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 1
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1095,9 +1095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1654a00933fb92247974ad4e83934163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasBar: {fileID: 0}
-  unitWorldUI: {fileID: 0}
-  canvas: {fileID: 0}
   unitWorldUIPrefab: {fileID: 6882975772807749723, guid: 50dcae36a2db2744e866027fc7f95cf2, type: 3}
 --- !u!114 &-7651450747694773949
 MonoBehaviour:
@@ -1116,6 +1113,7 @@ MonoBehaviour:
   charState: 0
   targetObject: {fileID: 0}
   enemies: []
+  target: {fileID: 0}
 --- !u!1 &1233028406902195865
 GameObject:
   m_ObjectHideFlags: 0

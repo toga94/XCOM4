@@ -192,7 +192,7 @@ public class UnitAI : MonoBehaviour
         agent.SetDestination(destination);
 
 
-        if (agent.remainingDistance < agent.stoppingDistance)
+        if (agent.remainingDistance < agent.stoppingDistance  && agent.velocity.magnitude < 0.3f)
         {
             if (Time.time - lastAttackTime >= attackDelay)
             {
