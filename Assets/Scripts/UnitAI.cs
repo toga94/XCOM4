@@ -27,7 +27,7 @@ public class UnitAI : MonoBehaviour
 
         stateSystem = GameStateSystem.Instance;
         stateSystem.OnGameStateChanged += GameStateChanged;
-        
+
         targetObject = GameObject.Find("target");
         attackType = unitObject.attackType;
 
@@ -44,11 +44,14 @@ public class UnitAI : MonoBehaviour
             animator.SetFloat("attackAnim", 1);
         }
     }
+
+
     private void Update()
     {
         currentState = GameStateSystem.Instance.GetCurrentState();
         charState = unit.charState;
         AnimateState(currentState);
+
     }
     private void GameStateChanged(GameState gameState)
     {
@@ -83,7 +86,8 @@ public class UnitAI : MonoBehaviour
 
             damagableTarget.TakeDamage(15f);
         }
-        else {
+        else
+        {
             damagableTarget.TakeDamage(15f);
         }
 
@@ -176,7 +180,7 @@ public class UnitAI : MonoBehaviour
                 }
         }
     }
-   [SerializeField] private GameObject target;
+    [SerializeField] private GameObject target;
     private void CombatPhase()
     {
         agent.isStopped = false;
