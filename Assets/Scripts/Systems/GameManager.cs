@@ -97,9 +97,13 @@ public class GameManager : Singleton<GameManager>
     private void CalculateUnits(object sender, EventArgs e)
     {
         alllUnits = GetAllUnits;
-        Invoke("UpdateAll", 0.1f);
+        Invoke(nameof(UpdateAll), 0.1f);
     }
-
+    private void CalculateUnits(int value)
+    {
+        alllUnits = GetAllUnits;
+        Invoke(nameof(UpdateAll), 0.1f);
+    }
 
     private void UpdateAll()
     {
@@ -119,7 +123,7 @@ public class GameManager : Singleton<GameManager>
         InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += CalculateUnits;
 
         GameStateSystem.Instance.OnGameStateChanged += OnStateChanged;
-
+        Economy.OnLevelChanged += CalculateUnits;
 
         if (UnitsInGrid.Count > 0)
             AddUnitsToGrid();
