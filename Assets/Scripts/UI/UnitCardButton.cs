@@ -36,7 +36,7 @@ public class UnitCardButton : MonoBehaviour
     }
     private void UpdateUI(int value)
     {
-     Invoke(nameof(CheckUpgrade), 0.1f);
+        Invoke(nameof(CheckUpgrade), 0.1f);
     }
 
     public void CheckUpgrade()
@@ -58,11 +58,12 @@ public class UnitCardButton : MonoBehaviour
 
         if (inventoryFree)
         {
-            if(Economy.BuyUnit(unit))
+            if (Economy.BuyUnit(unit))
                 gameManager.SpawnUnitAtInventory(CharacterName);
         }
-        else {
-          Debug.LogError(" invFree" + inventoryFree);
+        else
+        {
+            Debug.LogError(" invFree" + inventoryFree);
         }
     }
 }

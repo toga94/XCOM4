@@ -74,8 +74,8 @@ public class UnitAI : MonoBehaviour
 
         // Calculate the rotation to face the target
         Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
-        IDamageable damagableTarget = target.GetComponent<IDamageable>();
-        if (damagableTarget == null) return;
+        //IDamageable damagableTarget = target.GetComponent<IDamageable>();
+      //  if (damagableTarget == null) return;
 
 
 
@@ -84,11 +84,11 @@ public class UnitAI : MonoBehaviour
             // Spawn the fireball
             GameObject fireball = fireballpool.Spawn(transform.position + Vector3.up * 3, to_Target_Quaternion);
 
-            damagableTarget.TakeDamage(15f);
+           // damagableTarget.TakeDamage(15f);
         }
         else
         {
-            damagableTarget.TakeDamage(15f);
+          //  damagableTarget.TakeDamage(15f);
         }
 
     }
