@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -73,7 +73,7 @@ public class GameManager : Singleton<GameManager>
     private void CalculateUnits(object sender, EventArgs e)
     {
         alllUnits = GetAllUnits;
-        UpdateAll();
+        Invoke(nameof (UpdateAll), 0.15f);
     }
     private void CalculateUnits(int value)
     {
@@ -94,13 +94,16 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        LevelGrid.Instance.OnAnyUnitMovedGridPosition += CalculateUnits;
-        LevelGrid.Instance.OnAnyUnitSwappedGridPosition += CalculateUnits;
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += CalculateUnits;
-        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += CalculateUnits;
+        LevelGrid levelGridInstance = LevelGrid.Instance;
+        levelGridInstance.OnAnyUnitMovedGridPosition += CalculateUnits;
+        levelGridInstance.OnAnyUnitSwappedGridPosition += CalculateUnits;
+
+        InventoryGrid InventoryGridInstance = InventoryGrid.Instance;
+        InventoryGridInstance.OnAnyUnitMovedInventoryPosition += CalculateUnits;
+        InventoryGridInstance.OnAnyUnitSwappedInventoryPosition += CalculateUnits;
 
         GameStateSystem.Instance.OnGameStateChanged += OnStateChanged;
-        Economy.OnLevelChanged += CalculateUnits;
+        Economy.OnExperienceChanged += CalculateUnits;
 
         if (UnitsInGrid.Count > 0)
             AddUnitsToGrid();
@@ -269,7 +272,7 @@ public class GameManager : Singleton<GameManager>
                 Instantiate(levelUpFx, highestLevelUnit.transform.position + Vector3.up / 2, Quaternion.identity);
                 highestLevelUnit.UpgradeLevel();
                 upgradableUnits.Remove(highestLevelUnit);
-                Debug.Log("upgrade list count" + upgradableUnits.Count);
+
                 if (upgradableUnits.Count >= 2)
                 {
                     RemoveOtherUnitsFromList(upgradableUnits);
@@ -330,8 +333,5 @@ public class GameManager : Singleton<GameManager>
 
         return new GridPosition(UnitsInInventory.Count, 0);
     }
-
-
-
 
 }
