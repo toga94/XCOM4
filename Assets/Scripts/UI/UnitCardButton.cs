@@ -1,9 +1,10 @@
 using Lean.Pool;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitCardButton : MonoBehaviour
+public class UnitCardButton : MonoBehaviour, IPoolable
 {
     private GameManager gameManager;
     public string CharacterName = "Lina";
@@ -14,39 +15,60 @@ public class UnitCardButton : MonoBehaviour
     public GameObject HaveStarPanel;
     public RareOptions rareOptions;
     public Unit unit;
-    private void OnEnable()
+    private Coroutine checkUpgradeCoroutine;
+    InventoryGrid inventoryGrid;
+    private bool isUIUpdateNeeded = true;
+
+
+    public void OnSpawn()
     {
         gameManager = GameManager.Instance;
-    }
-    private void Start()
-    {
+        inventoryGrid = InventoryGrid.Instance;
+
         Economy.OnGoldChanged += UpdateUI;
-        InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += UpdateUI;
-        InventoryGrid.Instance.OnAnyUnitSwappedInventoryPosition += UpdateUI;
-        InventoryGrid.Instance.OnAnyUnitAddedInventoryPosition += UpdateUI;
+        inventoryGrid.OnAnyUnitMovedInventoryPosition += UpdateUI;
+        inventoryGrid.OnAnyUnitSwappedInventoryPosition += UpdateUI;
+        inventoryGrid.OnAnyUnitAddedInventoryPosition += UpdateUI;
+    }
+
+    public void OnDespawn()
+    {
 
     }
+
     private void UpdateUI(object sender, EventArgs e)
     {
-        CheckUpgrade();
+        isUIUpdateNeeded = true;
     }
+
     private void UpdateUI(object sender, Unit e)
     {
-        CheckUpgrade();
+        isUIUpdateNeeded = true;
     }
+
     private void UpdateUI(int value)
     {
-        Invoke(nameof(CheckUpgrade), 0.1f);
+        isUIUpdateNeeded = true;
+    }
+
+    private void LateUpdate()
+    {
+        if (isUIUpdateNeeded)
+        {
+            CheckUpgrade();
+        }
     }
 
     public void CheckUpgrade()
     {
         bool upgradeTo3Star = gameManager.CanIUpgradeTo3Star(unit);
         bool upgradeTo2Star = gameManager.CanIUpgradeTo2Star(unit);
-
+        
         TreeStarPanel.SetActive(upgradeTo3Star);
         TwoStarPanel.SetActive(!upgradeTo3Star && upgradeTo2Star);
         HaveStarPanel.SetActive(upgradeTo3Star || upgradeTo2Star);
+
+        isUIUpdateNeeded = false;
     }
 
 
@@ -66,4 +88,6 @@ public class UnitCardButton : MonoBehaviour
             Debug.LogError(" invFree" + inventoryFree);
         }
     }
+
+
 }

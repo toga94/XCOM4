@@ -37,58 +37,34 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            List<Unit> units = new List<Unit>();
-            Unit[] allUnits = FindObjectsOfType<Unit>();
-            foreach (Unit unit in allUnits)
-            {
-                units.Add(unit);
-            }
-            return units;
+            return FindObjectsOfType<Unit>()
+                   .ToList();
         }
     }
 
     public List<Unit> GetUnitsByNameAndLevel(string name)
     {
-        List<Unit> units = new List<Unit>();
-        Unit[] allUnits = FindObjectsOfType<Unit>();
-        foreach (Unit unit in allUnits)
-        {
-            if (unit.GetUnitNameWithLevel == name)
-            {
-                units.Add(unit);
-            }
-            if (units.Count == 3)
-            {
-                break;
-            }
-        }
-        return units;
+        return FindObjectsOfType<Unit>()
+               .Where(u => u.GetUnitNameWithLevel == name)
+               .Take(3)
+               .ToList();
     }
-
     public List<Unit> GetAllUnitsOnInventory
     {
         get
         {
-            List<Unit> units = new List<Unit>();
-            Unit[] allUnits = FindObjectsOfType<Unit>();
-            foreach (Unit unit in allUnits)
-            {
-                if (!unit.OnGrid) units.Add(unit);
-            }
-            return units;
+            return FindObjectsOfType<Unit>()
+                   .Where(u => !u.OnGrid)
+                   .ToList();
         }
     }
     public List<Unit> GetAllUnitsOnGrid
     {
         get
         {
-            List<Unit> units = new List<Unit>();
-            Unit[] allUnits = FindObjectsOfType<Unit>();
-            foreach (Unit unit in allUnits)
-            {
-                if (unit.OnGrid) units.Add(unit);
-            }
-            return units;
+            return FindObjectsOfType<Unit>()
+                   .Where(u => u.OnGrid)
+                   .ToList();
         }
     }
 
@@ -97,18 +73,19 @@ public class GameManager : Singleton<GameManager>
     private void CalculateUnits(object sender, EventArgs e)
     {
         alllUnits = GetAllUnits;
-        Invoke(nameof(UpdateAll), 0.1f);
+        UpdateAll();
     }
     private void CalculateUnits(int value)
     {
         alllUnits = GetAllUnits;
-        Invoke(nameof(UpdateAll), 0.1f);
+        UpdateAll();
     }
 
     private void UpdateAll()
     {
-        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{Economy.Level}";
-        Color32 labelColor = GetAllUnitsOnGrid.Count < Economy.Level ? new Color(1, 1, 1, 1) : new Color(0.5f, 0.5f, 0.5f, 1);
+        int curLevel = Economy.Level;
+        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{curLevel}";
+        Color32 labelColor = GetAllUnitsOnGrid.Count < curLevel ? new Color(1, 1, 1, 1) : new Color(0.5f, 0.5f, 0.5f, 1);
         gridSizeTextMesh.faceColor = labelColor;
         gridSizeIcon.color = labelColor;
     }
