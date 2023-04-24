@@ -73,15 +73,15 @@ public class GameManager : Singleton<GameManager>
     private void CalculateUnits(object sender, EventArgs e)
     {
         alllUnits = GetAllUnits;
-        Invoke(nameof (UpdateAll), 0.15f);
+        Invoke(nameof (UpdateGridSizeTextAndIcon), 0.15f);
     }
     private void CalculateUnits(int value)
     {
         alllUnits = GetAllUnits;
-        UpdateAll();
+        UpdateGridSizeTextAndIcon();
     }
 
-    private void UpdateAll()
+    private void UpdateGridSizeTextAndIcon()
     {
         int curLevel = Economy.Level;
         gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{curLevel}";
