@@ -244,75 +244,66 @@ public class GameManager : Singleton<GameManager>
 
     private void CheckForUpgradeForAll()
     {
-        foreach (var selectedUnit in GetAllUnits)
-        {
-            CheckForUpgrade(selectedUnit);
-        }
+        GetAllUnits.ToList().ForEach(selectedUnit => CheckForUpgrade(selectedUnit));
     }
 
     private void CheckForUpgrade(Unit unit)
     {
-        List<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel);
-        if (GameStateSystem.Instance.GetStateIndex != 0)
+        IEnumerable<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel)
+            .Where(u => GameStateSystem.Instance.GetStateIndex == 0 || !u.OnGrid);
+
+        if (upgradableUnits.Count() >= 3)
         {
-            upgradableUnits.RemoveAll(u => u.OnGrid);
-        }
-
-
-        if (upgradableUnits.Count >= 3)
-        {
-            IOrderedEnumerable<Unit> highestLevelUnits = upgradableUnits.OrderByDescending(u => u.OnGrid).ThenBy(u => u.UnitGridPosition.x).ThenBy(u => u.UnitGridPosition.z);
-
+            IOrderedEnumerable<Unit> highestLevelUnits = upgradableUnits
+                .OrderByDescending(u => u.OnGrid)
+                .ThenBy(u => u.UnitGridPosition.x)
+                .ThenBy(u => u.UnitGridPosition.z);
 
             Unit highestLevelUnit = highestLevelUnits.First();
 
             if (highestLevelUnit != null)
             {
-
                 Instantiate(levelUpFx, highestLevelUnit.transform.position + Vector3.up / 2, Quaternion.identity);
                 highestLevelUnit.UpgradeLevel();
-                upgradableUnits.Remove(highestLevelUnit);
+                upgradableUnits = upgradableUnits.Except(new[] { highestLevelUnit });
 
-                if (upgradableUnits.Count >= 2)
+                if (upgradableUnits.Count() >= 2)
                 {
-                    RemoveOtherUnitsFromList(upgradableUnits);
+                    RemoveOtherUnitsFromList(upgradableUnits.ToList());
                 }
             }
         }
     }
     public bool OnlyCheckForUpgrade(Unit unit)
     {
-        List<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel);
-        return upgradableUnits.Count >= 2;
+        return GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel).Count >= 2;
     }
     public bool CanIUpgradeTo2Star(Unit unit)
     {
-        List<Unit> upgradableUnits = GetUnitsByNameAndLevel($"{unit.GetUnitName}{0}");
-        return upgradableUnits.Count >= 2;
+        return GetUnitsByNameAndLevel($"{unit.GetUnitName}{0}").Count >= 2;
     }
     public bool CanIUpgradeTo2StarFrom3(Unit unit)
     {
-        List<Unit> upgradableUnits = GetUnitsByNameAndLevel($"{unit.GetUnitName}{0}");
-        return upgradableUnits.Count >= 2;
+        return GetUnitsByNameAndLevel($"{unit.GetUnitName}{0}").Count >= 2;
     }
     public bool CanIUpgradeTo3Star(Unit unit)
     {
-        List<Unit> upgradableUnits = GetUnitsByNameAndLevel($"{unit.GetUnitName}{1}");
-        return upgradableUnits.Count >= 2 && CanIUpgradeTo2StarFrom3(unit);
+        return GetUnitsByNameAndLevel($"{unit.GetUnitName}{1}").Count >= 2 && CanIUpgradeTo2StarFrom3(unit);
     }
     private void RemoveOtherUnitsFromList(List<Unit> nonGridUnits)
     {
-
+        LevelGrid levelGrid = LevelGrid.Instance;
+        InventoryGrid inventoryGrid = InventoryGrid.Instance;
         foreach (Unit unit in nonGridUnits)
         {
 
             if (unit.OnGrid)
             {
-                LevelGrid.Instance.RemoveAnyUnitAtGridPosition(unit.UnitGridPosition);
+                levelGrid.RemoveAnyUnitAtGridPosition(unit.UnitGridPosition);
             }
             else
             {
-                InventoryGrid.Instance.RemoveAnyUnitAtInventoryPosition(unit.UnitGridPosition);
+                inventoryGrid.RemoveAnyUnitAtInventoryPosition(unit.UnitGridPosition);
             }
 
             Destroy(unit.gameObject);
@@ -322,7 +313,8 @@ public class GameManager : Singleton<GameManager>
     private GridPosition GetNextFreeGridPosition()
     {
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
-        for (int x = 0; x < UnitsInInventory.Count; x++)
+        int maxIndex = UnitsInInventory.Count;
+        for (int x = 0; x < maxIndex; ++x)
         {
             GridPosition gridPosition = new GridPosition(x, 0);
             if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))

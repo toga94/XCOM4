@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CombatPhaseState : GameState
@@ -9,26 +10,19 @@ public class CombatPhaseState : GameState
     public override void OnEnterState()
     {
         GameManager gm = GameManager.Instance;
-        List<Unit> units = GameManager.Instance.GetAllUnitsOnGrid;
         if (gm == null)
         {
             Debug.LogError("GameManager instance is null!");
             return;
         }
+
         // Save all unit transforms
-        unitTransforms.Clear();
-        foreach (Unit unit in units)
-        {
-            unitTransforms.Add(new TransformData(unit.transform.position, unit.transform.rotation));
-        }
-        GameManager.Instance.SavedUnitTransforms = unitTransforms;
+        unitTransforms = gm.GetAllUnitsOnGrid.Select(unit => new TransformData(unit.transform.position, unit.transform.rotation)).ToList();
+        gm.SavedUnitTransforms = unitTransforms;
 
-
+        // Disable all box colliders with tag "floor"
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
-        foreach (var floor in floors)
-        {
-            floor.GetComponent<BoxCollider>().enabled = false;
-        }
+        floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(collider => collider.enabled = false);
     }
 
     // Logic for updating Combat Phase state
@@ -40,19 +34,15 @@ public class CombatPhaseState : GameState
     // Logic for exiting Combat Phase state
     public override void OnExitState()
     {
-        GameManager gm = GameManager.Instance;
         List<Unit> units = GameManager.Instance.GetAllUnitsOnGrid;
         List<TransformData> savedTransforms = GameManager.Instance.SavedUnitTransforms;
         // Move units back to saved positions and rotations
-        for (int i = 0; i < units.Count; i++)
-        {
-            units[i].transform.position = savedTransforms[i].position;
-            units[i].transform.rotation = savedTransforms[i].rotation;
-        }
+        units.Select((unit, index) => new { unit, index }).ToList().ForEach(obj => {
+            obj.unit.transform.position = savedTransforms[obj.index].position;
+            obj.unit.transform.rotation = savedTransforms[obj.index].rotation;
+        });
+
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
-        foreach (var floor in floors)
-        {
-            floor.GetComponent<BoxCollider>().enabled = true;
-        }
+        floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(bc => bc.enabled = true);
     }
 }

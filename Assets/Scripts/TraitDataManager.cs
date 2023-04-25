@@ -19,14 +19,6 @@ public class TraitDataManager : Singleton<TraitDataManager>
 
     public TraitData GetTraitData(TraitType traitType)
     {
-        if (traitDataDict.TryGetValue(traitType, out TraitData traitData))
-        {
-            return traitData;
-        }
-        else
-        {
-            Debug.LogError("Could not find trait data for trait " + traitType);
-            return null;
-        }
+        return traitDataDict.TryGetValue(traitType, out var traitData) ? traitData : null;
     }
 }

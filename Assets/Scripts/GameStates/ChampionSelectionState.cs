@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 
 public class ChampionSelectionState : GameState
 {
-    TextMeshPro gridSizeTextMesh;
     // Logic for entering Champion Selection state
     public override void OnEnterState()
     {
@@ -16,10 +16,8 @@ public class ChampionSelectionState : GameState
 
         List<Unit> allUnits = gameManager.GetAllUnits;
 
-        foreach (var unit in allUnits)
-        {
-            unit.GetComponent<IDamageable>().Heal(999999f);
-        }
+        allUnits.Select(u => u.GetComponent<IDamageable>()).
+            ToList().ForEach(d => d.Heal(999999f));
     }
     // Logic for updating Champion Selection state
     public override void OnUpdate()
