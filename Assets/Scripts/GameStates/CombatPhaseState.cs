@@ -34,8 +34,9 @@ public class CombatPhaseState : GameState
     // Logic for exiting Combat Phase state
     public override void OnExitState()
     {
-        List<Unit> units = GameManager.Instance.GetAllUnitsOnGrid;
-        List<TransformData> savedTransforms = GameManager.Instance.SavedUnitTransforms;
+        GameManager gm = GameManager.Instance;
+        List<Unit> units = gm.GetAllUnitsOnGrid;
+        List<TransformData> savedTransforms = gm.SavedUnitTransforms;
         // Move units back to saved positions and rotations
         units.Select((unit, index) => new { unit, index }).ToList().ForEach(obj => {
             obj.unit.transform.position = savedTransforms[obj.index].position;
