@@ -10,7 +10,6 @@ public class UnitObject : ScriptableObject
     public int attackPower;
     public int speed;
     public int mana;
-    public IAbility ability;
     public List<TraitType> traits;
     public GameObject Prefab;
     public RareOptions rareOptions = RareOptions.Common;

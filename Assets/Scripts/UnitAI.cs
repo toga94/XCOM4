@@ -14,10 +14,11 @@ public class UnitAI : MonoBehaviour
     private float lastAttackTime = 0f;
     [SerializeField] private CharState charState;
     private GameState currentState;
-    private LeanGameObjectPool fireballpool;
     private AttackType attackType;
     [SerializeField] private GameObject targetObject;
 
+    public Ability ability;
+    public Ability superAbility;
 
     private void Start()
     {
@@ -31,9 +32,7 @@ public class UnitAI : MonoBehaviour
         targetObject = GameObject.Find("target");
         attackType = unitObject.attackType;
 
-        fireballpool = GameObject.Find("_Pooling").
-            transform.Find("fireballUIPool").GetComponent<LeanGameObjectPool>();
-
+    
 
         if (attackType == AttackType.Melee)
         {
@@ -81,10 +80,7 @@ public class UnitAI : MonoBehaviour
 
         if (attackType == AttackType.Ranked)
         {
-            // Spawn the fireball
-            GameObject fireball = fireballpool.Spawn(transform.position + Vector3.up * 3, to_Target_Quaternion);
-
-           // damagableTarget.TakeDamage(15f);
+            ability.Cast(target);
         }
         else
         {
@@ -196,8 +192,11 @@ public class UnitAI : MonoBehaviour
         {
             if (Time.time - lastAttackTime >= attackDelay)
             {
-                animator.SetTrigger("attack");
+                //   animator.SetTrigger("attack");
+
                 Attack(target);
+                //Mana
+              //  if (ability != null) superAbility.Cast(target);
                 lastAttackTime = Time.time;
             }
         }

@@ -2083,6 +2083,7 @@ GameObject:
   - component: {fileID: -1737890715897108833}
   - component: {fileID: -4928619438301392716}
   - component: {fileID: 6730029284062943063}
+  - component: {fileID: 4092357898597445698}
   m_Layer: 6
   m_Name: Chr_Hero_Female_01
   m_TagString: Unit
@@ -2211,8 +2212,31 @@ MonoBehaviour:
   agent: {fileID: 0}
   charState: 0
   targetObject: {fileID: 0}
+  ability: {fileID: 4092357898597445698}
   enemies: []
   target: {fileID: 0}
+--- !u!114 &4092357898597445698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459109603624335791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37908a2c7b93d2469e551337bffb176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: ba21e48f675c44360ab2f2adf0f09a65, type: 3}
+  AbilityName: FireballAbility
+  Description: The fireball effect
+  Cooldown: 1
+  CastTime: 1
+  AbilityPower: 1
+  ManaCost: 1
+  IsOffensive: 0
+  AnimationName: fireball
+  projectilePrefab: {fileID: 341025577429695609, guid: 7ddf8c95a597e5347be31424f6b63a0b, type: 3}
 --- !u!1 &459110369867977217
 GameObject:
   m_ObjectHideFlags: 0
