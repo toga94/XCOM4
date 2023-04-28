@@ -16,7 +16,7 @@ public class UnitAI : MonoBehaviour
     private GameState currentState;
     private AttackType attackType;
     [SerializeField] private GameObject targetObject;
-
+    private HealthSystem healthSystem;
     public Ability ability;
     public Ability superAbility;
 
@@ -25,7 +25,7 @@ public class UnitAI : MonoBehaviour
         unit = GetComponent<Unit>();
         unitObject = unit.GetUnitObject;
         animator = GetComponent<Animator>();
-
+        healthSystem = GetComponent<HealthSystem>();
         stateSystem = GameStateSystem.Instance;
         stateSystem.OnGameStateChanged += GameStateChanged;
 
@@ -68,24 +68,38 @@ public class UnitAI : MonoBehaviour
     }
     private void Attack(GameObject target)
     {
+        if (ability == null || superAbility == null) return;
+
         // Calculate the direction to the target
         Vector3 direction = (target.transform.position - transform.position).normalized;
 
         // Calculate the rotation to face the target
         Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
-        //IDamageable damagableTarget = target.GetComponent<IDamageable>();
-      //  if (damagableTarget == null) return;
+        IDamageable damagableTarget = target.GetComponent<IDamageable>();
 
-
-
-        if (attackType == AttackType.Ranked)
+        if (damagableTarget == null) return;
+        if (healthSystem.GetMana < superAbility.ManaCost)
         {
-            ability.Cast(target);
+            if (attackType == AttackType.Ranked)
+            {
+                ability.Cast(target);
+                damagableTarget.TakeDamage(ability.AbilityPower + unit.GetUnitObject.attackPower);
+            }
+            else
+            {
+                ability.Cast(target);
+                damagableTarget.TakeDamage(ability.AbilityPower + unit.GetUnitObject.attackPower);
+            }
         }
         else
         {
-          //  damagableTarget.TakeDamage(15f);
+            superAbility.Cast(target);
+            healthSystem.DecreaseMana(superAbility.ManaCost);
+            damagableTarget.TakeDamage(superAbility.AbilityPower + unit.GetUnitObject.attackPower);
         }
+
+
+
 
     }
 

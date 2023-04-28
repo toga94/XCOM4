@@ -1,0 +1,87 @@
+using Lean.Pool;
+using System;
+using System.Collections;
+using UnityEngine;
+public class ProjectileBallAbility : Ability
+{
+    private Animator animator;
+    public string AnimationName = "fireball";
+    [SerializeField]
+    private GameObject projectilePrefab;
+    private LeanGameObjectPool projectilePool;
+
+
+
+
+    public override void Cast(GameObject target)
+    {
+        PoolingSystem();
+        // Cast fireball spell
+        StartCoroutine(FireballCast(target));
+    }
+
+    private void PoolingSystem()
+    {
+        if (projectilePool == null)
+        {
+            animator = GetComponent<Animator>();
+            GameObject poolObj = GameObject.Find("_Pooling");
+
+            var childTransform = poolObj.transform.Find(nameof(ProjectileBallAbility));
+            GameObject childObject;
+
+            if (childTransform != null)
+            {
+                childObject = childTransform.gameObject;
+                projectilePool = childObject.GetComponent<LeanGameObjectPool>();
+            }
+            else
+            {
+                childObject = new GameObject(nameof(ProjectileBallAbility));
+                childObject.transform.parent = poolObj.transform;
+                projectilePool = childObject.AddComponent<LeanGameObjectPool>();
+                projectilePool.Prefab = projectilePrefab;
+                projectilePool.Capacity = 10;
+                projectilePool.Recycle = true;
+            }
+        }
+    }
+
+    private IEnumerator FireballCast(GameObject target) {
+
+
+
+
+        animator.Play(base.abilityType.ToString());
+        float height = 3;
+
+        Vector3 direction = (target.transform.position - transform.position).normalized;
+
+        Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
+        GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, to_Target_Quaternion);
+
+        float projectileSpeed = 10f;
+        Vector3 initialVelocity = direction * projectileSpeed;
+
+
+        Vector3 projectilePosition = transform.position + Vector3.up * height;
+        Vector3 projectileVelocity = initialVelocity;
+
+        float timeStep = Time.deltaTime;
+
+        while (Vector3.Distance(projectilePosition, target.transform.position) > 1f)
+        {
+
+            projectilePosition += projectileVelocity * timeStep;
+
+            projectile.transform.position = projectilePosition;
+
+          //  projectileVelocity.y -= 9.8f * timeStep;
+
+            yield return null;
+        }
+
+        projectilePool.Despawn(projectile);
+
+    }
+}

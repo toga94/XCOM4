@@ -10,6 +10,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
     private Unit unit;
     private float health;
     private float healthMax;
+    private float mana;
+    private float manaMax;
 
     private GameObject canvasBar;
     private UnitWorldUI unitWorldUI;
@@ -28,7 +30,6 @@ public class HealthSystem : MonoBehaviour, IDamageable
         this.unitWorldUI.SetRoot(transform, canvas);
         OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
     }
-
     public void TakeDamage(float value)
     {
         float damage = value - unitObj.defence;
@@ -40,7 +41,10 @@ public class HealthSystem : MonoBehaviour, IDamageable
             Debug.Log($"Damage: {damage}, Health: {health}");
         }
     }
-
+    public void DecreaseMana(float value)
+    {
+        mana -= value;
+    }
     public void Heal(float value)
     {
         healthMax = unitObj.health * (unit.GetUnitLevel + 1);
@@ -50,6 +54,11 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
     public float Health => health;
     public float HealthMax => healthMax;
+
+    public float GetMana => mana;
+    public float GetMaxMana => manaMax;
+
+
 
     private void OnDestroy()
     {
