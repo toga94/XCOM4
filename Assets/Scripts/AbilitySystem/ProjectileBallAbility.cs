@@ -48,36 +48,19 @@ public class ProjectileBallAbility : Ability
     }
 
     private IEnumerator FireballCast(GameObject target) {
-
-
-
-
         animator.Play(base.abilityType.ToString());
         float height = 3;
-
         Vector3 direction = (target.transform.position - transform.position).normalized;
-
         Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
         GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, to_Target_Quaternion);
-
-        float projectileSpeed = 10f;
-        Vector3 initialVelocity = direction * projectileSpeed;
-
-
-        Vector3 projectilePosition = transform.position + Vector3.up * height;
-        Vector3 projectileVelocity = initialVelocity;
+        float speed = 10f;
+        Vector3 initialVelocity = direction * speed;
 
         float timeStep = Time.deltaTime;
 
-        while (Vector3.Distance(projectilePosition, target.transform.position) > 1f)
+        while (Vector3.Distance(projectile.transform.position, target.transform.position) > 0f)
         {
-
-            projectilePosition += projectileVelocity * timeStep;
-
-            projectile.transform.position = projectilePosition;
-
-          //  projectileVelocity.y -= 9.8f * timeStep;
-
+            projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, target.transform.position, speed * timeStep);
             yield return null;
         }
 

@@ -90,12 +90,15 @@ public class UnitAI : MonoBehaviour
                 ability.Cast(target);
                 damagableTarget.TakeDamage(ability.AbilityPower + unit.GetUnitObject.attackPower);
             }
+            Debug.Log("Abiliy");
+            healthSystem.IncreaseMana(1);
         }
         else
         {
             superAbility.Cast(target);
             healthSystem.DecreaseMana(superAbility.ManaCost);
             damagableTarget.TakeDamage(superAbility.AbilityPower + unit.GetUnitObject.attackPower);
+            Debug.Log("SuperAbiliy");
         }
 
 

@@ -2258,11 +2258,11 @@ MonoBehaviour:
   Cooldown: 1
   CastTime: 1
   AbilityPower: 1
-  ManaCost: 1
+  ManaCost: 5
   IsOffensive: 1
-  abilityType: 0
+  abilityType: 1
   AnimationName: fireball
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 7056706547274424856, guid: 01dc5c4b4559a034ea20584d9c963811, type: 3}
 --- !u!1 &459110369867977217
 GameObject:
   m_ObjectHideFlags: 0

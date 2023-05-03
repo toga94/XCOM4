@@ -47,17 +47,24 @@ public class MeteorAbility : Ability
         }
     }
 
-    private IEnumerator MeteorCast(GameObject target) {
+    private IEnumerator MeteorCast(GameObject target)
+    {
         animator.Play(base.abilityType.ToString());
         // Calculate the direction to the target
-        float height = 10;
+        float height = 20;
         Vector3 spawnPosition = target.transform.position + Vector3.up * height;
         Vector3 direction = (target.transform.position - spawnPosition).normalized;
         // Calculate the rotation to face the target
         Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
         GameObject projectile = projectilePool.Spawn(spawnPosition, to_Target_Quaternion);
-        yield return new WaitWhile(() => 
-        Vector3.Distance(projectile.transform.position, target.transform.position) > 0f);
+
+        // Move the projectile towards the target
+        float speed = 10f; // Speed of the projectile
+        while (Vector3.Distance(projectile.transform.position, target.transform.position) > 0f)
+        {
+            projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, target.transform.position, speed * Time.deltaTime);
+            yield return null;
+        }
 
         projectilePool.Despawn(projectile);
     }

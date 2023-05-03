@@ -45,6 +45,10 @@ public class HealthSystem : MonoBehaviour, IDamageable
     {
         mana -= value;
     }
+    public void IncreaseMana(float value)
+    {
+        mana += value;
+    }
     public void Heal(float value)
     {
         healthMax = unitObj.health * (unit.GetUnitLevel + 1);

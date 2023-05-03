@@ -12756,7 +12756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -311.80878}
+  m_AnchoredPosition: {x: 60, y: -293.23325}
   m_SizeDelta: {x: 119.880005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716284766
@@ -16303,7 +16303,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -39.475}
+  m_AnchoredPosition: {x: 100, y: -65.285}
   m_SizeDelta: {x: 129.07, y: 13.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8267881820853201380
@@ -16429,7 +16429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -14.285}
+  m_AnchoredPosition: {x: 100, y: -40.095}
   m_SizeDelta: {x: 58.51, y: 16.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8267881821277136898
@@ -16495,7 +16495,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 3.49
+  m_PixelsPerUnitMultiplier: 2
 --- !u!224 &8267881821400807998
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16515,7 +16515,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 385, y: -197}
-  m_SizeDelta: {x: 200, y: 58.379997}
+  m_SizeDelta: {x: 200, y: 110}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &8267881821400807999
 GameObject:
