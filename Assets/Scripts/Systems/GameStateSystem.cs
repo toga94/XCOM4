@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameStateSystem : Singleton<GameStateSystem>
@@ -14,28 +15,71 @@ public class GameStateSystem : Singleton<GameStateSystem>
     public int GetStateIndex => currentStateIndex;
     public GameStateSystem()
     {
-        gameStates.Add(new CarouselState());
-        gameStates.Add(new ChampionSelectionState());
-        gameStates.Add(new CombatPhaseState());
-        gameStates.Add(new ChampionSelectionState());
-        gameStates.Add(new CombatPhaseState());
-        gameStates.Add(new ChampionSelectionState());
-        gameStates.Add(new CombatPhaseState());
-        gameStates.Add(new ChampionSelectionState());
-        gameStates.Add(new CombatPhaseState());
-        gameStates.Add(new ChampionSelectionState());
-        gameStates.Add(new CombatPhaseState());
-        gameStates.Add(new ChampionSelectionState());
-        gameStates.Add(new CombatPhaseState());
-        gameStates.Add(new ChampionSelectionState());
+        // Create the list of game states
+        gameStates.AddRange(new GameState[] {
+        new CarouselState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new CarouselState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new CarouselState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new CarouselState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState()
+    });
     }
+
     private void Start()
     {
         stateCoroutine = StartCoroutine(GameLoop());
     }
     public GameState GetCurrentState()
     {
-        return gameStates[currentStateIndex];
+        return gameStates.ElementAtOrDefault(currentStateIndex);
     }
 
     public void Update()
@@ -66,6 +110,12 @@ public class GameStateSystem : Singleton<GameStateSystem>
     public void ChangeState(int index)
     {
         gameStates[currentStateIndex].OnExitState();
+
+        if (index < 0 || index >= gameStates.Count)
+        {
+            index = gameStates.Count - 1;
+        }
+
         currentStateIndex = index;
         gameStates[currentStateIndex].OnEnterState();
         OnGameStateChanged?.Invoke(GetCurrentState());

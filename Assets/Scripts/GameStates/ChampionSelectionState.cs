@@ -32,30 +32,23 @@ public class ChampionSelectionState : GameState
 
         // Check if there is free space on the grid and if there are units in the inventory
         bool onGridHaveFreeSpace = gameManager.GetAllUnitsOnGrid.Count < Economy.Level;
-        bool unitsInInventory = gameManager.GetAllUnitsOnInventory.Count > 0;
+        bool unitsInInventory = gameManager.GetAllUnitsOnInventory.Any();
 
         if (onGridHaveFreeSpace && unitsInInventory)
         {
-            // Loop through units in inventory
-            foreach (Unit unit in gameManager.GetAllUnitsOnInventory)
-            {
-                // Check if there is free space on the grid
-                if (gameManager.GetAllUnitsOnGrid.Count < Economy.Level)
+            // Move units from inventory to grid
+            gameManager.GetAllUnitsOnInventory
+                .Take(Economy.Level - gameManager.GetAllUnitsOnGrid.Count)
+                .ToList()
+                .ForEach(unit =>
                 {
-                    // Move unit to grid
                     GridPosition gridPosition = gameManager.GetNextFreeLevelGridPosition();
                     GridPosition lastGridPosition = unit.UnitGridPosition;
                     unit.TeleportToPosition(LevelGrid.Instance.GetWorldPosition(lastGridPosition), gridPosition);
                     InventoryGrid.Instance.RemoveAnyUnitAtInventoryPosition(lastGridPosition);
                     LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, unit);
                     unit.OnGrid = true;
-                }
-                else
-                {
-                    // No free space on the grid, break out of the loop
-                    break;
-                }
-            }
+                });
         }
 
         GridSystemVisual.Instance.HideAllGridPosition();
