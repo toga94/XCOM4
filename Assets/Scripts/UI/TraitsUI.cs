@@ -41,7 +41,9 @@ public class TraitsUI : Singleton<TraitsUI>
 
        traitCounts = GetTraitsStacks(units);
 
-        sortedTraitCounts = traitCounts.OrderBy(kvp => (GetTraitMaxStack(kvp.Key) / kvp.Value)).ThenByDescending(kvp => kvp.Value);
+        //sortedTraitCounts = traitCounts.OrderBy(kvp => (GetTraitMaxStack(kvp.Key) / kvp.Value)).ThenByDescending(kvp => kvp.Value);
+        sortedTraitCounts = traitCounts.OrderBy(kvp => GetTraitMaxStack(kvp.Key)).
+            ThenByDescending(kvp => kvp.Value);
 
         foreach (KeyValuePair<TraitType, int> kvp in sortedTraitCounts)
         {

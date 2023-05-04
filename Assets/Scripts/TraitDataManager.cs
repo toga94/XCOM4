@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TraitDataManager : Singleton<TraitDataManager>
@@ -10,11 +11,7 @@ public class TraitDataManager : Singleton<TraitDataManager>
 
     private void Awake()
     {
-        traitDataDict = new Dictionary<TraitType, TraitData>();
-        foreach (TraitData traitData in traitDataList)
-        {
-            traitDataDict.Add(traitData.traitType, traitData);
-        }
+        traitDataDict = traitDataList.ToDictionary(traitData => traitData.traitType);
     }
 
     public TraitData GetTraitData(TraitType traitType)

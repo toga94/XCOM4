@@ -27,7 +27,7 @@ public class MeteorAbility : Ability
             animator = GetComponent<Animator>();
             GameObject poolObj = GameObject.Find("_Pooling");
 
-            var childTransform = poolObj.transform.Find(nameof(MeteorAbility));
+            Transform childTransform = poolObj.transform.Find(nameof(MeteorAbility));
             GameObject childObject;
 
             if (childTransform != null)
@@ -57,7 +57,6 @@ public class MeteorAbility : Ability
         // Calculate the rotation to face the target
         Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
         GameObject projectile = projectilePool.Spawn(spawnPosition, to_Target_Quaternion);
-
         // Move the projectile towards the target
         float speed = 10f; // Speed of the projectile
         while (Vector3.Distance(projectile.transform.position, target.transform.position) > 0f)

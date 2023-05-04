@@ -39,23 +39,23 @@ public class CardShop : Singleton<CardShop>
         }
     }
 
+
     private static List<T> RandomPick<T>(IList<T> list, int numItemsToSelect) where T : UnitObject
     {
         List<T> selectedItems = new List<T>();
+        Dictionary<T, float> cumulativeProbabilities = new Dictionary<T, float>();
+        float cumulativeProbability = 0;
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            float itemProbability = Economy.GetItemProbability(list[i]);
+            cumulativeProbability += itemProbability;
+            cumulativeProbabilities[list[i]] = cumulativeProbability;
+        }
 
         for (int i = 0; i < numItemsToSelect; i++)
         {
-            // Calculate the cumulative probability of selecting each item
-            var cumulativeProbabilities = new Dictionary<T, float>();
-            float cumulativeProbability = 0;
-            foreach (var item in list)
-            {
-                float itemProbability = Economy.GetItemProbability(item);
-                cumulativeProbability += itemProbability;
-                cumulativeProbabilities[item] = cumulativeProbability;
-            }
-
-            // Select a random item based on the specified probabilities
+            // Select a random item based on the pre-calculated probabilities
             float randomValue = Random.Range(0, cumulativeProbability);
             T selectedItem = cumulativeProbabilities.First(pair => pair.Value >= randomValue).Key;
 

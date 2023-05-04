@@ -84,8 +84,10 @@ public class GameManager : Singleton<GameManager>
     private void UpdateGridSizeTextAndIcon()
     {
         int curLevel = Economy.Level;
-        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{curLevel}";
-        Color32 labelColor = GetAllUnitsOnGrid.Count < curLevel ? new Color(1, 1, 1, 1) : new Color(0.5f, 0.5f, 0.5f, 1);
+        int unitsOnGrid = GetAllUnitsOnGrid.Count;
+        gridSizeTextMesh.text = $"{unitsOnGrid}/{curLevel}";
+        Color32 labelColor = unitsOnGrid < curLevel ? 
+            new Color(1, 1, 1, 1) : new Color(0.5f, 0.5f, 0.5f, 1);
         gridSizeTextMesh.faceColor = labelColor;
         gridSizeIcon.color = labelColor;
     }
@@ -228,10 +230,12 @@ public class GameManager : Singleton<GameManager>
     }
     private void AddUnitToInventory(Unit unit)
     {
-        if (InventoryIsFull()) return;
+        if (InventoryIsFull())
+        {
+            return;
+        }
 
         unit.OnGrid = false;
-        int x = UnitsInInventory.Count;
 
         GridPosition gridPosition = GetNextFreeGridPosition();
 
@@ -259,7 +263,7 @@ public class GameManager : Singleton<GameManager>
                 .ThenBy(u => u.UnitGridPosition.x)
                 .ThenBy(u => u.UnitGridPosition.z);
 
-            Unit highestLevelUnit = highestLevelUnits.First();
+            Unit highestLevelUnit = highestLevelUnits.FirstOrDefault();
 
             if (highestLevelUnit != null)
             {
@@ -314,16 +318,12 @@ public class GameManager : Singleton<GameManager>
     {
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
         int maxIndex = UnitsInInventory.Count;
-        for (int x = 0; x < maxIndex; ++x)
-        {
-            GridPosition gridPosition = new GridPosition(x, 0);
-            if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))
-            {
-                return gridPosition;
-            }
-        }
 
-        return new GridPosition(UnitsInInventory.Count, 0);
+        var freePositions = Enumerable.Range(0, maxIndex)
+            .Select(x => new GridPosition(x, 0))
+            .Where(gp => !inventoryGrid.HasAnyUnitOnInventoryPosition(gp));
+
+        return freePositions.DefaultIfEmpty(new GridPosition(maxIndex, 0)).First();
     }
 
 }
