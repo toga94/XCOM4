@@ -100,10 +100,6 @@ public class UnitAI : MonoBehaviour
             damagableTarget.TakeDamage(superAbility.AbilityPower + unit.GetUnitObject.attackPower);
             Debug.Log("SuperAbiliy");
         }
-
-
-
-
     }
 
     private void DefaultMethod()

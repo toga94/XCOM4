@@ -326,4 +326,23 @@ public class GameManager : Singleton<GameManager>
         return freePositions.DefaultIfEmpty(new GridPosition(maxIndex, 0)).First();
     }
 
+    private int winStreak = 0;
+
+    public void WinCombat()
+    {
+        // Increment the player's win streak when they win a combat
+        winStreak++;
+    }
+
+    public void LoseCombat()
+    {
+        // Reset the player's win streak when they lose a combat
+        winStreak = 0;
+    }
+
+    public int GetWinStreak()
+    {
+        return winStreak;
+    }
+
 }

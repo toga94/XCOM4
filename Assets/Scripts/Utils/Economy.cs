@@ -12,7 +12,7 @@ public static class Economy
     public static Action<int> OnExperienceChanged;
     public static Action<int> OnLevelChanged;
 
-
+    public const int MIN_GOLD = 1;
 
     public static int GetUnitCost(int unitLevel, RareOptions rareOptions)
     {

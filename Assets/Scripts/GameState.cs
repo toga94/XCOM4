@@ -6,6 +6,8 @@ public class GameState : MonoBehaviour
 {
     protected GameStateSystem gameStateSystem;
 
+    public bool IsFinished { get; set; }
+
     public void SetGameStateSystem(GameStateSystem gameStateSystem)
     {
         this.gameStateSystem = gameStateSystem;

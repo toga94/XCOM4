@@ -43,6 +43,39 @@ public class CombatPhaseState : GameState
             obj.unit.transform.rotation = savedTransforms[obj.index].rotation;
         });
 
+        gm.WinCombat();
+
+
+
+        // Calculate the player's current win streak
+        int winStreak = gm.GetWinStreak();
+
+        // Calculate the amount of bonus gold based on the player's win streak
+        int bonusGold = 0;
+        if (winStreak >= 2)
+        {
+            bonusGold = 1;
+        }
+        if (winStreak >= 3)
+        {
+            bonusGold = 2;
+        }
+        if (winStreak >= 5)
+        {
+            bonusGold = 3;
+        }
+
+        // Calculate the total gold that the player will receive
+        int totalGold = Economy.MIN_GOLD + winStreak + bonusGold;
+
+        // Calculate the bonus gold for every 10 gold
+        int goldBonus = (int)Mathf.FloorToInt(Economy.GetGold() / 10f);
+
+        // Add the bonus gold for every 10 gold to the total gold
+        totalGold += goldBonus;
+
+
+        Economy.AddGold(totalGold);
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(bc => bc.enabled = true);
     }

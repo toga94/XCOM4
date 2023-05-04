@@ -47,15 +47,14 @@ public class ProjectileBallAbility : Ability
         }
     }
 
-    private IEnumerator FireballCast(GameObject target) {
+    private IEnumerator FireballCast(GameObject target)
+    {
         animator.Play(base.abilityType.ToString());
         float height = 3;
         Vector3 direction = (target.transform.position - transform.position).normalized;
-        Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
-        GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, to_Target_Quaternion);
+        Quaternion toTargetQuaternion = Quaternion.LookRotation(direction, Vector3.up);
+        GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, toTargetQuaternion);
         float speed = 10f;
-        Vector3 initialVelocity = direction * speed;
-
         float timeStep = Time.deltaTime;
 
         while (Vector3.Distance(projectile.transform.position, target.transform.position) > 0f)
@@ -65,6 +64,5 @@ public class ProjectileBallAbility : Ability
         }
 
         projectilePool.Despawn(projectile);
-
     }
 }

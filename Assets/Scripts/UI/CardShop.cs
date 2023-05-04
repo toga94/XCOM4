@@ -8,10 +8,7 @@ public class CardShop : Singleton<CardShop>
 {
     public event EventHandler<UnitObject[]> onItemsChanged;
     [SerializeField] private UnitObject[] allUnitObjects;
-    [SerializeField] private UnitObject[] unitInShops;
     [SerializeField] private GameObject shopMenuUI;
-    [SerializeField] private GameObject shopMenuRefreshUI;
- 
 
     public void OpenShopMenu()
     {
