@@ -14,6 +14,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
     public int GetStateIndex => currentStateIndex;
     public GameStateSystem()
     {
+        gameStates.Add(new CarouselState());
         gameStates.Add(new ChampionSelectionState());
         gameStates.Add(new CombatPhaseState());
         gameStates.Add(new ChampionSelectionState());

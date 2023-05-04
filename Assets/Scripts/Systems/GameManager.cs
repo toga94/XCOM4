@@ -237,7 +237,7 @@ public class GameManager : Singleton<GameManager>
 
         unit.OnGrid = false;
 
-        GridPosition gridPosition = GetNextFreeGridPosition();
+        GridPosition gridPosition = GetNextFreeInventoryGridPosition();
 
         inventoryGrid.AddUnitAtInventoryPosition(gridPosition, unit);
         unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(gridPosition), gridPosition);
@@ -314,7 +314,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    private GridPosition GetNextFreeGridPosition()
+    public GridPosition GetNextFreeInventoryGridPosition()
     {
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
         int maxIndex = UnitsInInventory.Count;
@@ -325,7 +325,17 @@ public class GameManager : Singleton<GameManager>
 
         return freePositions.DefaultIfEmpty(new GridPosition(maxIndex, 0)).First();
     }
+    public GridPosition GetNextFreeLevelGridPosition()
+    {
+        LevelGrid grid = LevelGrid.Instance;
+        int maxIndex = UnitsInInventory.Count;
 
+        var freePositions = Enumerable.Range(0, maxIndex)
+            .Select(x => new GridPosition(x, 0))
+            .Where(gp => !grid.HasAnyUnitOnGridPosition(gp));
+
+        return freePositions.DefaultIfEmpty(new GridPosition(maxIndex, 0)).First();
+    }
     private int winStreak = 0;
 
     public void WinCombat()

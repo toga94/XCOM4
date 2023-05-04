@@ -4,6 +4,7 @@ using TMPro;
 
 public class ChampionSelectionState : GameState
 {
+    GameManager gameManager;
     // Logic for entering Champion Selection state
     public override void OnEnterState()
     {
@@ -27,7 +28,37 @@ public class ChampionSelectionState : GameState
     // Logic for exiting Champion Selection state
     public override void OnExitState()
     {
+        GameManager gameManager = GameManager.Instance;
+
+        // Check if there is free space on the grid and if there are units in the inventory
+        bool onGridHaveFreeSpace = gameManager.GetAllUnitsOnGrid.Count < Economy.Level;
+        bool unitsInInventory = gameManager.GetAllUnitsOnInventory.Count > 0;
+
+        if (onGridHaveFreeSpace && unitsInInventory)
+        {
+            // Loop through units in inventory
+            foreach (Unit unit in gameManager.GetAllUnitsOnInventory)
+            {
+                // Check if there is free space on the grid
+                if (gameManager.GetAllUnitsOnGrid.Count < Economy.Level)
+                {
+                    // Move unit to grid
+                    GridPosition gridPosition = gameManager.GetNextFreeLevelGridPosition();
+                    GridPosition lastGridPosition = unit.UnitGridPosition;
+                    unit.TeleportToPosition(LevelGrid.Instance.GetWorldPosition(lastGridPosition), gridPosition);
+                    InventoryGrid.Instance.RemoveAnyUnitAtInventoryPosition(lastGridPosition);
+                    LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, unit);
+                    unit.OnGrid = true;
+                }
+                else
+                {
+                    // No free space on the grid, break out of the loop
+                    break;
+                }
+            }
+        }
+
         GridSystemVisual.Instance.HideAllGridPosition();
-        GameManager.Instance.gridSizeTextMesh.gameObject.SetActive(false);
+        gameManager.gridSizeTextMesh.gameObject.SetActive(false);
     }
 }
