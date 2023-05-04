@@ -5,6 +5,7 @@ using System;
 using UnityEngine.UI;
 using Lean.Pool;
 using System.Collections.Generic;
+using System.Linq;
 
 public class UnitWorldUI : MonoBehaviour
 {
@@ -65,32 +66,35 @@ public class UnitWorldUI : MonoBehaviour
     }
 
 
-
     private void UpdateHp(float curHp, int level, float maxhp)
     {
         if (!uiInit) return;
 
-
         float value = Mathf.Clamp(curHp / maxhp, 0, 1);
         hpSldier.fillAmount = value;
-
 
         int numBars = Mathf.FloorToInt(maxhp) / healthPerBar;
 
         maxHp = maxhp;
         horizontalLayoutGroup.CalculateLayoutInputHorizontal();
-        while (hpLinePool.Spawned < numBars)
-        {
-            hpLine.Clear();
-            GameObject item = hpLinePool.Spawn(hpSldier.transform);
-            hpLine.Add(item);
-            item.transform.SetPositionAndRotation(
-                new Vector3(transform.position.x, 0, 0),
-                Quaternion.identity);
-        }
+
+        int numSpawnedBars = hpLinePool.Spawned;
+        Enumerable.Range(0, numBars - numSpawnedBars)
+            .ToList()
+            .ForEach(_ =>
+            {
+                hpLine.Clear();
+                GameObject item = hpLinePool.Spawn(hpSldier.transform);
+                hpLine.Add(item);
+                item.transform.SetPositionAndRotation(
+                    new Vector3(transform.position.x, 0, 0),
+                    Quaternion.identity);
+            });
+
         curLevel = level.ToString();
         levelText.text = curLevel;
     }
+
     public Vector3 offset;
     private float delay = 2f; // 2 seconds delay
     private float timeElapsed;
@@ -135,17 +139,17 @@ public class UnitWorldUI : MonoBehaviour
         UpdateHp(healthSystem.Health, unit.GetUnitLevel, healthSystem.HealthMax);
     }
 
-    private void FixHpLine() {
-
+    private void FixHpLine()
+    {
         int numBars = Mathf.FloorToInt(maxHp) / healthPerBar;
-        foreach (var item in hpLine)
-        {
+
+        hpLine.ForEach(item => {
             item.transform.SetPositionAndRotation(
                 new Vector3(transform.position.x, 0, 0),
                 Quaternion.identity);
-        }
-        horizontalLayoutGroup.enabled = false;
+        });
 
+        horizontalLayoutGroup.enabled = false;
         horizontalLayoutGroup.enabled = true;
         horizontalLayoutGroup.CalculateLayoutInputHorizontal();
     }

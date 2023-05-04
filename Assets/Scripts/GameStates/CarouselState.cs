@@ -4,10 +4,12 @@ using TMPro;
 
 public class CarouselState : GameState
 {
+
+    GameManager gameManager;
     // Logic for entering Champion Selection state
     public override void OnEnterState()
     {
-        GameManager gameManager = GameManager.Instance;
+        gameManager = GameManager.Instance;
         gameManager.SpawnUnitAtInventory("Lina");
         IsFinished = true;
     }

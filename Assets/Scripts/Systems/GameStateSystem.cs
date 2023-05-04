@@ -13,99 +13,77 @@ public class GameStateSystem : Singleton<GameStateSystem>
     private Coroutine stateCoroutine;
 
     public int GetStateIndex => currentStateIndex;
+
+    /*
+         public GameStateSystem()
+    {
+        // Create the list of game states
+        gameStates.AddRange(new GameState[] {
+            new CarouselState(),
+            new MinionsState(), // Round 1: 2-4
+            new RandomUserState(), // Round 2: 1-3
+            new CarouselState(), // Round 2: 4
+            new RandomUserState(), // Round 2: 5-6
+            new KrugsState(), // Round 2: 7
+            new RandomUserState(), // Round 3: 1-3
+            new CarouselState(), // Round 3: 4
+            new RandomUserState(), // Round 3: 5-6
+            new MurkWolvesState(), // Round 3: 7
+            new RandomUserState(), // Round 4: 1-3
+            new CarouselState(), // Round 4: 4
+            new RandomUserState(), // Round 4: 5-6
+            new AurelionDoomState(), // Round 4: 7
+            new RandomUserState(), // Round 5: 1-3
+            new CarouselState(), // Round 5: 4
+            new RandomUserState(), // Round 5: 5-6
+            new NemesisMorganaState(), // Round 5: 7
+            new RandomUserState(), // Round 6: 1-3
+            new CarouselState(), // Round 6: 4
+            new RandomUserState(), // Round 6: 5-6
+            new GiantCrabgotState(), // Round 6: 7
+            new RandomUserState(), // Round 7: 1-3
+            new CarouselState(), // Round 7: 4
+            new RandomUserState(), // Round 7: 5-6
+            new GiantCrabgotState() // Round 7: 7
+        });
+    }
+         */
+
+
+
     public GameStateSystem()
     {
         // Create the list of game states
         gameStates.AddRange(new GameState[] {
         new CarouselState(),
         new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new CarouselState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new CarouselState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new CarouselState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState()
-    });
+        new CombatPhaseState()
+        });
     }
 
-    private void Start()
-    {
-        stateCoroutine = StartCoroutine(GameLoop());
-    }
     public GameState GetCurrentState()
     {
         return gameStates.ElementAtOrDefault(currentStateIndex);
     }
+    private void Start()
+    {
+        gameStates[currentStateIndex].OnEnterState();
+    }
 
     public void Update()
     {
+        GameState currentState = GetCurrentState();
         if (Input.GetKeyDown(KeyCode.P))
         {
-            GetCurrentState().IsFinished = true;
+            currentState.IsFinished = true;
         }
-
-        gameStates[currentStateIndex].OnUpdate();
-    }
-    private IEnumerator GameLoop()
-    {
-        // Start the first state
-        gameStates[currentStateIndex].OnEnterState();
-
-        // Loop until the game is over
-        while (true)
+        if (currentState.IsFinished)
         {
-            // Wait for the current state to finish
-            yield return new WaitUntil(() => GetCurrentState().IsFinished);
-
-            // Move to the next state
             ChangeState((currentStateIndex + 1) % gameStates.Count);
         }
+        gameStates[currentStateIndex].OnUpdate();
     }
+
 
     public void ChangeState(int index)
     {

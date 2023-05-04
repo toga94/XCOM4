@@ -319,7 +319,7 @@ public class GameManager : Singleton<GameManager>
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
         int maxIndex = UnitsInInventory.Count;
 
-        var freePositions = Enumerable.Range(0, maxIndex)
+        IEnumerable<GridPosition> freePositions = Enumerable.Range(0, maxIndex)
             .Select(x => new GridPosition(x, 0))
             .Where(gp => !inventoryGrid.HasAnyUnitOnInventoryPosition(gp));
 
@@ -330,7 +330,7 @@ public class GameManager : Singleton<GameManager>
         LevelGrid grid = LevelGrid.Instance;
         int maxIndex = UnitsInInventory.Count;
 
-        var freePositions = Enumerable.Range(0, maxIndex)
+        IEnumerable<GridPosition> freePositions = Enumerable.Range(0, maxIndex)
             .Select(x => new GridPosition(x, 0))
             .Where(gp => !grid.HasAnyUnitOnGridPosition(gp));
 
