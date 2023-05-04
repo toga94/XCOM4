@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
+    private Animator animator;
+    float health;
     public void Heal(float value)
     {
-
+        health += value;
     }
-
+    private bool dead;
     public void TakeDamage(float value)
     {
-
+        health -= value;
+        if (health <= 0 && !dead) {
+            dead = true;
+            Die();
+        }
     }
 
-    // Start is called before the first frame update
-    void Start()
+
+    void Die()
     {
-        
+        animator.SetBool("dead", true);
+
+        Destroy(gameObject, 3);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

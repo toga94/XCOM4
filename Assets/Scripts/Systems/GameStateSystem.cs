@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GameStateSystem : Singleton<GameStateSystem>
 {
     public event Action<GameState> OnGameStateChanged;
@@ -11,6 +11,22 @@ public class GameStateSystem : Singleton<GameStateSystem>
     private List<GameState> gameStates = new List<GameState>();
     private int currentStateIndex = 0;
     private Coroutine stateCoroutine;
+
+
+    [SerializeField] private Slider timeSlider;
+
+    // Maximum durations for each state (in seconds)
+    private float carouselDuration = 30f;
+    private float minionsDuration = 30f;
+    private float randomUserDuration = 15f;
+    private float krugsDuration = 30f;
+    private float murkWolvesDuration = 30f;
+    private float aurelionDoomDuration = 30f;
+    private float nemesisMorganaDuration = 30f;
+    private float giantCrabgotDuration = 30f;
+
+    // Time when the current state started
+    private float currentStateStartTime;
 
     public int GetStateIndex => currentStateIndex;
 
@@ -77,6 +93,25 @@ public class GameStateSystem : Singleton<GameStateSystem>
         {
             currentState.IsFinished = true;
         }
+        if (currentState is CombatPhaseState)
+        {
+            if (currentState.IsFinished)
+            {
+                ChangeState((currentStateIndex + 1) % gameStates.Count);
+            }
+            gameStates[currentStateIndex].OnUpdate();
+            return;
+        }
+
+        float timer = Time.time - currentStateStartTime;
+        if (timer > currentState.duration)
+        {
+            currentState.IsFinished = true;
+        }
+        timeSlider.value = timer;
+        timeSlider.maxValue = currentState.duration;
+
+
         if (currentState.IsFinished)
         {
             ChangeState((currentStateIndex + 1) % gameStates.Count);

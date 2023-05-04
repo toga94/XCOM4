@@ -5,7 +5,7 @@ using TMPro;
 public class GameState : MonoBehaviour
 {
     protected GameStateSystem gameStateSystem;
-
+    public float duration;
     public bool IsFinished { get; set; }
 
     public void SetGameStateSystem(GameStateSystem gameStateSystem)
