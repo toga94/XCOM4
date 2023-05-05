@@ -30,40 +30,6 @@ public class GameStateSystem : Singleton<GameStateSystem>
 
     public int GetStateIndex => currentStateIndex;
 
-    /*
-         public GameStateSystem()
-    {
-        // Create the list of game states
-        gameStates.AddRange(new GameState[] {
-            new CarouselState(),
-            new MinionsState(), // Round 1: 2-4
-            new RandomUserState(), // Round 2: 1-3
-            new CarouselState(), // Round 2: 4
-            new RandomUserState(), // Round 2: 5-6
-            new KrugsState(), // Round 2: 7
-            new RandomUserState(), // Round 3: 1-3
-            new CarouselState(), // Round 3: 4
-            new RandomUserState(), // Round 3: 5-6
-            new MurkWolvesState(), // Round 3: 7
-            new RandomUserState(), // Round 4: 1-3
-            new CarouselState(), // Round 4: 4
-            new RandomUserState(), // Round 4: 5-6
-            new AurelionDoomState(), // Round 4: 7
-            new RandomUserState(), // Round 5: 1-3
-            new CarouselState(), // Round 5: 4
-            new RandomUserState(), // Round 5: 5-6
-            new NemesisMorganaState(), // Round 5: 7
-            new RandomUserState(), // Round 6: 1-3
-            new CarouselState(), // Round 6: 4
-            new RandomUserState(), // Round 6: 5-6
-            new GiantCrabgotState(), // Round 6: 7
-            new RandomUserState(), // Round 7: 1-3
-            new CarouselState(), // Round 7: 4
-            new RandomUserState(), // Round 7: 5-6
-            new GiantCrabgotState() // Round 7: 7
-        });
-    }
-         */
 
 
 
@@ -107,11 +73,6 @@ public class GameStateSystem : Singleton<GameStateSystem>
         }
         gameStates[currentStateIndex].OnUpdate();
 
-        if (currentState is CombatPhaseState)
-        {
-            return;
-        }
-
         float timer = Time.time - currentStateStartTime;
         if (timer > currentState.duration)
         {
@@ -121,13 +82,13 @@ public class GameStateSystem : Singleton<GameStateSystem>
         timeSlider.value = timer;
         timeSlider.maxValue = currentState.duration;
 
-
-
     }
 
 
     public void ChangeState(int index)
     {
+        GameState currentState = GetCurrentState();
+
         gameStates[currentStateIndex].OnExitState();
 
         if (index < 0 || index >= gameStates.Count)

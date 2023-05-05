@@ -5,11 +5,13 @@ using UnityEngine;
 public class CombatPhaseState : GameState
 {
     private List<TransformData> unitTransforms = new List<TransformData>();
-    private GameObject[] enemies;
+    public List<Enemy> enemies = new List<Enemy>();
     private int enemyCount;
+    
     // Logic for entering Combat Phase state
     public override void OnEnterState()
     {
+        duration = 99999f;
         GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
         GameManager gm = GameManager.Instance;
         if (gm == null)
@@ -26,12 +28,9 @@ public class CombatPhaseState : GameState
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(collider => collider.enabled = false);
 
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        enemyCount = enemies.Length;
-        foreach (var enemy in enemies)
-        {
-            enemy.GetComponent<EnemyHealth>().OnEnemyDie += HandleEnemyDie;
-        }
+
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies.AddRange(enemyObjects.Select(obj => obj.GetComponent<Enemy>()));
 
     }
     private void HandleEnemyDie(bool isDead)
@@ -50,7 +49,21 @@ public class CombatPhaseState : GameState
     {
         // TODO: Add combat logic
 
+        bool allEnemiesDead = true;
+        foreach (Enemy enemy in enemies)
+        {
+            if (!enemy.isDead)
+            {
+                allEnemiesDead = false;
+                break;
+            }
+        }
 
+        if (allEnemiesDead)
+        {
+            enemies.Clear();
+            IsFinished = true;
+        }
 
     }
 
@@ -101,5 +114,7 @@ public class CombatPhaseState : GameState
         Economy.AddGold(totalGold);
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(bc => bc.enabled = true);
+
+
     }
 }

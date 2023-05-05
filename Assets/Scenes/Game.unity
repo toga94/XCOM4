@@ -4694,6 +4694,7 @@ GameObject:
   - component: {fileID: 744800302}
   - component: {fileID: 744800301}
   - component: {fileID: 744800300}
+  - component: {fileID: 744800303}
   m_Layer: 0
   m_Name: EnemySkeleton (2)
   m_TagString: Enemy
@@ -4744,6 +4745,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &744800303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744800299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f6a68b6fc4f914a8a84b9269884748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &757225567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6308,6 +6321,7 @@ GameObject:
   - component: {fileID: 865072275}
   - component: {fileID: 865072272}
   - component: {fileID: 865072276}
+  - component: {fileID: 865072273}
   m_Layer: 0
   m_Name: EnemySkeleton
   m_TagString: Enemy
@@ -6329,6 +6343,18 @@ CapsuleCollider:
   m_Height: 5.72
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 1.41, z: -0.00000008940697}
+--- !u!114 &865072273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865072271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f6a68b6fc4f914a8a84b9269884748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &865072275
 Transform:
   m_ObjectHideFlags: 0
@@ -11340,6 +11366,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 865072275}
     m_Modifications:
+    - target: {fileID: 1479259742585066, guid: 3e4cf0221a0e8db41bcb50be99ebe457, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1623817811568398, guid: 3e4cf0221a0e8db41bcb50be99ebe457, type: 3}
       propertyPath: m_Name
       value: Chr_Skeleton_03
@@ -14446,6 +14476,7 @@ GameObject:
   - component: {fileID: 1925313998}
   - component: {fileID: 1925313997}
   - component: {fileID: 1925313996}
+  - component: {fileID: 1925313999}
   m_Layer: 0
   m_Name: EnemySkeleton (1)
   m_TagString: Enemy
@@ -14496,6 +14527,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1925313999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925313995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f6a68b6fc4f914a8a84b9269884748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1929408179
 GameObject:
   m_ObjectHideFlags: 0
