@@ -15,15 +15,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
 
     public Slider timeSlider;
 
-    // Maximum durations for each state (in seconds)
-    private float carouselDuration = 30f;
-    private float minionsDuration = 30f;
-    private float randomUserDuration = 15f;
-    private float krugsDuration = 30f;
-    private float murkWolvesDuration = 30f;
-    private float aurelionDoomDuration = 30f;
-    private float nemesisMorganaDuration = 30f;
-    private float giantCrabgotDuration = 30f;
+
 
     // Time when the current state started
     private float currentStateStartTime;
@@ -31,7 +23,40 @@ public class GameStateSystem : Singleton<GameStateSystem>
     public int GetStateIndex => currentStateIndex;
 
 
-
+    /*
+       public GameStateSystem()
+  {
+      // Create the list of game states
+      gameStates.AddRange(new GameState[] {
+          new CarouselState(),
+          new MinionsState(), // Round 1: 2-4
+          new RandomUserState(), // Round 2: 1-3
+          new CarouselState(), // Round 2: 4
+          new RandomUserState(), // Round 2: 5-6
+          new KrugsState(), // Round 2: 7
+          new RandomUserState(), // Round 3: 1-3
+          new CarouselState(), // Round 3: 4
+          new RandomUserState(), // Round 3: 5-6
+          new MurkWolvesState(), // Round 3: 7
+          new RandomUserState(), // Round 4: 1-3
+          new CarouselState(), // Round 4: 4
+          new RandomUserState(), // Round 4: 5-6
+          new AurelionDoomState(), // Round 4: 7
+          new RandomUserState(), // Round 5: 1-3
+          new CarouselState(), // Round 5: 4
+          new RandomUserState(), // Round 5: 5-6
+          new NemesisMorganaState(), // Round 5: 7
+          new RandomUserState(), // Round 6: 1-3
+          new CarouselState(), // Round 6: 4
+          new RandomUserState(), // Round 6: 5-6
+          new GiantCrabgotState(), // Round 6: 7
+          new RandomUserState(), // Round 7: 1-3
+          new CarouselState(), // Round 7: 4
+          new RandomUserState(), // Round 7: 5-6
+          new GiantCrabgotState() // Round 7: 7
+      });
+  }
+       */
 
     public GameStateSystem()
     {
@@ -81,7 +106,6 @@ public class GameStateSystem : Singleton<GameStateSystem>
         }
         timeSlider.value = timer;
         timeSlider.maxValue = currentState.duration;
-
     }
 
 
