@@ -8,6 +8,7 @@ public class ChampionSelectionState : GameState
     // Logic for entering Champion Selection state
     public override void OnEnterState()
     {
+        IsFinished = false;
         duration = 15f;
         GameManager gameManager = GameManager.Instance;
         GridSystemVisual.Instance.ShowAllGridPosition();

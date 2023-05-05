@@ -101,8 +101,6 @@ public class GameStateSystem : Singleton<GameStateSystem>
         {
             currentState.IsFinished = true;
         }
-        GameObject[] enemies;
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (currentState.IsFinished)
         {
             ChangeState((currentStateIndex + 1) % gameStates.Count);
@@ -111,17 +109,12 @@ public class GameStateSystem : Singleton<GameStateSystem>
 
         if (currentState is CombatPhaseState)
         {
-            if (enemies.Count() == 0 && GetCurrentState() is CombatPhaseState)
-            {
-                currentState.IsFinished = true;
-            }
             return;
         }
 
         float timer = Time.time - currentStateStartTime;
         if (timer > currentState.duration)
         {
-            timer = 0;
             currentState.IsFinished = true;
             
         }

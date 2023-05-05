@@ -26,11 +26,24 @@ public class CombatPhaseState : GameState
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(collider => collider.enabled = false);
 
-
-
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemyCount = enemies.Length;
+        foreach (var enemy in enemies)
+        {
+            enemy.GetComponent<EnemyHealth>().OnEnemyDie += HandleEnemyDie;
+        }
 
     }
-
+    private void HandleEnemyDie(bool isDead)
+    {
+        enemyCount--;
+        Debug.Log("Enemy Died !" + enemyCount);
+        GameState curState = GameStateSystem.Instance.GetCurrentState();
+        if (curState is CombatPhaseState)
+        {
+            if (enemyCount <= 0) GameStateSystem.Instance.GetCurrentState().IsFinished = true;
+        }
+    }
 
     // Logic for updating Combat Phase state
     public override void OnUpdate()

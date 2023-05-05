@@ -26,8 +26,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     void Die()
     {
         animator.SetBool("dead", true);
-        OnEnemyDie?.Invoke(true);
+
         Destroy(gameObject, 3);
     }
-
+    private void OnDestroy()
+    {
+        OnEnemyDie?.Invoke(true);
+    }
 }
