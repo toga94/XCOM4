@@ -17,6 +17,7 @@ public class ProjectileBallAbility : Ability
     {
         PoolingSystem();
         // Cast fireball spell
+        if (target == null) return;
         StartCoroutine(FireballCast(target));
     }
 
@@ -49,17 +50,26 @@ public class ProjectileBallAbility : Ability
 
     private IEnumerator FireballCast(GameObject target)
     {
+        if (target == null)
+        {
+            yield break; // exit the method if target is null
+        }
+        Vector3 targetPos = target.transform.position;
         animator.Play(base.abilityType.ToString());
         float height = 3;
-        Vector3 direction = (target.transform.position - transform.position).normalized;
+        Vector3 direction = (targetPos - transform.position).normalized;
         Quaternion toTargetQuaternion = Quaternion.LookRotation(direction, Vector3.up);
         GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, toTargetQuaternion);
         float speed = 10f;
         float timeStep = Time.deltaTime;
 
-        while (Vector3.Distance(projectile.transform.position, target.transform.position) > 0f)
+        while (Vector3.Distance(projectile.transform.position, targetPos) > 0f)
         {
-            projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, target.transform.position, speed * timeStep);
+            if (target == null)
+            {
+                break; // exit the loop if target is null
+            }
+            projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, targetPos, speed * timeStep);
             yield return null;
         }
 

@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    private Animator animator;
-    float health;
+
+    public event Action<bool> OnEnemyDie;
+
+    [SerializeField] private Animator animator;
+    [SerializeField] private float health;
     public void Heal(float value)
     {
         health += value;
@@ -24,7 +26,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     void Die()
     {
         animator.SetBool("dead", true);
-
+        OnEnemyDie?.Invoke(true);
         Destroy(gameObject, 3);
     }
 

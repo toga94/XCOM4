@@ -13,7 +13,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
     private Coroutine stateCoroutine;
 
 
-    [SerializeField] private Slider timeSlider;
+    public Slider timeSlider;
 
     // Maximum durations for each state (in seconds)
     private float carouselDuration = 30f;
@@ -73,6 +73,14 @@ public class GameStateSystem : Singleton<GameStateSystem>
         gameStates.AddRange(new GameState[] {
         new CarouselState(),
         new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
+        new CombatPhaseState(),
+        new ChampionSelectionState(),
         new CombatPhaseState()
         });
     }
@@ -93,30 +101,35 @@ public class GameStateSystem : Singleton<GameStateSystem>
         {
             currentState.IsFinished = true;
         }
+        GameObject[] enemies;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (currentState.IsFinished)
+        {
+            ChangeState((currentStateIndex + 1) % gameStates.Count);
+        }
+        gameStates[currentStateIndex].OnUpdate();
+
         if (currentState is CombatPhaseState)
         {
-            if (currentState.IsFinished)
+            if (enemies.Count() == 0 && GetCurrentState() is CombatPhaseState)
             {
-                ChangeState((currentStateIndex + 1) % gameStates.Count);
+                currentState.IsFinished = true;
             }
-            gameStates[currentStateIndex].OnUpdate();
             return;
         }
 
         float timer = Time.time - currentStateStartTime;
         if (timer > currentState.duration)
         {
+            timer = 0;
             currentState.IsFinished = true;
+            
         }
         timeSlider.value = timer;
         timeSlider.maxValue = currentState.duration;
 
 
-        if (currentState.IsFinished)
-        {
-            ChangeState((currentStateIndex + 1) % gameStates.Count);
-        }
-        gameStates[currentStateIndex].OnUpdate();
+
     }
 
 

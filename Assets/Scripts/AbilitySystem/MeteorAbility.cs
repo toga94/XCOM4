@@ -17,6 +17,7 @@ public class MeteorAbility : Ability
     {
         PoolingSystem();
         // Cast fireball spell
+        if (target == null) return;
         StartCoroutine(MeteorCast(target));
     }
 
@@ -49,19 +50,25 @@ public class MeteorAbility : Ability
 
     private IEnumerator MeteorCast(GameObject target)
     {
+        if (target == null)
+        {
+            yield break; // exit the method if target is null
+        }
+        Vector3 targetPos = target.transform.position;
         animator.Play(base.abilityType.ToString());
         // Calculate the direction to the target
         float height = 20;
-        Vector3 spawnPosition = target.transform.position + Vector3.up * height;
-        Vector3 direction = (target.transform.position - spawnPosition).normalized;
+        Vector3 spawnPosition = targetPos + Vector3.up * height;
+        Vector3 direction = (targetPos - spawnPosition).normalized;
         // Calculate the rotation to face the target
         Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
         GameObject projectile = projectilePool.Spawn(spawnPosition, to_Target_Quaternion);
+        Vector3 projectilePos = projectile.transform.position;
         // Move the projectile towards the target
         float speed = 10f; // Speed of the projectile
-        while (Vector3.Distance(projectile.transform.position, target.transform.position) > 0f)
+        while (Vector3.Distance(projectilePos, targetPos) > 0f)
         {
-            projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, target.transform.position, speed * Time.deltaTime);
+            projectile.transform.position = Vector3.MoveTowards(projectilePos, targetPos, speed * Time.deltaTime);
             yield return null;
         }
 

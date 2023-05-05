@@ -200,6 +200,7 @@ public class UnitAI : MonoBehaviour
         targetObject.transform.position = destination;
         agent.SetDestination(destination);
 
+        if (enemies.Length == 0) return;
 
         if (agent.remainingDistance < agent.stoppingDistance  && agent.velocity.magnitude < 0.3f)
         {

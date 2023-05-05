@@ -5,10 +5,12 @@ using UnityEngine;
 public class CombatPhaseState : GameState
 {
     private List<TransformData> unitTransforms = new List<TransformData>();
-
+    private GameObject[] enemies;
+    private int enemyCount;
     // Logic for entering Combat Phase state
     public override void OnEnterState()
     {
+        GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
         GameManager gm = GameManager.Instance;
         if (gm == null)
         {
@@ -23,24 +25,32 @@ public class CombatPhaseState : GameState
         // Disable all box colliders with tag "floor"
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(collider => collider.enabled = false);
+
+
+
+
     }
+
 
     // Logic for updating Combat Phase state
     public override void OnUpdate()
     {
         // TODO: Add combat logic
+
+
+
     }
 
     // Logic for exiting Combat Phase state
     public override void OnExitState()
     {
+        GameStateSystem.Instance.timeSlider.gameObject.SetActive(true);
         GameManager gm = GameManager.Instance;
         List<Unit> units = gm.GetAllUnitsOnGrid;
         List<TransformData> savedTransforms = gm.SavedUnitTransforms;
         // Move units back to saved positions and rotations
         units.Select((unit, index) => new { unit, index }).ToList().ForEach(obj => {
-            obj.unit.transform.position = savedTransforms[obj.index].position;
-            obj.unit.transform.rotation = savedTransforms[obj.index].rotation;
+            obj.unit.transform.SetPositionAndRotation(savedTransforms[obj.index].position, savedTransforms[obj.index].rotation);
         });
 
         gm.WinCombat();
