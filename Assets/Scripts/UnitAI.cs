@@ -3,7 +3,7 @@ using UnityEngine.AI;
 public class UnitAI : MonoBehaviour
 {
     private Unit unit;
-    private UnitObject unitObject;
+    [SerializeField] private UnitObject unitObject;
     [SerializeField] private Animator animator;
     private GameStateSystem stateSystem;
     [SerializeField] private NavMeshAgent agent;
@@ -46,7 +46,7 @@ public class UnitAI : MonoBehaviour
 
     private void Update()
     {
-        
+
         charState = unit.charState;
         AnimateState(currentState);
 
@@ -55,8 +55,10 @@ public class UnitAI : MonoBehaviour
     {
         currentState = GameStateSystem.Instance.GetCurrentState();
         if (!unit.OnGrid) return;
-        if (gameState is CombatPhaseState)
+        if (currentState is CombatPhaseState)
         {
+            agent = GetComponent<NavMeshAgent>();
+            if (agent != null) return;
             agent = gameObject.AddComponent<NavMeshAgent>();
             agent.speed = unitObject.speed;
             agent.stoppingDistance = unitObject.attackType == AttackType.Melee ? 2f : 20f;
@@ -192,23 +194,24 @@ public class UnitAI : MonoBehaviour
     [SerializeField] private GameObject target;
     private void CombatPhase()
     {
-        agent.isStopped = false;
-        animator.SetBool("fall", false);
-        Vector3 destination = DetermineDestination();
+        if(agent == null) return;
+            agent.isStopped = false;
+            animator.SetBool("fall", false);
+            Vector3 destination = DetermineDestination();
 
-        animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
-        targetObject.transform.position = destination;
-        agent.SetDestination(destination);
+            animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
+            targetObject.transform.position = destination;
+            agent.SetDestination(destination);
 
-        if (enemies.Length == 0) return;
+            if (enemies.Length == 0) return;
 
-        if (agent.remainingDistance < agent.stoppingDistance  && agent.velocity.magnitude < 0.3f)
-        {
-            if (Time.time - lastAttackTime >= attackDelay)
+            if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.15f)
             {
-                Attack(target);
-                lastAttackTime = Time.time;
+                if (Time.time - lastAttackTime >= attackDelay)
+                {
+                    Attack(target);
+                    lastAttackTime = Time.time;
+                }
             }
-        }
     }
 }

@@ -15,6 +15,7 @@ public class UnitWorldUI : MonoBehaviour
     [SerializeField] private LeanGameObjectPool hpLinePool;
     private Transform root;
     [SerializeField] private Image hpSldier;
+    [SerializeField] private Image manaSldier;
     [SerializeField] private Image hpDamageSldier;
     [SerializeField] private bool is3D;
     [SerializeField] private HorizontalLayoutGroup horizontalLayoutGroup;
@@ -56,6 +57,7 @@ public class UnitWorldUI : MonoBehaviour
         hpLine = new List<GameObject>();
         canvasRect = canvas.GetComponent<RectTransform>();
         healthSystem.OnHealthChanged += UpdateHp;
+        healthSystem.OnManaChanged += UpdateMana;
 
 
 
@@ -92,6 +94,17 @@ public class UnitWorldUI : MonoBehaviour
             });
 
         curLevel = level.ToString();
+        levelText.text = curLevel;
+    }
+
+
+    private void UpdateMana(float curMana, float maxMana)
+    {
+        if (!uiInit) return;
+
+        float value = Mathf.Clamp(curMana / maxMana, 0, 1);
+        manaSldier.fillAmount = value * 10;
+
         levelText.text = curLevel;
     }
 
@@ -137,6 +150,7 @@ public class UnitWorldUI : MonoBehaviour
     private void UpdateElement()
     {
         UpdateHp(healthSystem.Health, unit.GetUnitLevel, healthSystem.HealthMax);
+        UpdateMana(healthSystem.GetMana, healthSystem.GetMaxMana);
     }
 
     private void FixHpLine()

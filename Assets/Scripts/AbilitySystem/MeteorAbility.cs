@@ -1,7 +1,8 @@
+using DG.Tweening;
 using Lean.Pool;
-using System;
 using System.Collections;
 using UnityEngine;
+
 public class MeteorAbility : Ability
 {
     private Animator animator;
@@ -9,9 +10,6 @@ public class MeteorAbility : Ability
     [SerializeField]
     private GameObject projectilePrefab;
     private LeanGameObjectPool projectilePool;
-
-
-
 
     public override void Cast(GameObject target)
     {
@@ -50,10 +48,6 @@ public class MeteorAbility : Ability
 
     private IEnumerator MeteorCast(GameObject target)
     {
-        if (target == null)
-        {
-            yield break; // exit the method if target is null
-        }
         Vector3 targetPos = target.transform.position;
         animator.Play(base.abilityType.ToString());
         // Calculate the direction to the target
@@ -66,12 +60,10 @@ public class MeteorAbility : Ability
         Vector3 projectilePos = projectile.transform.position;
         // Move the projectile towards the target
         float speed = 50f; // Speed of the projectile
-        while (Vector3.Distance(projectilePos, targetPos) > 0f)
-        {
-            projectile.transform.position = Vector3.MoveTowards(projectilePos, targetPos, speed * Time.deltaTime);
-            yield return null;
-        }
+        float duration = Vector3.Distance(projectilePos, targetPos) / speed;
+        projectile.transform.DOMove(targetPos, duration)
+            .OnComplete(() => projectilePool.Despawn(projectile));
 
-        projectilePool.Despawn(projectile);
+        yield return null;
     }
 }

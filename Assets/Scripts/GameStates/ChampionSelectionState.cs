@@ -18,8 +18,11 @@ public class ChampionSelectionState : GameState
 
         List<Unit> allUnits = gameManager.GetAllUnits;
 
-        allUnits.Select(u => u.GetComponent<IDamageable>()).
-            ToList().ForEach(d => d.Heal(999999f));
+        allUnits.Select(u => u.GetComponent<HealthSystem>()).
+            ToList().ForEach(d => {
+                d.Heal(999999f);
+                d.DecreaseMana(d.GetMana);
+                });
     }
     // Logic for updating Champion Selection state
     public override void OnUpdate()

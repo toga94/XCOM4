@@ -34,7 +34,7 @@ public class CombatPhaseState : GameState
             if (allEnemiesDead)
             {
                 allEnemiesDead = false;
-                duration = 10f;
+                duration = 3f;
             }
         }
     }

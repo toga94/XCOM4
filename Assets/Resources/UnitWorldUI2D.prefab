@@ -361,7 +361,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 8b52f54d6bcb44bfb83c0e1b790eda8b, type: 3}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -705,6 +705,7 @@ MonoBehaviour:
   healthSystem: {fileID: 0}
   hpLinePool: {fileID: 0}
   hpSldier: {fileID: 795989851512036568}
+  manaSldier: {fileID: 614931868707418387}
   hpDamageSldier: {fileID: 7977040515169983578}
   is3D: 0
   horizontalLayoutGroup: {fileID: 5867031925392859299}

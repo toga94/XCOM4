@@ -135,9 +135,10 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
-
+    GameState currentGameState;
     private void OnStateChanged(GameState gameState)
     {
+        currentGameState = gameState;
         if (gameState is ChampionSelectionState) {
             CheckForUpgradeForAll();
         }
@@ -253,8 +254,11 @@ public class GameManager : Singleton<GameManager>
 
     private void CheckForUpgrade(Unit unit)
     {
-        IEnumerable<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel)
-            .Where(u => GameStateSystem.Instance.GetStateIndex == 0 || !u.OnGrid);
+        IEnumerable<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel);
+        if (currentGameState is CombatPhaseState)
+        {
+            upgradableUnits = upgradableUnits.Where(u => !u.OnGrid);
+        }
 
         if (upgradableUnits.Count() >= 3)
         {

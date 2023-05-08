@@ -19,7 +19,10 @@ public class GameStateSystem : Singleton<GameStateSystem>
         new CarouselState(),
         new ChampionSelectionState(),
         new CombatPhaseState(),
-
+        new ChampionSelectionState(),
+        new ChampionSelectionState(),
+        new ChampionSelectionState(),
+        new ChampionSelectionState(),
         });
     }
 

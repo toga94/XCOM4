@@ -5,6 +5,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 {
     public bool IsDie => Health <= 0;
     public event Action<float, int, float> OnHealthChanged;
+    public event Action<float, float> OnManaChanged;
 
     private UnitObject unitObj;
     private Unit unit;
@@ -22,6 +23,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
         unit = GetComponent<Unit>();
         unitObj = unit.GetUnitObject;
         healthMax = unitObj.health * (unit.GetUnitLevel + 1);
+        manaMax = unitObj.mana * (unit.GetUnitLevel + 1);
+        mana = manaMax;
         health = healthMax;
         canvas = GameObject.Find("BarCanvas");
         //GameObject unitWorldUIPrefab = (GameObject) Resources.Load("UnitWorldUI2D");
@@ -29,6 +32,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         this.unitWorldUI = canvasBar.GetComponent<UnitWorldUI>();
         this.unitWorldUI.SetRoot(transform, canvas);
         OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
+        OnManaChanged?.Invoke(mana, manaMax);
     }
     public void TakeDamage(float value)
     {
@@ -38,16 +42,17 @@ public class HealthSystem : MonoBehaviour, IDamageable
             health = Mathf.Max(health - damage, 0);
             healthMax = unitObj.health * (unit.GetUnitLevel + 1);
             OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
-            Debug.Log($"Damage: {damage}, Health: {health}");
         }
     }
     public void DecreaseMana(float value)
     {
         mana -= value;
+        OnManaChanged?.Invoke(mana, manaMax);
     }
     public void IncreaseMana(float value)
     {
         mana += value;
+        OnManaChanged?.Invoke(mana, manaMax);
     }
     public void Heal(float value)
     {
