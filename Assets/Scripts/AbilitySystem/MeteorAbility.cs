@@ -65,7 +65,7 @@ public class MeteorAbility : Ability
         GameObject projectile = projectilePool.Spawn(spawnPosition, to_Target_Quaternion);
         Vector3 projectilePos = projectile.transform.position;
         // Move the projectile towards the target
-        float speed = 10f; // Speed of the projectile
+        float speed = 50f; // Speed of the projectile
         while (Vector3.Distance(projectilePos, targetPos) > 0f)
         {
             projectile.transform.position = Vector3.MoveTowards(projectilePos, targetPos, speed * Time.deltaTime);

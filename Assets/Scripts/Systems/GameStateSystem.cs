@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,72 +6,20 @@ using UnityEngine.UI;
 public class GameStateSystem : Singleton<GameStateSystem>
 {
     public event Action<GameState> OnGameStateChanged;
-
+    public float currentDuration;
+    public bool finished;
     private List<GameState> gameStates = new List<GameState>();
     private int currentStateIndex = 0;
-    private Coroutine stateCoroutine;
-
-
     public Slider timeSlider;
-
-
-
-    // Time when the current state started
     private float currentStateStartTime;
-
     public int GetStateIndex => currentStateIndex;
-
-
-    /*
-       public GameStateSystem()
-  {
-      // Create the list of game states
-      gameStates.AddRange(new GameState[] {
-          new CarouselState(),
-          new MinionsState(), // Round 1: 2-4
-          new RandomUserState(), // Round 2: 1-3
-          new CarouselState(), // Round 2: 4
-          new RandomUserState(), // Round 2: 5-6
-          new KrugsState(), // Round 2: 7
-          new RandomUserState(), // Round 3: 1-3
-          new CarouselState(), // Round 3: 4
-          new RandomUserState(), // Round 3: 5-6
-          new MurkWolvesState(), // Round 3: 7
-          new RandomUserState(), // Round 4: 1-3
-          new CarouselState(), // Round 4: 4
-          new RandomUserState(), // Round 4: 5-6
-          new AurelionDoomState(), // Round 4: 7
-          new RandomUserState(), // Round 5: 1-3
-          new CarouselState(), // Round 5: 4
-          new RandomUserState(), // Round 5: 5-6
-          new NemesisMorganaState(), // Round 5: 7
-          new RandomUserState(), // Round 6: 1-3
-          new CarouselState(), // Round 6: 4
-          new RandomUserState(), // Round 6: 5-6
-          new GiantCrabgotState(), // Round 6: 7
-          new RandomUserState(), // Round 7: 1-3
-          new CarouselState(), // Round 7: 4
-          new RandomUserState(), // Round 7: 5-6
-          new GiantCrabgotState() // Round 7: 7
-      });
-  }
-       */
-
     public GameStateSystem()
     {
-        // Create the list of game states
         gameStates.AddRange(new GameState[] {
         new CarouselState(),
         new ChampionSelectionState(),
         new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState(),
-        new ChampionSelectionState(),
-        new CombatPhaseState()
+
         });
     }
 
@@ -88,27 +35,30 @@ public class GameStateSystem : Singleton<GameStateSystem>
     public void Update()
     {
         GameState currentState = GetCurrentState();
-        if (Input.GetKeyDown(KeyCode.P))
+        finished = currentState.IsFinished;
+        currentDuration = currentState.duration;
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             currentState.IsFinished = true;
         }
         if (currentState.IsFinished)
         {
-            ChangeState((currentStateIndex + 1) % gameStates.Count);
+            currentState.duration = 10;
+            currentState.IsFinished = false;
+            ChangeState((currentStateIndex + 1));
+            currentStateStartTime = Time.time;
+            return;
         }
-        gameStates[currentStateIndex].OnUpdate();
+        GetCurrentState().OnUpdate();
 
         float timer = Time.time - currentStateStartTime;
         if (timer > currentState.duration)
         {
             currentState.IsFinished = true;
-            
         }
         timeSlider.value = timer;
         timeSlider.maxValue = currentState.duration;
     }
-
-
     public void ChangeState(int index)
     {
         GameState currentState = GetCurrentState();
@@ -121,6 +71,8 @@ public class GameStateSystem : Singleton<GameStateSystem>
         }
 
         currentStateIndex = index;
+        gameStates[currentStateIndex].duration = 3;
+        gameStates[currentStateIndex].IsFinished = false;
         gameStates[currentStateIndex].OnEnterState();
         OnGameStateChanged?.Invoke(GetCurrentState());
     }

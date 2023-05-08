@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using Lean.Pool;
 public class UnitAI : MonoBehaviour
 {
     private Unit unit;
@@ -32,7 +31,7 @@ public class UnitAI : MonoBehaviour
         targetObject = GameObject.Find("target");
         attackType = unitObject.attackType;
 
-    
+        currentState = GameStateSystem.Instance.GetCurrentState();
 
         if (attackType == AttackType.Melee)
         {
@@ -47,13 +46,14 @@ public class UnitAI : MonoBehaviour
 
     private void Update()
     {
-        currentState = GameStateSystem.Instance.GetCurrentState();
+        
         charState = unit.charState;
         AnimateState(currentState);
 
     }
     private void GameStateChanged(GameState gameState)
     {
+        currentState = GameStateSystem.Instance.GetCurrentState();
         if (!unit.OnGrid) return;
         if (gameState is CombatPhaseState)
         {
@@ -206,11 +206,7 @@ public class UnitAI : MonoBehaviour
         {
             if (Time.time - lastAttackTime >= attackDelay)
             {
-                //   animator.SetTrigger("attack");
-
                 Attack(target);
-                //Mana
-              //  if (ability != null) superAbility.Cast(target);
                 lastAttackTime = Time.time;
             }
         }

@@ -11,7 +11,6 @@ public class CarouselState : GameState
         duration = 3;
         gameManager = GameManager.Instance;
         gameManager.SpawnUnitAtInventory("Lina");
-        IsFinished = true;
     }
     // Logic for updating Champion Selection state
     public override void OnUpdate()
