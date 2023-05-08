@@ -57,13 +57,12 @@ public class MeteorAbility : Ability
         // Calculate the rotation to face the target
         Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
         GameObject projectile = projectilePool.Spawn(spawnPosition, to_Target_Quaternion);
-        Vector3 projectilePos = projectile.transform.position;
+        Vector3 projectilePos = projectile.transform.position + Vector3.left * 3;
         // Move the projectile towards the target
-        float speed = 50f; // Speed of the projectile
+        float speed = 30f; // Speed of the projectile
         float duration = Vector3.Distance(projectilePos, targetPos) / speed;
         projectile.transform.DOMove(targetPos, duration)
-            .OnComplete(() => projectilePool.Despawn(projectile));
-
+            .OnComplete(() => projectilePool.Despawn(projectile)).SetEase(Ease.InFlash);
         yield return null;
     }
 }
