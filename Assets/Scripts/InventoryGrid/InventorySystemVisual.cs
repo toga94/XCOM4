@@ -50,11 +50,11 @@ public class InventorySystemVisual : MonoBehaviour
             inventoryGrid.GetWidth(),
             1
         ];
-
+        Vector3 offset = new Vector3(-2.5f, 0f, 2.5f);
         for (int x = 0; x < inventoryGrid.GetWidth(); x++)
         {
             GridPosition gridPosition = new GridPosition(x, 0);
-            Vector3 offset = new Vector3(-2.5f, 0f, 2.5f);
+           
             Transform gridSystemVisualSingleTransform =
                 Instantiate(inventorySystemVisualSinglePrefab, InventoryGrid.Instance.GetInventoryWorldPosition(gridPosition), Quaternion.identity);
 
@@ -63,7 +63,7 @@ public class InventorySystemVisual : MonoBehaviour
 
         inventoryGrid.OnAnyUnitMovedInventoryPosition += InventoryGrid_OnAnyUnitMovedinventoryPosition;
 
-        UpdateInventoryGridVisual();
+
 
 
     }
@@ -131,12 +131,12 @@ public class InventorySystemVisual : MonoBehaviour
 
     private void UnitActionSystem_OnSelectedActionChanged(object sender, EventArgs e)
     {
-        UpdateInventoryGridVisual();
+
     }
 
     private void InventoryGrid_OnAnyUnitMovedinventoryPosition(object sender, EventArgs e)
     {
-        UpdateInventoryGridVisual();
+
     }
 
     private Material GetGridVisualTypeMaterial(GridVisualType gridVisualType)

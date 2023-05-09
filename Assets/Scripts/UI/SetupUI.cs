@@ -1,8 +1,9 @@
 using UnityEngine;
-
+using Lean.Pool;
 public class SetupUI : MonoBehaviour
 {
     [SerializeField] private bool is3D;
+
     private void Awake()
     {
         if (is3D)

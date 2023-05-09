@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 public class UnitAI : MonoBehaviour
@@ -156,18 +157,9 @@ public class UnitAI : MonoBehaviour
 
     private GameObject FindNearestEnemy(GameObject[] enemies)
     {
-        float closestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-        foreach (GameObject enemy in enemies)
-        {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                nearestEnemy = enemy;
-            }
-        }
-        return nearestEnemy;
+        return enemies
+            .OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position))
+            .FirstOrDefault();
     }
     private void AnimateState(GameState currentState)
     {
@@ -202,7 +194,6 @@ public class UnitAI : MonoBehaviour
             animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
             targetObject.transform.position = destination;
             agent.SetDestination(destination);
-
             if (enemies.Length == 0) return;
 
             if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.15f)
