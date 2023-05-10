@@ -27,7 +27,7 @@ Material:
     _SPECULARHATCHING_SINGLECHANNEL _SPECULARLIGHTINGSTYLE_TEXTURED _SPECULARTEXTUREMAPPING_SCREENSTABLE
     _SPECULARTYPE_COOKTORRANCE
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -110,7 +110,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AmbientCategory: 0
-    - _AmbientShadowStrength: 0
+    - _AmbientShadowStrength: 1
     - _BaseReflectStrength: 0.093
     - _Blend: 0
     - _BumpScale: 1

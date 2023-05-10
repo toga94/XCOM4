@@ -11,8 +11,6 @@ public class Enemy : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
         enemyHealth.OnEnemyDie += Die;
     }
-
-    // Update is called once per frame
     void Die(bool value)
     {
         isDead = value;
