@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31547567, g: 0.5782684, b: 0.6366119, a: 1}
+  m_IndirectSpecularColor: {r: 0.31655177, g: 0.5788845, b: 0.63779205, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3359,10 +3359,10 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0
     m_Bias: 0.02
     m_NormalBias: 0.1
     m_NearPlane: 0.1
@@ -3410,13 +3410,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483126892}
-  m_LocalRotation: {x: 0.30168888, y: 0.70079184, z: -0.3731626, w: 0.5278487}
+  m_LocalRotation: {x: 0.41109124, y: -0.46849594, z: 0.28258464, w: 0.7291512}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 57.3, y: 107.7, z: 3.066}
+  m_LocalEulerAnglesHint: {x: 59.8, y: -63.68, z: 3.066}
 --- !u!1001 &491938497
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5723,7 +5723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1514273225}
-  health: 50
+  health: 250
 --- !u!136 &744800301
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14053,7 +14053,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -290.9152}
+  m_AnchoredPosition: {x: 60, y: -296.9004}
   m_SizeDelta: {x: 119.880005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716284766
@@ -15557,7 +15557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1173245553}
-  health: 50
+  health: 250
 --- !u!136 &1925313997
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17727,7 +17727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6478539475975344549, guid: e0a61474ef0143f44a6f8727cf3fa61b, type: 3}
       propertyPath: health
-      value: 50
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6478539475975344574, guid: e0a61474ef0143f44a6f8727cf3fa61b, type: 3}
       propertyPath: m_Name

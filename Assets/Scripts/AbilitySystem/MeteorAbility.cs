@@ -11,12 +11,12 @@ public class MeteorAbility : Ability
     private GameObject projectilePrefab;
     private LeanGameObjectPool projectilePool;
 
-    public override void Cast(GameObject target)
+    public override void Cast(GameObject target, float additionalDamage)
     {
         PoolingSystem();
         // Cast fireball spell
         if (target == null) return;
-        StartCoroutine(MeteorCast(target));
+        StartCoroutine(MeteorCast(target, additionalDamage));
     }
 
     private void PoolingSystem()
@@ -45,9 +45,12 @@ public class MeteorAbility : Ability
             }
         }
     }
-
-    private IEnumerator MeteorCast(GameObject target)
+    private GameObject backupTarget;
+    private float backupAddDamage;
+    private IEnumerator MeteorCast(GameObject target, float additionalDamage)
     {
+        backupTarget = target;
+        backupAddDamage = additionalDamage;
         Vector3 targetPos = target.transform.position;
         animator.Play(base.abilityType.ToString());
         // Calculate the direction to the target
@@ -61,8 +64,12 @@ public class MeteorAbility : Ability
         // Move the projectile towards the target
         float speed = 30f; // Speed of the projectile
         float duration = Vector3.Distance(projectilePos, targetPos) / speed;
-        projectile.transform.DOMove(targetPos, duration)
-            .OnComplete(() => projectilePool.Despawn(projectile)).SetEase(Ease.InFlash);
+        projectile.transform.DOMove(targetPos, duration).SetEase(Ease.InFlash)
+            .OnComplete(() =>
+            {
+                projectilePool.Despawn(projectile);
+                backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
+            } );
         yield return null;
     }
 }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Lean.Pool;
 using System;
 using System.Collections;
@@ -10,15 +11,12 @@ public class ProjectileBallAbility : Ability
     private GameObject projectilePrefab;
     private LeanGameObjectPool projectilePool;
 
-
-
-
-    public override void Cast(GameObject target)
+    public override void Cast(GameObject target, float additionalDamage)
     {
         PoolingSystem();
         // Cast fireball spell
         if (target == null) return;
-        StartCoroutine(FireballCast(target));
+        StartCoroutine(FireballCast(target, additionalDamage));
     }
 
     private void PoolingSystem()
@@ -47,13 +45,16 @@ public class ProjectileBallAbility : Ability
             }
         }
     }
-
-    private IEnumerator FireballCast(GameObject target)
+    private GameObject backupTarget;
+    private float backupAddDamage;
+    private IEnumerator FireballCast(GameObject target, float additionalDamage)
     {
         if (target == null)
         {
             yield break; // exit the method if target is null
         }
+        backupTarget = target;
+        backupAddDamage = additionalDamage;
         Vector3 targetPos = target.transform.position;
         animator.Play(base.abilityType.ToString());
         float height = 3;
@@ -62,17 +63,10 @@ public class ProjectileBallAbility : Ability
         GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, toTargetQuaternion);
         float speed = 10f;
         float timeStep = Time.deltaTime;
-
-        while (Vector3.Distance(projectile.transform.position, targetPos) > 0f)
+        projectile.transform.DOMove(targetPos, Vector3.Distance(projectile.transform.position, targetPos) / speed).SetEase(Ease.Linear).OnComplete(() =>
         {
-            if (target == null)
-            {
-                break; // exit the loop if target is null
-            }
-            projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, targetPos, speed * timeStep);
-            yield return null;
-        }
-
-        projectilePool.Despawn(projectile);
+            projectilePool.Despawn(projectile);
+            backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
+        });
     }
 }

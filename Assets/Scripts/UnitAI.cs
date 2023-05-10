@@ -85,23 +85,18 @@ public class UnitAI : MonoBehaviour
         {
             if (attackType == AttackType.Ranked)
             {
-                ability.Cast(target);
-                damagableTarget.TakeDamage(ability.AbilityPower + unit.GetUnitObject.attackPower);
+                ability.Cast(target, unit.GetUnitObject.attackPower);
             }
             else
             {
-                ability.Cast(target);
-                damagableTarget.TakeDamage(ability.AbilityPower + unit.GetUnitObject.attackPower);
+                ability.Cast(target, unit.GetUnitObject.attackPower);
             }
-            Debug.Log("Abiliy");
             healthSystem.IncreaseMana(1);
         }
         else
         {
-            superAbility.Cast(target);
+            superAbility.Cast(target, unit.GetUnitObject.attackPower);
             healthSystem.DecreaseMana(superAbility.ManaCost);
-            damagableTarget.TakeDamage(superAbility.AbilityPower + unit.GetUnitObject.attackPower);
-            Debug.Log("SuperAbiliy");
         }
     }
 

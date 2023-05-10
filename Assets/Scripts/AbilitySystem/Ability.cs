@@ -12,7 +12,7 @@ public abstract class Ability : MonoBehaviour
     public bool IsOffensive;
     public AbilityType abilityType;
 
-    public abstract void Cast(GameObject target);
+    public abstract void Cast(GameObject target, float additionalDamage);
     public bool OnCooldown()
     {
         // Check if ability is on cooldown
