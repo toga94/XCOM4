@@ -8,6 +8,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     [SerializeField] private Animator animator;
     [SerializeField] private float health;
+
+    public float GetHealth => health;
+
     public void Heal(float value)
     {
         health += value;

@@ -4,18 +4,25 @@ using UnityEngine.AI;
 public class UnitAI : MonoBehaviour
 {
     private Unit unit;
-    [SerializeField] private UnitObject unitObject;
-    [SerializeField] private Animator animator;
+    [SerializeField]
+    private UnitObject unitObject;
+    [SerializeField]
+    private Animator animator;
+    [SerializeField]
+    private GameObject target;
     private GameStateSystem stateSystem;
-    [SerializeField] private NavMeshAgent agent;
+    [SerializeField]
+    private NavMeshAgent agent;
     private GameObject currentTarget = null;
     private float attackRange = 1f;
     private float attackDelay = 1f;
     private float lastAttackTime = 0f;
-    [SerializeField] private CharState charState;
+    [SerializeField]
+    private CharState charState;
     private GameState currentState;
     private AttackType attackType;
-    [SerializeField] private GameObject targetObject;
+    [SerializeField]
+    private GameObject targetObject;
     private HealthSystem healthSystem;
     public Ability ability;
     public Ability superAbility;
@@ -26,13 +33,14 @@ public class UnitAI : MonoBehaviour
         unitObject = unit.GetUnitObject;
         animator = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
+
         stateSystem = GameStateSystem.Instance;
         stateSystem.OnGameStateChanged += GameStateChanged;
 
         targetObject = GameObject.Find("target");
         attackType = unitObject.attackType;
 
-        currentState = GameStateSystem.Instance.GetCurrentState();
+        currentState = stateSystem.GetCurrentState();
 
         if (attackType == AttackType.Melee)
         {
@@ -58,8 +66,6 @@ public class UnitAI : MonoBehaviour
         if (!unit.OnGrid) return;
         if (currentState is CombatPhaseState)
         {
-            agent = GetComponent<NavMeshAgent>();
-            if (agent != null) return;
             agent = gameObject.AddComponent<NavMeshAgent>();
             agent.speed = unitObject.speed;
             agent.stoppingDistance = unitObject.attackType == AttackType.Melee ? 2f : 20f;
@@ -108,7 +114,7 @@ public class UnitAI : MonoBehaviour
     private GameObject DetermineTarget()
     {
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemies.Length > 0)
         {
             GameObject nearestEnemy = FindNearestEnemy(enemies);
@@ -178,20 +184,20 @@ public class UnitAI : MonoBehaviour
                 }
         }
     }
-    [SerializeField] private GameObject target;
+
     private void CombatPhase()
     {
         if(agent == null) return;
             agent.isStopped = false;
             animator.SetBool("fall", false);
             Vector3 destination = DetermineDestination();
-
+            
             animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
             targetObject.transform.position = destination;
             agent.SetDestination(destination);
             if (enemies.Length == 0) return;
 
-            if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.15f)
+            if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.3f)
             {
                 if (Time.time - lastAttackTime >= attackDelay)
                 {
