@@ -26,9 +26,6 @@ public class CombatPhaseState : GameState
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(collider => collider.enabled = false);
 
         List<GameObject> enemyObjects = GameObject.FindGameObjectsWithTag("Enemy").ToList();
-
-
-
         enemies.AddRange(enemyObjects.Select(obj => obj.GetComponent<Enemy>()));
         enemiesCount = enemies.Count;
         foreach (IDamageable enemyhp in from enemy in enemies
