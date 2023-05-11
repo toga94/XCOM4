@@ -665,7 +665,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4583851341757093450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,6 +683,7 @@ MonoBehaviour:
   healthSystem: {fileID: 0}
   hpLinePool: {fileID: 0}
   hpSldier: {fileID: 795989851512036568}
+  manaSldier: {fileID: 0}
   hpDamageSldier: {fileID: 7977040515169983578}
   is3D: 1
   horizontalLayoutGroup: {fileID: 0}

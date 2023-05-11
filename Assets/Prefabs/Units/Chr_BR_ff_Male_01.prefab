@@ -967,12 +967,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc2aef111765e448a8d4c16b255b5e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitObject: {fileID: 0}
   animator: {fileID: 0}
+  target: {fileID: 0}
   agent: {fileID: 0}
   charState: 0
   targetObject: {fileID: 0}
+  ability: {fileID: 0}
+  superAbility: {fileID: 0}
   enemies: []
-  target: {fileID: 0}
 --- !u!1 &1847040064277917399
 GameObject:
   m_ObjectHideFlags: 0
