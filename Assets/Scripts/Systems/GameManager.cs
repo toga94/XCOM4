@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int gold;
     public int GetGold => gold;
 
-
+    public bool allMinionsisDead;
     public class UpdateTextArg : EventArgs
     {
 
@@ -254,8 +254,9 @@ public class GameManager : Singleton<GameManager>
 
     private void CheckForUpgrade(Unit unit)
     {
+
         IEnumerable<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel);
-        if (currentGameState is CombatPhaseState)
+        if (GameStateSystem.Instance.GetCurrentState().IsCombatState)
         {
             upgradableUnits = upgradableUnits.Where(u => !u.OnGrid);
         }

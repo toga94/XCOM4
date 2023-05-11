@@ -7,6 +7,13 @@ public class GameState : MonoBehaviour
     protected GameStateSystem gameStateSystem;
     public float duration;
     public bool IsFinished { get; set; }
+    private bool isCombatState;
+
+    public bool IsCombatState
+    {
+        get { return isCombatState; }
+        protected set { isCombatState = value; }
+    }
 
     public void SetGameStateSystem(GameStateSystem gameStateSystem)
     {

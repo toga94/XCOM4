@@ -167,8 +167,8 @@ Material:
     - _FadeBurnTransition: 0.075
     - _FadeBurnWidth: 0.025
     - _FishEyeUvAmount: 0.35
-    - _FlickerAlpha: 0.5
-    - _FlickerFreq: 0.2
+    - _FlickerAlpha: 1
+    - _FlickerFreq: 0.1
     - _FlickerPercent: 0.05
     - _FlipbookBlending: 0
     - _FlipbookMode: 0
@@ -180,7 +180,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Glow: 16.8
+    - _Glow: 1
     - _GlowGlobal: 1
     - _GradBlend: 1
     - _GradBoostX: 1.2
@@ -199,8 +199,8 @@ Material:
     - _HitEffectBlend: 0
     - _HitEffectGlow: 5
     - _HologramBlend: 1
-    - _HologramMaxAlpha: 0.75
-    - _HologramMinAlpha: 0.1
+    - _HologramMaxAlpha: 14.9
+    - _HologramMinAlpha: 0.3
     - _HologramStripesAmount: 0.04
     - _HologramStripesSpeed: 4.5
     - _HologramUnmodAmount: 0

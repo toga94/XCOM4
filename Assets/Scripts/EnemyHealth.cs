@@ -5,6 +5,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 {
 
     public event Action<bool> OnEnemyDie;
+    public event Action<bool> OnDie;
 
     [SerializeField] private Animator animator;
     [SerializeField] private float health;
@@ -34,6 +35,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     }
     private void OnDestroy()
     {
+        OnDie?.Invoke(true);
         OnEnemyDie?.Invoke(true);
     }
 }

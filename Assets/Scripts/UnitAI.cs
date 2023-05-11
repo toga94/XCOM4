@@ -64,7 +64,7 @@ public class UnitAI : MonoBehaviour
     {
         currentState = GameStateSystem.Instance.GetCurrentState();
         if (!unit.OnGrid) return;
-        if (currentState is CombatPhaseState)
+        if (currentState.IsCombatState)
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
             agent.speed = unitObject.speed;
@@ -164,24 +164,19 @@ public class UnitAI : MonoBehaviour
     }
     private void AnimateState(GameState currentState)
     {
-        switch (currentState)
+        if (currentState.IsCombatState)
         {
-            case ChampionSelectionState _:
+            if (!unit.OnGrid)
+            {
                 DefaultMethod();
-                break;
-            case CombatPhaseState _:
-                {
-                    if (!unit.OnGrid)
-                    {
-                        DefaultMethod();
-                    }
-                    else
-                    {
-                        CombatPhase();
-                    }
-
-                    break;
-                }
+            }
+            else
+            {
+                CombatPhase();
+            }
+        }
+        else {
+            DefaultMethod();
         }
     }
 

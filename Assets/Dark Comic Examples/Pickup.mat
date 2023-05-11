@@ -97,7 +97,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AmbientCategory: 0
-    - _AmbientShadowStrength: 0
+    - _AmbientShadowStrength: 1
     - _BaseReflectStrength: 1
     - _Blend: 0
     - _BumpScale: 1
@@ -163,7 +163,7 @@ Material:
     - _SpecularSteps: 10.11
     - _SpecularTextureContrast: 1
     - _SpecularTextureMapping: 2
-    - _SpecularTextureSize: 53.31
+    - _SpecularTextureSize: 25
     - _SpecularType: 0
     - _SrcBlend: 1
     - _Surface: 0

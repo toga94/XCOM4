@@ -169,7 +169,7 @@ public class DragAndDrop : MonoBehaviour
                 );
 
             GameState stateIndex = GameStateSystem.Instance.GetCurrentState();
-            if (stateIndex is CombatPhaseState && character.GetUnit.OnGrid) { _draggableObject = null; return; }
+            if (stateIndex.IsCombatState && character.GetUnit.OnGrid) { _draggableObject = null; return; }
 
             sellUI.SetActive(true);
             marketUI.SetActive(false);

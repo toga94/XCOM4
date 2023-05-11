@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,11 +16,8 @@ public class Enemy : MonoBehaviour
     private float attackRange = 1f;
     private float attackDelay = 1f;
     private float lastAttackTime = 0f;
-
     private string targetTag = "Unit";
     private GameObject targetObject;
-
-
     [SerializeField]
     private float enemyDamage;
     void Start()
@@ -35,7 +30,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
 
-        if (enemyHealth.GetHealth > 0 && GameStateSystem.Instance.GetCurrentState() is CombatPhaseState) {
+        if (enemyHealth.GetHealth > 0 && GameStateSystem.Instance.GetCurrentState().IsCombatState) {
             CombatPhase();
         }
 
@@ -115,10 +110,7 @@ public class Enemy : MonoBehaviour
 
     private void Attack(GameObject target)
     {
-        // Calculate the direction to the target
         Vector3 direction = (target.transform.position - transform.position).normalized;
-
-        // Calculate the rotation to face the target
         Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
         IDamageable damagableTarget = target.GetComponent<IDamageable>();
 

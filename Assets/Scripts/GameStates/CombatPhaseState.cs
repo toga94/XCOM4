@@ -7,8 +7,11 @@ public class CombatPhaseState : GameState
     private List<TransformData> unitTransforms = new List<TransformData>();
     public List<Enemy> enemies = new List<Enemy>();
     private bool allEnemiesDead = false;
+
+    private int enemiesCount;
     public override void OnEnterState()
     {
+        IsCombatState = true;
         duration = 99999f;
         GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
         GameManager gm = GameManager.Instance;
@@ -22,20 +25,27 @@ public class CombatPhaseState : GameState
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(collider => collider.enabled = false);
 
-        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        List<GameObject> enemyObjects = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+
+
+
         enemies.AddRange(enemyObjects.Select(obj => obj.GetComponent<Enemy>()));
-    }
-    public override void OnUpdate()
-    {
-        Debug.Log("udpating");
-        if (!allEnemiesDead)
+        enemiesCount = enemies.Count;
+        foreach (IDamageable enemyhp in from enemy in enemies
+                                let enemyhp = enemy.GetComponent<IDamageable>()
+                                select enemyhp)
         {
-            allEnemiesDead = enemies.All(enemy => enemy.isDead);
-            if (allEnemiesDead)
-            {
-                allEnemiesDead = false;
-                duration = 3f;
-            }
+            enemyhp.OnDie += OnEnemyKilled;
+        }
+    }
+    void OnEnemyKilled(bool value)
+    {
+        enemiesCount--;
+        allEnemiesDead = enemiesCount == 0;
+        if (allEnemiesDead)
+        {
+            allEnemiesDead = false;
+            duration = 3f;
         }
     }
     public override void OnExitState()
@@ -45,7 +55,8 @@ public class CombatPhaseState : GameState
         List<Unit> units = gm.GetAllUnitsOnGrid;
         List<TransformData> savedTransforms = gm.SavedUnitTransforms;
         units.Select((unit, index) => new { unit, index }).ToList().ForEach(obj => {
-            obj.unit.transform.SetPositionAndRotation(savedTransforms[obj.index].position, savedTransforms[obj.index].rotation);
+            obj.unit.transform.SetPositionAndRotation(
+                savedTransforms[obj.index].position, savedTransforms[obj.index].rotation);
         });
 
         gm.WinCombat();
@@ -69,5 +80,6 @@ public class CombatPhaseState : GameState
         Economy.AddGold(totalGold);
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(bc => bc.enabled = true);
+        IsCombatState = false;
     }
 }

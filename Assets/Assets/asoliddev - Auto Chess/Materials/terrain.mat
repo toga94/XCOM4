@@ -98,7 +98,7 @@ Material:
     - _AlphaClip: 0
     - _AmbientCategory: 0
     - _AmbientShadowStrength: 1
-    - _BaseReflectStrength: 0.093
+    - _BaseReflectStrength: 0.5
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -113,7 +113,7 @@ Material:
     - _DiffuseLightingStyle: 1
     - _DiffuseRim: 0.1
     - _DiffuseSteps: 2.83
-    - _DiffuseTextureContrast: 0.236
+    - _DiffuseTextureContrast: 1.19
     - _DiffuseTextureMapping: 2
     - _DiffuseTextureSize: 6
     - _DstBlend: 0
@@ -134,7 +134,7 @@ Material:
     - _MinMaxDiffEdge: 0
     - _MinMaxPaintEdge: 0
     - _MinMaxSpecEdge: 0
-    - _NormalMapStr: 0.317
+    - _NormalMapStr: 0.34
     - _OcclusionStrength: 1
     - _OpaqueLines: 0
     - _OutlinesOn: 1
@@ -177,12 +177,12 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseEdge: {r: 0, g: 0.8032438, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HatchingRanges: {r: 0.277, g: 0.727, b: 1, a: 1}
+    - _HatchingRanges: {r: 0, g: 0.727, b: 1, a: 1}
     - _HatchingRangesSpec: {r: 1, g: 0.387, b: 0, a: 1}
     - _PaintMaskEdges: {r: 0, g: 1, b: 0, a: 0}
     - _ReflectionFresnelParams: {r: 0.055, g: 0.147, b: 0.143, a: 0.152}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularEdge: {r: 0, g: 0.34591863, b: 0, a: 0}
+    - _SpecularEdge: {r: 0, g: 0.929675, b: 0, a: 0}
     - _TilingOffset: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6172893579111757659
