@@ -322,7 +322,7 @@ public class GameManager : Singleton<GameManager>
     public GridPosition GetNextFreeInventoryGridPosition()
     {
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
-        int maxIndex = UnitsInInventory.Count;
+        int maxIndex = inventoryGrid.GetWidth() - 1;
 
         IEnumerable<GridPosition> freePositions = Enumerable.Range(0, maxIndex)
             .Select(x => new GridPosition(x, 0))
@@ -333,7 +333,7 @@ public class GameManager : Singleton<GameManager>
     public GridPosition GetNextFreeLevelGridPosition()
     {
         LevelGrid grid = LevelGrid.Instance;
-        int maxIndex = UnitsInInventory.Count;
+        int maxIndex = grid.GetWidth() - 1;
 
         IEnumerable<GridPosition> freePositions = Enumerable.Range(0, maxIndex)
             .Select(x => new GridPosition(x, 0))

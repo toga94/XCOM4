@@ -59,17 +59,17 @@ public class CombatPhaseState : GameState
         gm.WinCombat();
         int winStreak = gm.GetWinStreak();
         int bonusGold = 0;
-        if (winStreak >= 2)
-        {
-            bonusGold = 1;
-        }
-        if (winStreak >= 3)
-        {
-            bonusGold = 2;
-        }
         if (winStreak >= 5)
         {
             bonusGold = 3;
+        }
+        else if (winStreak >= 3)
+        {
+            bonusGold = 2;
+        }
+        else if (winStreak >= 2)
+        {
+            bonusGold = 1;
         }
         int totalGold = Economy.MIN_GOLD + winStreak + bonusGold;
         int goldBonus = (int)Mathf.FloorToInt(Economy.GetGold() / 10f);

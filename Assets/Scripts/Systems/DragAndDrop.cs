@@ -26,8 +26,16 @@ public class DragAndDrop : MonoBehaviour
 
     private bool selling;
 
-    public void SetSelling(bool value) => selling = value;
-
+    public void SetSelling(bool value)
+    {
+        if (GameManager.Instance.GetAllUnits.Count > 1)
+        {
+            selling = value;
+        }
+        else {
+            selling = false;
+        }
+    }
 
     private GridPosition lastgridPosition;
     private GridPosition gridPosition;
@@ -142,9 +150,14 @@ public class DragAndDrop : MonoBehaviour
         character.GetUnit.charState = CharState.Fall;
         Ray ray = _mainCamera.ScreenPointToRay(touchPosition);
         RaycastHit hit;
-
+        GameState stateIndex = GameStateSystem.Instance.GetCurrentState();
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, gridObjectLayer))
         {
+            if (stateIndex.IsCombatState && character.GetUnit.OnGrid) {
+                _draggableObject = null;
+                character.GetUnit.charState = CharState.Idle;
+                return;
+            }
             float x = Mathf.Floor(hit.point.x / gridSize) * gridSize;
             float y = Mathf.Floor(hit.point.y / gridSize) * gridSize + 1.5f;
             float z = Mathf.Floor(hit.point.z / gridSize) * gridSize;
@@ -230,6 +243,14 @@ public class DragAndDrop : MonoBehaviour
 
     private void CharacterDragging()
     {
+        GameState stateIndex = GameStateSystem.Instance.GetCurrentState();
+        if (stateIndex.IsCombatState && character.GetUnit.OnGrid)
+        {
+            _draggableObject = null;
+            character.GetUnit.charState = CharState.Idle;
+            return;
+        }
+
         InventoryGrid inventoryGrid = InventoryGrid.Instance;
 
 
@@ -260,6 +281,7 @@ public class DragAndDrop : MonoBehaviour
         {
             case DragState.Grid2Grid:
                 {
+                    if (GameStateSystem.Instance.GetCurrentState().IsCombatState) return;
                     if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
                     {
                         Unit unit = character.GetUnit;
@@ -296,6 +318,7 @@ public class DragAndDrop : MonoBehaviour
 
             case DragState.Inv2Grid:
                 {
+                    if (GameStateSystem.Instance.GetCurrentState().IsCombatState) return;
                     if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
                     {
                         Unit unit = character.GetUnit;
