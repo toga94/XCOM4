@@ -2,21 +2,27 @@
 using System.Linq;
 using UnityEngine;
 
-public class CombatPhaseState : GameState
+public class Minion_1_1_PhaseState : GameState
 {
     private List<TransformData> unitTransforms = new List<TransformData>();
     public List<Enemy> enemies = new List<Enemy>();
     private bool allEnemiesDead = false;
-    private GameManager gameManager;
+    private GameManager gm;
     private int enemiesCount;
+    private GameObject timeSlider;
     public override void OnEnterState()
     {
-        gameManager = GameManager.Instance;
-        LoadAndSaveUnitsPosition();
-
         IsCombatState = true;
         duration = 99999f;
-        GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
+        timeSlider = GameStateSystem.Instance.timeSlider.gameObject;
+        timeSlider.SetActive(false);
+
+        gm = GameManager.Instance;
+        unitTransforms = gm.GetAllUnitsOnGrid.Select(unit => 
+        new TransformData(
+            new Vector3(unit.UnitGridPosition.x, unit.transform.position.y, unit.UnitGridPosition.z),
+        unit.transform.rotation)).ToList();
+        gm.SavedUnitTransforms = unitTransforms;
 
 
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
@@ -32,24 +38,6 @@ public class CombatPhaseState : GameState
             enemyhp.OnDie += OnEnemyKilled;
         }
     }
-
-    private void LoadAndSaveUnitsPosition()
-    {
-        List<Unit> units = gameManager.GetAllUnitsOnGrid;
-
-        unitTransforms = units.Select(unit =>
-        new TransformData(
-            new Vector3(unit.UnitGridPosition.x, unit.transform.position.y, unit.UnitGridPosition.z),
-        unit.transform.rotation)).ToList();
-        gameManager.SavedUnitTransforms = unitTransforms;
-
-        units.Select((unit, index) => new { unit, index }).ToList().ForEach(obj =>
-        {
-            obj.unit.transform.SetPositionAndRotation(
-                unitTransforms[obj.index].position, unitTransforms[obj.index].rotation);
-        });
-    }
-
     void OnEnemyKilled(bool value)
     {
         enemiesCount--;
@@ -60,15 +48,16 @@ public class CombatPhaseState : GameState
             duration = 3f;
         }
     }
-
-
     public override void OnExitState()
     {
-        GameStateSystem.Instance.timeSlider.gameObject.SetActive(true);
-        GameManager gm = GameManager.Instance;
+        timeSlider.SetActive(true);
+        gm = GameManager.Instance;
         List<Unit> units = gm.GetAllUnitsOnGrid;
-
-        LoadAndSaveUnitsPosition();
+        List<TransformData> savedTransforms = gm.SavedUnitTransforms;
+        units.Select((unit, index) => new { unit, index }).ToList().ForEach(obj => {
+            obj.unit.transform.SetPositionAndRotation(
+                savedTransforms[obj.index].position, savedTransforms[obj.index].rotation);
+        });
 
         gm.WinCombat();
         int winStreak = gm.GetWinStreak();

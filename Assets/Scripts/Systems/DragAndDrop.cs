@@ -236,7 +236,7 @@ public class DragAndDrop : MonoBehaviour
             }
 
             character.GetCollider.enabled = true;
-            character = null;
+            character = default(Character);
             _draggableObject = null;
         }
     }

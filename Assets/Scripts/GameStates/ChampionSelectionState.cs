@@ -1,29 +1,53 @@
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
+using UnityEngine;
 
 public class ChampionSelectionState : GameState
 {
-    GameManager gameManager;
+    private GameManager gameManager;
+    private List<TransformData> unitTransforms = new List<TransformData>();
     // Logic for entering Champion Selection state
     public override void OnEnterState()
     {
+
         duration = 15f;
-        GameManager gameManager = GameManager.Instance;
+        gameManager = GameManager.Instance;
         GridSystemVisual.Instance.ShowAllGridPosition();
         gameManager.gridSizeTextMesh.gameObject.SetActive(true);
         CardShop cardShop = CardShop.Instance;
         cardShop.OpenShopMenu();
         cardShop.RandomSelect5ItemForShopFree();
 
+        LoadAndSaveUnitsPosition();
+
         List<Unit> allUnits = gameManager.GetAllUnits;
 
         allUnits.Select(u => u.GetComponent<HealthSystem>()).
-            ToList().ForEach(d => {
+            ToList().ForEach(d =>
+            {
                 d.Heal(999999f);
                 d.DecreaseMana(d.GetMana);
-                });
+            });
     }
+
+    private void LoadAndSaveUnitsPosition()
+    {
+        unitTransforms = gameManager.GetAllUnitsOnGrid.Select(unit =>
+        new TransformData(
+            new Vector3(unit.UnitGridPosition.x, unit.transform.position.y, unit.UnitGridPosition.z),
+        unit.transform.rotation)).ToList();
+        gameManager.SavedUnitTransforms = unitTransforms;
+        gameManager = GameManager.Instance;
+
+        List<Unit> units = gameManager.GetAllUnitsOnGrid;
+        List<TransformData> savedTransforms = gameManager.SavedUnitTransforms;
+        units.Select((unit, index) => new { unit, index }).ToList().ForEach(obj =>
+        {
+            obj.unit.transform.SetPositionAndRotation(
+                savedTransforms[obj.index].position, savedTransforms[obj.index].rotation);
+        });
+    }
+
     // Logic for updating Champion Selection state
     public override void OnUpdate()
     {
@@ -32,8 +56,8 @@ public class ChampionSelectionState : GameState
     // Logic for exiting Champion Selection state
     public override void OnExitState()
     {
-        GameManager gameManager = GameManager.Instance;
-
+        gameManager = GameManager.Instance;
+        LoadAndSaveUnitsPosition();
         // Check if there is free space on the grid and if there are units in the inventory
         bool onGridHaveFreeSpace = gameManager.GetAllUnitsOnGrid.Count < Economy.Level;
         bool unitsInInventory = gameManager.GetAllUnitsOnInventory.Any();

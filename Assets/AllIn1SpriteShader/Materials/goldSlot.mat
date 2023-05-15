@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: goldSlot
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: GRADIENT_ON ONLYINNEROUTLINE_ON ONLYOUTLINE_ON OUTBASE8DIR_ON
-    OUTDIST_ON OUTTEX_ON POSTERIZE_ON RADIALGRADIENT_ON _GRADISRADIAL_ON _ONLYINNEROUTLINE_ON
+  m_ShaderKeywords: GHOST_ON GLOW_ON GRADIENT_ON ONLYINNEROUTLINE_ON ONLYOUTLINE_ON
+    OUTBASE8DIR_ON OUTDIST_ON OUTTEX_ON RADIALGRADIENT_ON _GRADISRADIAL_ON _ONLYINNEROUTLINE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -116,7 +116,7 @@ Material:
     - _GhostTransparency: 0
     - _GlitchAmount: 2.4
     - _GlitchSize: 1
-    - _Glow: 10
+    - _Glow: 0.33
     - _GlowGlobal: 1
     - _GradBlend: 1
     - _GradBoostX: 1.2
@@ -133,7 +133,7 @@ Material:
     - _HandDrawnAmount: 10
     - _HandDrawnSpeed: 5
     - _HitEffectBlend: 1
-    - _HitEffectGlow: 5
+    - _HitEffectGlow: 1
     - _HologramBlend: 1
     - _HologramMaxAlpha: 0.75
     - _HologramMinAlpha: 0.1
@@ -171,7 +171,7 @@ Material:
     - _OverlayBlend: 1
     - _OverlayGlow: 1
     - _PinchUvAmount: 0.35
-    - _PixelateSize: 32
+    - _PixelateSize: 4
     - _PosterizeGamma: 1.3
     - _PosterizeNumColors: 24
     - _PosterizeOutline: 0
@@ -217,7 +217,7 @@ Material:
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
     - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
-    - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GlowColor: {r: 1, g: 0.7254902, b: 0, a: 1}
     - _GradBotLeftCol: {r: 1, g: 0.72671366, b: 0, a: 1}
     - _GradBotRightCol: {r: 0, g: 1, b: 0, a: 1}
     - _GradTopLeftCol: {r: 1, g: 0.96448636, b: 0, a: 1}

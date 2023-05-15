@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-internal class Character
+internal struct Character
 {
     public Character(Transform transform, Collider collider, Unit unit)
     {
