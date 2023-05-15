@@ -124,17 +124,6 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            foreach (var unit in GetAllUnits)
-            {
-                unit.GetComponent<IDamageable>().TakeDamage(10);
-            }
-        }
-    }
     GameState currentGameState;
     private void OnStateChanged(GameState gameState)
     {

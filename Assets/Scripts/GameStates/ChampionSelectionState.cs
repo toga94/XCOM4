@@ -32,19 +32,19 @@ public class ChampionSelectionState : GameState
 
     private void LoadAndSaveUnitsPosition()
     {
-        unitTransforms = gameManager.GetAllUnitsOnGrid.Select(unit =>
+        List<Unit> units = gameManager.GetAllUnitsOnGrid;
+
+        unitTransforms = units.Select(unit =>
         new TransformData(
             new Vector3(unit.UnitGridPosition.x, unit.transform.position.y, unit.UnitGridPosition.z),
         unit.transform.rotation)).ToList();
-        gameManager.SavedUnitTransforms = unitTransforms;
-        gameManager = GameManager.Instance;
 
-        List<Unit> units = gameManager.GetAllUnitsOnGrid;
-        List<TransformData> savedTransforms = gameManager.SavedUnitTransforms;
+        gameManager.SavedUnitTransforms = unitTransforms;
+
         units.Select((unit, index) => new { unit, index }).ToList().ForEach(obj =>
         {
             obj.unit.transform.SetPositionAndRotation(
-                savedTransforms[obj.index].position, savedTransforms[obj.index].rotation);
+                unitTransforms[obj.index].position, unitTransforms[obj.index].rotation);
         });
     }
 
@@ -57,7 +57,7 @@ public class ChampionSelectionState : GameState
     public override void OnExitState()
     {
         gameManager = GameManager.Instance;
-        LoadAndSaveUnitsPosition();
+
         // Check if there is free space on the grid and if there are units in the inventory
         bool onGridHaveFreeSpace = gameManager.GetAllUnitsOnGrid.Count < Economy.Level;
         bool unitsInInventory = gameManager.GetAllUnitsOnInventory.Any();
@@ -78,7 +78,7 @@ public class ChampionSelectionState : GameState
                     unit.OnGrid = true;
                 });
         }
-
+        LoadAndSaveUnitsPosition();
         GridSystemVisual.Instance.HideAllGridPosition();
         gameManager.gridSizeTextMesh.gameObject.SetActive(false);
     }

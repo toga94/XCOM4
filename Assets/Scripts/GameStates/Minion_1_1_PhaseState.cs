@@ -7,22 +7,15 @@ public class Minion_1_1_PhaseState : GameState
     private List<TransformData> unitTransforms = new List<TransformData>();
     public List<Enemy> enemies = new List<Enemy>();
     private bool allEnemiesDead = false;
-    private GameManager gm;
+    private GameManager gameManager;
     private int enemiesCount;
-    private GameObject timeSlider;
     public override void OnEnterState()
     {
+        gameManager = GameManager.Instance;
+
         IsCombatState = true;
         duration = 99999f;
-        timeSlider = GameStateSystem.Instance.timeSlider.gameObject;
-        timeSlider.SetActive(false);
-
-        gm = GameManager.Instance;
-        unitTransforms = gm.GetAllUnitsOnGrid.Select(unit => 
-        new TransformData(
-            new Vector3(unit.UnitGridPosition.x, unit.transform.position.y, unit.UnitGridPosition.z),
-        unit.transform.rotation)).ToList();
-        gm.SavedUnitTransforms = unitTransforms;
+        GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
 
 
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
@@ -32,12 +25,14 @@ public class Minion_1_1_PhaseState : GameState
         enemies.AddRange(enemyObjects.Select(obj => obj.GetComponent<Enemy>()));
         enemiesCount = enemies.Count;
         foreach (IDamageable enemyhp in from enemy in enemies
-                                let enemyhp = enemy.GetComponent<IDamageable>()
-                                select enemyhp)
+                                        let enemyhp = enemy.GetComponent<IDamageable>()
+                                        select enemyhp)
         {
             enemyhp.OnDie += OnEnemyKilled;
         }
     }
+
+
     void OnEnemyKilled(bool value)
     {
         enemiesCount--;
@@ -48,19 +43,17 @@ public class Minion_1_1_PhaseState : GameState
             duration = 3f;
         }
     }
+
+
     public override void OnExitState()
     {
-        timeSlider.SetActive(true);
-        gm = GameManager.Instance;
-        List<Unit> units = gm.GetAllUnitsOnGrid;
-        List<TransformData> savedTransforms = gm.SavedUnitTransforms;
-        units.Select((unit, index) => new { unit, index }).ToList().ForEach(obj => {
-            obj.unit.transform.SetPositionAndRotation(
-                savedTransforms[obj.index].position, savedTransforms[obj.index].rotation);
-        });
+        GameStateSystem.Instance.timeSlider.gameObject.SetActive(true);
 
-        gm.WinCombat();
-        int winStreak = gm.GetWinStreak();
+        List<Unit> units = gameManager.GetAllUnitsOnGrid;
+
+
+        gameManager.WinCombat();
+        int winStreak = gameManager.GetWinStreak();
         int bonusGold = 0;
         if (winStreak >= 5)
         {
@@ -70,7 +63,7 @@ public class Minion_1_1_PhaseState : GameState
         {
             bonusGold = 2;
         }
-        else if (winStreak >= 2)
+        else
         {
             bonusGold = 1;
         }

@@ -12,7 +12,6 @@ public class CombatPhaseState : GameState
     public override void OnEnterState()
     {
         gameManager = GameManager.Instance;
-        LoadAndSaveUnitsPosition();
 
         IsCombatState = true;
         duration = 99999f;
@@ -33,22 +32,6 @@ public class CombatPhaseState : GameState
         }
     }
 
-    private void LoadAndSaveUnitsPosition()
-    {
-        List<Unit> units = gameManager.GetAllUnitsOnGrid;
-
-        unitTransforms = units.Select(unit =>
-        new TransformData(
-            new Vector3(unit.UnitGridPosition.x, unit.transform.position.y, unit.UnitGridPosition.z),
-        unit.transform.rotation)).ToList();
-        gameManager.SavedUnitTransforms = unitTransforms;
-
-        units.Select((unit, index) => new { unit, index }).ToList().ForEach(obj =>
-        {
-            obj.unit.transform.SetPositionAndRotation(
-                unitTransforms[obj.index].position, unitTransforms[obj.index].rotation);
-        });
-    }
 
     void OnEnemyKilled(bool value)
     {
@@ -68,7 +51,6 @@ public class CombatPhaseState : GameState
 
         List<Unit> units = gameManager.GetAllUnitsOnGrid;
 
-        LoadAndSaveUnitsPosition();
 
         gameManager.WinCombat();
         int winStreak = gameManager.GetWinStreak();
