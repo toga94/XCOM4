@@ -65,13 +65,13 @@ public class CombatPhaseState : GameState
     public override void OnExitState()
     {
         GameStateSystem.Instance.timeSlider.gameObject.SetActive(true);
-        GameManager gm = GameManager.Instance;
-        List<Unit> units = gm.GetAllUnitsOnGrid;
+
+        List<Unit> units = gameManager.GetAllUnitsOnGrid;
 
         LoadAndSaveUnitsPosition();
 
-        gm.WinCombat();
-        int winStreak = gm.GetWinStreak();
+        gameManager.WinCombat();
+        int winStreak = gameManager.GetWinStreak();
         int bonusGold = 0;
         if (winStreak >= 5)
         {
@@ -81,7 +81,7 @@ public class CombatPhaseState : GameState
         {
             bonusGold = 2;
         }
-        else if (winStreak >= 2)
+        else
         {
             bonusGold = 1;
         }
