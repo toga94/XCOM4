@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Minion_1_1_PhaseState : GameState
 {
-    private List<TransformData> unitTransforms = new List<TransformData>();
     public List<Enemy> enemies = new List<Enemy>();
     private bool allEnemiesDead = false;
     private GameManager gameManager;
     private int enemiesCount;
+
+    private List<Vector3> spawnPositions;
+    private List<string> enemyNames;
+
+
     public override void OnEnterState()
     {
         gameManager = GameManager.Instance;
@@ -16,7 +20,7 @@ public class Minion_1_1_PhaseState : GameState
         IsCombatState = true;
         duration = 99999f;
         GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
-
+        UnitPositionUtility.RefreshUnitsPosition();
 
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(collider => collider.enabled = false);
@@ -71,8 +75,10 @@ public class Minion_1_1_PhaseState : GameState
         int goldBonus = (int)Mathf.FloorToInt(Economy.GetGold() / 10f);
         totalGold += goldBonus;
         Economy.AddGold(totalGold);
+        Economy.GainExperience(1);
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(bc => bc.enabled = true);
         IsCombatState = false;
+        UnitPositionUtility.RefreshUnitsPosition();
     }
 }

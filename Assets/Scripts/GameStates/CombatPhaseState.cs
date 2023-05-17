@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CombatPhaseState : GameState
 {
-    private List<TransformData> unitTransforms = new List<TransformData>();
     public List<Enemy> enemies = new List<Enemy>();
     private bool allEnemiesDead = false;
     private GameManager gameManager;
@@ -71,6 +70,7 @@ public class CombatPhaseState : GameState
         int goldBonus = (int)Mathf.FloorToInt(Economy.GetGold() / 10f);
         totalGold += goldBonus;
         Economy.AddGold(totalGold);
+        Economy.GainExperience(1);
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(bc => bc.enabled = true);
         IsCombatState = false;
