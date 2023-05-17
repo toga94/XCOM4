@@ -18,10 +18,13 @@ public class GameStateSystem : Singleton<GameStateSystem>
         gameStates.AddRange(new GameState[] {
         new CarouselState(),
         new ChampionSelectionState(),
-        new CombatPhaseState(),
+        new Minion_1_1_PhaseState(),
         new ChampionSelectionState(),
+                new Minion_1_1_PhaseState(),
         new ChampionSelectionState(),
+                new Minion_1_1_PhaseState(),
         new ChampionSelectionState(),
+                new Minion_1_1_PhaseState(),
         new ChampionSelectionState(),
         });
     }

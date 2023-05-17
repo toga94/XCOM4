@@ -1,15 +1,16 @@
 using System;
 using UnityEngine;
-
-public class EnemyHealth : MonoBehaviour, IDamageable
+using Lean.Pool;
+public class EnemyHealth : MonoBehaviour, IDamageable, IPoolable
 {
 
     public event Action<bool> OnEnemyDie;
-    public event Action<bool> OnDie;
+    public event Action<bool, GameObject> OnDie;
 
     [SerializeField] private Animator animator;
-    [SerializeField] private float health;
-
+        
+    private float health;
+    [SerializeField] private float startHealth;
     public float GetHealth => health;
 
     public void Heal(float value)
@@ -30,12 +31,17 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     void Die()
     {
         animator.SetBool("dead", true);
-
-        Destroy(gameObject, 3);
-    }
-    private void OnDestroy()
-    {
-        OnDie?.Invoke(true);
+        OnDie?.Invoke(true, this.gameObject);
         OnEnemyDie?.Invoke(true);
+    }
+
+    public void OnSpawn()
+    {
+        health = startHealth;
+    }
+
+    public void OnDespawn()
+    {
+
     }
 }

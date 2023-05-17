@@ -24,16 +24,18 @@ public class CombatPhaseState : GameState
         enemies.AddRange(enemyObjects.Select(obj => obj.GetComponent<Enemy>()));
         enemiesCount = enemies.Count;
         foreach (IDamageable enemyhp in from enemy in enemies
-                                let enemyhp = enemy.GetComponent<IDamageable>()
-                                select enemyhp)
+                                        let enemyhp = enemy.GetComponent<IDamageable>()
+                                        select enemyhp)
         {
             enemyhp.OnDie += OnEnemyKilled;
         }
     }
 
 
-    void OnEnemyKilled(bool value)
+
+    void OnEnemyKilled(bool value, GameObject minion)
     {
+        //enemyPool.Despawn(minion);
         enemiesCount--;
         allEnemiesDead = enemiesCount == 0;
         if (allEnemiesDead)
@@ -42,6 +44,7 @@ public class CombatPhaseState : GameState
             duration = 3f;
         }
     }
+
 
 
     public override void OnExitState()

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using Lean.Pool;
 public class Minion_1_1_PhaseState : GameState
 {
     public List<Enemy> enemies = new List<Enemy>();
@@ -9,9 +9,8 @@ public class Minion_1_1_PhaseState : GameState
     private GameManager gameManager;
     private int enemiesCount;
 
-    private List<Vector3> spawnPositions;
-    private List<string> enemyNames;
 
+    private LeanGameObjectPool enemyPool;
 
     public override void OnEnterState()
     {
@@ -25,7 +24,20 @@ public class Minion_1_1_PhaseState : GameState
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(collider => collider.enabled = false);
 
-        List<GameObject> enemyObjects = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+
+        enemyPool = GameObject.Find("_Pooling").transform.Find("minion_1_1_UIPool").GetComponent<LeanGameObjectPool>();
+
+        List<Vector3> enemyPosition = new List<Vector3>
+        {
+        new Vector3(-0.5f, 0.24f, 24.5f),
+        new Vector3(11f, 0.24f, 20f),
+        new Vector3(22f, 0.24f, 24.5f)
+        };
+
+        List<GameObject> enemyObjects = enemyPosition
+        .Select(position => enemyPool.Spawn(position, Quaternion.Euler(0,180,0)))
+        .ToList();
+
         enemies.AddRange(enemyObjects.Select(obj => obj.GetComponent<Enemy>()));
         enemiesCount = enemies.Count;
         foreach (IDamageable enemyhp in from enemy in enemies
@@ -37,8 +49,9 @@ public class Minion_1_1_PhaseState : GameState
     }
 
 
-    void OnEnemyKilled(bool value)
+    void OnEnemyKilled(bool value, GameObject minion)
     {
+        enemyPool.Despawn(minion);
         enemiesCount--;
         allEnemiesDead = enemiesCount == 0;
         if (allEnemiesDead)

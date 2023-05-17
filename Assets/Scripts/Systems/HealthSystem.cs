@@ -6,7 +6,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public bool IsDie => Health <= 0;
     public event Action<float, int, float> OnHealthChanged;
     public event Action<float, float> OnManaChanged;
-    public event Action<bool> OnDie;
+    public event Action<bool, GameObject> OnDie;
 
     private UnitObject unitObj;
     private Unit unit;
@@ -72,7 +72,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
     private void OnDestroy()
     {
-            OnDie?.Invoke(true);
+        OnDie?.Invoke(true, gameObject);
         Destroy(canvasBar);
     }
 }
