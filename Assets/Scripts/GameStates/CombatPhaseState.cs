@@ -16,7 +16,7 @@ public class CombatPhaseState : GameState
         IsCombatState = true;
         duration = 99999f;
         GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
-
+        UnitPositionUtility.RefreshUnitsPosition();
 
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(collider => collider.enabled = false);
@@ -74,5 +74,6 @@ public class CombatPhaseState : GameState
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(bc => bc.enabled = true);
         IsCombatState = false;
+        UnitPositionUtility.RefreshUnitsPosition();
     }
 }

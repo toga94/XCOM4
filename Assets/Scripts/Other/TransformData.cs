@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[SerializeField]
 public struct TransformData
 {
     public Vector3 position;
