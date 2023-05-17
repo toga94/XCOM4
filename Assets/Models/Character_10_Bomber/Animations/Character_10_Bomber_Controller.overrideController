@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Character_10_Bomber_Controller
+  m_Controller: {fileID: 9300000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 832872274886a724195c9a00cfaba51f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9276d910948a3fe489d97bd4a47218ff, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2cdde9453258ecc4fb7ff31976a44f6f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f7d7117f4d3dce04d870c05e4f78d76f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 02b2faad4ae329343a9ca80d33d22370, type: 2}

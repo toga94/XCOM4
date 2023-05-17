@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc288ee56768d9bdacabe3501a74d1d, type: 3}
+  m_Name: Character_10_Bomber_Attack_Large
+  m_EditorClassIdentifier:
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 11400000, guid: d33b2dc44b661e3418571614756215a7, type: 2}
+  - {fileID: 11400000, guid: e2983d87758a4a146a664714b78cdec6, type: 2}
+  - {fileID: 11400000, guid: 22cbc112bc949b548b0dcd4b699002af, type: 2}
+  - {fileID: 11400000, guid: fd07722730dc68e45ad9ed4866e57a3c, type: 2}
+  - {fileID: 11400000, guid: 60100e72d89bf2e48b9c9b663b5e3c07, type: 2}
+  - {fileID: 11400000, guid: 02f47191ec9d26c43a03c3dfe0f29147, type: 2}
+  - {fileID: 11400000, guid: ee461b71d8941b14181db2bb46cf3f0c, type: 2}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}
