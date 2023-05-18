@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc288ee56768d9bdacabe3501a74d1d, type: 3}
+  m_Name: Boss_02_Rider_Stance_Attack
+  m_EditorClassIdentifier:
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 11400000, guid: 2a520f59c496c9045a12b822f822a97c, type: 2}
+  - {fileID: 11400000, guid: 87cecf63634d6e549a15d32291b5215a, type: 2}
+  - {fileID: 11400000, guid: a087cb840c3bb504ab23b4a32f63d1a0, type: 2}
+  - {fileID: 11400000, guid: fed453a566504af409dd10b9b368dd63, type: 2}
+  - {fileID: 11400000, guid: 79fa58e1d88bfc543a4d04e770ee9dbc, type: 2}
+  - {fileID: 11400000, guid: 93f170643a5710d46861c5bd66b4edb3, type: 2}
+  - {fileID: 11400000, guid: 520cc9b2609e5d840aae0ba66ce577f1, type: 2}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}

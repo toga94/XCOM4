@@ -1151,7 +1151,7 @@ ZWrite On
 	{
 		
 		// Handle input data
-		float4 baseColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, d.texcoord0.xy);
+		float4 baseColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, d.texcoord0.xy) * _Color;
 		float4 masks = SAMPLE_TEXTURE2D(_MaskMap, sampler_MaskMap, d.texcoord0.xy);
 		o.Normal = UnpackScaleNormal(SAMPLE_TEXTURE2D(_BumpMap, sampler_BumpMap, d.texcoord0.xy), _NormalMapStr);
 		d.worldSpaceNormal = TransformTangentToWorld(o.Normal, d.TBNMatrix);

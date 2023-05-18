@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc288ee56768d9bdacabe3501a74d1d, type: 3}
+  m_Name: Boss_02_Rider_Confused
+  m_EditorClassIdentifier:
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 11400000, guid: 86200ba126e5b2943bc182834e145a9f, type: 2}
+  - {fileID: 11400000, guid: 3afe1d21560c5e44380f59e27a6b6a21, type: 2}
+  - {fileID: 11400000, guid: 8e4eca25eb5416a45996b85d7e301b9c, type: 2}
+  - {fileID: 11400000, guid: f01f64942b6b93c4d8bc9511fed9958a, type: 2}
+  - {fileID: 11400000, guid: e43169272998eb24c9a3e531902c1597, type: 2}
+  - {fileID: 11400000, guid: 04b07e68a3854854caf6136ceb79b95a, type: 2}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}

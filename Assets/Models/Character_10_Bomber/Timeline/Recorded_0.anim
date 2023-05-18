@@ -2,12 +2,12 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!74 &7400000
 AnimationClip:
-  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Recorded
+  m_Name: Recorded_0
+  serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -83,21 +83,21 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3214103276
-      attribute: 3305885265
+      path: 495693389
+      attribute: 1057022580
       script: {fileID: 0}
       typeID: 137
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 10929413
-      attribute: 3305885265
+      path: 3909822146
+      attribute: 1057022580
       script: {fileID: 0}
       typeID: 137
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3073392762
+      path: 3496747630
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1

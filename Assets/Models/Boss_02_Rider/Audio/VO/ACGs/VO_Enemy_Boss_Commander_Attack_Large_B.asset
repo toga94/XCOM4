@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96293db1fc92d0c9c50ed83ddc66631, type: 3}
+  m_Name: VO_Enemy_Boss_Commander_Attack_Large_B
+  m_EditorClassIdentifier:
+  identifier:
+    guid: b1ee9c09bb9e70d4b886d328012f47c5
+    localId: 11400000
+  clips:
+  - clip: {fileID: 8300000, guid: b3d04f075f246c545a9e33f92382d76c, type: 3}
+    probability: 1
+  - clip: {fileID: 8300000, guid: fcad01a89cf25f84d9eab8dc5a7c135a, type: 3}
+    probability: 1
+  - clip: {fileID: 8300000, guid: cd726121489f94f43b8aa77595c52026, type: 3}
+    probability: 1
+  - clip: {fileID: 8300000, guid: 2fef8d1ea558ec542b051df9519430a8, type: 3}
+    probability: 1
+  softSoundCap: 0
+  hardSoundCap: 0
+  timeGateThreshold: 0
+  timeGateFadeDuration: 0.25
+  audioclipCooldownCount: 1
+  settings:
+    output: {fileID: 0, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    loop: 0
+    bypassPause: 0
+    randomizeStartTime: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 0.7
+    volumeVariationAmount: 0
+    pitch: 1
+    pitchVariationAmount: 0
+    stereoPan: 0
+    spatialBlend: 1
+    reverbZoneMix: 1
+    dopplerLevel: 0
+    spread: 0
+    peripheralVolumeCutoffAngle: 0
+    volumeRolloff: 1
+    minDistance: 1
+    maxDistance: 25
+    spatialBlendCurve:
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 10
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    reverbCurve:
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 10
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    virtualStereoPan: 1
+    virtualListenerFollowSmoothing: 0

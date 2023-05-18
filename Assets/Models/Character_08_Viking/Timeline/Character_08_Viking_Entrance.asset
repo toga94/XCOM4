@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc288ee56768d9bdacabe3501a74d1d, type: 3}
+  m_Name: Character_08_Viking_Entrance
+  m_EditorClassIdentifier:
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 11400000, guid: 844cc2f94fc2499459f2f12a7cf8b87e, type: 2}
+  - {fileID: 11400000, guid: c3ae03c6b79fc164690a1a4149bc38d6, type: 2}
+  - {fileID: 11400000, guid: 95dfb7906ecc9a54c9a5d98f8cd33cae, type: 2}
+  - {fileID: 11400000, guid: 2a4779fcc4ac0d34a80bce9e04bc1a58, type: 2}
+  - {fileID: 11400000, guid: e2c8ea2c1985a984fb1f67b49f95986d, type: 2}
+  - {fileID: 11400000, guid: f60f19356b2202f4d9ce45e4fd7192e4, type: 2}
+  - {fileID: 11400000, guid: 5ed2a19b5464b0648995733843800c73, type: 2}
+  - {fileID: 11400000, guid: 8ac687ed170bb7a46a08959532e27595, type: 2}
+  - {fileID: 11400000, guid: b60c20fa61bd18c42bf12ff4aa403582, type: 2}
+  - {fileID: 11400000, guid: eddc2ced3342b2340abebbdfc32adaaf, type: 2}
+  - {fileID: 11400000, guid: 7a04063cd617e7c49a20ddc1cf6b693d, type: 2}
+  - {fileID: 11400000, guid: 91b1d70733f12494e9e7b799b7cfe3f0, type: 2}
+  - {fileID: 11400000, guid: bafe5011f443c9c47af90622100cf5d8, type: 2}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}

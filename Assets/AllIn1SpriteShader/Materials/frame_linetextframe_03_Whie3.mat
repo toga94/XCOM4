@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: frame_linetextframe_03_Whie3
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: GLITCH_ON HOLOGRAM_ON OUTBASE_ON _COLORCOLOR_ON
+  m_ShaderKeywords: OUTBASE_ON _COLORCOLOR_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -48,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 711e54b18d920433a89247353713f9a8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6c313154b24174e74a18a2c64be8e231, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineDistortTex:
@@ -113,7 +113,7 @@ Material:
     - _GhostBlend: 1
     - _GhostColorBoost: 1
     - _GhostTransparency: 0.817
-    - _GlitchAmount: 4.7
+    - _GlitchAmount: 7.29
     - _GlitchSize: 0.25
     - _Glow: 16.8
     - _GlowGlobal: 1
@@ -225,7 +225,7 @@ Material:
     - _HitEffectColor: {r: 0, g: 0.5332246, b: 1, a: 1}
     - _HologramStripeColor: {r: 0, g: 1, b: 1, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0, g: 0.9960785, b: 0.9921569, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 0.2587599, g: 0.9056604, b: 0, a: 1}

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc288ee56768d9bdacabe3501a74d1d, type: 3}
+  m_Name: Boss_02_Rider_Stance_Start
+  m_EditorClassIdentifier:
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 11400000, guid: 84fdffe42ef8a834e966c2fb7db5a92a, type: 2}
+  - {fileID: 11400000, guid: b2d7a0596c51b7f46b4d0d74dcb7a1e6, type: 2}
+  - {fileID: 11400000, guid: 21ef662423a8f45419cb39dcd52bad6f, type: 2}
+  - {fileID: 11400000, guid: 41c1bfb219b0b754cb7b017714b7cf66, type: 2}
+  - {fileID: 11400000, guid: efb7927e79a93834f930ae4b9216307a, type: 2}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}

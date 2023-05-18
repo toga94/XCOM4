@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96293db1fc92d0c9c50ed83ddc66631, type: 3}
+  m_Name: SFX_Char_Viking_Victory_B
+  m_EditorClassIdentifier:
+  identifier:
+    guid: 2112df8070458d04db75476c5394da91
+    localId: 11400000
+  clips:
+  - clip: {fileID: 8300000, guid: 37da288a7559b4645b603378874777f9, type: 3}
+    probability: 1
+  - clip: {fileID: 8300000, guid: cbe5d1ac0d0cd7441b05021bde1b2ae3, type: 3}
+    probability: 1
+  - clip: {fileID: 8300000, guid: eb57b07eb9101f34d9d5ee2a56885ddf, type: 3}
+    probability: 1
+  - clip: {fileID: 8300000, guid: 978092ad48ad70043bb89d584f7e1ed9, type: 3}
+    probability: 1
+  - clip: {fileID: 8300000, guid: ba9a6fc10789e274ab4ccbe1c5d5b044, type: 3}
+    probability: 1
+  softSoundCap: 0
+  hardSoundCap: 0
+  timeGateThreshold: 0
+  timeGateFadeDuration: 0.25
+  audioclipCooldownCount: 0
+  settings:
+    output: {fileID: 0, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    loop: 0
+    bypassPause: 0
+    randomizeStartTime: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    priority: 0
+    volume: 0.6
+    volumeVariationAmount: 0.05
+    pitch: 1
+    pitchVariationAmount: 0.05
+    stereoPan: 0
+    spatialBlend: 1
+    reverbZoneMix: 1
+    dopplerLevel: 0
+    spread: 90
+    peripheralVolumeCutoffAngle: 45
+    volumeRolloff: 1
+    minDistance: 1
+    maxDistance: 25
+    spatialBlendCurve:
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 10
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    reverbCurve:
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 10
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    virtualStereoPan: 1
+    virtualListenerFollowSmoothing: 0.1

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc288ee56768d9bdacabe3501a74d1d, type: 3}
+  m_Name: Boss_02_Rider_Victory
+  m_EditorClassIdentifier:
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 11400000, guid: c879303c7181f2a4a877bbe8149df0ef, type: 2}
+  - {fileID: 11400000, guid: 30f4011bc7a47d548b7841f2a1bfc761, type: 2}
+  - {fileID: 11400000, guid: 037e6c967e41db746bcca7371c0f0028, type: 2}
+  - {fileID: 11400000, guid: 3a22c872d3ff58f4794b6a31e78830c5, type: 2}
+  - {fileID: 11400000, guid: b7193d20236315c469158521cf2fe49f, type: 2}
+  - {fileID: 11400000, guid: 5ad324e6456926c46b8daf8be3c3fe99, type: 2}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}

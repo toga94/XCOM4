@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc288ee56768d9bdacabe3501a74d1d, type: 3}
+  m_Name: Character_11_Bunker_Stance_Attack
+  m_EditorClassIdentifier:
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 11400000, guid: 5874f134b6ad35547bad3da2d2aaf360, type: 2}
+  - {fileID: 11400000, guid: c07e2a5cd39095646b5573d2374652c4, type: 2}
+  - {fileID: 11400000, guid: 188d06625ac6de2498c5f9024ddddcaa, type: 2}
+  - {fileID: 11400000, guid: 30af1efe5411aaa49bf656e4094f3094, type: 2}
+  - {fileID: 11400000, guid: 6bbc1031a845acf46926471455d2b32a, type: 2}
+  - {fileID: 11400000, guid: 76ed7c2e3e601af46878894a128d69fa, type: 2}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}

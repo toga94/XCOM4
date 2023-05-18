@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc288ee56768d9bdacabe3501a74d1d, type: 3}
+  m_Name: Character_08_Viking_Attack
+  m_EditorClassIdentifier:
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 11400000, guid: d4b750deff494694698b84041a019049, type: 2}
+  - {fileID: 11400000, guid: f3e95a4e53f7a1748a79fa39427d283b, type: 2}
+  - {fileID: 11400000, guid: 11fd0f24e3da8a643a61ff281f236f57, type: 2}
+  - {fileID: 11400000, guid: c8b55eae0ecd349438ea23e47202b7f3, type: 2}
+  - {fileID: 11400000, guid: fbc350a52d377ea41913b5ab5f40f997, type: 2}
+  - {fileID: 11400000, guid: 6b9a7890d7cc0334ca5e094964cdac7f, type: 2}
+  - {fileID: 11400000, guid: 8830c00a37a28c04582e457d2e982638, type: 2}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}

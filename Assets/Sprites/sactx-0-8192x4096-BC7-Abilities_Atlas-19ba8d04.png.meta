@@ -1,0 +1,7188 @@
+fileFormatVersion: 2
+guid: f52a8f405cfc6cc4ead1ec92056a5591
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4580680231237324750
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_0
+  - first:
+      213: -6394790385277219341
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_1
+  - first:
+      213: 6821288027173010634
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_2
+  - first:
+      213: 8643668745635224587
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_3
+  - first:
+      213: -2460555133742705877
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_4
+  - first:
+      213: -2593376986064899903
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_5
+  - first:
+      213: -5058418990905407585
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_6
+  - first:
+      213: 828123951406033259
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_7
+  - first:
+      213: 7098377413339974192
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_8
+  - first:
+      213: 1276268067375457473
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_9
+  - first:
+      213: -2143314212008925828
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_10
+  - first:
+      213: 2988249892882462162
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_11
+  - first:
+      213: 6435861159214927435
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_12
+  - first:
+      213: -7439256526308706294
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_13
+  - first:
+      213: 7618365068041512630
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_14
+  - first:
+      213: 1092859332273064752
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_15
+  - first:
+      213: -8153356798255603549
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_16
+  - first:
+      213: -8351415767608890938
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_17
+  - first:
+      213: -7191076264771871450
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_18
+  - first:
+      213: 4395091357090729312
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_19
+  - first:
+      213: -1243376153957996598
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_20
+  - first:
+      213: 253791163550873418
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_21
+  - first:
+      213: -8201129150892778115
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_22
+  - first:
+      213: 1006780893110409296
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_23
+  - first:
+      213: -4895887419233800074
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_24
+  - first:
+      213: -4625003937617378665
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_25
+  - first:
+      213: -6172087830497469853
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_26
+  - first:
+      213: -25439564715279584
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_27
+  - first:
+      213: -3886880655927093083
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_28
+  - first:
+      213: 1378609348740530400
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_29
+  - first:
+      213: 8640035946560279308
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_30
+  - first:
+      213: 7540020194189229118
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_31
+  - first:
+      213: 4743431059046677252
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_32
+  - first:
+      213: 444070526867245080
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_33
+  - first:
+      213: 4473776035600491253
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_34
+  - first:
+      213: -8617690180568303745
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_35
+  - first:
+      213: 6657661976797907146
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_36
+  - first:
+      213: 8250344235607614797
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_37
+  - first:
+      213: 4795390006100393299
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_38
+  - first:
+      213: 8796440784148214440
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_39
+  - first:
+      213: 8742721525635796645
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_40
+  - first:
+      213: 6510295879237687416
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_41
+  - first:
+      213: -8128365180667552396
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_42
+  - first:
+      213: -6316906163650703153
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_43
+  - first:
+      213: 6782075263858867587
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_44
+  - first:
+      213: 9025332165799807865
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_45
+  - first:
+      213: 3188818584050699179
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_46
+  - first:
+      213: -8806214947855155968
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_47
+  - first:
+      213: 6128921923154832317
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_48
+  - first:
+      213: -7512918349166629837
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_49
+  - first:
+      213: -1489263143108261283
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_50
+  - first:
+      213: -1448659973348526651
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_51
+  - first:
+      213: 5623155124393859086
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_52
+  - first:
+      213: 6939074319623786699
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_53
+  - first:
+      213: -3275864564249537774
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_54
+  - first:
+      213: -4352583361539769689
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_55
+  - first:
+      213: -2646097965726751468
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_56
+  - first:
+      213: 1155897678513200193
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_57
+  - first:
+      213: -4574980902140028063
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_58
+  - first:
+      213: -4145130173925396233
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_59
+  - first:
+      213: 2710548290973650427
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_60
+  - first:
+      213: 2007041782474169832
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_61
+  - first:
+      213: 4021802835833350143
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_62
+  - first:
+      213: 2898574458914011873
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_63
+  - first:
+      213: 4541531862675561408
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_64
+  - first:
+      213: -4914729540643875381
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_65
+  - first:
+      213: 2101507389591393341
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_66
+  - first:
+      213: 7216168431713029531
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_67
+  - first:
+      213: -6916657537143502478
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_68
+  - first:
+      213: 2908263583230281107
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_69
+  - first:
+      213: 2476058386124800003
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_70
+  - first:
+      213: 5912181302231472935
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_71
+  - first:
+      213: 7628805957342431311
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_72
+  - first:
+      213: -7963156726051747364
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_73
+  - first:
+      213: 6703189845279268965
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_74
+  - first:
+      213: -4331772948747757174
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_75
+  - first:
+      213: 2833068397868072290
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_76
+  - first:
+      213: 877047120521429212
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_77
+  - first:
+      213: 459662523391541136
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_78
+  - first:
+      213: -8735499462780234845
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_79
+  - first:
+      213: 5842763083818241299
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_80
+  - first:
+      213: 8193798823050068434
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_81
+  - first:
+      213: 2675453431622145335
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_82
+  - first:
+      213: -4272332791568717428
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_83
+  - first:
+      213: -5672120502443597597
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_84
+  - first:
+      213: 8418313531411777847
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_85
+  - first:
+      213: -1487469284600798812
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_86
+  - first:
+      213: -2735078494516721018
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_87
+  - first:
+      213: -2373891268158628388
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_88
+  - first:
+      213: 3579179308041371375
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_89
+  - first:
+      213: 3987422705452842680
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_90
+  - first:
+      213: -3904520400146157372
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_91
+  - first:
+      213: 3423298395520372121
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_92
+  - first:
+      213: -8757717513178099339
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_93
+  - first:
+      213: -2833290082108885350
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_94
+  - first:
+      213: -686733431076147306
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_95
+  - first:
+      213: -8947395029975869086
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_96
+  - first:
+      213: 1491413058151565573
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_97
+  - first:
+      213: -3405231391723237471
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_98
+  - first:
+      213: 4088498486005171492
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_99
+  - first:
+      213: 1766885234280978081
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_100
+  - first:
+      213: 1050974758339213943
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_101
+  - first:
+      213: 7290988441051347652
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_102
+  - first:
+      213: 8667170412164878809
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_103
+  - first:
+      213: 2875443181005145249
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_104
+  - first:
+      213: 5472165722582531936
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_105
+  - first:
+      213: 3540462436959654341
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_106
+  - first:
+      213: -5993266812624054345
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_107
+  - first:
+      213: 8540667177331512159
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_108
+  - first:
+      213: -5834628178176880331
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_109
+  - first:
+      213: 3000616577490791227
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_110
+  - first:
+      213: -1535215430562995471
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_111
+  - first:
+      213: 124523215040507994
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_112
+  - first:
+      213: -1147583514892276251
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_113
+  - first:
+      213: -6761946983690069593
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_114
+  - first:
+      213: 4568615668302015883
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_115
+  - first:
+      213: 4517887413936598291
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_116
+  - first:
+      213: -4574957665834056130
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_117
+  - first:
+      213: 1337561274234113594
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_118
+  - first:
+      213: 2171518898594574837
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_119
+  - first:
+      213: 4180640575307205374
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_120
+  - first:
+      213: -2296936767013042667
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_121
+  - first:
+      213: 4410940431241363056
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_122
+  - first:
+      213: 5914699550723189140
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_123
+  - first:
+      213: 7411577916582016559
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_124
+  - first:
+      213: -1594632891993936321
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_125
+  - first:
+      213: 7532583452392422885
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_126
+  - first:
+      213: -4120703524712181865
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_127
+  - first:
+      213: -2397690668459184452
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_128
+  - first:
+      213: -6694668717903731606
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_129
+  - first:
+      213: 4389892438194951955
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_130
+  - first:
+      213: 5345980300622865459
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_131
+  - first:
+      213: 3559262892706383470
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_132
+  - first:
+      213: 1620177582957604024
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_133
+  - first:
+      213: 155275109063846776
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_134
+  - first:
+      213: 4962921896717582263
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_135
+  - first:
+      213: 8867782703394912271
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_136
+  - first:
+      213: -4716827455159335170
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_137
+  - first:
+      213: 6819785491572559763
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_138
+  - first:
+      213: 8510964005741708315
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_139
+  - first:
+      213: -5005151464144167960
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_140
+  - first:
+      213: 4309413042475539043
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_141
+  - first:
+      213: 8184965400217586753
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_142
+  - first:
+      213: 716235819438014156
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_143
+  - first:
+      213: -3349768799952436513
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_144
+  - first:
+      213: -3441947750554304934
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_145
+  - first:
+      213: 6905653710463987907
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_146
+  - first:
+      213: -5029710963916064787
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_147
+  - first:
+      213: -176530924632414010
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_148
+  - first:
+      213: -8878933664535291504
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_149
+  - first:
+      213: 5026140853212777765
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_150
+  - first:
+      213: 2322442411967750726
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_151
+  - first:
+      213: 1665580275016287666
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_152
+  - first:
+      213: 3019085420332466245
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_153
+  - first:
+      213: 2717160170930130571
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_154
+  - first:
+      213: 6275426901353902559
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_155
+  - first:
+      213: -7152989309938084797
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_156
+  - first:
+      213: -2501241781334423795
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_157
+  - first:
+      213: -2498936869067689599
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_158
+  - first:
+      213: 4501107404572560755
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_159
+  - first:
+      213: 9064423412106255419
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_160
+  - first:
+      213: -8744557270435785770
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_161
+  - first:
+      213: -7761613863648183397
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_162
+  - first:
+      213: 6959204673959796642
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_163
+  - first:
+      213: -6912566432639324550
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_164
+  - first:
+      213: 6121485772218844806
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_165
+  - first:
+      213: -6230192964552837737
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_166
+  - first:
+      213: 4599595578924284928
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_167
+  - first:
+      213: 8950290462902150682
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_168
+  - first:
+      213: -7277983228338171070
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_169
+  - first:
+      213: 2619946283565610153
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_170
+  - first:
+      213: 5951778013157303504
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_171
+  - first:
+      213: 920172218977396111
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_172
+  - first:
+      213: -5804300875718832126
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_173
+  - first:
+      213: 6086207149106653102
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_174
+  - first:
+      213: 6810333368221788085
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_175
+  - first:
+      213: 7012331765818181969
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_176
+  - first:
+      213: 7116428001602763192
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_177
+  - first:
+      213: 4649011929766411575
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_178
+  - first:
+      213: 3984879441018502021
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_179
+  - first:
+      213: -7309232199174813176
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_180
+  - first:
+      213: 2638445869296151222
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_181
+  - first:
+      213: 3222113093627420900
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_182
+  - first:
+      213: -4613334848864858941
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_183
+  - first:
+      213: -4227765092207380622
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_184
+  - first:
+      213: 1188865482084338455
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_185
+  - first:
+      213: -1784863521406756614
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_186
+  - first:
+      213: 5280775257103363894
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_187
+  - first:
+      213: 4068583496347582484
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_188
+  - first:
+      213: 3746702812286963104
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_189
+  - first:
+      213: 4124222071715689702
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_190
+  - first:
+      213: 7983283070887942972
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_191
+  - first:
+      213: 5018654600098498880
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_192
+  - first:
+      213: -8660615474578478166
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_193
+  - first:
+      213: -5557747585026530144
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_194
+  - first:
+      213: -7653347946100337947
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_195
+  - first:
+      213: -969973168071555929
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_196
+  - first:
+      213: -6046332794794273221
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_197
+  - first:
+      213: 4095916800624563946
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_198
+  - first:
+      213: 5465676759372166596
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_199
+  - first:
+      213: 2135404013091021686
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_200
+  - first:
+      213: -7635381778475751745
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_201
+  - first:
+      213: -341693241839857432
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_202
+  - first:
+      213: -3589744629534985471
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_203
+  - first:
+      213: -169755143969086008
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_204
+  - first:
+      213: -2851921253836776650
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_205
+  - first:
+      213: -3556694809369219114
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_206
+  - first:
+      213: 9033867124209141494
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_207
+  - first:
+      213: 6083932991038766114
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_208
+  - first:
+      213: 7360318020461377986
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_209
+  - first:
+      213: 2227514180346784051
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_210
+  - first:
+      213: 6352653146857206221
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_211
+  - first:
+      213: -8916883371322519427
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_212
+  - first:
+      213: -245484440443052859
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_213
+  - first:
+      213: 3232920654604618341
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_214
+  - first:
+      213: 4356703342516456112
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_215
+  - first:
+      213: -4282446050661222273
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_216
+  - first:
+      213: -3374213112877661186
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_217
+  - first:
+      213: -8599777903949911291
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_218
+  - first:
+      213: -3084638788718342163
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_219
+  - first:
+      213: 7022321573429471770
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_220
+  - first:
+      213: -5748235167745237386
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_221
+  - first:
+      213: 1987036429620305394
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_222
+  - first:
+      213: 2692856194652840716
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_223
+  - first:
+      213: -8238940449895094629
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_224
+  - first:
+      213: 8062235374192232542
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_225
+  - first:
+      213: -4743302511674767361
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_226
+  - first:
+      213: 6334104322036494611
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_227
+  - first:
+      213: 221709410299600720
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_228
+  - first:
+      213: 6292858243975076721
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_229
+  - first:
+      213: 4077195993046167529
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_230
+  - first:
+      213: -7017490121666850973
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_231
+  - first:
+      213: -1656537213578701268
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_232
+  - first:
+      213: 9178741388628436602
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_233
+  - first:
+      213: -5104188949439495751
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_234
+  - first:
+      213: 1890390452503987672
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_235
+  - first:
+      213: 4086770072890252822
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_236
+  - first:
+      213: 7944303347908344250
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_237
+  - first:
+      213: -2658003219566603928
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_238
+  - first:
+      213: 1519320488976367486
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_239
+  - first:
+      213: 8578707549053460520
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_240
+  - first:
+      213: -3972342124746653753
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_241
+  - first:
+      213: 6387875620617187066
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_242
+  - first:
+      213: 2494047727265679331
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_243
+  - first:
+      213: -4266288734015882285
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_244
+  - first:
+      213: 4310674321347411948
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_245
+  - first:
+      213: 8672765089393598183
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_246
+  - first:
+      213: 4205004073572585788
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_247
+  - first:
+      213: 9173638194094344934
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_248
+  - first:
+      213: -8320694874096459402
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_249
+  - first:
+      213: 2165489193294453804
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_250
+  - first:
+      213: 8853727275114654875
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_251
+  - first:
+      213: -6569435374731330446
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_252
+  - first:
+      213: -4536062976748611017
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_253
+  - first:
+      213: -4603186762368863671
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_254
+  - first:
+      213: 7318089757137746412
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_255
+  - first:
+      213: -3042153248334698953
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_256
+  - first:
+      213: -5153351539289292842
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_257
+  - first:
+      213: 1394795284082378463
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_258
+  - first:
+      213: -803590872371873159
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_259
+  - first:
+      213: 1331696862444043252
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_260
+  - first:
+      213: -7877090521336000191
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_261
+  - first:
+      213: -2103729559502637719
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_262
+  - first:
+      213: 3249635888565910181
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_263
+  - first:
+      213: 4939223537256203872
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_264
+  - first:
+      213: -7599900663740778946
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_265
+  - first:
+      213: -2803753171233265934
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_266
+  - first:
+      213: 6888081917998058374
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_267
+  - first:
+      213: -1064241342334222036
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_268
+  - first:
+      213: -5963282487873953798
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_269
+  - first:
+      213: 6523760574628476509
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_270
+  - first:
+      213: -4038263525554132978
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_271
+  - first:
+      213: 1548472534224561224
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_272
+  - first:
+      213: -5024242856723125715
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_273
+  - first:
+      213: 8006219155026364731
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_274
+  - first:
+      213: -6452866938837101718
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_275
+  - first:
+      213: 5563213822057478996
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_276
+  - first:
+      213: -8827631726626996372
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_277
+  - first:
+      213: -655776534244784375
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_278
+  - first:
+      213: 3794093013506750837
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_279
+  - first:
+      213: -288012128392599805
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_280
+  - first:
+      213: 4509469277888808704
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_281
+  - first:
+      213: -2771307195790414198
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_282
+  - first:
+      213: 9007146019988761290
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_283
+  - first:
+      213: -168802289609703082
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_284
+  - first:
+      213: 4894354213151763530
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_285
+  - first:
+      213: -8256766161206965548
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_286
+  - first:
+      213: 212433266491950395
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_287
+  - first:
+      213: -5494079486308248080
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_288
+  - first:
+      213: -4446717890055101922
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_289
+  - first:
+      213: 7027043136495156429
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_290
+  - first:
+      213: 5156022349042763918
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_291
+  - first:
+      213: 5013000228638568545
+    second: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_292
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 2
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 230f17369972e60c0800000000000000
+      internalID: -4580680231237324750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_1
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fdc77096042147a0800000000000000
+      internalID: -6394790385277219341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_2
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: accb54ae1551aae50800000000000000
+      internalID: 6821288027173010634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_3
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0cdbb39dea74f770800000000000000
+      internalID: 8643668745635224587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_4
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b239007742a5addd0800000000000000
+      internalID: -2460555133742705877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_5
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c0bde81f59720cd0800000000000000
+      internalID: -2593376986064899903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_6
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f974ef97ab2ecc9b0800000000000000
+      internalID: -5058418990905407585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_7
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b69ac81a8561e7b00800000000000000
+      internalID: 828123951406033259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_8
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03a09cb06a0828260800000000000000
+      internalID: 7098377413339974192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_9
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4a61a9b0736b110800000000000000
+      internalID: 1276268067375457473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_10
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c756927741b6142e0800000000000000
+      internalID: -2143314212008925828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_11
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d5bb55f175687920800000000000000
+      internalID: 2988249892882462162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_12
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4e4dba20a5c05950800000000000000
+      internalID: 6435861159214927435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_13
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a08fc5caa9372c890800000000000000
+      internalID: -7439256526308706294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_14
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b6ebd16aaed9b960800000000000000
+      internalID: 7618365068041512630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_15
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 3694
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b4b91c5cd9a2f00800000000000000
+      internalID: 1092859332273064752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_16
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a065f8b03579de80800000000000000
+      internalID: -8153356798255603549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_17
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c963186b9fc91c80800000000000000
+      internalID: -8351415767608890938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_18
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d9785bc3a243c90800000000000000
+      internalID: -7191076264771871450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_19
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d48c69d408efc30800000000000000
+      internalID: 4395091357090729312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_20
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac76425c9f3aebee0800000000000000
+      internalID: -1243376153957996598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_21
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a473596f7b5a58300800000000000000
+      internalID: 253791163550873418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_22
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7d5feb1d7cbf2e80800000000000000
+      internalID: -8201129150892778115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_23
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0581f7c53edc8fd00800000000000000
+      internalID: 1006780893110409296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_24
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670f34ce4505e0cb0800000000000000
+      internalID: -4895887419233800074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_25
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 792888d4c6fa0dfb0800000000000000
+      internalID: -4625003937617378665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_26
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36adfacb1d6585aa0800000000000000
+      internalID: -6172087830497469853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_27
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02bb7e5c9de95aff0800000000000000
+      internalID: -25439564715279584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_28
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a8d02313a60f0ac0800000000000000
+      internalID: -3886880655927093083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_29
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e046b306edc12310800000000000000
+      internalID: 1378609348740530400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_30
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c03d451aae297e770800000000000000
+      internalID: 8640035946560279308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_31
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 3434
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3cbbe9fa6883a860800000000000000
+      internalID: 7540020194189229118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_32
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40b380b9a6d04d140800000000000000
+      internalID: 4743431059046677252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_33
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81884299ac7a92600800000000000000
+      internalID: 444070526867245080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_34
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f26f9ee99b061e30800000000000000
+      internalID: 4473776035600491253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_35
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f77bad27070d76880800000000000000
+      internalID: -8617690180568303745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_36
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac80aa94b44c46c50800000000000000
+      internalID: 6657661976797907146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_37
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45651ebe5c1f7270800000000000000
+      internalID: 8250344235607614797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_38
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35d7211bdc5ac8240800000000000000
+      internalID: 4795390006100393299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_39
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a2b9e2a94c331a70800000000000000
+      internalID: 8796440784148214440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_40
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aecea918e2645970800000000000000
+      internalID: 8742721525635796645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_41
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 878d6a0fb97395a50800000000000000
+      internalID: 6510295879237687416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_42
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47d18a12fee323f80800000000000000
+      internalID: -8128365180667552396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_43
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0df140057d558a0800000000000000
+      internalID: -6316906163650703153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_44
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38d754ef485ce1e50800000000000000
+      internalID: 6782075263858867587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_45
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97b876a59cb604d70800000000000000
+      internalID: 9025332165799807865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_46
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab818b6b95f04c20800000000000000
+      internalID: 3188818584050699179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_47
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 3174
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00dbb59892a0ac580800000000000000
+      internalID: -8806214947855155968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_48
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbb6fb5440e4e0550800000000000000
+      internalID: 6128921923154832317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_49
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ca86b0190ccb790800000000000000
+      internalID: -7512918349166629837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_50
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5a43f1df03155be0800000000000000
+      internalID: -1489263143108261283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_51
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c5fb38fd6355ebe0800000000000000
+      internalID: -1448659973348526651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_52
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e08d96afac5790e40800000000000000
+      internalID: 5623155124393859086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_53
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc01633345b8c4060800000000000000
+      internalID: 6939074319623786699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_54
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 213dd9bf88ac982d0800000000000000
+      internalID: -3275864564249537774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_55
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa75206e748893c0800000000000000
+      internalID: -4352583361539769689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_56
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41529f77beb274bd0800000000000000
+      internalID: -2646097965726751468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_57
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14c5a7c70d29a0010800000000000000
+      internalID: 1155897678513200193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_58
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16b5fb9db176280c0800000000000000
+      internalID: -4574980902140028063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_59
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f07c63911a8976c0800000000000000
+      internalID: -4145130173925396233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_60
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfdc60e3f4dcd9520800000000000000
+      internalID: 2710548290973650427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_61
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ed5dbd0ed17adb10800000000000000
+      internalID: 2007041782474169832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_62
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff7618aee5050d730800000000000000
+      internalID: 4021802835833350143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_63
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 2914
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eaf692fc1ec93820800000000000000
+      internalID: 2898574458914011873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_64
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cb15e2ca23c60f30800000000000000
+      internalID: 4541531862675561408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_65
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc59dcaa58f5bcbb0800000000000000
+      internalID: -4914729540643875381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_66
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d34147926dd0a2d10800000000000000
+      internalID: 2101507389591393341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_67
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d84aba4faf42460800000000000000
+      internalID: 7216168431713029531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_68
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2798881bd981300a0800000000000000
+      internalID: -6916657537143502478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_69
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39545aff15a3c5820800000000000000
+      internalID: 2908263583230281107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_70
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3008814cbf9bc5220800000000000000
+      internalID: 2476058386124800003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_71
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b963ff1994c0250800000000000000
+      internalID: 5912181302231472935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_72
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4887cb5996fed960800000000000000
+      internalID: 7628805957342431311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_73
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd94ce4f52f2d7190800000000000000
+      internalID: -7963156726051747364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_74
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56060e536a3860d50800000000000000
+      internalID: 6703189845279268965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_75
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a895e3e247372e3c0800000000000000
+      internalID: -4331772948747757174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_76
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26dbf4792b4115720800000000000000
+      internalID: 2833068397868072290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_77
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd085f595b5eb2c00800000000000000
+      internalID: 877047120521429212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_78
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09fff4f21ac016600800000000000000
+      internalID: 459662523391541136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_79
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 2654
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a35e51758545c680800000000000000
+      internalID: -8735499462780234845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_80
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d80c5811aa51150800000000000000
+      internalID: 5842763083818241299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_81
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d1c9e0fd9836b170800000000000000
+      internalID: 8193798823050068434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_82
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73510fc88be112520800000000000000
+      internalID: 2675453431622145335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_83
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c892b4c36ff95b4c0800000000000000
+      internalID: -4272332791568717428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_84
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e0a3a884749841b0800000000000000
+      internalID: -5672120502443597597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_85
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 739c9affd8bd3d470800000000000000
+      internalID: 8418313531411777847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_86
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a1a01d01927b5be0800000000000000
+      internalID: -1487469284600798812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_87
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a458da99c0b0ad0800000000000000
+      internalID: -2735078494516721018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_88
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cddd002187e3e0fd0800000000000000
+      internalID: -2373891268158628388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_89
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feefb3b0e9ccba130800000000000000
+      internalID: 3579179308041371375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_90
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bef7d703db265730800000000000000
+      internalID: 3987422705452842680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_91
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c0b503126b50d9c0800000000000000
+      internalID: -3904520400146157372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_92
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99d0829d0cff18f20800000000000000
+      internalID: 3423298395520372121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_93
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5715dc77256567680800000000000000
+      internalID: -8757717513178099339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_94
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9633468ea12ea8d0800000000000000
+      internalID: -2833290082108885350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_95
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f2259359b3876f0800000000000000
+      internalID: -686733431076147306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_96
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 2394
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 269513520a774d380800000000000000
+      internalID: -8947395029975869086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_97
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 509c088464092b410800000000000000
+      internalID: 1491413058151565573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_98
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1afc35647103eb0d0800000000000000
+      internalID: -3405231391723237471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_99
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4258f0316b34db830800000000000000
+      internalID: 4088498486005171492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_100
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6533c52cc358810800000000000000
+      internalID: 1766885234280978081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_101
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77af5b279ffc59e00800000000000000
+      internalID: 1050974758339213943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_102
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca385a9b5bce2560800000000000000
+      internalID: 7290988441051347652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_103
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d11dd8b199f74870800000000000000
+      internalID: 8667170412164878809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_104
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a481af9650a7e720800000000000000
+      internalID: 2875443181005145249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_105
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06fb99e5bb901fb40800000000000000
+      internalID: 5472165722582531936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_106
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c1189704df322130800000000000000
+      internalID: 3540462436959654341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_107
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b7d76d6693a3dca0800000000000000
+      internalID: -5993266812624054345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_108
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f53dea12c8b868670800000000000000
+      internalID: 8540667177331512159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_109
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531584bc59c370fa0800000000000000
+      internalID: -5834628178176880331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_110
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3bac7811e454a920800000000000000
+      internalID: 3000616577490791227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_111
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f2289723b1d1bae0800000000000000
+      internalID: -1535215430562995471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_112
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5077ce44356ab100800000000000000
+      internalID: 124523215040507994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_113
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 2134
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ed60c49fd6f210f0800000000000000
+      internalID: -1147583514892276251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_114
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a9112f6b0db822a0800000000000000
+      internalID: -6761946983690069593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_115
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8dec68aebbf66f30800000000000000
+      internalID: 4568615668302015883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_116
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d26ea8aa2c2be30800000000000000
+      internalID: 4517887413936598291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_117
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e36c289fd3c7280c0800000000000000
+      internalID: -4574957665834056130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_118
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3e0b0864e8ff8210800000000000000
+      internalID: 1337561274234113594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_119
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1f6cddee8c22e10800000000000000
+      internalID: 2171518898594574837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_120
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efa45c8047e940a30800000000000000
+      internalID: 4180640575307205374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_121
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51647aa1e24af10e0800000000000000
+      internalID: -2296936767013042667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_122
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07ebc89b3fec63d30800000000000000
+      internalID: 4410940431241363056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_123
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 499a40a67eb351250800000000000000
+      internalID: 5914699550723189140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_124
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f26300fc8d63bd660800000000000000
+      internalID: 7411577916582016559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_125
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3e2c8d55d9bed9e0800000000000000
+      internalID: -1594632891993936321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_126
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5edf5d89dbc198860800000000000000
+      internalID: 7532583452392422885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_127
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f84d80af150d6c0800000000000000
+      internalID: -4120703524712181865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_128
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbea8316a01b9bed0800000000000000
+      internalID: -2397690668459184452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_129
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a64ad6c5542c713a0800000000000000
+      internalID: -6694668717903731606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_130
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31798c4f9e70cec30800000000000000
+      internalID: 4389892438194951955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_131
+      rect:
+        serializedVersion: 2
+        x: 4450
+        y: 1874
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 334acda52ccb03a40800000000000000
+      internalID: 5345980300622865459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_132
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e664efd3eba056130800000000000000
+      internalID: 3559262892706383470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_133
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bc2d397de60c7610800000000000000
+      internalID: 1620177582957604024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_134
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87be53693e5a72200800000000000000
+      internalID: 155275109063846776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_135
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bffbdd9b27dfd440800000000000000
+      internalID: 4962921896717582263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_136
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f08f43d9261b01b70800000000000000
+      internalID: 8867782703394912271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_137
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef60b6c9b667a8eb0800000000000000
+      internalID: -4716827455159335170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_138
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f8b8595ceb4ae50800000000000000
+      internalID: 6819785491572559763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_139
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b14ce529ba40d1670800000000000000
+      internalID: 8510964005741708315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_140
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eb19a403412a8ab0800000000000000
+      internalID: -5005151464144167960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_141
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36a9033745c1ecb30800000000000000
+      internalID: 4309413042475539043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_142
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14c05da6aa6d69170800000000000000
+      internalID: 8184965400217586753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_143
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce7309dea490f900800000000000000
+      internalID: 716235819438014156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_144
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd20627360b3381d0800000000000000
+      internalID: -3349768799952436513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_145
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5e71c0d1cebb30d0800000000000000
+      internalID: -3441947750554304934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_146
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c07012467fc5df50800000000000000
+      internalID: 6905653710463987907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_147
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de735e0e680e23ab0800000000000000
+      internalID: -5029710963916064787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_148
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c8e9613f06dc8df0800000000000000
+      internalID: -176530924632414010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_149
+      rect:
+        serializedVersion: 2
+        x: 4450
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 099dd1defd0b7c480800000000000000
+      internalID: -8878933664535291504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_150
+      rect:
+        serializedVersion: 2
+        x: 4710
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d83d2f97070c540800000000000000
+      internalID: 5026140853212777765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_151
+      rect:
+        serializedVersion: 2
+        x: 4970
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 642a3a0a119fa3020800000000000000
+      internalID: 2322442411967750726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_152
+      rect:
+        serializedVersion: 2
+        x: 5230
+        y: 1614
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b54e3d7f645d1710800000000000000
+      internalID: 1665580275016287666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_153
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5404a79a132f5e920800000000000000
+      internalID: 3019085420332466245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_154
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8e412287ca45b520800000000000000
+      internalID: 2717160170930130571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_155
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd13125a48bc61750800000000000000
+      internalID: 6275426901353902559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_156
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34459faee1a7bbc90800000000000000
+      internalID: -7152989309938084797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_157
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d07423e1addc94dd0800000000000000
+      internalID: -2501241781334423795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_158
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 181f713582ef15dd0800000000000000
+      internalID: -2498936869067689599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_159
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d8d692655277e30800000000000000
+      internalID: 4501107404572560755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_160
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3cd354611d4bcd70800000000000000
+      internalID: 9064423412106255419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_161
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d39d914e7715a680800000000000000
+      internalID: -8744557270435785770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_162
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9bb0855055394490800000000000000
+      internalID: -7761613863648183397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_163
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2af9c9e87cf049060800000000000000
+      internalID: 6959204673959796642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_164
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e6e303471a110a0800000000000000
+      internalID: -6912566432639324550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_165
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68646b670e2e3f450800000000000000
+      internalID: 6121485772218844806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_166
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795b0b9f188e989a0800000000000000
+      internalID: -6230192964552837737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_167
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00c3d303fcb05df30800000000000000
+      internalID: 4599595578924284928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_168
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1669dd51c1d53c70800000000000000
+      internalID: 8950290462902150682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_169
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24317a170d86ffa90800000000000000
+      internalID: -7277983228338171070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_170
+      rect:
+        serializedVersion: 2
+        x: 4450
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4788a834beb5420800000000000000
+      internalID: 2619946283565610153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_171
+      rect:
+        serializedVersion: 2
+        x: 4710
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d4a830b196f89250800000000000000
+      internalID: 5951778013157303504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_172
+      rect:
+        serializedVersion: 2
+        x: 4970
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f85a45402cb15cc00800000000000000
+      internalID: 920172218977396111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_173
+      rect:
+        serializedVersion: 2
+        x: 5230
+        y: 1354
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2005a452b1bf27fa0800000000000000
+      internalID: -5804300875718832126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_174
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea7e1ffe72d867450800000000000000
+      internalID: 6086207149106653102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_175
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b769de9d1a238e50800000000000000
+      internalID: 6810333368221788085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_176
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 159c7cc869ec05160800000000000000
+      internalID: 7012331765818181969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_177
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9fc212091a2c260800000000000000
+      internalID: 7116428001602763192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_178
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73db746f7bb948040800000000000000
+      internalID: 4649011929766411575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_179
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58b3aa22db22d4730800000000000000
+      internalID: 3984879441018502021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_180
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80a86537a04609a90800000000000000
+      internalID: -7309232199174813176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_181
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba6e7ef984ad9420800000000000000
+      internalID: 2638445869296151222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_182
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e02cc389ce37bc20800000000000000
+      internalID: 3222113093627420900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_183
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ccca7fb5642affb0800000000000000
+      internalID: -4613334848864858941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_184
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277be2d5c06f355c0800000000000000
+      internalID: -4227765092207380622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_185
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b4c596bd2bf7010800000000000000
+      internalID: 1188865482084338455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_186
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af85ff97514ea37e0800000000000000
+      internalID: -1784863521406756614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_187
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63f615a1e15194940800000000000000
+      internalID: 5280775257103363894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_188
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41080d63223867830800000000000000
+      internalID: 4068583496347582484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_189
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad425d5b56fef330800000000000000
+      internalID: 3746702812286963104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_190
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e470778f1e2c3930800000000000000
+      internalID: 4124222071715689702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_191
+      rect:
+        serializedVersion: 2
+        x: 4450
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b5aadd7a15ace60800000000000000
+      internalID: 7983283070887942972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_192
+      rect:
+        serializedVersion: 2
+        x: 4710
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0494041d4c7d5a540800000000000000
+      internalID: 5018654600098498880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_193
+      rect:
+        serializedVersion: 2
+        x: 4970
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aabaf7d9c105fc780800000000000000
+      internalID: -8660615474578478166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_194
+      rect:
+        serializedVersion: 2
+        x: 5230
+        y: 1094
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a46533840aeed2b0800000000000000
+      internalID: -5557747585026530144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_195
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e2593a9798d9c590800000000000000
+      internalID: -7653347946100337947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_196
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a44f63fa86f982f0800000000000000
+      internalID: -969973168071555929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_197
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b361e74ab5c171ca0800000000000000
+      internalID: -6046332794794273221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_198
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae618ca01ae97d830800000000000000
+      internalID: 4095916800624563946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_199
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c57c73ed0cf9db40800000000000000
+      internalID: 5465676759372166596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_200
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 673eb34d2aa72ad10800000000000000
+      internalID: 2135404013091021686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_201
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb66679f9bca90690800000000000000
+      internalID: -7635381778475751745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_202
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e0dbf19ecf024bf0800000000000000
+      internalID: -341693241839857432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_203
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 103733a574aae2ec0800000000000000
+      internalID: -3589744629534985471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_204
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c56de09898e4adf0800000000000000
+      internalID: -169755143969086008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_205
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b1ca1dab0fb68d0800000000000000
+      internalID: -2851921253836776650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_206
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df62114ae414aec0800000000000000
+      internalID: -3556694809369219114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_207
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f6c096394ebe5d70800000000000000
+      internalID: 9033867124209141494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_208
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22c352042d87e6450800000000000000
+      internalID: 6083932991038766114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_209
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9b1833e3a152660800000000000000
+      internalID: 7360318020461377986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_210
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33927bb5858b9ee10800000000000000
+      internalID: 2227514180346784051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_211
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc1f0b71168292850800000000000000
+      internalID: 6352653146857206221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_212
+      rect:
+        serializedVersion: 2
+        x: 4450
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70dbb441ddd04480800000000000000
+      internalID: -8916883371322519427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_213
+      rect:
+        serializedVersion: 2
+        x: 4710
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc9189b33dd79cf0800000000000000
+      internalID: -245484440443052859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_214
+      rect:
+        serializedVersion: 2
+        x: 4970
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a4bb4e434addc20800000000000000
+      internalID: 3232920654604618341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_215
+      rect:
+        serializedVersion: 2
+        x: 5230
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ba43727b9e167c30800000000000000
+      internalID: 4356703342516456112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_216
+      rect:
+        serializedVersion: 2
+        x: 5490
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78309c9102b194c0800000000000000
+      internalID: -4282446050661222273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_217
+      rect:
+        serializedVersion: 2
+        x: 5750
+        y: 834
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef3467a1d036c21d0800000000000000
+      internalID: -3374213112877661186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_218
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50befc75f8377a880800000000000000
+      internalID: -8599777903949911291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_219
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def4d026d592135d0800000000000000
+      internalID: -3084638788718342163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_220
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1a63d2e34c447160800000000000000
+      internalID: 7022321573429471770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_221
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67e1325029a2a30b0800000000000000
+      internalID: -5748235167745237386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_222
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd574fda1f539b10800000000000000
+      internalID: 1987036429620305394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_223
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c032e711172fe5520800000000000000
+      internalID: 2692856194652840716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_224
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b96e766005769ad80800000000000000
+      internalID: -8238940449895094629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_225
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5801567b50d2ef60800000000000000
+      internalID: 8062235374192232542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_226
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff748692f776c2eb0800000000000000
+      internalID: -4743302511674767361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_227
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3117045425247e750800000000000000
+      internalID: 6334104322036494611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_228
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05fd444b88ba31300800000000000000
+      internalID: 221709410299600720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_229
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17bd50e5b39b45750800000000000000
+      internalID: 6292858243975076721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_230
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9efa92d572c159830800000000000000
+      internalID: 4077195993046167529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_231
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36f0c332aeddc9e90800000000000000
+      internalID: -7017490121666850973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_232
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c261d635e2cc209e0800000000000000
+      internalID: -1656537213578701268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_233
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a76af5279a0716f70800000000000000
+      internalID: 9178741388628436602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_234
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b14f2291374a29b0800000000000000
+      internalID: -5104188949439495751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_235
+      rect:
+        serializedVersion: 2
+        x: 4450
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d54a40d9140c3a10800000000000000
+      internalID: 1890390452503987672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_236
+      rect:
+        serializedVersion: 2
+        x: 4710
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61e12598abf17b830800000000000000
+      internalID: 4086770072890252822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_237
+      rect:
+        serializedVersion: 2
+        x: 4970
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab9f500edc5df3e60800000000000000
+      internalID: 7944303347908344250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_238
+      rect:
+        serializedVersion: 2
+        x: 5230
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86153ed8720ec1bd0800000000000000
+      internalID: -2658003219566603928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_239
+      rect:
+        serializedVersion: 2
+        x: 5490
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7fb86d5fe5b51510800000000000000
+      internalID: 1519320488976367486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_240
+      rect:
+        serializedVersion: 2
+        x: 5750
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8202b4d5011bd0770800000000000000
+      internalID: 8578707549053460520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_241
+      rect:
+        serializedVersion: 2
+        x: 6010
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cfb72842e76fd8c0800000000000000
+      internalID: -3972342124746653753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_242
+      rect:
+        serializedVersion: 2
+        x: 6270
+        y: 574
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afee344580b46a850800000000000000
+      internalID: 6387875620617187066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_243
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e78a84a133ac9220800000000000000
+      internalID: 2494047727265679331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_244
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db7bbb00091bc4c0800000000000000
+      internalID: -4266288734015882285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_245
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef7f42d47792db30800000000000000
+      internalID: 4310674321347411948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_246
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eed6b506e9db5870800000000000000
+      internalID: 8672765089393598183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_247
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c315d540dec2b5a30800000000000000
+      internalID: 4205004073572585788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_248
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ea03f0655f4f4f70800000000000000
+      internalID: 9173638194094344934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_249
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6712111d814f68c80800000000000000
+      internalID: -8320694874096459402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_250
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2c5343b2fc5d0e10800000000000000
+      internalID: 2165489193294453804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_251
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9c65633c02ceda70800000000000000
+      internalID: 8853727275114654875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_252
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27cf042455da4d4a0800000000000000
+      internalID: -6569435374731330446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_253
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73a191871caac01c0800000000000000
+      internalID: -4536062976748611017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_254
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942393247023e10c0800000000000000
+      internalID: -4603186762368863671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_255
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce9be987cd31f8560800000000000000
+      internalID: 7318089757137746412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_256
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 736a5b81db918c5d0800000000000000
+      internalID: -3042153248334698953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_257
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dff2f1241e9b78b0800000000000000
+      internalID: -5153351539289292842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_258
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd6ce12cbee4b5310800000000000000
+      internalID: 1394795284082378463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_259
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a3783fb5219d4f0800000000000000
+      internalID: -803590872371873159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_260
+      rect:
+        serializedVersion: 2
+        x: 4450
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fbba72ad332b7210800000000000000
+      internalID: 1331696862444043252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_261
+      rect:
+        serializedVersion: 2
+        x: 4710
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 141db2cc7e3fea290800000000000000
+      internalID: -7877090521336000191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_262
+      rect:
+        serializedVersion: 2
+        x: 4970
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9653b569c1d0ec2e0800000000000000
+      internalID: -2103729559502637719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_263
+      rect:
+        serializedVersion: 2
+        x: 5230
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aaf4539f96091d20800000000000000
+      internalID: 3249635888565910181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_264
+      rect:
+        serializedVersion: 2
+        x: 5490
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066876453a5ab8440800000000000000
+      internalID: 4939223537256203872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_265
+      rect:
+        serializedVersion: 2
+        x: 5750
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e36b971cc9ab78690800000000000000
+      internalID: -7599900663740778946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_266
+      rect:
+        serializedVersion: 2
+        x: 6010
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f624ce78511719d0800000000000000
+      internalID: -2803753171233265934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_267
+      rect:
+        serializedVersion: 2
+        x: 6270
+        y: 314
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68bc0128202679f50800000000000000
+      internalID: 6888081917998058374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_268
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2142e2432e0b31f0800000000000000
+      internalID: -1064241342334222036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_269
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff17fe0c2a2e3da0800000000000000
+      internalID: -5963282487873953798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_270
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d56bd62adad098a50800000000000000
+      internalID: 6523760574628476509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_271
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e08ede918b435f7c0800000000000000
+      internalID: -4038263525554132978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_272
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84467e2d0974d7510800000000000000
+      internalID: 1548472534224561224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_273
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2a69bbcdbd464ab0800000000000000
+      internalID: -5024242856723125715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_274
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b39464917edcb1f60800000000000000
+      internalID: 8006219155026364731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_275
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6390c735bfc276a0800000000000000
+      internalID: -6452866938837101718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_276
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45b7749fe71843d40800000000000000
+      internalID: 5563213822057478996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_277
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6ffd6627b3fd7580800000000000000
+      internalID: -8827631726626996372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_278
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9078d4077b636e6f0800000000000000
+      internalID: -655776534244784375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_279
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5797cda6e7357a430800000000000000
+      internalID: 3794093013506750837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_280
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 307a724ce76c00cf0800000000000000
+      internalID: -288012128392599805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_281
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00789128a6ad49e30800000000000000
+      internalID: 4509469277888808704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_282
+      rect:
+        serializedVersion: 2
+        x: 3670
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8ead67d9c65a89d0800000000000000
+      internalID: -2771307195790414198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_283
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acae081559fcffc70800000000000000
+      internalID: 9007146019988761290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_284
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6518a82463b48adf0800000000000000
+      internalID: -168802289609703082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_285
+      rect:
+        serializedVersion: 2
+        x: 4450
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ce8d7b93d3ce340800000000000000
+      internalID: 4894354213151763530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_286
+      rect:
+        serializedVersion: 2
+        x: 4710
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4da0bcf2ce21a6d80800000000000000
+      internalID: -8256766161206965548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_287
+      rect:
+        serializedVersion: 2
+        x: 4970
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b358abb2ee6b2f200800000000000000
+      internalID: 212433266491950395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_288
+      rect:
+        serializedVersion: 2
+        x: 5230
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f516dae0db11c3b0800000000000000
+      internalID: -5494079486308248080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_289
+      rect:
+        serializedVersion: 2
+        x: 5490
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1224e283a51a42c0800000000000000
+      internalID: -4446717890055101922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_290
+      rect:
+        serializedVersion: 2
+        x: 5750
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dccf3247082158160800000000000000
+      internalID: 7027043136495156429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_291
+      rect:
+        serializedVersion: 2
+        x: 6010
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e884ba8320fdd8740800000000000000
+      internalID: 5156022349042763918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-8192x4096-BC7-Abilities_Atlas-19ba8d04_292
+      rect:
+        serializedVersion: 2
+        x: 6270
+        y: 54
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16034fed521c19540800000000000000
+      internalID: 5013000228638568545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: c1af1972a03d4cd4db1efae5bea347df
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

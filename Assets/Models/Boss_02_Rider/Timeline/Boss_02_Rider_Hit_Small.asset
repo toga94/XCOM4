@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc288ee56768d9bdacabe3501a74d1d, type: 3}
+  m_Name: Boss_02_Rider_Hit_Small
+  m_EditorClassIdentifier:
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 11400000, guid: 3a64486372b129e43b0c2a38b5a92161, type: 2}
+  - {fileID: 11400000, guid: e85f576978747a8498a6bd23375abda6, type: 2}
+  - {fileID: 11400000, guid: 5c647cb4de1a11d4b8c8ec05a3fac180, type: 2}
+  - {fileID: 11400000, guid: be78aa8a16b73804d9f3b3205081d5e2, type: 2}
+  - {fileID: 11400000, guid: bfe1b5ceb2d2f374badc24b666d85f1e, type: 2}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}

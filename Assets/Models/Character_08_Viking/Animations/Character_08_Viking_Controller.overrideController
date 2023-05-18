@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Character_08_Viking_Controller
+  m_Controller: {fileID: 9300000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a4e18862a6db1d74994435cc945a2ef6, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 92aa0898054a12145b4c237a3b949594, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cb24e4cd11fab1541955b12edcd400c8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ef52d5eb7b30d4941821ecb40bca460d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 77497c7e350497b4aa7f6ae58fc2af48, type: 2}

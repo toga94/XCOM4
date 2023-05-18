@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Brick_Mat
+  m_Shader: {fileID: 4800000, guid: 0000000deadbeef15deadf00d0000000, type: 2}
+  m_ShaderKeywords:
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: 614299bbfb61d4742bd4f5cbe9818728, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0.13}
+    - _Emissive:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1.5, y: 1.5}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: aac81ab68512c74499c1c66f8097b482, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ASEOutlineWidth: 0.01
+    - _AlbedoBrightness: 3
+    - _AlbedoContrast: 1
+    - _AlbedoContrastOpacity: 1
+    - _AlbedoContrastPower: 1
+    - _AlbedoDesaturate: 0
+    - _AlbedoPosterizeStr: 1
+    - _AlbedoPower: 1
+    - _AlbedoSaturation: 0
+    - _Albedo_ContrastOpacity: 1
+    - _AlphaCutoff: 0.5
+    - _Brightness: 1.77
+    - _EdgeLength: 15
+    - _EmissiveStrength: 1
+    - _Emissivetoggle: 0
+    - _Float2: 1
+    - _NormalStrength: 1
+    - _Offset: 0
+    - _RimOffset: 1
+    - _RimPower: 0
+    - _RimSwitch: 0
+    - _RimToggle: 0
+    - _Scale: 1
+    - _TextureTilingU: 0
+    - _TextureTilingV: 0
+    - _ToonmapPosterizestrength: 40
+    - __dirty: 0
+    m_Colors:
+    - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _AlbedoTint: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissiveTint: {r: 0, g: 0, b: 0, a: 0}
+    - _RimTint: {r: 0, g: 0.5305207, b: 0.7264151, a: 0}
+    - _TextureOffset: {r: 0, g: 0.13, b: 0, a: 0}
+    - _TextureTiling: {r: 1.5, g: 1.5, b: 0, a: 0}
+    - _Tint: {r: 0.4716981, g: 0.43123475, b: 0.41162336, a: 0}
+  m_BuildTextureStacks: []

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc288ee56768d9bdacabe3501a74d1d, type: 3}
+  m_Name: Character_08_Viking_Death
+  m_EditorClassIdentifier:
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 11400000, guid: ff36be801fefd4f46adf47b802549df5, type: 2}
+  - {fileID: 11400000, guid: 639b42e65d9ef424ea90ea72d614bf4e, type: 2}
+  - {fileID: 11400000, guid: 4415cddbbc452e84c8aa9ade96a48adb, type: 2}
+  - {fileID: 11400000, guid: d36b8baa7d9400b4a964129b0094f3b1, type: 2}
+  - {fileID: 11400000, guid: 60609ce7480f97b46b265cf9f7ffb784, type: 2}
+  - {fileID: 11400000, guid: a7c3281538be0914cbe46d830017c7ae, type: 2}
+  - {fileID: 11400000, guid: d519455e5ce4e30419268a944248956f, type: 2}
+  - {fileID: 11400000, guid: b3e974e993b2d5d428234c202bf83f75, type: 2}
+  - {fileID: 11400000, guid: 391323f12c4438e4887c4e12ec0784f6, type: 2}
+  - {fileID: 11400000, guid: ddf356aba477ba04ea7a1eb6e416711e, type: 2}
+  - {fileID: 11400000, guid: de593e4fdfb240e4299eb0349795083c, type: 2}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}
