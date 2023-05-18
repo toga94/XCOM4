@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_10_Bomber@Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 1099314443778041, guid: 38ca7366b3bceca418d4b4e3164a6de5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4591876727469259, guid: 38ca7366b3bceca418d4b4e3164a6de5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5558,7 +5562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -259.80786}
+  m_AnchoredPosition: {x: 60, y: -259.84436}
   m_SizeDelta: {x: 119.880005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716284766

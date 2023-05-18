@@ -78,7 +78,7 @@ public class UnitWorldUI : MonoBehaviour
         int numBars = Mathf.FloorToInt(maxhp) / healthPerBar;
 
         maxHp = maxhp;
-        horizontalLayoutGroup.CalculateLayoutInputHorizontal();
+      if(horizontalLayoutGroup != null)  horizontalLayoutGroup?.CalculateLayoutInputHorizontal();
 
         int numSpawnedBars = hpLinePool.Spawned;
         Enumerable.Range(0, numBars - numSpawnedBars)

@@ -8,6 +8,9 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public event Action<float, float> OnManaChanged;
     public event Action<bool, GameObject> OnDie;
 
+    
+
+
     private UnitObject unitObj;
     private Unit unit;
     private float health;
@@ -23,36 +26,60 @@ public class HealthSystem : MonoBehaviour, IDamageable
     {
         unit = GetComponent<Unit>();
         unitObj = unit.GetUnitObject;
-        healthMax = unitObj.health * (unit.GetUnitLevel + 1);
-        manaMax = unitObj.mana * (unit.GetUnitLevel + 1);
+        int unitlevel = unit.GetUnitLevel;
+        healthMax = unitObj.health * (unitlevel + 1);
+        manaMax = unitObj.mana * (unitlevel + 1);
         mana = manaMax;
         health = healthMax;
         canvas = GameObject.Find("BarCanvas");
-        //GameObject unitWorldUIPrefab = (GameObject) Resources.Load("UnitWorldUI2D");
         canvasBar = (GameObject)Instantiate(unitWorldUIPrefab, canvas.transform);
         this.unitWorldUI = canvasBar.GetComponent<UnitWorldUI>();
         this.unitWorldUI.SetRoot(transform, canvas);
         OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
         OnManaChanged?.Invoke(mana, manaMax);
+
+        GameStateSystem.Instance.OnGameStateChanged += OnGameStateChanged;
     }
+
+    private void OnGameStateChanged(GameState obj)
+    {
+        int unitlevel = unit.GetUnitLevel;
+        healthMax = unitObj.health * (unitlevel + 1);
+        manaMax = unitObj.mana * (unitlevel + 1);
+        mana = manaMax;
+        health = healthMax;
+
+        Heal(999999);
+    }
+
     public void TakeDamage(float value)
     {
-        float damage = value - unitObj.defence;
-        if (damage > 0)
+        if (IsDie)
         {
-            health = Mathf.Max(health - damage, 0);
-            healthMax = unitObj.health * (unit.GetUnitLevel + 1);
-            OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
+            OnDie?.Invoke(true, gameObject);
+            gameObject.SetActive(false); 
+        }
+        else
+        {
+            float damage = value - unitObj.defence;
+            if (damage > 0)
+            {
+                health = Mathf.Max(health - damage, 0);
+                healthMax = unitObj.health * (unit.GetUnitLevel + 1);
+                OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
+            }
         }
     }
     public void DecreaseMana(float value)
     {
         mana -= value;
+        if (mana < 0) mana = 0;
         OnManaChanged?.Invoke(mana, manaMax);
     }
     public void IncreaseMana(float value)
     {
         mana += value;
+        if (mana > manaMax) mana = manaMax;
         OnManaChanged?.Invoke(mana, manaMax);
     }
     public void Heal(float value)
@@ -68,11 +95,18 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public float GetMana => mana;
     public float GetMaxMana => manaMax;
 
-
-
+    private void OnDisable()
+    {
+        if (canvasBar)
+            canvasBar.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        if (canvasBar)
+            canvasBar.SetActive(true);
+    }
     private void OnDestroy()
     {
-        OnDie?.Invoke(true, gameObject);
         Destroy(canvasBar);
     }
 }
