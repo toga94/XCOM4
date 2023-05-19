@@ -6,9 +6,11 @@ public class Minion_1_1_PhaseState : GameState
 {
     public List<Enemy> enemies = new List<Enemy>();
     private bool allEnemiesDead = false;
+    private bool allUnitsDead = false;
     private GameManager gameManager;
     private int enemiesCount;
-
+    private int unitsCount;
+    private List<Unit> unitsOnGrid;
 
     private LeanGameObjectPool enemyPool;
 
@@ -51,9 +53,36 @@ public class Minion_1_1_PhaseState : GameState
         {
             enemyhp.OnDie += OnEnemyKilled;
         }
+        unitsOnGrid = gameManager.GetAllUnitsOnGrid;
+        unitsCount = unitsOnGrid.Count;
+        foreach (var unit in unitsOnGrid)
+        {
+            unit.GetComponent<HealthSystem>().OnDie += OnUnitKilled;
+        }
+
+
     }
 
+    void OnUnitKilled(bool value, GameObject minion)
+    {
+        unitsCount--;
+        allUnitsDead = unitsCount == 0;
+        if (allUnitsDead)
+        {
+            allUnitsDead = false;
+            duration = 3f;
 
+            foreach (var unit in unitsOnGrid)
+            {
+                unit.gameObject.SetActive(true);
+            }
+        }
+        foreach (var enemy in enemies)
+        {
+            enemy.GetComponent<IDamageable>().TakeDamage(99999999);
+        }
+        gameManager.LoseCombat();
+    }
     void OnEnemyKilled(bool value, GameObject minion)
     {
         enemyPool.Despawn(minion);
@@ -64,6 +93,8 @@ public class Minion_1_1_PhaseState : GameState
             allEnemiesDead = false;
             duration = 3f;
         }
+        if(unitsCount > 0)
+        gameManager.WinCombat();
     }
 
 
@@ -74,7 +105,7 @@ public class Minion_1_1_PhaseState : GameState
         List<Unit> units = gameManager.GetAllUnitsOnGrid;
 
 
-        gameManager.WinCombat();
+
         int winStreak = gameManager.GetWinStreak();
         int bonusGold = 0;
         if (winStreak >= 5)

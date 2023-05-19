@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6393600194038877188}
-  startHealth: 150
+  startHealth: 360
 --- !u!114 &6478539475975344544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,9 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f6a68b6fc4f914a8a84b9269884748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   enemies: []
   target: {fileID: 0}
   enemyDamage: 3
+  objectPool: {fileID: 0}
 --- !u!195 &248904923
 NavMeshAgent:
   m_ObjectHideFlags: 0

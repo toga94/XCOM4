@@ -46,16 +46,17 @@ public class ChampionSelectionState : GameState
     public override void OnExitState()
     {
         gameManager = GameManager.Instance;
-
+        List<Unit> onGridUnit = gameManager.GetAllUnitsOnGrid;
+        List<Unit> onInvertoryUnit = gameManager.GetAllUnitsOnInventory;
         // Check if there is free space on the grid and if there are units in the inventory
-        bool onGridHaveFreeSpace = gameManager.GetAllUnitsOnGrid.Count < Economy.Level;
-        bool unitsInInventory = gameManager.GetAllUnitsOnInventory.Count > 0;
+        bool onGridHaveFreeSpace = onGridUnit.Count < Economy.Level;
+        bool unitsInInventory = onInvertoryUnit.Count > 0;
 
         if (onGridHaveFreeSpace && unitsInInventory)
         {
             // Move units from inventory to grid
-            gameManager.GetAllUnitsOnInventory
-                .Take(Economy.Level - gameManager.GetAllUnitsOnGrid.Count)
+            onInvertoryUnit
+                .Take(Economy.Level - onGridUnit.Count)
                 .ToList()
                 .ForEach(unit =>
                 {
@@ -73,9 +74,12 @@ public class ChampionSelectionState : GameState
 
 
         GridSystemVisual.Instance.HideAllGridPosition();
+
         gridSizeMonitor.DOMove(
     new Vector3(gridSizeMonitor.position.x, 35f, gridSizeMonitor.position.z), 2f
     ).SetEase(Ease.InFlash);
-        //gameManager.gridSizeTextMesh.gameObject.SetActive(false);
+      
     }
+
+
 }
