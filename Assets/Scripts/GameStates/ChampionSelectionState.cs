@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using DG.Tweening;
 public class ChampionSelectionState : GameState
 {
     private GameManager gameManager;
     private List<TransformData> unitTransforms = new List<TransformData>();
     private List<Unit> unitsOnGrid;
+    private Transform gridSizeMonitor;
     // Logic for entering Champion Selection state
     public override void OnEnterState()
     {
@@ -14,7 +15,11 @@ public class ChampionSelectionState : GameState
         duration = 15f;
         gameManager = GameManager.Instance;
         GridSystemVisual.Instance.ShowAllGridPosition();
-        gameManager.gridSizeTextMesh.gameObject.SetActive(true);
+        gridSizeMonitor = gameManager.gridSizeTextMesh.transform;
+        gridSizeMonitor.DOMove(
+            new Vector3(gridSizeMonitor.position.x, 1.67f, gridSizeMonitor.position.z), 1f
+            ).SetEase(Ease.OutElastic);
+        // gameManager.gridSizeTextMesh.gameObject.SetActive(true);
         CardShop cardShop = CardShop.Instance;
         cardShop.OpenShopMenu();
         cardShop.RandomSelect5ItemForShopFree();
@@ -68,6 +73,9 @@ public class ChampionSelectionState : GameState
 
 
         GridSystemVisual.Instance.HideAllGridPosition();
-        gameManager.gridSizeTextMesh.gameObject.SetActive(false);
+        gridSizeMonitor.DOMove(
+    new Vector3(gridSizeMonitor.position.x, 35f, gridSizeMonitor.position.z), 2f
+    ).SetEase(Ease.InFlash);
+        //gameManager.gridSizeTextMesh.gameObject.SetActive(false);
     }
 }

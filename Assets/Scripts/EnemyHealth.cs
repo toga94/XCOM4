@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable, IPoolable
     private float health;
     [SerializeField] private float startHealth;
     public float GetHealth => health;
-
+    private Enemy enemy;
     public void Heal(float value)
     {
         health += value;
@@ -38,10 +38,15 @@ public class EnemyHealth : MonoBehaviour, IDamageable, IPoolable
     public void OnSpawn()
     {
         health = startHealth;
+        enemy = GetComponent<Enemy>();
+        enemy.isDead = false;
+        animator.SetBool("dead", false);
+        dead = false;
     }
 
     public void OnDespawn()
     {
+
 
     }
 }

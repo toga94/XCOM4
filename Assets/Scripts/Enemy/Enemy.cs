@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Animator animator;
-    internal bool isDead;
+    public bool isDead;
     private EnemyHealth enemyHealth;
     [SerializeField]
     GameObject[] enemies;
@@ -125,6 +125,6 @@ public class Enemy : MonoBehaviour
     {
         isDead = value;
 
-        objectPool.Despawn(gameObject);
+        objectPool.Despawn(gameObject, 3);
     }
 }
