@@ -15,8 +15,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
     private Unit unit;
     private float health;
     private float healthMax;
-    private float mana;
-    private float manaMax;
+    [SerializeField] private float mana;
+    [SerializeField] private float manaMax;
 
     private GameObject canvasBar;
     private UnitWorldUI unitWorldUI;
@@ -46,7 +46,15 @@ public class HealthSystem : MonoBehaviour, IDamageable
         int unitlevel = unit.GetUnitLevel;
         healthMax = unitObj.health * (unitlevel + 1);
         manaMax = unitObj.mana * (unitlevel + 1);
-        mana = manaMax;
+
+        if (obj.IsCombatState)
+        {
+            mana = 0;
+        }
+        else {
+            mana = manaMax;
+        }
+
         health = healthMax;
 
         Heal(999999);
@@ -73,13 +81,21 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public void DecreaseMana(float value)
     {
         mana -= value;
+        if (mana > manaMax)
+        {
+            mana = manaMax;
+            mana -= value;
+        }
         if (mana < 0) mana = 0;
+
         OnManaChanged?.Invoke(mana, manaMax);
     }
     public void IncreaseMana(float value)
     {
         mana += value;
         if (mana > manaMax) mana = manaMax;
+        float valueMax = Mathf.Clamp(GetMana / GetMaxMana, 0, 1);
+    
         OnManaChanged?.Invoke(mana, manaMax);
     }
     public void Heal(float value)

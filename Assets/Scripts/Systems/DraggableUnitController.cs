@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
-public class DragAndDrop : MonoBehaviour
+public class DraggableUnitController : MonoBehaviour
 {
     [SerializeField] private LayerMask draggableLayer;
     [SerializeField] private LayerMask gridObjectLayer;
@@ -144,6 +145,13 @@ public class DragAndDrop : MonoBehaviour
         SellUnit();
         ResetUI();
     }
+    [SerializeField] private GameObject eventManager;
+
+    private IEnumerator ReActivate() {
+        eventManager.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        eventManager.SetActive(true);
+    }
 
     private void MoveDraggableObject(Vector2 touchPosition)
     {
@@ -153,9 +161,11 @@ public class DragAndDrop : MonoBehaviour
         GameState stateIndex = GameStateSystem.Instance.GetCurrentState();
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, gridObjectLayer))
         {
-            if (stateIndex.IsCombatState && character.GetUnit.OnGrid) {
-                _draggableObject = null;
-                character.GetUnit.charState = CharState.Idle;
+            if (stateIndex.IsCombatState && character.GetUnit.OnGrid)
+            {
+                StartCoroutine(nameof(ReActivate));
+                //_draggableObject = null;
+               // character.GetUnit.charState = CharState.Idle;
                 return;
             }
             float x = Mathf.Floor(hit.point.x / gridSize) * gridSize;
@@ -182,7 +192,11 @@ public class DragAndDrop : MonoBehaviour
                 );
 
             GameState stateIndex = GameStateSystem.Instance.GetCurrentState();
-            if (stateIndex.IsCombatState && character.GetUnit.OnGrid) { _draggableObject = null; return; }
+            if (stateIndex.IsCombatState && character.GetUnit.OnGrid) {
+                StartCoroutine(nameof(ReActivate));
+                // _draggableObject = null;
+                return;
+            }
 
             sellUI.SetActive(true);
             marketUI.SetActive(false);

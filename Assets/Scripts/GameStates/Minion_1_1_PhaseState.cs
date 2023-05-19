@@ -35,10 +35,15 @@ public class Minion_1_1_PhaseState : GameState
         };
 
         List<GameObject> enemyObjects = enemyPosition
-        .Select(position => enemyPool.Spawn(position, Quaternion.Euler(0,180,0)))
+        .Select(position => enemyPool.Spawn(position, Quaternion.Euler(0, 180, 0)))
         .ToList();
 
         enemies.AddRange(enemyObjects.Select(obj => obj.GetComponent<Enemy>()));
+        foreach (Enemy enemy  in enemies)
+        {
+            enemy.objectPool = enemyPool;
+        }
+
         enemiesCount = enemies.Count;
         foreach (IDamageable enemyhp in from enemy in enemies
                                         let enemyhp = enemy.GetComponent<IDamageable>()

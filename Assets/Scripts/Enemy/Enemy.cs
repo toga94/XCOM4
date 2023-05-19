@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-
+using Lean.Pool;
 public class Enemy : MonoBehaviour
 {
     private NavMeshAgent agent;
@@ -20,6 +20,9 @@ public class Enemy : MonoBehaviour
     private GameObject targetObject;
     [SerializeField]
     private float enemyDamage;
+
+
+    public LeanGameObjectPool objectPool;
     void Start()
     {
         enemyHealth = GetComponent<EnemyHealth>();
@@ -121,5 +124,7 @@ public class Enemy : MonoBehaviour
     void Die(bool value)
     {
         isDead = value;
+
+        objectPool.Despawn(gameObject);
     }
 }

@@ -87,7 +87,7 @@ public class UnitAI : MonoBehaviour
         IDamageable damagableTarget = target.GetComponent<IDamageable>();
 
         if (damagableTarget == null) return;
-        if (healthSystem.GetMana < superAbility.ManaCost)
+        if (healthSystem.GetMana < healthSystem.GetMaxMana)
         {
             if (attackType == AttackType.Ranked)
             {
@@ -97,12 +97,12 @@ public class UnitAI : MonoBehaviour
             {
                 ability.Cast(target, unit.GetUnitObject.attackPower);
             }
-            healthSystem.IncreaseMana(1);
+            healthSystem.IncreaseMana(healthSystem.GetMaxMana / 4);
         }
         else
         {
             superAbility.Cast(target, unit.GetUnitObject.attackPower);
-            healthSystem.DecreaseMana(superAbility.ManaCost);
+            healthSystem.DecreaseMana(healthSystem.GetMaxMana);
         }
     }
 

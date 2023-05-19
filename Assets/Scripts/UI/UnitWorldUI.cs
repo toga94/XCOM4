@@ -103,8 +103,9 @@ public class UnitWorldUI : MonoBehaviour
         if (!uiInit) return;
 
         float value = Mathf.Clamp(curMana / maxMana, 0, 1);
-        manaSldier.fillAmount = value * 10;
+        manaSldier.fillAmount = value;
 
+     
         levelText.text = curLevel;
     }
 
