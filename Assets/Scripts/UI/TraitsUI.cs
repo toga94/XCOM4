@@ -102,7 +102,6 @@ public class TraitsUI : Singleton<TraitsUI>
     private int GetTraitMaxStack(TraitType trait)
     {
         TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
-        //return traitdata.traitEffectsLevel[traitdata.traitEffectsLevel.Length - 1];
         return traitdata.traitEffectsLevel[0];
     }
     private int GetTraitLength(TraitType trait)

@@ -5,8 +5,7 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] private string unitName;
     [SerializeField] private int unitLevel;
-    public int type; // Type of unit (e.g. archer, knight, mage)
-    public int tier; // Tier of unit (e.g. 1-star, 2-star, 3-star)
+
     public bool OnGrid { get; set; }
     public float MaxHealth { get; set; }
 
@@ -56,7 +55,7 @@ public class Unit : MonoBehaviour
     }
     public void UpdatePos(TransformData data)
     {
-        if (!OnGrid && GameStateSystem.Instance.GetCurrentState() is ChampionSelectionState) return;
+        if (!OnGrid && stateSystem.GetCurrentState() is ChampionSelectionState) return;
             transform.SetPositionAndRotation(data.position, data.rotation);
     }
 }

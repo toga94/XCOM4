@@ -65,7 +65,6 @@ public class HealthSystem : MonoBehaviour, IDamageable
         if (IsDie)
         {
             OnDie?.Invoke(true, gameObject);
-            gameObject.SetActive(false); 
         }
         else
         {

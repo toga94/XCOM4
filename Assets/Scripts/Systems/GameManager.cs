@@ -238,7 +238,7 @@ public class GameManager : Singleton<GameManager>
 
     private void CheckForUpgradeForAll()
     {
-        GetAllUnits.ToList().ForEach(selectedUnit => CheckForUpgrade(selectedUnit));
+        GetAllUnits.ForEach(selectedUnit => CheckForUpgrade(selectedUnit));
     }
 
     private void CheckForUpgrade(Unit unit)
