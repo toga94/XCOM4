@@ -13,20 +13,20 @@ public class ProjectileBallAbility : Ability
 
     public override void Cast(GameObject target, float additionalDamage)
     {
-        PoolingSystem();
+        PoolingSystem(nameof(ProjectileBallAbility));
         // Cast fireball spell
         if (target == null) return;
         StartCoroutine(FireballCast(target, additionalDamage));
     }
 
-    private void PoolingSystem()
+    private void PoolingSystem(string className)
     {
         if (projectilePool == null)
         {
             animator = GetComponent<Animator>();
             GameObject poolObj = GameObject.Find("_Pooling");
 
-            var childTransform = poolObj.transform.Find(nameof(ProjectileBallAbility));
+            Transform childTransform = poolObj.transform.Find(className);
             GameObject childObject;
 
             if (childTransform != null)
@@ -36,7 +36,7 @@ public class ProjectileBallAbility : Ability
             }
             else
             {
-                childObject = new GameObject(nameof(ProjectileBallAbility));
+                childObject = new GameObject(className);
                 childObject.transform.parent = poolObj.transform;
                 projectilePool = childObject.AddComponent<LeanGameObjectPool>();
                 projectilePool.Prefab = projectilePrefab;

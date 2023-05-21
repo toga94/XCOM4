@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: -5938326864877691176}
   - component: {fileID: -1238964919562003967}
   - component: {fileID: 1212980491003824514}
+  - component: {fileID: 6439669514266309239}
   m_Layer: 6
   m_Name: Chr_BR_Dwarf_King_01
   m_TagString: Unit
@@ -349,8 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Wrath  King
   unitLevel: 0
-  type: 0
-  tier: 0
+  isOwn: 0
   UnitPosition: {x: 0, y: 0, z: 0}
   traits: 
   charState: 0
@@ -380,6 +380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1654a00933fb92247974ad4e83934163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mana: 0
+  manaMax: 0
   unitWorldUIPrefab: {fileID: 6882975772807749723, guid: 50dcae36a2db2744e866027fc7f95cf2, type: 3}
 --- !u!114 &1212980491003824514
 MonoBehaviour:
@@ -399,9 +401,33 @@ MonoBehaviour:
   agent: {fileID: 0}
   charState: 0
   targetObject: {fileID: 0}
-  ability: {fileID: 0}
-  superAbility: {fileID: 0}
+  ability: {fileID: 6439669514266309239}
+  superAbility: {fileID: 6439669514266309239}
   enemies: []
+--- !u!114 &6439669514266309239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421576923844595220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ba6f09b1dd74240adb3eb03c720de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 0}
+  AbilityName: BrassKnuckles
+  Description: BrassKnuckles
+  Cooldown: 3
+  CastTime: 3
+  AbilityPower: 3
+  ManaCost: 0
+  IsOffensive: 1
+  abilityType: 0
+  AnimationName: BrassKnuckles
+  projectilePrefab: {fileID: 0}
+  weaponType: 0
 --- !u!1 &421576970679836112
 GameObject:
   m_ObjectHideFlags: 0

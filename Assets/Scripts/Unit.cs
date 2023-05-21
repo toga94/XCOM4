@@ -5,7 +5,7 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] private string unitName;
     [SerializeField] private int unitLevel;
-
+    public bool isOwn;
     public bool OnGrid { get; set; }
     public float MaxHealth { get; set; }
 
@@ -55,7 +55,7 @@ public class Unit : MonoBehaviour
     }
     public void UpdatePos(TransformData data)
     {
-        if (!OnGrid && stateSystem.GetCurrentState() is ChampionSelectionState) return;
+        if (!OnGrid && stateSystem.CurrentState is ChampionSelectionState) return;
             transform.SetPositionAndRotation(data.position, data.rotation);
     }
 }

@@ -16,23 +16,20 @@ public class GameStateSystem : Singleton<GameStateSystem>
     public GameStateSystem()
     {
         gameStates.AddRange(new GameState[] {
-        new CarouselState(),
-        new ChampionSelectionState(),
-        new Minion_1_1_PhaseState(),
-        new ChampionSelectionState(),
-                new Minion_1_1_PhaseState(),
-        new ChampionSelectionState(),
-                new Minion_1_1_PhaseState(),
-        new ChampionSelectionState(),
-                new Minion_1_1_PhaseState(),
-        new ChampionSelectionState(),
+            new CarouselState(),
+                new ChampionSelectionState(),
+            new Minion_1_1_PhaseState(),
+                new ChampionSelectionState(),
+            new Minion_1_1_PhaseState(),
+                new ChampionSelectionState(),
+            new Minion_1_1_PhaseState(),
+                new ChampionSelectionState(),
+            new Minion_1_1_PhaseState(),
+                new ChampionSelectionState(),
         });
     }
 
-    public GameState GetCurrentState()
-    {
-        return gameStates.ElementAtOrDefault(currentStateIndex);
-    }
+    public GameState CurrentState => gameStates.ElementAtOrDefault(currentStateIndex);
     private void Start()
     {
         gameStates[currentStateIndex].OnEnterState();
@@ -40,7 +37,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
 
     public void Update()
     {
-        GameState currentState = GetCurrentState();
+        GameState currentState = CurrentState;
         finished = currentState.IsFinished;
         currentDuration = currentState.duration;
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -55,7 +52,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
             currentStateStartTime = Time.time;
             return;
         }
-        GetCurrentState().OnUpdate();
+        CurrentState.OnUpdate();
 
         float timer = Time.time - currentStateStartTime;
         if (timer > currentState.duration)
@@ -67,7 +64,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
     }
     public void ChangeState(int index)
     {
-        GameState currentState = GetCurrentState();
+        GameState currentState = CurrentState;
 
         gameStates[currentStateIndex].OnExitState();
 
@@ -80,6 +77,6 @@ public class GameStateSystem : Singleton<GameStateSystem>
         gameStates[currentStateIndex].duration = 3;
         gameStates[currentStateIndex].IsFinished = false;
         gameStates[currentStateIndex].OnEnterState();
-        OnGameStateChanged?.Invoke(GetCurrentState());
+        OnGameStateChanged?.Invoke(CurrentState);
     }
 }

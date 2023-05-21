@@ -81,7 +81,7 @@ public class UnitCardButton : MonoBehaviour, IPoolable
         if (inventoryFree)
         {
             if (Economy.BuyUnit(unit))
-                gameManager.SpawnUnitAtInventory(CharacterName);
+                gameManager.SpawnUnitAtInventory(CharacterName, true);
         }
         else
         {

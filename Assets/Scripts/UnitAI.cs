@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 public class UnitAI : MonoBehaviour
 {
+
     private Unit unit;
     [SerializeField]
     private UnitObject unitObject;
@@ -26,9 +28,10 @@ public class UnitAI : MonoBehaviour
     private HealthSystem healthSystem;
     public Ability ability;
     public Ability superAbility;
-
+    private GameManager gameManager;
     private void Start()
     {
+        gameManager = GameManager.Instance;
         unit = GetComponent<Unit>();
         unitObject = unit.GetUnitObject;
         animator = GetComponent<Animator>();
@@ -40,7 +43,7 @@ public class UnitAI : MonoBehaviour
         targetObject = GameObject.Find("target");
         attackType = unitObject.attackType;
 
-        currentState = stateSystem.GetCurrentState();
+        currentState = stateSystem.CurrentState;
 
         if (attackType == AttackType.Melee)
         {
@@ -62,13 +65,13 @@ public class UnitAI : MonoBehaviour
     }
     private void GameStateChanged(GameState gameState)
     {
-        currentState = GameStateSystem.Instance.GetCurrentState();
+        currentState = GameStateSystem.Instance.CurrentState;
         if (!unit.OnGrid) return;
         if (currentState.IsCombatState)
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
             agent.speed = unitObject.speed;
-            agent.stoppingDistance = unitObject.attackType == AttackType.Melee ? 2f : 20f;
+            agent.stoppingDistance = unitObject.attackType == AttackType.Melee ? 8f : 20f;
         }
         else
         {
@@ -115,9 +118,22 @@ public class UnitAI : MonoBehaviour
     {
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        List<Unit> enemyOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
         if (enemies.Length > 0)
         {
             GameObject nearestEnemy = FindNearestEnemy(enemies);
+            if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
+            {
+                return nearestEnemy;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else if (enemyOnGrid.Count > 0) 
+        {
+            GameObject nearestEnemy = FindNearestEnemyUnit(enemyOnGrid);
             if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
             {
                 return nearestEnemy;
@@ -161,6 +177,12 @@ public class UnitAI : MonoBehaviour
         return enemies
             .OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position))
             .FirstOrDefault();
+    }
+    private GameObject FindNearestEnemyUnit(List<Unit> enemies)
+    {
+        return enemies
+            .OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position))
+            .Select(enemy => enemy.gameObject).FirstOrDefault();
     }
     private void AnimateState(GameState currentState)
     {

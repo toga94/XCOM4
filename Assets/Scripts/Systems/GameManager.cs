@@ -37,15 +37,29 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return FindObjectsOfType<Unit>()
+            return FindObjectsOfType<Unit>().Where(u => u.isOwn)
                    .ToList();
         }
     }
-
+    public List<Unit> GetAllEnemyUnits
+    {
+        get
+        {
+            return FindObjectsOfType<Unit>().Where(u => !u.isOwn)
+                   .ToList();
+        }
+    }
     public List<Unit> GetUnitsByNameAndLevel(string name)
     {
         return FindObjectsOfType<Unit>()
-               .Where(u => u.GetUnitNameWithLevel == name)
+               .Where(u => u.GetUnitNameWithLevel == name && u.isOwn)
+               .Take(3)
+               .ToList();
+    }
+    public List<Unit> GetEnemyUnitsByNameAndLevel(string name)
+    {
+        return FindObjectsOfType<Unit>()
+               .Where(u => u.GetUnitNameWithLevel == name && u.isOwn)
                .Take(3)
                .ToList();
     }
@@ -54,20 +68,39 @@ public class GameManager : Singleton<GameManager>
         get
         {
             return FindObjectsOfType<Unit>()
-                   .Where(u => !u.OnGrid)
+                   .Where(u => !u.OnGrid && u.isOwn)
                    .ToList();
         }
     }
+
+    public List<Unit> GetAllEnemyUnitsOnInventory
+    {
+        get
+        {
+            return FindObjectsOfType<Unit>()
+                   .Where(u => !u.OnGrid && u.isOwn)
+                   .ToList();
+        }
+    }
+
     public List<Unit> GetAllUnitsOnGrid
     {
         get
         {
             return FindObjectsOfType<Unit>()
-                   .Where(u => u.OnGrid)
+                   .Where(u => u.OnGrid && u.isOwn)
                    .ToList();
         }
     }
-
+    public List<Unit> GetAllEnemyUnitsOnGrid
+    {
+        get
+        {
+            return FindObjectsOfType<Unit>()
+                   .Where(u => u.OnGrid && u.isOwn)
+                   .ToList();
+        }
+    }
     public List<TransformData> SavedUnitTransforms { get;  set; }
 
     private void CalculateUnits(object sender, EventArgs e)
@@ -205,15 +238,16 @@ public class GameManager : Singleton<GameManager>
         return isFull;
     }
 
-    public void SpawnUnitAtInventory(string unitName)
+    public void SpawnUnitAtInventory(string unitName, bool isOwn)
     {
         if (InventoryIsFull()) return;
-        foreach (var item in unitObjects)
+        foreach (UnitObject item in unitObjects)
         {
             if (item.unitName == unitName)
             {
                 Unit SpawnedUnit = Instantiate(item.Prefab, Vector3.zero, Quaternion.identity).GetComponent<Unit>();
                 SpawnedUnit.gameObject.name = SpawnedUnit.GetUnitNameWithLevel;
+                SpawnedUnit.isOwn = isOwn;
                 AddUnitToInventory(SpawnedUnit);
             }
         }
@@ -245,9 +279,9 @@ public class GameManager : Singleton<GameManager>
     {
 
         IEnumerable<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel);
-        if (GameStateSystem.Instance.GetCurrentState().IsCombatState)
+        if (GameStateSystem.Instance.CurrentState.IsCombatState)
         {
-            upgradableUnits = upgradableUnits.Where(u => !u.OnGrid);
+            upgradableUnits = upgradableUnits.Where(u => !u.OnGrid && u.isOwn);
         }
 
         if (upgradableUnits.Count() >= 3)

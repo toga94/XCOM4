@@ -13,20 +13,20 @@ public class MeteorAbility : Ability
 
     public override void Cast(GameObject target, float additionalDamage)
     {
-        PoolingSystem();
+        PoolingSystem(nameof(MeteorAbility));
         // Cast fireball spell
         if (target == null) return;
         StartCoroutine(MeteorCast(target, additionalDamage));
     }
 
-    private void PoolingSystem()
+    private void PoolingSystem(string className)
     {
         if (projectilePool == null)
         {
             animator = GetComponent<Animator>();
             GameObject poolObj = GameObject.Find("_Pooling");
 
-            Transform childTransform = poolObj.transform.Find(nameof(MeteorAbility));
+            Transform childTransform = poolObj.transform.Find(className);
             GameObject childObject;
 
             if (childTransform != null)
@@ -36,7 +36,7 @@ public class MeteorAbility : Ability
             }
             else
             {
-                childObject = new GameObject(nameof(MeteorAbility));
+                childObject = new GameObject(className);
                 childObject.transform.parent = poolObj.transform;
                 projectilePool = childObject.AddComponent<LeanGameObjectPool>();
                 projectilePool.Prefab = projectilePrefab;
