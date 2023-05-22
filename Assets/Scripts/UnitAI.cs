@@ -71,7 +71,7 @@ public class UnitAI : MonoBehaviour
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
             agent.speed = unitObject.speed;
-            agent.stoppingDistance = unitObject.attackType == AttackType.Melee ? 8f : 20f;
+            agent.stoppingDistance = unitObject.attackRange;
         }
         else
         {
@@ -116,12 +116,12 @@ public class UnitAI : MonoBehaviour
     }
     private GameObject DetermineTarget()
     {
-
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         List<Unit> enemyOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
         if (enemies.Length > 0)
         {
             GameObject nearestEnemy = FindNearestEnemy(enemies);
+            target = nearestEnemy;
             if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
             {
                 return nearestEnemy;
@@ -134,6 +134,7 @@ public class UnitAI : MonoBehaviour
         else if (enemyOnGrid.Count > 0) 
         {
             GameObject nearestEnemy = FindNearestEnemyUnit(enemyOnGrid);
+            target = nearestEnemy;
             if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
             {
                 return nearestEnemy;
@@ -155,20 +156,37 @@ public class UnitAI : MonoBehaviour
     private Vector3 DetermineDestination()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        List<Unit> enemyOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
         if (enemies.Length > 0)
         {
             GameObject nearestEnemy = FindNearestEnemy(enemies);
             target = nearestEnemy;
-            return nearestEnemy.transform.position;
+            if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
+            {
+                return nearestEnemy.transform.position;
+            }
+            else
+            {
+                return Vector3.zero;
+            }
+        }
+        else if (enemyOnGrid.Count > 0)
+        {
+            GameObject nearestEnemy = FindNearestEnemyUnit(enemyOnGrid);
+            target = nearestEnemy;
+            if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
+            {
+                return nearestEnemy.transform.position;
+            }
+            else
+            {
+                return Vector3.zero;
+            }
         }
         else
         {
-            float range = 10f;
-            Vector3 randomDirection = Random.insideUnitSphere * range;
-            randomDirection += transform.position;
-            NavMeshHit navMeshHit;
-            NavMesh.SamplePosition(randomDirection, out navMeshHit, range, NavMesh.AllAreas);
-            return navMeshHit.position;
+            currentTarget = null;
+            return Vector3.zero;
         }
     }
 
@@ -216,10 +234,11 @@ public class UnitAI : MonoBehaviour
 
             if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.3f)
             {
-                if (Time.time - lastAttackTime >= attackDelay)
+            float time = Time.time;
+                if (time - lastAttackTime >= attackDelay)
                 {
                     Attack(target);
-                    lastAttackTime = Time.time;
+                    lastAttackTime = time;
                 }
             }
     }

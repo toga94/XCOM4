@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 public class GameState : MonoBehaviour
 {
     protected GameStateSystem gameStateSystem;

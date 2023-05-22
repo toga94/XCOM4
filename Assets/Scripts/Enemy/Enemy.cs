@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     private GameObject targetObject;
     [SerializeField]
     private float enemyDamage;
-
+    private GameStateSystem gameStateSystem;
 
     public LeanGameObjectPool objectPool;
     void Start()
@@ -29,14 +29,13 @@ public class Enemy : MonoBehaviour
         animator = transform.GetChild(0).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         enemyHealth.OnEnemyDie += Die;
+        gameStateSystem = GameStateSystem.Instance;
     }
     private void Update()
     {
-
-        if (enemyHealth.GetHealth > 0 && GameStateSystem.Instance.CurrentState.IsCombatState) {
+        if (enemyHealth.GetHealth > 0 && gameStateSystem.CurrentState.IsCombatState) {
             CombatPhase();
         }
-
     }
     private GameObject DetermineTarget()
     {
