@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -24,13 +25,13 @@ public class PlayerCombat_PhaseState : GameState
         GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
         UnitPositionUtility.RefreshUnitsPosition();
 
-         floors = GameObject.FindGameObjectsWithTag("floor");
+        floors = GameObject.FindGameObjectsWithTag("floor");
         foreach (var floor in floors)
         {
             floor.GetComponent<BoxCollider>().enabled = false;
         }
 
-    
+
         List<Vector3> enemyPosition = new List<Vector3>
         {
             new Vector3(-0.5f, 0.24f, 24.5f),
@@ -66,12 +67,22 @@ public class PlayerCombat_PhaseState : GameState
         if (allUnitsDead)
         {
             duration = 3f;
-
-            unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
-
+            StartCoroutine(nameof(AfterGame));
             gameManager.LoseCombat();
         }
     }
+
+    private IEnumerator AfterGame()
+    {
+
+        unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
+        yield return new WaitForSeconds(2);
+        foreach (var unit in enemyUnits)
+        {
+            Destroy(unit);
+        }
+    }
+
     private void OnEnemyUnitKilled(bool value, GameObject killedUnit)
     {
         enemyUnitsCount--;
@@ -86,7 +97,10 @@ public class PlayerCombat_PhaseState : GameState
             unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
           
             if (unitsCount > 0)
+            {
+                Debug.LogWarning("WinGame");
                 gameManager.WinCombat();
+            }
         }
     }
     private void OnEnemyKilled(bool value, GameObject minion)
@@ -121,10 +135,7 @@ public class PlayerCombat_PhaseState : GameState
 
         Economy.AddGold(totalGold);
         Economy.GainExperience(1);
-        foreach (var unit in enemyUnits)
-        {
-            Destroy(unit);
-        }
+
         foreach (var floor in floors)
         {
             floor.GetComponent<BoxCollider>().enabled = true;

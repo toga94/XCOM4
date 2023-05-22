@@ -66,7 +66,7 @@ public class UnitAI : MonoBehaviour
 
     private void Update()
     {
-
+        if (stateSystem.GetCurrentState is ChampionSelectionState && !unit.isOwn) Destroy(gameObject);
         charState = unit.charState;
         AnimateState(currentState);
 

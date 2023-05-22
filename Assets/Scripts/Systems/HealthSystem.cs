@@ -21,6 +21,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
     private GameObject canvasBar;
     private UnitWorldUI unitWorldUI;
     private GameObject canvas;
+    private GameStateSystem gameStateSystem;
     [SerializeField] private GameObject unitWorldUIPrefab;
     private void Start()
     {
@@ -37,8 +38,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
         this.unitWorldUI.SetRoot(transform, canvas);
         OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
         OnManaChanged?.Invoke(mana, manaMax);
-
-        GameStateSystem.Instance.OnGameStateChanged += OnGameStateChanged;
+        gameStateSystem = GameStateSystem.Instance;
+        gameStateSystem.OnGameStateChanged += OnGameStateChanged;
     }
 
     private void OnGameStateChanged(GameState obj)
@@ -62,6 +63,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
     public void TakeDamage(float value)
     {
+        if (gameStateSystem.CurrentState is ChampionSelectionState) return;
+
         if (IsDie)
         {
             OnDie?.Invoke(true, gameObject);
