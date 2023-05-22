@@ -13,7 +13,7 @@ public class PlayerCombat_PhaseState : GameState
     private int enemyUnitsCount;
     private List<Unit> unitsOnGrid;
     private List<Unit> enemyUnitsOnGrid;
-
+    private GameObject[] floors;
 
     public override void OnEnterState()
     {
@@ -24,7 +24,7 @@ public class PlayerCombat_PhaseState : GameState
         GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
         UnitPositionUtility.RefreshUnitsPosition();
 
-        GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
+         floors = GameObject.FindGameObjectsWithTag("floor");
         foreach (var floor in floors)
         {
             floor.GetComponent<BoxCollider>().enabled = false;
@@ -45,6 +45,7 @@ public class PlayerCombat_PhaseState : GameState
         foreach (var enemyUnit in enemyUnits)
         {
             enemyUnit.OnGrid = true;
+            enemyUnit.GetComponent<HealthSystem>().DecreaseMana(999999);
         }
         enemiesCount = enemyUnits.Count;
 
@@ -67,7 +68,6 @@ public class PlayerCombat_PhaseState : GameState
             duration = 3f;
 
             unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
-            enemyUnits.ForEach(enemy => enemy.GetComponent<IDamageable>().TakeDamage(99999999));
 
             gameManager.LoseCombat();
         }
@@ -82,8 +82,9 @@ public class PlayerCombat_PhaseState : GameState
         if (allEnemiesDead)
         {
             duration = 3f;
-
+            Debug.LogWarning("allenemyisdead");
             unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
+          
             if (unitsCount > 0)
                 gameManager.WinCombat();
         }
@@ -120,9 +121,10 @@ public class PlayerCombat_PhaseState : GameState
 
         Economy.AddGold(totalGold);
         Economy.GainExperience(1);
-
-        GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
-
+        foreach (var unit in enemyUnits)
+        {
+            Destroy(unit);
+        }
         foreach (var floor in floors)
         {
             floor.GetComponent<BoxCollider>().enabled = true;

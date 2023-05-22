@@ -40,11 +40,8 @@ public class UnitAI : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
         stateSystem = GameStateSystem.Instance;
         currentState = stateSystem.GetCurrentState;
-        if (unit.isOwn)
-        {
-            stateSystem.OnGameStateChanged += GameStateChanged;
-        }
-        else
+        stateSystem.OnGameStateChanged += GameStateChanged;
+        if (!unit.isOwn)
         {
             GameStateChanged(currentState);
         }
@@ -54,7 +51,7 @@ public class UnitAI : MonoBehaviour
         targetObject = GameObject.Find("target");
         attackType = unitObject.attackType;
 
-
+        healthSystem.DecreaseMana(healthSystem.GetMaxMana);
 
         if (attackType == AttackType.Melee)
         {
@@ -80,9 +77,17 @@ public class UnitAI : MonoBehaviour
         if (!unit.OnGrid) return;
         if (currentState.IsCombatState)
         {
-            agent = gameObject.AddComponent<NavMeshAgent>();
-            agent.speed = unitObject.speed;
-            agent.stoppingDistance = unitObject.attackRange;
+            try
+            {
+                agent = gameObject.AddComponent<NavMeshAgent>();
+                agent.speed = unitObject.speed;
+                agent.stoppingDistance = unitObject.attackRange;
+            }
+            catch (System.Exception)
+            {
+
+            }
+
         }
         else
         {
@@ -258,7 +263,7 @@ public class UnitAI : MonoBehaviour
             animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
             targetObject.transform.position = destination;
             agent.SetDestination(destination);
-            if (enemies.Length == 0) return;
+            if (enemies.Length == 0 && enemyOnGrid.Count == 0) return;
 
             if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.3f)
             {

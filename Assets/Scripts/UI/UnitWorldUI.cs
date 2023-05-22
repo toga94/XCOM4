@@ -70,7 +70,7 @@ public class UnitWorldUI : MonoBehaviour
 
     private void UpdateHp(float curHp, int level, float maxhp)
     {
-        if (!uiInit) return;
+        if (!uiInit || !hpSldier) return;
 
         float value = Mathf.Clamp(curHp / maxhp, 0, 1);
         hpSldier.fillAmount = value;
