@@ -91,6 +91,7 @@ public class UnitAI : MonoBehaviour
         }
         else
         {
+            if (unit.isOwn) transform.rotation = Quaternion.identity;
             Destroy(agent);
         }
     }
