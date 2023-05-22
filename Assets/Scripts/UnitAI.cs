@@ -31,6 +31,8 @@ public class UnitAI : MonoBehaviour
     private GameManager gameManager;
     [SerializeField]
     private List<Unit> enemyOnGrid;
+
+    private GameObject nearestEnemy;
     private void Start()
     {
         gameManager = GameManager.Instance;
@@ -139,13 +141,14 @@ public class UnitAI : MonoBehaviour
 
             enemyOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
         }
-        else {
+        else
+        {
             enemyOnGrid = gameManager.GetAllUnitsOnGrid;
         }
 
         if (enemies.Length > 0)
         {
-            GameObject nearestEnemy = FindNearestEnemy(enemies);
+            nearestEnemy = FindNearestEnemy(enemies);
             target = nearestEnemy;
             if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
             {
@@ -156,9 +159,9 @@ public class UnitAI : MonoBehaviour
                 return null;
             }
         }
-        else if (enemyOnGrid.Count > 0) 
+        else if (enemyOnGrid.Count > 0)
         {
-            GameObject nearestEnemy = FindNearestEnemyUnit(enemyOnGrid);
+            nearestEnemy = FindNearestEnemyUnit(enemyOnGrid);
             target = nearestEnemy;
             if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
             {
@@ -193,29 +196,15 @@ public class UnitAI : MonoBehaviour
         }
         if (enemies.Length > 0)
         {
-            GameObject nearestEnemy = FindNearestEnemy(enemies);
+            nearestEnemy = FindNearestEnemy(enemies);
             target = nearestEnemy;
-            if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
-            {
-                return nearestEnemy.transform.position;
-            }
-            else
-            {
-                return Vector3.zero;
-            }
+            return nearestEnemy.transform.position;
         }
         else if (enemyOnGrid.Count > 0)
         {
-            GameObject nearestEnemy = FindNearestEnemyUnit(enemyOnGrid);
+            nearestEnemy = FindNearestEnemyUnit(enemyOnGrid);
             target = nearestEnemy;
-            if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
-            {
-                return nearestEnemy.transform.position;
-            }
-            else
-            {
-                return Vector3.zero;
-            }
+            return nearestEnemy.transform.position;
         }
         else
         {
@@ -249,31 +238,36 @@ public class UnitAI : MonoBehaviour
                 CombatPhase();
             }
         }
-        else {
+        else
+        {
             DefaultMethod();
         }
     }
 
     private void CombatPhase()
     {
-        if(agent == null) return;
-            agent.isStopped = false;
-            animator.SetBool("fall", false);
-            Vector3 destination = DetermineDestination();
-            
-            animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
-            targetObject.transform.position = destination;
-            agent.SetDestination(destination);
-            if (enemies.Length == 0 && enemyOnGrid.Count == 0) return;
+        if (agent == null) return;
+        agent.isStopped = false;
+        animator.SetBool("fall", false);
+        Vector3 destination = DetermineDestination();
 
-            if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.3f)
-            {
+        animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
+        //targetObject.transform.position = destination;
+        agent.SetDestination(destination);
+        if (enemies.Length == 0 && enemyOnGrid.Count == 0) return;
+
+        if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.3f)
+        {
+
             float time = Time.time;
-                if (time - lastAttackTime >= attackDelay)
+            if (time - lastAttackTime >= attackDelay)
+            {
+                if (agent.pathStatus == NavMeshPathStatus.PathComplete)
                 {
                     Attack(target);
                     lastAttackTime = time;
                 }
             }
+        }
     }
 }

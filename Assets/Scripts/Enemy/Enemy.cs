@@ -100,8 +100,10 @@ public class Enemy : MonoBehaviour
             if (Time.time - lastAttackTime >= attackDelay)
             {
                 animator.SetFloat("run", 0);
-                Attack(target);
-                lastAttackTime = Time.time;
+                if (agent.pathStatus == NavMeshPathStatus.PathComplete) {
+                    Attack(target);
+                    lastAttackTime = Time.time;
+                }
             }
 
         }

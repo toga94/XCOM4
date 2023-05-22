@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.39895537, g: 0.72225744, b: 0.79445356, a: 1}
+  m_IndirectSpecularColor: {r: 0.39863318, g: 0.72230613, b: 0.7944137, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2513,7 +2513,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69246
+  m_Name: pb_Mesh37118
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6129,7 +6129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -259.80762}
+  m_AnchoredPosition: {x: 60, y: -311.65335}
   m_SizeDelta: {x: 119.880005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716284766
@@ -7985,8 +7985,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: -7.806793}
-  m_SizeDelta: {x: 0.000061035, y: 15.6136}
+  m_AnchoredPosition: {x: 0, y: -21.600006}
+  m_SizeDelta: {x: -447.1164, y: 14.4685}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6910430900523694003
 MonoBehaviour:
