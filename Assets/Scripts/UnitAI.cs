@@ -93,8 +93,22 @@ public class UnitAI : MonoBehaviour
         }
         else
         {
-            if (unit.isOwn) transform.rotation = Quaternion.identity;
-            Destroy(agent);
+            try
+            {
+                if (unit.isOwn) transform.rotation = Quaternion.identity;
+
+            }
+            catch (System.Exception)
+            {
+            }
+            try
+            {
+                Destroy(agent);
+            }
+            catch (System.Exception)
+            {
+            }
+
         }
     }
     private void Attack(GameObject target)
@@ -264,6 +278,7 @@ public class UnitAI : MonoBehaviour
             {
                 if (agent.pathStatus == NavMeshPathStatus.PathComplete)
                 {
+                    agent.isStopped = true;
                     Attack(target);
                     lastAttackTime = time;
                 }
