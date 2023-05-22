@@ -4669,7 +4669,6 @@ RectTransform:
   - {fileID: 989162348}
   - {fileID: 1822321296}
   - {fileID: 1229599562}
-  - {fileID: 2039852646}
   m_Father: {fileID: 1899431984}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5568,6 +5567,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e4c93b4312d78164ab15609185082dfb, type: 2}
   gold: 180
   allMinionsisDead: 0
+  winStreakUI: {fileID: 2039852645}
+  winStreakUIText: {fileID: 71303478}
 --- !u!114 &1502524553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6876,7 +6877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2039852646
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6884,18 +6885,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039852645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7952354, y: 1.7952354, z: 1.7952354}
   m_Children:
   - {fileID: 321435481}
   - {fileID: 71303477}
-  m_Father: {fileID: 1279986247}
-  m_RootOrder: 8
+  m_Father: {fileID: 8594054770886374538}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 357.81, y: -152.17}
+  m_AnchoredPosition: {x: -2.2819214, y: 65.119736}
   m_SizeDelta: {x: 57.5909, y: 21.497}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2039852647
@@ -8591,6 +8592,7 @@ RectTransform:
   - {fileID: 8594054770787276588}
   - {fileID: 359631337}
   - {fileID: 600532842}
+  - {fileID: 2039852646}
   m_Father: {fileID: 1279986247}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

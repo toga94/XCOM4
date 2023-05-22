@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : Singleton<GameManager>
@@ -26,6 +27,11 @@ public class GameManager : Singleton<GameManager>
 
     public bool allMinionsisDead;
     private int winStreak = 0;
+
+    [SerializeField]
+    private GameObject winStreakUI;
+    [SerializeField]
+    private Text winStreakUIText;
     public class UpdateTextArg : EventArgs
     {
 
@@ -394,8 +400,22 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-    public void WinCombat() => winStreak++;
-    public void LoseCombat() => winStreak = 0;
+    public void WinCombat()
+    {
+        winStreak++;
+        if(winStreak > 1)
+        {
+            winStreakUI.SetActive(true);
+            winStreakUIText.text = winStreak.ToString();
+        }
+    }
+
+    public void LoseCombat()
+    {
+        winStreak = 0;
+        winStreakUI.SetActive(false);
+    }
+
     public int GetWinStreak() => winStreak;
 
 

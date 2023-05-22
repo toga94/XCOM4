@@ -11,6 +11,8 @@ public class CardWindow : MonoBehaviour
     private LeanGameObjectPool unitCardPool;
     [SerializeField]
     private LeanGameObjectPool traitCardItemUIPool;
+
+
     private void Awake()
     {
         cardShop = CardShop.Instance;
