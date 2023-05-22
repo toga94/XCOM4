@@ -27,7 +27,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
             rounds.Add(new List<GameState> {
             new CarouselState(),
             new ChampionSelectionState(),
-            new Minion_1_1_PhaseState(),
+            new PlayerCombat_PhaseState(),
             new ChampionSelectionState(),
             new Minion_1_1_PhaseState(),
             new ChampionSelectionState(),

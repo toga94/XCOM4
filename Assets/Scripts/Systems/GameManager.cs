@@ -25,6 +25,7 @@ public class GameManager : Singleton<GameManager>
     public int GetGold => gold;
 
     public bool allMinionsisDead;
+    private int winStreak = 0;
     public class UpdateTextArg : EventArgs
     {
 
@@ -67,8 +68,8 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return FindObjectsOfType<Unit>()
-                   .Where(u => !u.OnGrid && u.isOwn)
+            return GetAllUnits
+                   .Where(u => !u.OnGrid)
                    .ToList();
         }
     }
@@ -77,8 +78,8 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return FindObjectsOfType<Unit>()
-                   .Where(u => !u.OnGrid && u.isOwn)
+            return GetAllEnemyUnits
+                   .Where(u => !u.OnGrid)
                    .ToList();
         }
     }
@@ -87,8 +88,8 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return FindObjectsOfType<Unit>()
-                   .Where(u => u.OnGrid && u.isOwn)
+            return GetAllUnits
+                   .Where(u => u.OnGrid)
                    .ToList();
         }
     }
@@ -96,8 +97,8 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return FindObjectsOfType<Unit>()
-                   .Where(u => u.OnGrid && u.isOwn)
+            return GetAllEnemyUnits
+                   .Where(u => u.OnGrid)
                    .ToList();
         }
     }
@@ -241,17 +242,44 @@ public class GameManager : Singleton<GameManager>
     public void SpawnUnitAtInventory(string unitName, bool isOwn)
     {
         if (InventoryIsFull()) return;
+        Unit SpawnedUnit;
+        Quaternion unitRotation;
+
         foreach (UnitObject item in unitObjects)
         {
             if (item.unitName == unitName)
             {
-                Unit SpawnedUnit = Instantiate(item.Prefab, Vector3.zero, Quaternion.identity).GetComponent<Unit>();
+                unitRotation = isOwn ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+                SpawnedUnit = Instantiate(item.Prefab, Vector3.zero, unitRotation).GetComponent<Unit>();
                 SpawnedUnit.gameObject.name = SpawnedUnit.GetUnitNameWithLevel;
                 SpawnedUnit.isOwn = isOwn;
-                AddUnitToInventory(SpawnedUnit);
+                if (isOwn) AddUnitToInventory(SpawnedUnit);
             }
         }
     }
+
+    public Unit SpawnUnitAtPosition(string unitName, Vector3 unitPosition, bool isOwn)
+    {
+        if (InventoryIsFull()) return null;
+        Unit spawnedUnit = null;
+        Quaternion unitRotation;
+
+        foreach (UnitObject item in unitObjects)
+        {
+            if (item.unitName == unitName)
+            {
+                unitRotation = isOwn ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+                spawnedUnit = Instantiate(item.Prefab, unitPosition, unitRotation).GetComponent<Unit>();
+                spawnedUnit.gameObject.name = spawnedUnit.GetUnitNameWithLevel;
+                spawnedUnit.isOwn = isOwn;
+                if (isOwn) AddUnitToInventory(spawnedUnit);
+            }
+        }
+
+        return spawnedUnit;
+    }
+
+
     private void AddUnitToInventory(Unit unit)
     {
         if (InventoryIsFull())
@@ -364,23 +392,11 @@ public class GameManager : Singleton<GameManager>
 
         return freePositions.DefaultIfEmpty(new GridPosition(maxIndex, 0)).First();
     }
-    private int winStreak = 0;
 
-    public void WinCombat()
-    {
-        // Increment the player's win streak when they win a combat
-        winStreak++;
-    }
 
-    public void LoseCombat()
-    {
-        // Reset the player's win streak when they lose a combat
-        winStreak = 0;
-    }
+    public void WinCombat() => winStreak++;
+    public void LoseCombat() => winStreak = 0;
+    public int GetWinStreak() => winStreak;
 
-    public int GetWinStreak()
-    {
-        return winStreak;
-    }
 
 }

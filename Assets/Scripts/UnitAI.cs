@@ -29,6 +29,8 @@ public class UnitAI : MonoBehaviour
     public Ability ability;
     public Ability superAbility;
     private GameManager gameManager;
+    [SerializeField]
+    private List<Unit> enemyOnGrid;
     private void Start()
     {
         gameManager = GameManager.Instance;
@@ -36,14 +38,23 @@ public class UnitAI : MonoBehaviour
         unitObject = unit.GetUnitObject;
         animator = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
-
         stateSystem = GameStateSystem.Instance;
-        stateSystem.OnGameStateChanged += GameStateChanged;
+        currentState = stateSystem.GetCurrentState;
+        if (unit.isOwn)
+        {
+            stateSystem.OnGameStateChanged += GameStateChanged;
+        }
+        else
+        {
+            GameStateChanged(currentState);
+        }
+
+
 
         targetObject = GameObject.Find("target");
         attackType = unitObject.attackType;
 
-        currentState = stateSystem.GetCurrentState;
+
 
         if (attackType == AttackType.Melee)
         {
@@ -116,8 +127,16 @@ public class UnitAI : MonoBehaviour
     }
     private GameObject DetermineTarget()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        List<Unit> enemyOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
+        if (unit.isOwn)
+        {
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            enemyOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
+        }
+        else {
+            enemyOnGrid = gameManager.GetAllUnitsOnGrid;
+        }
+
         if (enemies.Length > 0)
         {
             GameObject nearestEnemy = FindNearestEnemy(enemies);
@@ -155,8 +174,17 @@ public class UnitAI : MonoBehaviour
 
     private Vector3 DetermineDestination()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        List<Unit> enemyOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
+
+        if (unit.isOwn)
+        {
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            enemyOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
+        }
+        else
+        {
+            enemyOnGrid = gameManager.GetAllUnitsOnGrid;
+        }
         if (enemies.Length > 0)
         {
             GameObject nearestEnemy = FindNearestEnemy(enemies);
