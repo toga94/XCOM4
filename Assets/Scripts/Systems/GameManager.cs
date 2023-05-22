@@ -279,7 +279,7 @@ public class GameManager : Singleton<GameManager>
     {
 
         IEnumerable<Unit> upgradableUnits = GetUnitsByNameAndLevel(unit.GetUnitNameWithLevel);
-        if (GameStateSystem.Instance.CurrentState.IsCombatState)
+        if (GameStateSystem.Instance.GetCurrentState.IsCombatState)
         {
             upgradableUnits = upgradableUnits.Where(u => !u.OnGrid && u.isOwn);
         }

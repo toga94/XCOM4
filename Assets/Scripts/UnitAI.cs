@@ -43,7 +43,7 @@ public class UnitAI : MonoBehaviour
         targetObject = GameObject.Find("target");
         attackType = unitObject.attackType;
 
-        currentState = stateSystem.CurrentState;
+        currentState = stateSystem.GetCurrentState;
 
         if (attackType == AttackType.Melee)
         {
@@ -65,7 +65,7 @@ public class UnitAI : MonoBehaviour
     }
     private void GameStateChanged(GameState gameState)
     {
-        currentState = GameStateSystem.Instance.CurrentState;
+        currentState = GameStateSystem.Instance.GetCurrentState;
         if (!unit.OnGrid) return;
         if (currentState.IsCombatState)
         {

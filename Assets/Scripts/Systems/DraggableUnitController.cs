@@ -158,7 +158,7 @@ public class DraggableUnitController : MonoBehaviour
         character.GetUnit.charState = CharState.Fall;
         Ray ray = _mainCamera.ScreenPointToRay(touchPosition);
         RaycastHit hit;
-        GameState stateIndex = GameStateSystem.Instance.CurrentState;
+        GameState stateIndex = GameStateSystem.Instance.GetCurrentState;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, gridObjectLayer))
         {
             if (stateIndex.IsCombatState && character.GetUnit.OnGrid)
@@ -191,7 +191,7 @@ public class DraggableUnitController : MonoBehaviour
                     hit.transform.GetComponent<Unit>()
                 );
 
-            GameState stateIndex = GameStateSystem.Instance.CurrentState;
+            GameState stateIndex = GameStateSystem.Instance.GetCurrentState;
             if (stateIndex.IsCombatState && character.GetUnit.OnGrid) {
                 StartCoroutine(nameof(ReActivate));
                 // _draggableObject = null;
@@ -257,7 +257,7 @@ public class DraggableUnitController : MonoBehaviour
 
     private void CharacterDragging()
     {
-        GameState stateIndex = GameStateSystem.Instance.CurrentState;
+        GameState stateIndex = GameStateSystem.Instance.GetCurrentState;
         if (stateIndex.IsCombatState && character.GetUnit.OnGrid)
         {
             _draggableObject = null;
@@ -295,7 +295,7 @@ public class DraggableUnitController : MonoBehaviour
         {
             case DragState.Grid2Grid:
                 {
-                    if (GameStateSystem.Instance.CurrentState.IsCombatState) return;
+                    if (GameStateSystem.Instance.GetCurrentState.IsCombatState) return;
                     if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
                     {
                         Unit unit = character.GetUnit;
@@ -332,7 +332,7 @@ public class DraggableUnitController : MonoBehaviour
 
             case DragState.Inv2Grid:
                 {
-                    if (GameStateSystem.Instance.CurrentState.IsCombatState) return;
+                    if (GameStateSystem.Instance.GetCurrentState.IsCombatState) return;
                     if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
                     {
                         Unit unit = character.GetUnit;

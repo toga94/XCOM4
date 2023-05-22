@@ -55,7 +55,7 @@ public class Unit : MonoBehaviour
     }
     public void UpdatePos(TransformData data)
     {
-        if (!OnGrid && stateSystem.CurrentState is ChampionSelectionState) return;
+        if (!OnGrid && stateSystem.GetCurrentState is ChampionSelectionState) return;
             transform.SetPositionAndRotation(data.position, data.rotation);
     }
 }

@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        if (enemyHealth.GetHealth > 0 && gameStateSystem.CurrentState.IsCombatState) {
+        if (enemyHealth.GetHealth > 0 && gameStateSystem.GetCurrentState.IsCombatState) {
             CombatPhase();
         }
     }
