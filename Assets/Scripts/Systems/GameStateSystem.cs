@@ -32,6 +32,8 @@ public class GameStateSystem : Singleton<GameStateSystem>
             new Minion_1_1_PhaseState(),
             new ChampionSelectionState(),
             new PlayerCombat_PhaseState(),
+            new ChampionSelectionState(),
+            new Minion_1_1_PhaseState()
         });
         }
     }
