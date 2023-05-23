@@ -4,6 +4,7 @@ public class GameState : MonoBehaviour
     protected GameStateSystem gameStateSystem;
     public float duration;
     public bool IsFinished { get; set; }
+    public bool IsWin { get; set; }
     private bool isCombatState;
 
     public bool IsCombatState

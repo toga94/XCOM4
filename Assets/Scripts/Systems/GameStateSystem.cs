@@ -8,7 +8,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
     public event Action<GameState> OnGameStateChanged;
     public float currentDuration;
     public bool finished;
-    private List<List<GameState>> rounds = new List<List<GameState>>();
+    private List<List<GameState>> rounds = new List<List<GameState>>(10);
     [SerializeField]
     private int currentRoundIndex = 0;
     [SerializeField]
@@ -22,9 +22,8 @@ public class GameStateSystem : Singleton<GameStateSystem>
 
     public GameStateSystem()
     {
-        for (int i = 0; i < 10; i++)
+        List<GameState> gameStateList = new List<GameState>(9)
         {
-            rounds.Add(new List<GameState> {
             new CarouselState(),
             new ChampionSelectionState(),
             new Minion_1_1_PhaseState(),
@@ -34,7 +33,10 @@ public class GameStateSystem : Singleton<GameStateSystem>
             new PlayerCombat_PhaseState(),
             new ChampionSelectionState(),
             new Minion_1_1_PhaseState()
-        });
+        };
+        for (int i = 0; i < 10; i++)
+        {
+            rounds.Add(new List<GameState>(gameStateList));
         }
     }
 
@@ -118,7 +120,6 @@ public class GameStateSystem : Singleton<GameStateSystem>
         }
         else
         {
-            // Handle end of rounds
             Debug.Log("End of rounds");
         }
     }

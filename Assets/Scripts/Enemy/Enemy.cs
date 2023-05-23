@@ -2,6 +2,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using Lean.Pool;
+using System.Collections.Generic;
+
 public class Enemy : MonoBehaviour
 {
     private NavMeshAgent agent;
@@ -9,7 +11,7 @@ public class Enemy : MonoBehaviour
     public bool isDead;
     private EnemyHealth enemyHealth;
     [SerializeField]
-    GameObject[] enemies;
+    private List<Unit> enemies;
     [SerializeField]
     private GameObject target;
     private GameObject currentTarget = null;
@@ -21,6 +23,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float enemyDamage;
     private GameStateSystem gameStateSystem;
+    private GameManager gameManager;
 
     public LeanGameObjectPool objectPool;
     void Start()
@@ -30,6 +33,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         enemyHealth.OnEnemyDie += Die;
         gameStateSystem = GameStateSystem.Instance;
+        gameManager = GameManager.Instance;
     }
     private void Update()
     {
@@ -40,10 +44,10 @@ public class Enemy : MonoBehaviour
     private GameObject DetermineTarget()
     {
         agent = GetComponent<NavMeshAgent>();
-        enemies = GameObject.FindGameObjectsWithTag(targetTag);
-        if (enemies.Length > 0)
+        enemies = gameManager.GetAllUnitsOnGrid;
+        if (enemies.Count > 0)
         {
-            GameObject nearestEnemy = FindNearestEnemy(enemies);
+            GameObject nearestEnemy = FindNearestEnemyUnit(enemies);
             if (Vector3.Distance(transform.position, nearestEnemy.transform.position) <= attackRange)
             {
                 return nearestEnemy;
@@ -61,10 +65,10 @@ public class Enemy : MonoBehaviour
     }
     private Vector3 DetermineDestination()
     {
-        enemies = GameObject.FindGameObjectsWithTag(targetTag);
-        if (enemies.Length > 0)
+        enemies = gameManager.GetAllUnitsOnGrid;
+        if (enemies.Count > 0)
         {
-            GameObject nearestEnemy = FindNearestEnemy(enemies);
+            GameObject nearestEnemy = FindNearestEnemyUnit(enemies);
             target = nearestEnemy;
             return nearestEnemy.transform.position;
         }
@@ -84,6 +88,12 @@ public class Enemy : MonoBehaviour
             .OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position))
             .FirstOrDefault();
     }
+    private GameObject FindNearestEnemyUnit(List<Unit> enemies)
+    {
+        return enemies
+            .OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position))
+            .Select(enemy => enemy.gameObject).FirstOrDefault();
+    }
 
     private void CombatPhase()
     {
@@ -93,7 +103,7 @@ public class Enemy : MonoBehaviour
 
      
         agent.SetDestination(destination);
-        if (enemies.Length == 0) return;
+        if (enemies.Count == 0) return;
 
         if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.3f)
         {

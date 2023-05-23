@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
 public class PlayerCombat_PhaseState : GameState
 {
     private List<Unit> enemyUnits = new List<Unit>();
@@ -100,6 +99,7 @@ public class PlayerCombat_PhaseState : GameState
             {
                 Debug.LogWarning("WinGame");
                 gameManager.WinCombat();
+
             }
         }
     }

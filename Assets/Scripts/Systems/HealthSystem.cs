@@ -63,7 +63,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
     public void TakeDamage(float value)
     {
-        if (gameStateSystem.CurrentState is ChampionSelectionState) return;
+        if (GameStateSystem.Instance.CurrentState is ChampionSelectionState) return;
 
         if (IsDie)
         {

@@ -32,6 +32,10 @@ public class GameManager : Singleton<GameManager>
     private GameObject winStreakUI;
     [SerializeField]
     private Text winStreakUIText;
+
+
+    private GameStateSystem gameStateSystem;
+
     public class UpdateTextArg : EventArgs
     {
 
@@ -58,15 +62,15 @@ public class GameManager : Singleton<GameManager>
     }
     public List<Unit> GetUnitsByNameAndLevel(string name)
     {
-        return FindObjectsOfType<Unit>()
-               .Where(u => u.GetUnitNameWithLevel == name && u.isOwn)
+        return GetAllUnits
+               .Where(u => u.GetUnitNameWithLevel == name)
                .Take(3)
                .ToList();
     }
     public List<Unit> GetEnemyUnitsByNameAndLevel(string name)
     {
-        return FindObjectsOfType<Unit>()
-               .Where(u => u.GetUnitNameWithLevel == name && u.isOwn)
+        return GetAllEnemyUnits
+               .Where(u => u.GetUnitNameWithLevel == name)
                .Take(3)
                .ToList();
     }
@@ -143,8 +147,8 @@ public class GameManager : Singleton<GameManager>
         InventoryGrid InventoryGridInstance = InventoryGrid.Instance;
         InventoryGridInstance.OnAnyUnitMovedInventoryPosition += CalculateUnits;
         InventoryGridInstance.OnAnyUnitSwappedInventoryPosition += CalculateUnits;
-
-        GameStateSystem.Instance.OnGameStateChanged += OnStateChanged;
+        gameStateSystem = GameStateSystem.Instance;
+        gameStateSystem.OnGameStateChanged += OnStateChanged;
         Economy.OnExperienceChanged += CalculateUnits;
 
         if (UnitsInGrid.Count > 0)
@@ -223,7 +227,7 @@ public class GameManager : Singleton<GameManager>
     {
         inventoryGrid = InventoryGrid.Instance;
         int width = inventoryGrid.GetWidth() + 1;
-        bool isFull = GetAllUnitsOnInventory.Count >= width;
+        bool isFull = GetAllUnitsOnInventory.Count + 1 > width;
 
         if (isFull) Debug.LogError("Inventory is full!");
         return isFull;
@@ -402,6 +406,7 @@ public class GameManager : Singleton<GameManager>
 
     public void WinCombat()
     {
+        gameStateSystem.CurrentState.IsWin = true;
         winStreak++;
         if(winStreak > 1)
         {
@@ -412,6 +417,7 @@ public class GameManager : Singleton<GameManager>
 
     public void LoseCombat()
     {
+        gameStateSystem.CurrentState.IsWin = false;
         winStreak = 0;
         winStreakUI.SetActive(false);
     }

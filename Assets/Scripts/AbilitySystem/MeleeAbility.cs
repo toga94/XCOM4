@@ -24,7 +24,7 @@ public class MeleeAbility : Ability
     {
         if (projectilePool == null)
         {
-            animator = GetComponent<Animator>();
+
             GameObject poolObj = GameObject.Find("_Pooling");
 
             Transform childTransform = poolObj.transform.Find(className);
@@ -52,13 +52,18 @@ public class MeleeAbility : Ability
     {
         if (target == null)
         {
-            yield break; // exit the method if target is null
+            yield break;
         }
         backupTarget = target;
         backupAddDamage = additionalDamage;
         Vector3 targetPos = target.transform.position;
+        animator = GetComponent<Animator>();
         animator.Play(base.AbilityName);
         Vector3 direction = (targetPos - transform.position).normalized;
+        if (backupTarget == null)
+        {
+            yield break;
+        }
         backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
     }
 }
