@@ -452,7 +452,7 @@ MonoBehaviour:
   IsOffensive: 1
   abilityType: 0
   AnimationName: GroundAbility
-  projectilePrefab: {fileID: 1159970587636746, guid: dfdbfdb77c6600c49a4e7fe4bb6c63bd, type: 3}
+  projectilePrefab: {fileID: 1610468776334564, guid: 488f499c89c209944945fa5746dc175f, type: 3}
 --- !u!1 &421576970679836112
 GameObject:
   m_ObjectHideFlags: 0
