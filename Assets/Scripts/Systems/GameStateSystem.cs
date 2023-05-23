@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +18,24 @@ public class GameStateSystem : Singleton<GameStateSystem>
 
     public int GetRoundIndex => currentRoundIndex;
     public int GetStateIndex => currentStateIndex;
+    public int GetCurrentStateIndexUI
+    {
+        get
+        {
+            if (currentRoundIndex >= 0 && currentRoundIndex < rounds.Count)
+            {
+                List<GameState> currentRound = rounds[currentRoundIndex];
+                for (int i = currentStateIndex; i < currentRound.Count; i++)
+                {
+                    if (!(currentRound[i] is ChampionSelectionState))
+                    {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
+    }
     public GameState CurrentState => GetCurrentState;
 
     public GameStateSystem()
@@ -30,9 +48,14 @@ public class GameStateSystem : Singleton<GameStateSystem>
             new ChampionSelectionState(),
             new Minion_1_1_PhaseState(),
             new ChampionSelectionState(),
+            new Minion_1_1_PhaseState(),
+            new CarouselState(),
+            new ChampionSelectionState(),
             new PlayerCombat_PhaseState(),
             new ChampionSelectionState(),
-            new Minion_1_1_PhaseState()
+            new PlayerCombat_PhaseState(),
+            new ChampionSelectionState(),
+            new PlayerCombat_PhaseState(),
         };
         for (int i = 0; i < 10; i++)
         {

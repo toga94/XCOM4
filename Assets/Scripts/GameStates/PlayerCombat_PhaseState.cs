@@ -73,13 +73,26 @@ public class PlayerCombat_PhaseState : GameState
 
     private IEnumerator AfterGame()
     {
-
-        unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
-        yield return new WaitForSeconds(2);
-        foreach (var unit in enemyUnits)
+        try
         {
-            Destroy(unit);
+
+            unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
         }
+        catch (System.Exception)
+        {
+
+        }
+        yield return new WaitForSeconds(2);
+        try
+        {
+            foreach (var unit in enemyUnits)
+            {
+                Destroy(unit);
+            }
+        }
+        catch (System.Exception)
+        {
+        }  
     }
 
     private void OnEnemyUnitKilled(bool value, GameObject killedUnit)
