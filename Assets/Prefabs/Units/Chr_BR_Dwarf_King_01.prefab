@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: -1238964919562003967}
   - component: {fileID: 1212980491003824514}
   - component: {fileID: 6439669514266309239}
+  - component: {fileID: 4122184855497134430}
   m_Layer: 6
   m_Name: Chr_BR_Dwarf_King_01
   m_TagString: Unit
@@ -402,7 +403,7 @@ MonoBehaviour:
   charState: 0
   targetObject: {fileID: 0}
   ability: {fileID: 6439669514266309239}
-  superAbility: {fileID: 6439669514266309239}
+  superAbility: {fileID: 4122184855497134430}
   enemyOnGrid: []
   enemies: []
 --- !u!114 &6439669514266309239
@@ -429,6 +430,29 @@ MonoBehaviour:
   AnimationName: BrassKnuckles
   projectilePrefab: {fileID: 0}
   weaponType: 0
+--- !u!114 &4122184855497134430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421576923844595220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd748e28edd8eb49a47e158196770eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 57c4a2470afed42ed8c7b1f84cde3cb3, type: 3}
+  AbilityName: GroundAbility
+  Description: GroundAbility
+  Cooldown: 3
+  CastTime: 3
+  AbilityPower: 5
+  ManaCost: 0
+  IsOffensive: 1
+  abilityType: 0
+  AnimationName: GroundAbility
+  projectilePrefab: {fileID: 1159970587636746, guid: dfdbfdb77c6600c49a4e7fe4bb6c63bd, type: 3}
 --- !u!1 &421576970679836112
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class MeteorAbility : Ability
 
     public override void Cast(GameObject target, float additionalDamage)
     {
-        PoolingSystem(nameof(MeteorAbility));
+        PoolingSystem(projectilePrefab.name);
         // Cast fireball spell
         if (target == null) return;
         StartCoroutine(MeteorCast(target, additionalDamage));

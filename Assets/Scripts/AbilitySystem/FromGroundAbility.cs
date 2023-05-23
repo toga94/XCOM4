@@ -2,7 +2,8 @@ using DG.Tweening;
 using Lean.Pool;
 using System.Collections;
 using UnityEngine;
-public class ProjectileBallAbility : Ability
+
+public class FromGroundAbility : Ability
 {
     private Animator animator;
     public string AnimationName = "fireball";
@@ -15,7 +16,7 @@ public class ProjectileBallAbility : Ability
         PoolingSystem(projectilePrefab.name);
         // Cast fireball spell
         if (target == null) return;
-        StartCoroutine(FireballCast(target, additionalDamage));
+        StartCoroutine(SkillCast(target, additionalDamage));
     }
 
     private void PoolingSystem(string className)
@@ -46,26 +47,31 @@ public class ProjectileBallAbility : Ability
     }
     private GameObject backupTarget;
     private float backupAddDamage;
-    private IEnumerator FireballCast(GameObject target, float additionalDamage)
+    private IEnumerator SkillCast(GameObject target, float additionalDamage)
     {
-        if (target == null)
-        {
-            yield break; // exit the method if target is null
-        }
         backupTarget = target;
         backupAddDamage = additionalDamage;
         Vector3 targetPos = target.transform.position;
         animator.Play(base.abilityType.ToString());
-        float height = 3;
-        Vector3 direction = (targetPos - transform.position).normalized;
-        Quaternion toTargetQuaternion = Quaternion.LookRotation(direction, Vector3.up);
-        GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, toTargetQuaternion);
-        float speed = 10f;
-        float timeStep = Time.deltaTime;
-        projectile.transform.DOMove(targetPos, Vector3.Distance(projectile.transform.position, targetPos) / speed).SetEase(Ease.Linear).OnComplete(() =>
-        {
-            projectilePool.Despawn(projectile);
-            backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
-        });
+        // Calculate the direction to the target
+        float height = 1;
+        Vector3 spawnPosition = targetPos - Vector3.up * height;
+        Vector3 direction = (targetPos - spawnPosition).normalized;
+        // Calculate the rotation to face the target
+        Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
+        GameObject projectile = projectilePool.Spawn(spawnPosition, to_Target_Quaternion);
+        Vector3 projectilePos = target.transform.position - Vector3.up;
+        // Move the projectile towards the target
+        float speed = 45f; // Speed of the projectile
+        float duration = Vector3.Distance(projectilePos, targetPos) / speed;
+        projectile.transform.DOMove(targetPos, duration).SetEase(Ease.InFlash)
+            .OnComplete(() =>
+            {
+                backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
+            } );
+        yield return new WaitForSeconds(2);
+        projectilePool.Despawn(projectile);
+
+        yield return null;
     }
 }
