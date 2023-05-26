@@ -2165,8 +2165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Lina
   unitLevel: 0
-  type: 0
-  tier: 0
+  isOwn: 0
   UnitPosition: {x: 0, y: 0, z: 0}
   traits: 
   charState: 0
@@ -2196,6 +2195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1654a00933fb92247974ad4e83934163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mana: 0
+  manaMax: 0
   unitWorldUIPrefab: {fileID: 6882975772807749723, guid: 50dcae36a2db2744e866027fc7f95cf2, type: 3}
 --- !u!114 &6730029284062943063
 MonoBehaviour:
@@ -2217,6 +2218,7 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   ability: {fileID: 4092357898597445698}
   superAbility: {fileID: -1888885080248365643}
+  enemyOnGrid: []
   enemies: []
 --- !u!114 &4092357898597445698
 MonoBehaviour:
@@ -2240,7 +2242,7 @@ MonoBehaviour:
   IsOffensive: 1
   abilityType: 0
   AnimationName: fireball
-  projectilePrefab: {fileID: 341025577429695609, guid: 7ddf8c95a597e5347be31424f6b63a0b, type: 3}
+  projectilePrefab: {fileID: 2357100705602313623, guid: c6192ba00b317c54a8ba4e7bb8baee13, type: 3}
 --- !u!114 &-1888885080248365643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2263,7 +2265,7 @@ MonoBehaviour:
   IsOffensive: 1
   abilityType: 1
   AnimationName: fireball
-  projectilePrefab: {fileID: 7056706547274424856, guid: 01dc5c4b4559a034ea20584d9c963811, type: 3}
+  projectilePrefab: {fileID: 6275682988968978856, guid: 3b68017422bb97640907c1385d93b3de, type: 3}
 --- !u!1 &459110369867977217
 GameObject:
   m_ObjectHideFlags: 0
