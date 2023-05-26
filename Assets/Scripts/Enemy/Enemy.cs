@@ -111,7 +111,7 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetFloat("run", 0);
                 if (agent.pathStatus == NavMeshPathStatus.PathComplete) {
-                    Attack(target);
+                if(target != null)    Attack(target);
                     lastAttackTime = Time.time;
                 }
             }
