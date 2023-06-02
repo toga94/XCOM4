@@ -37,7 +37,7 @@ public static class UnitPositionUtility
 
 
     public static List<Vector3> EnemyGridPositions() {
-        List<Vector3> enemyGridPositions = new List<Vector3>(28);
+        List<Vector3> enemyGridPositions = new List<Vector3>();
 
         enemyGridPositions.AddRange(new[]
         {

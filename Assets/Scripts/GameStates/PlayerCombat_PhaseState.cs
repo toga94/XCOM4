@@ -30,22 +30,25 @@ public class PlayerCombat_PhaseState : GameState
             floor.GetComponent<BoxCollider>().enabled = false;
         }
 
+        PlayerAI playerAI = gameManager.PlayerAI;
+        var players = playerAI.players;
+        PlayerData randomPlayer = players[Random.Range(0, players.Count)];
 
-        List<Vector3> enemyPosition = new List<Vector3>
+        int stateNum = GameStateSystem.Instance.GetCurrentStateIndexUI;
+       // Debug.LogError("Statenumb " + stateNum);
+
+        List<Vector3> enemyPosition = randomPlayer.roundBoughts[stateNum].gridUnitsPositions;
+        List<string> enemyUnitsNames = randomPlayer.roundBoughts[stateNum].gridUnitsName;
+
+
+        enemyUnits = new List<Unit>();
+        for (int i = 0; i < enemyPosition.Count; i++)
         {
-            new Vector3(-0.5f, 0.24f, 24.5f),
-            new Vector3(11f, 0.24f, 20f),
-            new Vector3(22f, 0.24f, 24.5f)
-        };
-
-        enemyUnits = enemyPosition
-            .Select(position => gameManager.SpawnUnitAtPosition("Lina", position, false))
-            .ToList();
-
-        foreach (var enemyUnit in enemyUnits)
-        {
+            Unit enemyUnit = gameManager.SpawnUnitAtPosition(enemyUnitsNames[i], enemyPosition[i], false);
             enemyUnit.OnGrid = true;
             enemyUnit.GetComponent<HealthSystem>().DecreaseMana(999999);
+            enemyUnit.GetComponent<HealthSystem>().OnDie += OnEnemyUnitKilled;
+            enemyUnits.Add(enemyUnit);
         }
         enemiesCount = enemyUnits.Count;
 

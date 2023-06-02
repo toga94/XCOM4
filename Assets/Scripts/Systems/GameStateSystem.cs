@@ -44,7 +44,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
         {
             new CarouselState(),
             new ChampionSelectionState(),
-            new Minion_1_1_PhaseState(),
+            new PlayerCombat_PhaseState(),
             new ChampionSelectionState(),
             new Minion_1_1_PhaseState(),
             new ChampionSelectionState(),
