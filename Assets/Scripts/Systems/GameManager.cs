@@ -32,7 +32,7 @@ public class GameManager : Singleton<GameManager>
     private GameObject winStreakUI;
     [SerializeField]
     private Text winStreakUIText;
-
+    public PlayerAI PlayerAI;
 
     private GameStateSystem gameStateSystem;
 

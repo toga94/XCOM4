@@ -5507,6 +5507,7 @@ GameObject:
   - component: {fileID: 1502524558}
   - component: {fileID: 1502524560}
   - component: {fileID: 1502524559}
+  - component: {fileID: 1502524561}
   m_Layer: 0
   m_Name: __Grid
   m_TagString: Untagged
@@ -5619,6 +5620,7 @@ MonoBehaviour:
   allMinionsisDead: 0
   winStreakUI: {fileID: 2039852645}
   winStreakUIText: {fileID: 71303478}
+  PlayerAI: {fileID: 1502524561}
 --- !u!114 &1502524553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5763,6 +5765,20 @@ MonoBehaviour:
   currentRoundIndex: 0
   currentStateIndex: 0
   timeSlider: {fileID: 6910430900523694003}
+--- !u!114 &1502524561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502524547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360c4ece83ef495488b874fae6c8103c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+  enemyGridPositions: []
 --- !u!114 &1506974524 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 643966055527263034, guid: 45f7c61e0d2347240827cb6ad8e39286, type: 3}
@@ -6192,7 +6208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -266.2153}
+  m_AnchoredPosition: {x: 60, y: -310.55942}
   m_SizeDelta: {x: 119.880005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716284766
