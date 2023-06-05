@@ -17,7 +17,7 @@ public class MeleeAbility : Ability
         //PoolingSystem(nameof(MeleeAbility));
         // Cast fireball spell
         if (target == null) return;
-        StartCoroutine(MeleeCast(target, additionalDamage));
+       MeleeCast(target, additionalDamage);
     }
 
     private void PoolingSystem(string className)
@@ -48,11 +48,11 @@ public class MeleeAbility : Ability
     }
     private GameObject backupTarget;
     private float backupAddDamage;
-    private IEnumerator MeleeCast(GameObject target, float additionalDamage)
+    private void MeleeCast(GameObject target, float additionalDamage)
     {
         if (target == null)
         {
-            yield break;
+            return;
         }
         backupTarget = target;
         backupAddDamage = additionalDamage;
@@ -62,8 +62,11 @@ public class MeleeAbility : Ability
         Vector3 direction = (targetPos - transform.position).normalized;
         if (backupTarget == null)
         {
-            yield break;
+            return;
         }
-        backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
+        else {
+            backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
+        }
+
     }
 }

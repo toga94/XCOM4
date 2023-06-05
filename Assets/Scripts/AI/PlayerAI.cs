@@ -6,11 +6,11 @@ public class PlayerAI : Singleton<PlayerAI>
 {
     [SerializeField]
     public List<PlayerData> players;
-    [SerializeField]private List<Vector3> enemyGridPositions;
+    [SerializeField] private List<Vector3> enemyGridPositions;
     private List<Vector3> selectedPositions;
     private void Start()
     {
-         GeneratePlayers(7, 9);
+        GeneratePlayers(7, 9);
     }
 
     public void GeneratePlayers(int numPlayers, int numRounds)
@@ -27,11 +27,10 @@ public class PlayerAI : Singleton<PlayerAI>
             player.roundBoughts = new List<RoundBought>();
             enemyGridPositions = UnitPositionUtility.EnemyGridPositions();
             selectedPositions = new List<Vector3>();
-     
+
             for (int j = 0; j < numRounds; j++)
             {
-                RoundBought roundBought = GenerateRoundBought(j); // Generate round bought information
-                
+                RoundBought roundBought = GenerateRoundBought(j);
                 player.roundBoughts.Add(roundBought);
             }
 
@@ -44,7 +43,7 @@ public class PlayerAI : Singleton<PlayerAI>
         RoundBought roundBought = new RoundBought();
 
         roundBought.gridUnitsName = new List<string>();
-        roundBought.gridUnitsPositions = new List<Vector3>(); // Initialize the list
+        roundBought.gridUnitsPositions = new List<Vector3>();
 
         roundBought.gridUnitsName.Add(GenerateUnits(round, false));
 
@@ -57,10 +56,7 @@ public class PlayerAI : Singleton<PlayerAI>
     }
     private string GenerateUnits(int round, bool isGrid)
     {
-        // Get units for the grid from GameManager
         List<UnitObject> availableUnits = GameManager.Instance.unitObjects.ToList();
-        //if (round < 5 && !isGrid) return string.Empty;
-        // Example: Select random units from the available units
         int randomIndex = Random.Range(0, availableUnits.Count);
         string unit = availableUnits[randomIndex].name;
         return unit;
@@ -107,9 +103,8 @@ public class PlayerAI : Singleton<PlayerAI>
 
         if (availableIndices.Count == 0)
         {
-            // Handle the case where no unique index is available
             Debug.LogError("No unique index available.");
-            return -1; // or any other appropriate value
+            return -1;
         }
 
         int randomIndex = Random.Range(0, availableIndices.Count);

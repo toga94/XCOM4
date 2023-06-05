@@ -270,13 +270,13 @@ public class GameManager : Singleton<GameManager>
 
     public Unit SpawnUnitAtPosition(string unitName, Vector3 unitPosition, bool isOwn)
     {
-        if (InventoryIsFull()) return null;
+     //   if (InventoryIsFull()) return null;
         Unit spawnedUnit = null;
         Quaternion unitRotation;
 
         foreach (UnitObject item in unitObjects)
         {
-            if (item.unitName == unitName)
+            if (item.unitName.Contains(unitName))
             {
                 unitRotation = isOwn ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
                 spawnedUnit = Instantiate(item.Prefab, unitPosition, unitRotation).GetComponent<Unit>();
@@ -285,7 +285,9 @@ public class GameManager : Singleton<GameManager>
                 if (isOwn) AddUnitToInventory(spawnedUnit);
             }
         }
-
+        if (spawnedUnit == null) {
+            Debug.LogError("Spawned Unit Return Null");
+        }
         return spawnedUnit;
     }
 

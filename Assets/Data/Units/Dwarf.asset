@@ -19,7 +19,7 @@ MonoBehaviour:
   attackPower: 50
   speed: 5
   mana: 50
-  ability: {fileID: 0}
+  attackRange: 15
   traits: 0b000000060000000c000000
   Prefab: {fileID: 421576923844595220, guid: 4e7ee91bb3ac8b44da0d6d6944b399d2, type: 3}
   rareOptions: 1

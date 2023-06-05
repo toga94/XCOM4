@@ -34,7 +34,7 @@ public class PlayerCombat_PhaseState : GameState
         var players = playerAI.players;
         PlayerData randomPlayer = players[Random.Range(0, players.Count)];
 
-        int stateNum = GameStateSystem.Instance.GetCurrentStateIndexUI;
+        int stateNum = GameStateSystem.Instance.GetRoundIndex;
        // Debug.LogError("Statenumb " + stateNum);
 
         List<Vector3> enemyPosition = randomPlayer.roundBoughts[stateNum].gridUnitsPositions;
@@ -45,9 +45,9 @@ public class PlayerCombat_PhaseState : GameState
         for (int i = 0; i < enemyPosition.Count; i++)
         {
             Unit enemyUnit = gameManager.SpawnUnitAtPosition(enemyUnitsNames[i], enemyPosition[i], false);
+            Debug.Log(enemyUnitsNames[i]);
             enemyUnit.OnGrid = true;
             enemyUnit.GetComponent<HealthSystem>().DecreaseMana(999999);
-            enemyUnit.GetComponent<HealthSystem>().OnDie += OnEnemyUnitKilled;
             enemyUnits.Add(enemyUnit);
         }
         enemiesCount = enemyUnits.Count;
@@ -69,33 +69,40 @@ public class PlayerCombat_PhaseState : GameState
         if (allUnitsDead)
         {
             duration = 3f;
-            StartCoroutine(nameof(AfterGame));
+            AfterGame();
             gameManager.LoseCombat();
         }
     }
 
-    private IEnumerator AfterGame()
+    private void AfterGame()
     {
         try
         {
-
             unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
         }
         catch (System.Exception)
         {
-
         }
-        yield return new WaitForSeconds(2);
-        try
+
+        DestroyEnemyUnits();
+    }
+
+    private void DestroyEnemyUnits()
+    {
+        float delay = 2f;
+        float timer = 0f;
+
+        while (timer < delay)
         {
-            foreach (var unit in enemyUnits)
+            timer += Time.deltaTime;
+            if (timer >= delay)
             {
-                Destroy(unit);
+                foreach (var unit in enemyUnits)
+                {
+                    if (unit != null) Destroy(unit.gameObject);
+                }
             }
         }
-        catch (System.Exception)
-        {
-        }  
     }
 
     private void OnEnemyUnitKilled(bool value, GameObject killedUnit)
