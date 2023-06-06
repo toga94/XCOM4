@@ -271,7 +271,7 @@ public class UnitAI : MonoBehaviour
                 if (agent.pathStatus == NavMeshPathStatus.PathComplete)
                 {
                     agent.isStopped = true;
-                    Attack(target);
+                   if(target != null) Attack(target);
                     lastAttackTime = time;
                 }
             }

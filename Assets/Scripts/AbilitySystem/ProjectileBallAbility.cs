@@ -46,26 +46,33 @@ public class ProjectileBallAbility : Ability
     }
     private GameObject backupTarget;
     private float backupAddDamage;
-    private IEnumerator FireballCast(GameObject target, float additionalDamage)
+   private IEnumerator FireballCast(GameObject target, float additionalDamage)
+{
+    if (target == null)
     {
-        if (target == null)
-        {
-            yield break; // exit the method if target is null
-        }
-        backupTarget = target;
-        backupAddDamage = additionalDamage;
-        Vector3 targetPos = target.transform.position;
-        animator.Play(base.abilityType.ToString());
-        float height = 3;
-        Vector3 direction = (targetPos - transform.position).normalized;
-        Quaternion toTargetQuaternion = Quaternion.LookRotation(direction, Vector3.up);
-        GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, toTargetQuaternion);
-        float speed = 10f;
-        float timeStep = Time.deltaTime;
-        projectile.transform.DOMove(targetPos, Vector3.Distance(projectile.transform.position, targetPos) / speed).SetEase(Ease.Linear).OnComplete(() =>
-        {
-            projectilePool.Despawn(projectile);
-            backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
-        });
+        yield break; // exit the method if target is null
     }
+    backupTarget = target;
+    backupAddDamage = additionalDamage;
+    Vector3 targetPos = target.transform.position;
+    animator.Play(base.abilityType.ToString());
+    float height = 3;
+    Vector3 direction = (targetPos - transform.position).normalized;
+    Quaternion toTargetQuaternion = Quaternion.LookRotation(direction, Vector3.up);
+    GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, toTargetQuaternion);
+    float speed = 10f;
+    float distance = Vector3.Distance(projectile.transform.position, targetPos);
+    float duration = distance / speed;
+
+    projectile.transform.DOMove(targetPos, duration).SetEase(Ease.Linear).OnUpdate(() =>
+    {
+        // Update the target position during animation
+        var backuptar = target.transform.position;
+        if(backuptar != null) targetPos = target.transform.position;
+    }).OnComplete(() =>
+    {
+        projectilePool.Despawn(projectile);
+        backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
+    });
+}
 }
