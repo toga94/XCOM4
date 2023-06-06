@@ -54,7 +54,7 @@ public class CombatPhaseState : GameState
         List<Unit> units = gameManager.GetAllUnitsOnGrid;
 
 
-        gameManager.WinCombat();
+        gameManager.WinCombat(false);
         int winStreak = gameManager.GetWinStreak();
         int bonusGold = 0;
         if (winStreak >= 5)

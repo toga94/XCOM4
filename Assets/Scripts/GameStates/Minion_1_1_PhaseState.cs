@@ -69,7 +69,7 @@ public class Minion_1_1_PhaseState : GameState
             unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
             enemies.ForEach(enemy => enemy.GetComponent<IDamageable>().TakeDamage(99999999));
 
-            gameManager.LoseCombat();
+            gameManager.LoseCombat(false);
         }
     }
 
@@ -87,7 +87,7 @@ public class Minion_1_1_PhaseState : GameState
             duration = 3f;
 
         if (unitsCount > 0)
-            gameManager.WinCombat();
+            gameManager.WinCombat(false);
     }
 
     public override void OnExitState()

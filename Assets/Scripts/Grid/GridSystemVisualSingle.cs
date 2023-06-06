@@ -42,7 +42,7 @@ public class GridSystemVisualSingle : MonoBehaviour
     }
 
 
-    private void UpdateText(object sender, GameManager.UpdateTextArg e)
+    private void UpdateText()
     {
         textmeshPro.text = isInventory ? InventoryGridUpdate() : LevelGridUpdate();
     }

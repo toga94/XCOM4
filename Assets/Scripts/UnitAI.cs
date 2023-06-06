@@ -76,41 +76,33 @@ public class UnitAI : MonoBehaviour
     private void GameStateChanged(GameState gameState)
     {
         currentState = GameStateSystem.Instance.GetCurrentState;
-        if (!unit.OnGrid) return;
+        if (unit == null || !unit.OnGrid)
+            return;
+
         if (currentState.IsCombatState)
         {
-            try
+            if (agent == null)
             {
                 agent = gameObject.AddComponent<NavMeshAgent>();
                 agent.speed = unitObject.speed;
                 agent.stoppingDistance = unitObject.attackRange;
             }
-            catch (System.Exception)
-            {
-
-            }
-
         }
         else
         {
-            try
+            if (unit.isOwn)
             {
-                if (unit.isOwn) transform.rotation = Quaternion.identity;
+                transform.rotation = Quaternion.identity;
+            }
 
-            }
-            catch (System.Exception)
-            {
-            }
-            try
+            if (agent != null)
             {
                 Destroy(agent);
+                agent = null;
             }
-            catch (System.Exception)
-            {
-            }
-
         }
     }
+
     private void Attack(GameObject target)
     {
         if (ability == null || superAbility == null) return;

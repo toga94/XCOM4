@@ -45,7 +45,7 @@ public class PlayerCombat_PhaseState : GameState
         for (int i = 0; i < enemyPosition.Count; i++)
         {
             Unit enemyUnit = gameManager.SpawnUnitAtPosition(enemyUnitsNames[i], enemyPosition[i], false);
-            Debug.Log(enemyUnitsNames[i]);
+            Debug.Log(enemyUnitsNames[i] + enemyPosition[i]);
             enemyUnit.OnGrid = true;
             enemyUnit.GetComponent<HealthSystem>().DecreaseMana(999999);
             enemyUnits.Add(enemyUnit);
@@ -70,7 +70,7 @@ public class PlayerCombat_PhaseState : GameState
         {
             duration = 3f;
             AfterGame();
-            gameManager.LoseCombat();
+            gameManager.LoseCombat(true);
         }
     }
 
@@ -121,7 +121,7 @@ public class PlayerCombat_PhaseState : GameState
             if (unitsCount > 0)
             {
                 Debug.LogWarning("WinGame");
-                gameManager.WinCombat();
+                gameManager.WinCombat(true);
 
             }
         }
@@ -140,7 +140,7 @@ public class PlayerCombat_PhaseState : GameState
             duration = 3f;
 
         if (unitsCount > 0)
-            gameManager.WinCombat();
+            gameManager.WinCombat(true);
     }
 
     public override void OnExitState()

@@ -16,9 +16,9 @@ public class GameManager : Singleton<GameManager>
     public TextMeshPro gridSizeTextMesh;
     private SpriteRenderer gridSizeIcon;
     private InventoryGrid inventoryGrid;
-    private LevelGrid levelgrid; 
+    private LevelGrid levelgrid;
     private UnityEngine.Object levelUpFx;
-    public event EventHandler<UpdateTextArg> OnUpdateText;
+    public event Action OnUpdateText;
 
     public UnitObject[] unitObjects;
 
@@ -35,11 +35,6 @@ public class GameManager : Singleton<GameManager>
     public PlayerAI PlayerAI;
 
     private GameStateSystem gameStateSystem;
-
-    public class UpdateTextArg : EventArgs
-    {
-
-    }
 
     private List<Unit> alllUnits;
 
@@ -112,12 +107,12 @@ public class GameManager : Singleton<GameManager>
                    .ToList();
         }
     }
-    public List<TransformData> SavedUnitTransforms { get;  set; }
+    public List<TransformData> SavedUnitTransforms { get; set; }
 
     private void CalculateUnits(object sender, EventArgs e)
     {
         alllUnits = GetAllUnits;
-        Invoke(nameof (UpdateGridSizeTextAndIcon), 0.15f);
+        Invoke(nameof(UpdateGridSizeTextAndIcon), 0.15f);
     }
     private void CalculateUnits(int value)
     {
@@ -130,13 +125,13 @@ public class GameManager : Singleton<GameManager>
         int curLevel = Economy.Level;
         int unitsOnGrid = GetAllUnitsOnGrid.Count;
         gridSizeTextMesh.text = $"{unitsOnGrid}/{curLevel}";
-        Color32 labelColor = unitsOnGrid < curLevel ? 
+        Color32 labelColor = unitsOnGrid < curLevel ?
             new Color(1, 1, 1, 1) : new Color(0.5f, 0.5f, 0.5f, 1);
         gridSizeTextMesh.faceColor = labelColor;
         gridSizeIcon.color = labelColor;
     }
 
-    private void UpdateMeText() => OnUpdateText?.Invoke(this, new UpdateTextArg { });
+    private void UpdateMeText() => OnUpdateText?.Invoke();
 
     private void Start()
     {
@@ -162,7 +157,7 @@ public class GameManager : Singleton<GameManager>
         UpdateMeText();
         gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{Economy.Level}";
 
-        if(Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android)
         {
             Application.targetFrameRate = 60;
         }
@@ -172,7 +167,8 @@ public class GameManager : Singleton<GameManager>
     private void OnStateChanged(GameState gameState)
     {
         currentGameState = gameState;
-        if (gameState is ChampionSelectionState) {
+        if (gameState is ChampionSelectionState)
+        {
             CheckForUpgradeForAll();
         }
     }
@@ -270,7 +266,7 @@ public class GameManager : Singleton<GameManager>
 
     public Unit SpawnUnitAtPosition(string unitName, Vector3 unitPosition, bool isOwn)
     {
-     //   if (InventoryIsFull()) return null;
+        //   if (InventoryIsFull()) return null;
         Unit spawnedUnit = null;
         Quaternion unitRotation;
 
@@ -285,7 +281,8 @@ public class GameManager : Singleton<GameManager>
                 if (isOwn) AddUnitToInventory(spawnedUnit);
             }
         }
-        if (spawnedUnit == null) {
+        if (spawnedUnit == null)
+        {
             Debug.LogError("Spawned Unit Return Null");
         }
         return spawnedUnit;
@@ -406,22 +403,29 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-    public void WinCombat()
+    public void WinCombat(bool stack)
     {
         gameStateSystem.CurrentState.IsWin = true;
-        winStreak++;
-        if(winStreak > 1)
+        if (stack)
         {
-            winStreakUI.SetActive(true);
-            winStreakUIText.text = winStreak.ToString();
+            winStreak++;
+
+            if (winStreak > 1)
+            {
+                winStreakUI.SetActive(true);
+                winStreakUIText.text = winStreak.ToString();
+            }
         }
     }
 
-    public void LoseCombat()
+    public void LoseCombat(bool stack)
     {
         gameStateSystem.CurrentState.IsWin = false;
-        winStreak = 0;
-        winStreakUI.SetActive(false);
+        if (!stack)
+        {
+            winStreak = 0;
+            winStreakUI.SetActive(false);
+        }
     }
 
     public int GetWinStreak() => winStreak;

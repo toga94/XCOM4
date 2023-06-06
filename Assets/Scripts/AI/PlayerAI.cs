@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
 [System.Serializable]
 public class PlayerAI : Singleton<PlayerAI>
 {
     [SerializeField]
     public List<PlayerData> players;
-    [SerializeField] private List<Vector3> enemyGridPositions;
+    [SerializeField]
+    private List<Vector3> enemyGridPositions;
     private List<Vector3> selectedPositions;
+
     private void Start()
     {
         GeneratePlayers(7, 9);
@@ -25,7 +28,7 @@ public class PlayerAI : Singleton<PlayerAI>
                 .SetPlayerMoney(0)
                 .Build();
             player.roundBoughts = new List<RoundBought>();
-            enemyGridPositions = UnitPositionUtility.EnemyGridPositions();
+            GenerateEnemyGridPositions();
             selectedPositions = new List<Vector3>();
 
             for (int j = 0; j < numRounds; j++)
@@ -38,6 +41,11 @@ public class PlayerAI : Singleton<PlayerAI>
         }
     }
 
+    private void GenerateEnemyGridPositions()
+    {
+        enemyGridPositions = UnitPositionUtility.EnemyGridPositions().ToList();
+    }
+
     private RoundBought GenerateRoundBought(int round)
     {
         RoundBought roundBought = new RoundBought();
@@ -45,15 +53,44 @@ public class PlayerAI : Singleton<PlayerAI>
         roundBought.gridUnitsName = new List<string>();
         roundBought.gridUnitsPositions = new List<Vector3>();
 
-        roundBought.gridUnitsName.Add(GenerateUnits(round, false));
+        int numUnits = GetNumUnits(round);
 
-        if (roundBought.gridUnitsName.Any())
+        for (int i = 0; i < numUnits; i++)
         {
-            roundBought.gridUnitsPositions.Add(GeneratePositions(roundBought.gridUnitsName.Last()));
+            GenerateUnitWithPosition(roundBought, round);
         }
 
         return roundBought;
     }
+
+    private int GetNumUnits(int round)
+    {
+        if (round < 3)
+        {
+            return 4;
+        }
+        else if (round <= 4)
+        {
+            return 2;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+
+    private void GenerateUnitWithPosition(RoundBought roundBought, int round)
+    {
+        string unitName = GenerateUnits(round, false);
+        Vector3 unitPosition = GeneratePositions(unitName);
+
+        if (unitPosition != Vector3.zero)
+        {
+            roundBought.gridUnitsName.Add(unitName);
+            roundBought.gridUnitsPositions.Add(unitPosition);
+        }
+    }
+
     private string GenerateUnits(int round, bool isGrid)
     {
         List<UnitObject> availableUnits = GameManager.Instance.unitObjects.ToList();
@@ -66,21 +103,22 @@ public class PlayerAI : Singleton<PlayerAI>
     {
         Vector3 position = Vector3.zero;
 
-
         foreach (UnitObject item in GameManager.Instance.unitObjects)
         {
-            if (item.unitName == unitName)
+            if (item.unitName.Contains(unitName))
             {
-                if (item.attackType == AttackType.Melee)
+                List<int> availableIndices = GetAvailableIndices(item.attackType == AttackType.Melee ? 1 : 14, item.attackType == AttackType.Melee ? 13 : 27);
+
+                if (availableIndices.Count == 0)
                 {
-                    int randomIndex = GetRandomUniqueIndex(1, 13);
-                    position = enemyGridPositions[randomIndex];
+                    Debug.LogWarning("No unique index available for unit: " + unitName);
+                    return position;
                 }
-                else
-                {
-                    int randomIndex = GetRandomUniqueIndex(14, 27);
-                    position = enemyGridPositions[randomIndex];
-                }
+
+                int randomIndex = Random.Range(0, availableIndices.Count);
+                int selectedIndex = availableIndices[randomIndex];
+                position = enemyGridPositions[selectedIndex];
+                selectedPositions.Add(position);
 
                 break;
             }
@@ -89,7 +127,7 @@ public class PlayerAI : Singleton<PlayerAI>
         return position;
     }
 
-    private int GetRandomUniqueIndex(int min, int max)
+    private List<int> GetAvailableIndices(int min, int max)
     {
         List<int> availableIndices = new List<int>();
 
@@ -101,16 +139,6 @@ public class PlayerAI : Singleton<PlayerAI>
             }
         }
 
-        if (availableIndices.Count == 0)
-        {
-            Debug.LogError("No unique index available.");
-            return -1;
-        }
-
-        int randomIndex = Random.Range(0, availableIndices.Count);
-        int selectedIndex = availableIndices[randomIndex];
-        selectedPositions.Add(enemyGridPositions[selectedIndex]);
-
-        return selectedIndex;
+        return availableIndices;
     }
 }

@@ -32,14 +32,7 @@ public class EnemyWorldUI : MonoBehaviour
     public void SetRoot(Transform value, GameObject canvasObj)
     {
         canvas = canvasObj.GetComponent<Canvas>();
-        if (is3D)
-        {
-            root = transform.root;
-        }
-        else
-        {
-            root = value;
-        }
+        root = is3D ? transform.root : value;
         enemy = root.GetComponent<Enemy>();
         healthSystem = root.GetComponent<EnemyHealth>();
         maxHp = healthSystem.GetStartHealth;
