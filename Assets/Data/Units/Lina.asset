@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Lina
   unitImage: {fileID: 6882989831009071352, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
-  health: 100
+  health: 200
   defence: 0
   attackPower: 50
   speed: 9
   mana: 50
-  attackRange: 35
+  attackRange: 30
   traits: 0d0000001300000009000000
   Prefab: {fileID: 459109603624335791, guid: fae3c1a6f5369d44b83783d2c92d9505, type: 3}
   rareOptions: 2

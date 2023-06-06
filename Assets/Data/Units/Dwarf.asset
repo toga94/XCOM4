@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Dwarf King
   unitImage: {fileID: -5152577420098158308, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
-  health: 150
+  health: 250
   defence: 0
   attackPower: 50
   speed: 5
   mana: 50
-  attackRange: 15
+  attackRange: 10
   traits: 0b000000060000000c000000
   Prefab: {fileID: 421576923844595220, guid: 4e7ee91bb3ac8b44da0d6d6944b399d2, type: 3}
   rareOptions: 1
