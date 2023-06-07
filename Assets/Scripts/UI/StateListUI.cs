@@ -32,6 +32,8 @@ public class StateListUI : MonoBehaviour
         stateUIPool = childObject.AddComponent<LeanGameObjectPool>();
         stateUIPool.Prefab = stateListUISprite;
         stateImageObjects = new List<GameObject>(); // Initialize the list
+
+        OnGameStateChanged(GameStateSystem.Instance.GetCurrentState);
     }
 
     private void OnGameStateChanged(GameState obj)
@@ -87,22 +89,31 @@ public class StateListUI : MonoBehaviour
             Image uiImage = stateImageObject.GetComponent<Image>();
             uiImage.sprite = stateImage;
 
-            if (gameState == curstate)
+
+            if (GameStateSystem.Instance.GetCurrentStateIndexUI / 2 == i)
             {
                 uiImage.color = Color.white;
             }
-            else if (gameState.IsFinished && gameState.IsWin)
-            {
-                uiImage.color = Color.green;
-            }
-            else if (gameState.IsFinished && !gameState.IsWin)
-            {
-                uiImage.color = Color.red;
-            }
-            else 
-            {
+            else {
                 uiImage.color = Color.grey;
             }
+
+            //if (gameState == curstate)
+            //{
+            //    uiImage.color = Color.white;
+            //}
+            //else if (gameState.IsFinished && gameState.IsWin)
+            //{
+            //    uiImage.color = Color.green;
+            //}
+            //else if (gameState.IsFinished && !gameState.IsWin)
+            //{
+            //    uiImage.color = Color.red;
+            //}
+            //else 
+            //{
+            //    uiImage.color = Color.grey;
+            //}
 
 
 
