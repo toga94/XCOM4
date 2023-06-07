@@ -99,8 +99,24 @@ public class StateListUI : MonoBehaviour
             {
                 uiImage.color = Color.black;
             }
-            else {
-                uiImage.color = Color.grey;
+            else
+            {
+                GameState stateInRound = GameStateSystem.Instance.GetStatesInRound()[i];
+                if (stateInRound is Minion_1_1_PhaseState || stateInRound is PlayerCombat_PhaseState)
+                { 
+                    if (GameStateSystem.Instance.GetStatesInRound()[i].IsWin)
+                    {
+                        uiImage.color = Color.green;
+                    }
+                    else
+                    {
+                        uiImage.color = Color.red;
+                    }
+                }
+                else
+                {
+                    uiImage.color = Color.grey;
+                }
             }
 
             //if (gameState == curstate)

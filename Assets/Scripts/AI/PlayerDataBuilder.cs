@@ -24,7 +24,11 @@
         playerData.playerMoney = playerMoney;
         return this;
     }
-
+    public PlayerDataBuilder SetPlayerHealth(int playerHealth)
+    {
+        playerData.playerHealth = playerHealth;
+        return this;
+    }
     public PlayerDataBuilder AddRoundBought(RoundBought roundBought)
     {
         playerData.roundBoughts.Add(roundBought);

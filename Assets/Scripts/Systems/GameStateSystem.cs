@@ -41,7 +41,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
     private List<GameState> gameStateList;
     public GameStateSystem()
     {
-         gameStateList = new List<GameState>(9)
+        gameStateList = new List<GameState>(9)
         {
             new CarouselState(),
             new ChampionSelectionState(),
@@ -111,12 +111,12 @@ public class GameStateSystem : Singleton<GameStateSystem>
             currentState.OnUpdate();
         }
     }
-
+    public List<GameState> currentRound;
     public void NextState()
     {
         if (currentRoundIndex < rounds.Count)
         {
-            List<GameState> currentRound = rounds[currentRoundIndex];
+            currentRound = rounds[currentRoundIndex];
             int nextStateIndex = currentStateIndex + 1;
 
             if (nextStateIndex >= 0 && nextStateIndex < currentRound.Count)
@@ -132,21 +132,34 @@ public class GameStateSystem : Singleton<GameStateSystem>
     public List<GameState> GetStatesInRound()
     {
 
-            List<GameState> currentRound = rounds[currentRoundIndex];
-            List<GameState> statesInRound = new List<GameState>();
+        List<GameState> currentRound = rounds[currentRoundIndex];
+        List<GameState> statesInRound = new List<GameState>();
 
-            foreach (GameState state in currentRound)
+        foreach (GameState state in currentRound)
+        {
+            if (!(state is ChampionSelectionState))
             {
-                if (!(state is ChampionSelectionState))
-                {
-                    statesInRound.Add(state);
-                }
+                statesInRound.Add(state);
             }
+        }
 
-            return statesInRound;
+        return statesInRound;
 
     }
+    public List<GameState> GetAllStatesInCurrentRound()
+    {
 
+        List<GameState> currentRound = rounds[currentRoundIndex];
+        List<GameState> statesInRound = new List<GameState>();
+
+        foreach (GameState state in currentRound)
+        {
+            statesInRound.Add(state);
+        }
+
+        return statesInRound;
+
+    }
     private void NextRound()
     {
         currentRoundIndex++;
@@ -174,9 +187,10 @@ public class GameStateSystem : Singleton<GameStateSystem>
         round[currentStateIndex].OnEnterState();
         OnGameStateChanged?.Invoke(CurrentState);
     }
-    private int GetMaxStateInRound() {
+    private int GetMaxStateInRound()
+    {
         List<GameState> _curRound = rounds[currentRoundIndex];
-       
+
 
         return 0;
     }

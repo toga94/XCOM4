@@ -25,7 +25,8 @@ public class PlayerAI : Singleton<PlayerAI>
             PlayerData player = new PlayerDataBuilder()
                 .SetPlayerName("Player " + (i + 1))
                 .SetPlayerLevel(1)
-                .SetPlayerMoney(0)
+                .SetPlayerMoney(20)
+                .SetPlayerHealth(100)
                 .Build();
             player.roundBoughts = new List<RoundBought>();
             GenerateEnemyGridPositions();
