@@ -7,11 +7,12 @@ public struct Economy
     public static int xpCost = 4;
     public static int Level { get; set; } = 1;
     public static int Exp { get; set; }
+    public static int Health { get; set; } = 100;
 
     public static Action<int> OnGoldChanged;
     public static Action<int> OnExperienceChanged;
     public static Action<int> OnLevelChanged;
-
+    public static Action<int> OnHealthChanged;
     public const int MIN_GOLD = 1;
 
     public static int GetUnitCost(int unitLevel, RareOptions rareOptions)
@@ -69,6 +70,11 @@ public struct Economy
     {
         gold -= goldAmount;
         OnGoldChanged.Invoke(gold);
+    }
+    public static void SubtractHealth(int healthAmount)
+    {
+        Health -= healthAmount;
+        OnHealthChanged.Invoke(Health);
     }
     public static bool CanIBuy(int amount)
     {

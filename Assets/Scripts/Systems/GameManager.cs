@@ -430,6 +430,7 @@ public class GameManager : Singleton<GameManager>
             winStreak = 0;
             winStreakUI.SetActive(false);
         }
+        Economy.SubtractHealth(GameStateSystem.Instance.GetRoundIndex * 12);
     }
 
     public int GetWinStreak() => winStreak;
