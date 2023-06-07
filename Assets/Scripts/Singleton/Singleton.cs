@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 /// <summary>
 /// Inherit from this base class to create a singleton.
 /// e.g. public class MyClassName : Singleton<MyClassName> {}
@@ -41,7 +41,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         singletonObject.name = typeof(T).ToString() + " (Singleton)";
 
                         // Make instance persistent.
-                        DontDestroyOnLoad(singletonObject);
+                    //    DontDestroyOnLoad(singletonObject);
                     }
                 }
 
@@ -49,7 +49,10 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             }
         }
     }
-
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        m_ShuttingDown = true;
+    }
 
     private void OnApplicationQuit()
     {

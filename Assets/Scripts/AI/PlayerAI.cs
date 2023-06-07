@@ -65,17 +65,25 @@ public class PlayerAI : Singleton<PlayerAI>
 
     private int GetNumUnits(int round)
     {
-        if (round < 3)
-        {
-            return 4;
-        }
-        else if (round <= 4)
+        if (round < 4)
         {
             return 2;
         }
+        else if (round <= 4)
+        {
+            return 3;
+        }
+        else if (round <= 6)
+        {
+            return 4;
+        }
+        else if (round <= 8)
+        {
+            return 5;
+        }
         else
         {
-            return 1;
+            return round * 2;
         }
     }
 
@@ -93,7 +101,9 @@ public class PlayerAI : Singleton<PlayerAI>
 
     private string GenerateUnits(int round, bool isGrid)
     {
-        List<UnitObject> availableUnits = GameManager.Instance.unitObjects.ToList();
+        GameManager gameManager = GameManager.Instance;
+        if (gameManager == null) return string.Empty;
+        List<UnitObject> availableUnits = gameManager.unitObjects.ToList();
         int randomIndex = Random.Range(0, availableUnits.Count);
         string unit = availableUnits[randomIndex].name;
         return unit;

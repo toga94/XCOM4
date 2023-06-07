@@ -55,14 +55,6 @@ public class UnitAI : MonoBehaviour
 
         healthSystem.DecreaseMana(healthSystem.GetMaxMana);
 
-        if (attackType == AttackType.Melee)
-        {
-            animator.SetFloat("attackAnim", 0);
-        }
-        else if (attackType == AttackType.Ranked)
-        {
-            animator.SetFloat("attackAnim", 1);
-        }
     }
 
 
@@ -265,13 +257,28 @@ public class UnitAI : MonoBehaviour
         if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.3f)
         {
 
+            if (attackType == AttackType.Melee)
+            {
+                animator.SetFloat("attackAnim", 0);
+            }
+            else if (attackType == AttackType.Ranked)
+            {
+                animator.SetFloat("attackAnim", 1);
+            }
             float time = Time.time;
             if (time - lastAttackTime >= attackDelay)
             {
                 if (agent.pathStatus == NavMeshPathStatus.PathComplete)
                 {
                     agent.isStopped = true;
-                   if(target != null) Attack(target);
+                    try
+                    {
+                        Attack(target);
+                    }
+                    catch (System.Exception)
+                    {
+
+                    }
                     lastAttackTime = time;
                 }
             }

@@ -18,6 +18,7 @@ public class TraitsUI : Singleton<TraitsUI>
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += OnAnyUnitMovedGridPosition;
         InventoryGrid.Instance.OnAnyUnitMovedInventoryPosition += OnAnyUnitMovedGridPosition;
     }
+
     private void OnAnyUnitMovedGridPosition(object sender, InventoryGrid.OnAnyUnitMovedInventoryPositionEventArgs e)
     {
         Invoke(nameof(UpdateTraits), 0.001f);

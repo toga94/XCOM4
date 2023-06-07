@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9fc340eeadf5248880faa271963101, type: 3}
+  m_Name: Forgotten
+  m_EditorClassIdentifier: 
+  traitType: 7
+  traitName: Forgotten
+  traitDescription: ' The Forgotten rise, fueled by the embers of their past. Discarded
+    by allies, they forge their own path, honing their skills in solitude. They emerge
+    stronger, their resilience unmatched. Unleash the fury of the Forgotten, and
+    witness the reawakening of legends.'
+  traitEffectsLevel: 050000000300000001000000
+  traitSprite: {fileID: 21300000, guid: aebcdfd45683e4895b8081d7bef80ed8, type: 3}
+  traitEffects:
+  - effectDescription: Forgotten unit start battles with additional generate mana
+      more quickly, allowing them to cast their abilities more frequently.
+  - effectDescription: Forgotten units start battles with additional mana and generate
+      mana more quickly, allowing them to cast their abilities more frequently.
+  - effectDescription: All units start battles with additional mana or generate mana
+      more quickly, allowing them to cast their abilities more frequently.

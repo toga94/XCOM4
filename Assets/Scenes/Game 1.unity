@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.7216981, g: 0.8643333, b: 1, a: 1}
+  m_AmbientSkyColor: {r: 0.46823964, g: 0.5446869, b: 0.6211342, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -33,7 +33,7 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
+  m_DefaultReflectionResolution: 16
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
@@ -3369,6 +3369,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refreshUI: {fileID: 57454310}
+--- !u!1 &971765128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 971765129}
+  - component: {fileID: 971765131}
+  - component: {fileID: 971765130}
+  m_Layer: 5
+  m_Name: StatePanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &971765129
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971765128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1279986247}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -4.399994, y: -43.7}
+  m_SizeDelta: {x: 119.880005, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &971765130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971765128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 3
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!222 &971765131
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971765128}
+  m_CullTransparentMesh: 1
 --- !u!1 &989162347
 GameObject:
   m_ObjectHideFlags: 0
@@ -4241,6 +4312,7 @@ RectTransform:
   - {fileID: 989162348}
   - {fileID: 1822321296}
   - {fileID: 1229599562}
+  - {fileID: 971765129}
   m_Father: {fileID: 1899431984}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5061,6 +5133,7 @@ GameObject:
   - component: {fileID: 1502524560}
   - component: {fileID: 1502524559}
   - component: {fileID: 1502524561}
+  - component: {fileID: 1502524562}
   m_Layer: 0
   m_Name: __Grid
   m_TagString: Untagged
@@ -5169,6 +5242,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e4c23bf3a50d5649aeab529cadd3f8d, type: 2}
   - {fileID: 11400000, guid: 6c9d5226ad52d474588766be93f96535, type: 2}
   - {fileID: 11400000, guid: e4c93b4312d78164ab15609185082dfb, type: 2}
+  - {fileID: 11400000, guid: fd59c07299a5af14e9601fd60070d2f6, type: 2}
   gold: 180
   allMinionsisDead: 0
   winStreakUI: {fileID: 2039852645}
@@ -5231,6 +5305,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e4c23bf3a50d5649aeab529cadd3f8d, type: 2}
   - {fileID: 11400000, guid: 6c9d5226ad52d474588766be93f96535, type: 2}
   - {fileID: 11400000, guid: e4c93b4312d78164ab15609185082dfb, type: 2}
+  - {fileID: 11400000, guid: fd59c07299a5af14e9601fd60070d2f6, type: 2}
   shopMenuUI: {fileID: 906393132}
 --- !u!114 &1502524556
 MonoBehaviour:
@@ -5272,6 +5347,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a60251b7c3307f042bcc9a69f89465c1, type: 2}
   - {fileID: 11400000, guid: 3d071f24ff5e3b544b6988fc469a2aa2, type: 2}
   - {fileID: 11400000, guid: fac5f45bc22c0f44a9067e063cd55850, type: 2}
+  - {fileID: 11400000, guid: 6429f5ab9e4f5964d96f0bc00cc0527d, type: 2}
 --- !u!114 &1502524558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5332,6 +5408,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players: []
   enemyGridPositions: []
+--- !u!114 &1502524562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502524547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5a1b6dbf381a24090f1cef1faa42ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carouselStateSprite: {fileID: 21300000, guid: 7e764d8ebc4a54eba980efa7d97d64bd, type: 3}
+  championSelectionStateSprite: {fileID: 0}
+  errorStateSprite: {fileID: 0}
+  combatStateSprite: {fileID: 21300000, guid: 563522f3e1a7e4cfcb6edd2dbff14153, type: 3}
+  minionStateSprite: {fileID: 21300000, guid: 068f39a5261e94c84a25db700fa75af3, type: 3}
+  stateUIListObj: {fileID: 971765129}
+  stateListUISprite: {fileID: 998343861648499174, guid: 21c47d636a0e18e43b1f5ce723d861b7, type: 3}
 --- !u!114 &1506974524 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 643966055527263034, guid: 45f7c61e0d2347240827cb6ad8e39286, type: 3}
@@ -5761,7 +5856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -289.4759}
+  m_AnchoredPosition: {x: 60, y: -283.10425}
   m_SizeDelta: {x: 119.880005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716284766

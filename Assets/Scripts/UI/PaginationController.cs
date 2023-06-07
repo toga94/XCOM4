@@ -37,7 +37,6 @@ public class PaginationController : MonoBehaviour
         StartCoroutine(UpdateTraits());
     }
 
-
     private void UpdateTraitLayout(object sender, EventArgs e)
     {
         StartCoroutine(UpdateTraits());

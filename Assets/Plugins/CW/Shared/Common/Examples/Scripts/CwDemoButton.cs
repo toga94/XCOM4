@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-
+using UnityEngine.SceneManagement;
 namespace CW.Common
 {
 	/// <summary>This component turns the current UI element into a button that links to the specified action.</summary>
@@ -13,8 +13,9 @@ namespace CW.Common
 		{
 			PreviousScene,
 			NextScene,
-			Publisher,
-			URL,
+            RestartScene,
+            Publisher,
+            URL,
 			Isolate
 		}
 
@@ -82,116 +83,121 @@ namespace CW.Common
 
 		public void OnPointerDown(PointerEventData eventData)
 		{
-			switch (link)
-			{
-				case LinkType.PreviousScene:
-				{
-					var index = GetCurrentLevel();
+            switch (link)
+            {
+                case LinkType.PreviousScene:
+                    {
+                        var index = GetCurrentLevel();
 
-					if (index >= 0)
-					{
-						if (--index < 0)
-						{
-							index = GetLevelCount() - 1;
-						}
+                        if (index >= 0)
+                        {
+                            if (--index < 0)
+                            {
+                                index = GetLevelCount() - 1;
+                            }
 
-						LoadLevel(index);
-					}
-				}
-				break;
+                            LoadLevel(index);
+                        }
+                    }
+                    break;
 
-				case LinkType.NextScene:
-				{
-					var index = GetCurrentLevel();
+                case LinkType.NextScene:
+                    {
+                        var index = GetCurrentLevel();
 
-					if (index >= 0)
-					{
-						if (++index >= GetLevelCount())
-						{
-							index = 0;
-						}
+                        if (index >= 0)
+                        {
+                            if (++index >= GetLevelCount())
+                            {
+                                index = 0;
+                            }
 
-						LoadLevel(index);
-					}
-				}
-				break;
+                            LoadLevel(index);
+                        }
+                    }
+                    break;
 
-				case LinkType.Publisher:
-				{
-					Application.OpenURL("https://carloswilkes.com");
-				}
-				break;
+                case LinkType.Publisher:
+                    {
+                        Application.OpenURL("https://carloswilkes.com");
+                    }
+                    break;
 
-				case LinkType.URL:
-				{
-					if (string.IsNullOrEmpty(urlTarget) == false)
-					{
-						Application.OpenURL(urlTarget);
-					}
-				}
-				break;
+                case LinkType.URL:
+                    {
+                        if (string.IsNullOrEmpty(urlTarget) == false)
+                        {
+                            Application.OpenURL(urlTarget);
+                        }
+                    }
+                    break;
 
-				case LinkType.Isolate:
-				{
-					if (isolateTarget != null)
-					{
-						var parent = isolateTarget.transform.parent;
-						var active = isolateTarget.gameObject.activeSelf;
+                case LinkType.Isolate:
+                    {
+                        if (isolateTarget != null)
+                        {
+                            var parent = isolateTarget.transform.parent;
+                            var active = isolateTarget.gameObject.activeSelf;
 
-						foreach (Transform child in parent.transform)
-						{
-							if (child.gameObject.activeSelf == true)
-							{
-								if (child != isolateTarget)
-								{
-									previousChild = child;
-								}
+                            foreach (Transform child in parent.transform)
+                            {
+                                if (child.gameObject.activeSelf == true)
+                                {
+                                    if (child != isolateTarget)
+                                    {
+                                        previousChild = child;
+                                    }
 
-								child.gameObject.SetActive(false);
-							}
-						}
+                                    child.gameObject.SetActive(false);
+                                }
+                            }
 
-						switch (isolateToggle)
-						{
-							case ToggleType.KeepSelected:
-							{
-								isolateTarget.gameObject.SetActive(true);
-							}
-							break;
+                            switch (isolateToggle)
+                            {
+                                case ToggleType.KeepSelected:
+                                    {
+                                        isolateTarget.gameObject.SetActive(true);
+                                    }
+                                    break;
 
-							case ToggleType.ToggleSelection:
-							{
-								isolateTarget.gameObject.SetActive(active == false);
-							}
-							break;
+                                case ToggleType.ToggleSelection:
+                                    {
+                                        isolateTarget.gameObject.SetActive(active == false);
+                                    }
+                                    break;
 
-							case ToggleType.SelectPrevious:
-							{
-								if (active == true && previousChild != null)
-								{
-									previousChild.gameObject.SetActive(true);
-								}
-								else
-								{
-									isolateTarget.gameObject.SetActive(true);
-								}
-							}
-							break;
-						}
-					}
-				}
-				break;
-			}
-		}
+                                case ToggleType.SelectPrevious:
+                                    {
+                                        if (active == true && previousChild != null)
+                                        {
+                                            previousChild.gameObject.SetActive(true);
+                                        }
+                                        else
+                                        {
+                                            isolateTarget.gameObject.SetActive(true);
+                                        }
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                    break;
+                case LinkType.RestartScene:
 
-		private static int GetCurrentLevel()
+                    LoadLevel(SceneManager.GetActiveScene().buildIndex);
+
+                    break;
+            }
+        }
+
+        private static int GetCurrentLevel()
 		{
-			var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+			var scene = SceneManager.GetActiveScene();
 			var index = scene.buildIndex;
 
 			if (index >= 0)
 			{
-				if (UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(index).handle != scene.handle)
+				if (SceneManager.GetSceneByBuildIndex(index).handle != scene.handle)
 				{
 					return -1;
 				}
@@ -202,14 +208,14 @@ namespace CW.Common
 
 		private static int GetLevelCount()
 		{
-			return UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
+			return SceneManager.sceneCountInBuildSettings;
 		}
 
 		private static void LoadLevel(int index)
 		{
-			UnityEngine.SceneManagement.SceneManager.LoadScene(index);
+			SceneManager.LoadScene(index);
 		}
-	}
+    }
 }
 
 #if UNITY_EDITOR

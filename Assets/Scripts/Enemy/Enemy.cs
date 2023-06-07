@@ -144,7 +144,7 @@ public class Enemy : MonoBehaviour
     void Die(bool value)
     {
         isDead = value;
-
-        objectPool.Despawn(gameObject, 3);
+        Destroy(gameObject, 3);
+        //objectPool.Despawn(gameObject, 3);
     }
 }

@@ -142,6 +142,7 @@ public class GameManager : Singleton<GameManager>
         InventoryGrid InventoryGridInstance = InventoryGrid.Instance;
         InventoryGridInstance.OnAnyUnitMovedInventoryPosition += CalculateUnits;
         InventoryGridInstance.OnAnyUnitSwappedInventoryPosition += CalculateUnits;
+
         gameStateSystem = GameStateSystem.Instance;
         gameStateSystem.OnGameStateChanged += OnStateChanged;
         Economy.OnExperienceChanged += CalculateUnits;
@@ -162,8 +163,11 @@ public class GameManager : Singleton<GameManager>
             Application.targetFrameRate = 60;
         }
     }
-
+    
     GameState currentGameState;
+
+
+
     private void OnStateChanged(GameState gameState)
     {
         currentGameState = gameState;

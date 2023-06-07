@@ -15,6 +15,7 @@ public class GoldSlots : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
+            if (slots[i] == null) break;
             slots[i].SetActive(i < gold / 10);
         }
     }

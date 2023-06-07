@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Undead Knigth
   unitImage: {fileID: 1640926470192572923, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
-  health: 300
+  health: 250
   defence: 0
-  attackPower: 50
+  attackPower: 3
   speed: 5
   mana: 50
   attackRange: 10

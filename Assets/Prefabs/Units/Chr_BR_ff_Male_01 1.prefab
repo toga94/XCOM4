@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 1594308916408913747}
   - component: {fileID: -3184701170552118199}
   m_Layer: 6
-  m_Name: Chr_BR_ff_Male_01
+  m_Name: Chr_BR_ff_Male_01 1
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3116,15 +3116,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4283308215150666, guid: e5f87980aeae3094a89a940726a489f4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.021
+      value: 0.065
       objectReference: {fileID: 0}
     - target: {fileID: 4283308215150666, guid: e5f87980aeae3094a89a940726a489f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.074
+      value: 0.068
       objectReference: {fileID: 0}
     - target: {fileID: 4283308215150666, guid: e5f87980aeae3094a89a940726a489f4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.134
+      value: 0.234
       objectReference: {fileID: 0}
     - target: {fileID: 4283308215150666, guid: e5f87980aeae3094a89a940726a489f4, type: 3}
       propertyPath: m_LocalRotation.w

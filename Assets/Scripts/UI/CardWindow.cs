@@ -21,6 +21,10 @@ public class CardWindow : MonoBehaviour
     {
         cardShop.onItemsChanged += ReDraw;
     }
+    private void OnDisable()
+    {
+        cardShop.onItemsChanged -= ReDraw;
+    }
     private void ReDraw(object sender, UnitObject[] e)
     {
         Transform itemPanelTransform = itemPanel.transform;

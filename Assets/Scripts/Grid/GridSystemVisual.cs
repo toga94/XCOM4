@@ -56,6 +56,7 @@ public class GridSystemVisual : Singleton<GridSystemVisual>
 
         UpdateGridVisual();
     }
+
     public void HideAllGridPosition()
     {
         Debug.Log("Hide All grid");

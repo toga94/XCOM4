@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Lina
   unitImage: {fileID: 6882989831009071352, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
-  health: 200
+  health: 80
   defence: 0
-  attackPower: 50
+  attackPower: 1
   speed: 9
   mana: 50
   attackRange: 30

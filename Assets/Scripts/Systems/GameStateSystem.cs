@@ -38,9 +38,10 @@ public class GameStateSystem : Singleton<GameStateSystem>
     }
     public GameState CurrentState => GetCurrentState;
 
+    private List<GameState> gameStateList;
     public GameStateSystem()
     {
-        List<GameState> gameStateList = new List<GameState>(9)
+         gameStateList = new List<GameState>(9)
         {
             new CarouselState(),
             new ChampionSelectionState(),
@@ -99,9 +100,6 @@ public class GameStateSystem : Singleton<GameStateSystem>
                 currentStateStartTime = Time.time;
                 return;
             }
-
-            currentState.OnUpdate();
-
             float timer = Time.time - currentStateStartTime;
             if (timer > currentState.duration)
             {
@@ -110,6 +108,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
 
             timeSlider.value = timer;
             timeSlider.maxValue = currentState.duration;
+            currentState.OnUpdate();
         }
     }
 
@@ -129,6 +128,23 @@ public class GameStateSystem : Singleton<GameStateSystem>
                 NextRound();
             }
         }
+    }
+    public List<GameState> GetStatesInRound()
+    {
+
+            List<GameState> currentRound = rounds[currentRoundIndex];
+            List<GameState> statesInRound = new List<GameState>();
+
+            foreach (GameState state in currentRound)
+            {
+                if (!(state is ChampionSelectionState))
+                {
+                    statesInRound.Add(state);
+                }
+            }
+
+            return statesInRound;
+
     }
 
     private void NextRound()
@@ -158,7 +174,12 @@ public class GameStateSystem : Singleton<GameStateSystem>
         round[currentStateIndex].OnEnterState();
         OnGameStateChanged?.Invoke(CurrentState);
     }
+    private int GetMaxStateInRound() {
+        List<GameState> _curRound = rounds[currentRoundIndex];
+       
 
+        return 0;
+    }
     public GameState GetCurrentState
     {
         get

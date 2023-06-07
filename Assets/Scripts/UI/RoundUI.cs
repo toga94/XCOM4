@@ -5,7 +5,7 @@ public class RoundUI : MonoBehaviour
 {
     [SerializeField] private Text roundText;
     private GameStateSystem gameStateSystem;
-
+    private int maxStateInRound;
 
     private void Start()
     {
@@ -13,7 +13,10 @@ public class RoundUI : MonoBehaviour
         gameStateSystem.OnGameStateChanged += UpdateText;
         UpdateText();
     }
-
+    private void OnDestroy()
+    {
+        gameStateSystem.OnGameStateChanged -= UpdateText;
+    }
     void UpdateText(GameState gameState)
     {
         ChangeText();
@@ -21,6 +24,7 @@ public class RoundUI : MonoBehaviour
     void UpdateText()
     {
         ChangeText();
+        
     }
 
     private void ChangeText()

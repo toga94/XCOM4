@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6d050bbe77048b4591824b5d99fd3ad, type: 3}
-  m_Name: Azir
+  m_Name: Blightwalker
   m_EditorClassIdentifier: 
-  unitName: Azir
-  unitImage: {fileID: 3774759999125446255, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
-  health: 150
+  unitName: Blightwalker
+  unitImage: {fileID: 6407455098029360505, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
+  health: 100
   defence: 0
-  attackPower: 2
+  attackPower: 3
   speed: 5
   mana: 50
   attackRange: 10
-  traits: 01000000020000000d000000
-  Prefab: {fileID: 1846756657532275767, guid: 92a832f406881f34c97b9646a3a15ab6, type: 3}
+  traits: 010000000000000007000000
+  Prefab: {fileID: 6566292102668139068, guid: b58f7cc97cfa3634db127a938306f52e, type: 3}
   rareOptions: 0
   attackType: 0

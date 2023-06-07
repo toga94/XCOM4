@@ -67,6 +67,12 @@ public class InventorySystemVisual : MonoBehaviour
 
 
     }
+    private void OnDestroy()
+    {
+
+        inventoryGrid.OnAnyUnitMovedInventoryPosition -= InventoryGrid_OnAnyUnitMovedinventoryPosition;
+
+    }
 
     public void HideAllGridPosition()
     {
