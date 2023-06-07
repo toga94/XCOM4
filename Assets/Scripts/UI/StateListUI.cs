@@ -90,9 +90,14 @@ public class StateListUI : MonoBehaviour
             uiImage.sprite = stateImage;
 
 
-            if (GameStateSystem.Instance.GetCurrentStateIndexUI / 2 == i)
+            int _currentStateIndex = GameStateSystem.Instance.GetCurrentStateIndexUI / 2;
+            if (_currentStateIndex == i)
             {
                 uiImage.color = Color.white;
+            }
+            else if (_currentStateIndex < i)
+            {
+                uiImage.color = Color.black;
             }
             else {
                 uiImage.color = Color.grey;
