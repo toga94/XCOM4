@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -434,7 +435,7 @@ public class GameManager : Singleton<GameManager>
             Economy.SubtractHealth((GameStateSystem.Instance.GetRoundIndex + 1) * 12);
         else
         {
-            //YouLoseScene
+            SceneManager.LoadScene(2);
         }
     }
 

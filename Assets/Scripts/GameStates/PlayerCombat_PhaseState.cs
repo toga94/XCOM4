@@ -70,7 +70,7 @@ public class PlayerCombat_PhaseState : GameState
             // All players have health less than or equal to 0
             // Load the Victory scene here
             // Example:
-            SceneManager.LoadScene("VictoryScene");
+            SceneManager.LoadScene(3);
         }
     }
 
@@ -179,6 +179,7 @@ public class PlayerCombat_PhaseState : GameState
         int stateNum = GameStateSystem.Instance.GetRoundIndex;
 
         List<PlayerData> playersWithHealth = playerAI.players.Where(player => player.playerHealth > 0).ToList();
+
         int halfPlayerCount = Mathf.CeilToInt(playersWithHealth.Count / 2f);
 
         List<PlayerData> playersToModify = new List<PlayerData>();
