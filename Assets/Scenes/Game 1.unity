@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 483126893}
-  m_IndirectSpecularColor: {r: 0.39863318, g: 0.72230613, b: 0.7944137, a: 1}
+  m_IndirectSpecularColor: {r: 0.39895537, g: 0.72225744, b: 0.79445356, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5211,6 +5211,7 @@ GameObject:
   - component: {fileID: 1502524559}
   - component: {fileID: 1502524561}
   - component: {fileID: 1502524562}
+  - component: {fileID: 1502524563}
   m_Layer: 0
   m_Name: __Grid
   m_TagString: Untagged
@@ -5505,6 +5506,27 @@ MonoBehaviour:
   minionStateSprite: {fileID: 21300000, guid: 068f39a5261e94c84a25db700fa75af3, type: 3}
   stateUIListObj: {fileID: 971765129}
   stateListUISprite: {fileID: 998343861648499174, guid: 21c47d636a0e18e43b1f5ce723d861b7, type: 3}
+--- !u!114 &1502524563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502524547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eab932dd64dc924aaaf73fe2384fc27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerListContainer: {fileID: 1906919728}
+  playerEntryPrefab: {fileID: 9091482509875783002, guid: 3befbcd10251c344a825a0aea5a655ba, type: 3}
+  playerUIPool: {fileID: 0}
+  CurBattlePlayerAI:
+    PlayerName: 
+    playerLevel: 0
+    playerMoney: 0
+    playerHealth: 0
+    roundBoughts: []
 --- !u!114 &1506974524 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 643966055527263034, guid: 45f7c61e0d2347240827cb6ad8e39286, type: 3}
@@ -5934,7 +5956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -327.1718}
+  m_AnchoredPosition: {x: 60, y: -283.10355}
   m_SizeDelta: {x: 119.880005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716284766

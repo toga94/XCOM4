@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class PlayerCombat_PhaseState : GameState
 {
     private List<Unit> enemyUnits = new List<Unit>();
@@ -14,7 +16,7 @@ public class PlayerCombat_PhaseState : GameState
     private List<Unit> unitsOnGrid;
     private List<Unit> enemyUnitsOnGrid;
     private GameObject[] floors;
-
+    private PlayerData lastEnemyPlayer;
     public override void OnEnterState()
     {
         gameManager = GameManager.Instance;
@@ -32,33 +34,46 @@ public class PlayerCombat_PhaseState : GameState
 
         PlayerAI playerAI = gameManager.PlayerAI;
         var players = playerAI.players;
-        PlayerData randomPlayer = players[Random.Range(0, players.Count)];
 
-        int stateNum = GameStateSystem.Instance.GetRoundIndex;
-       // Debug.LogError("Statenumb " + stateNum);
-
-        List<Vector3> enemyPosition = randomPlayer.roundBoughts[stateNum].gridUnitsPositions;
-        List<string> enemyUnitsNames = randomPlayer.roundBoughts[stateNum].gridUnitsName;
-
-
-        enemyUnits = new List<Unit>();
-        for (int i = 0; i < enemyPosition.Count; i++)
+        List<PlayerData> playersWithHealth = players.Where(player => player.playerHealth > 0).ToList();
+        if (playersWithHealth.Count > 0)
         {
-            Unit enemyUnit = gameManager.SpawnUnitAtPosition(enemyUnitsNames[i], enemyPosition[i], false);
-            Debug.Log(enemyUnitsNames[i] + enemyPosition[i]);
-            enemyUnit.OnGrid = true;
-            enemyUnit.GetComponent<HealthSystem>().DecreaseMana(999999);
-            enemyUnits.Add(enemyUnit);
-        }
-        enemiesCount = enemyUnits.Count;
+            PlayerData randomPlayer = playersWithHealth[Random.Range(0, playersWithHealth.Count)];
 
-        unitsOnGrid = gameManager.GetAllUnitsOnGrid;
-        enemyUnitsOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
-        unitsCount = unitsOnGrid.Count;
-        enemyUnitsCount = enemyUnitsOnGrid.Count;
-        enemyUnitsOnGrid.ForEach(unit => unit.GetComponent<HealthSystem>().OnDie += OnEnemyUnitKilled);
-        unitsOnGrid.ForEach(unit => unit.GetComponent<HealthSystem>().OnDie += OnUnitKilled);
+            lastEnemyPlayer = randomPlayer;
+            PlayerListUI.Instance.CurBattlePlayerAI = randomPlayer;
+            int stateNum = GameStateSystem.Instance.GetRoundIndex;
+
+            List<Vector3> enemyPosition = randomPlayer.roundBoughts[stateNum].gridUnitsPositions;
+            List<string> enemyUnitsNames = randomPlayer.roundBoughts[stateNum].gridUnitsName;
+
+            enemyUnits = new List<Unit>();
+            for (int i = 0; i < enemyPosition.Count; i++)
+            {
+                Unit enemyUnit = gameManager.SpawnUnitAtPosition(enemyUnitsNames[i], enemyPosition[i], false);
+                Debug.Log(enemyUnitsNames[i] + enemyPosition[i]);
+                enemyUnit.OnGrid = true;
+                enemyUnit.GetComponent<HealthSystem>().DecreaseMana(999999);
+                enemyUnits.Add(enemyUnit);
+            }
+            enemiesCount = enemyUnits.Count;
+
+            unitsOnGrid = gameManager.GetAllUnitsOnGrid;
+            enemyUnitsOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
+            unitsCount = unitsOnGrid.Count;
+            enemyUnitsCount = enemyUnitsOnGrid.Count;
+            enemyUnitsOnGrid.ForEach(unit => unit.GetComponent<HealthSystem>().OnDie += OnEnemyUnitKilled);
+            unitsOnGrid.ForEach(unit => unit.GetComponent<HealthSystem>().OnDie += OnUnitKilled);
+        }
+        else
+        {
+            // All players have health less than or equal to 0
+            // Load the Victory scene here
+            // Example:
+            SceneManager.LoadScene("VictoryScene");
+        }
     }
+
 
     private void OnUnitKilled(bool value, GameObject killedUnit)
     {
@@ -115,17 +130,32 @@ public class PlayerCombat_PhaseState : GameState
         if (allEnemiesDead)
         {
             duration = 3f;
-            Debug.LogWarning("allenemyisdead");
             unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
-          
+
             if (unitsCount > 0)
             {
                 Debug.LogWarning("WinGame");
                 gameManager.WinCombat(true);
 
+                PlayerAI playerAI = gameManager.PlayerAI;
+                foreach (PlayerData player in playerAI.players)
+                {
+                    if (player.PlayerName == lastEnemyPlayer.PlayerName)
+                    {
+                        PlayerData modifiedPlayer = player; // Create a separate variable
+                        int damageAmount = (GameStateSystem.Instance.GetRoundIndex + 1) * 12;
+                        modifiedPlayer.playerHealth -= damageAmount; // damage to modified Player 
+
+                        // Update the player in the playerAI.players list
+                        int playerIndex = playerAI.players.IndexOf(player);
+                        playerAI.players[playerIndex] = modifiedPlayer;
+                    }
+                }
             }
         }
     }
+
+
     private void OnEnemyKilled(bool value, GameObject minion)
     {
 
@@ -143,8 +173,42 @@ public class PlayerCombat_PhaseState : GameState
             gameManager.WinCombat(true);
     }
 
+    private void DamageOtherHalfofHealthlyPlayers()
+    {
+        PlayerAI playerAI = gameManager.PlayerAI;
+        int stateNum = GameStateSystem.Instance.GetRoundIndex;
+
+        List<PlayerData> playersWithHealth = playerAI.players.Where(player => player.playerHealth > 0).ToList();
+        int halfPlayerCount = Mathf.CeilToInt(playersWithHealth.Count / 2f);
+
+        List<PlayerData> playersToModify = new List<PlayerData>();
+
+        for (int i = 0; i < halfPlayerCount; i++)
+        {
+            PlayerData player = playersWithHealth[i];
+            int damageAmount = (GameStateSystem.Instance.GetRoundIndex + 1) * 12;
+            player.playerHealth -= damageAmount;
+            playersToModify.Add(player);
+        }
+
+        foreach (var modifiedPlayer in playersToModify)
+        {
+            foreach (var curPlayer in playerAI.players)
+            {
+                if (modifiedPlayer.PlayerName == curPlayer.PlayerName && modifiedPlayer.PlayerName != lastEnemyPlayer.PlayerName)
+                {
+                    int playerIndex = playerAI.players.IndexOf(curPlayer);
+                    playerAI.players[playerIndex] = modifiedPlayer;
+                    break;
+                }
+            }
+        }
+    }
+
+
     public override void OnExitState()
     {
+        PlayerListUI.Instance.CurBattlePlayerAI = new PlayerData();
         GameStateSystem.Instance.timeSlider.gameObject.SetActive(true);
 
         unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
@@ -163,7 +227,7 @@ public class PlayerCombat_PhaseState : GameState
         {
             floor.GetComponent<BoxCollider>().enabled = true;
         }
-
+        DamageOtherHalfofHealthlyPlayers();
         IsCombatState = false;
         UnitPositionUtility.RefreshUnitsPosition();
     }

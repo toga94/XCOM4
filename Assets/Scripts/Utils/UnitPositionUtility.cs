@@ -25,18 +25,19 @@ public static class UnitPositionUtility
         foreach (var obj in unitsOnGrid.Select((unit, index) => new { unit, index }))
         {
             obj.unit.transform.SetPositionAndRotation(
-                gameManager.SavedUnitTransforms[obj.index].position, 
+                gameManager.SavedUnitTransforms[obj.index].position,
                 gameManager.SavedUnitTransforms[obj.index].rotation
                 );
         }
     }
 
 
-    public static void RefreshUnitsPosition() {
+    public static void RefreshUnitsPosition()
+    {
         SaveUnitsPosition();
         LoadUnitsPosition();
     }
-
+   
 
 
     public static List<Vector3> EnemyGridPositions()

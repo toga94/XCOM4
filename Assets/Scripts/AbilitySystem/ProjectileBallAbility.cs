@@ -15,7 +15,15 @@ public class ProjectileBallAbility : Ability
         PoolingSystem(projectilePrefab.name);
         // Cast fireball spell
         if (target == null) return;
-        StartCoroutine(FireballCast(target, additionalDamage));
+        try
+        {
+            StartCoroutine(FireballCast(target, additionalDamage));
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        } 
     }
 
     private void PoolingSystem(string className)

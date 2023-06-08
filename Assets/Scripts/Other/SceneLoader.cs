@@ -1,21 +1,33 @@
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] int loadSceneIndex;
-    void Awake()
+    [SerializeField] bool OnClickOnly;
+
+    private void Start()
     {
-        StartCoroutine(LoadSceneAsyncCoroutine());
+        if (!OnClickOnly)
+        {
+            LoadSceneAsync();
+        }
     }
-    private IEnumerator LoadSceneAsyncCoroutine()
+
+    public void OnClick()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(loadSceneIndex, LoadSceneMode.Additive);
+        LoadSceneAsync();
+    }
+
+    private async void LoadSceneAsync()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(loadSceneIndex, LoadSceneMode.Single);
 
         while (!asyncLoad.isDone)
         {
-            yield return null;
+            await Task.Yield();
         }
     }
 }

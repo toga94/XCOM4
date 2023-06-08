@@ -23,7 +23,7 @@ public class PlayerAI : Singleton<PlayerAI>
         for (int i = 0; i < numPlayers; i++)
         {
             PlayerData player = new PlayerDataBuilder()
-                .SetPlayerName("Player " + (i + 1))
+                .SetPlayerName(RandomUsernameGenerator.GenerateRandomUsername())
                 .SetPlayerLevel(1)
                 .SetPlayerMoney(20)
                 .SetPlayerHealth(100)
