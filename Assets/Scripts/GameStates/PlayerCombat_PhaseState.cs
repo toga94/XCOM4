@@ -17,8 +17,10 @@ public class PlayerCombat_PhaseState : GameState
     private List<Unit> enemyUnitsOnGrid;
     private GameObject[] floors;
     private PlayerData lastEnemyPlayer;
+    private int damageAmount;
     public override void OnEnterState()
     {
+        damageAmount = ((GameStateSystem.Instance.GetRoundIndex + 1) * 12) / 2;
         gameManager = GameManager.Instance;
 
         IsCombatState = true;
@@ -143,7 +145,7 @@ public class PlayerCombat_PhaseState : GameState
                     if (player.PlayerName == lastEnemyPlayer.PlayerName)
                     {
                         PlayerData modifiedPlayer = player; // Create a separate variable
-                        int damageAmount = (GameStateSystem.Instance.GetRoundIndex + 1) * 12;
+                      
                         modifiedPlayer.playerHealth -= damageAmount; // damage to modified Player 
 
                         // Update the player in the playerAI.players list
@@ -173,21 +175,24 @@ public class PlayerCombat_PhaseState : GameState
             gameManager.WinCombat(true);
     }
 
-    private void DamageOtherHalfofHealthlyPlayers()
+    private void DamageRandomHalfOfHealthyPlayers()
     {
         PlayerAI playerAI = gameManager.PlayerAI;
         int stateNum = GameStateSystem.Instance.GetRoundIndex;
 
         List<PlayerData> playersWithHealth = playerAI.players.Where(player => player.playerHealth > 0).ToList();
 
-        int halfPlayerCount = Mathf.CeilToInt(playersWithHealth.Count / 2f);
+        // Shuffle the list of players to randomize the order
+        System.Random random = new System.Random();
+        playersWithHealth = playersWithHealth.OrderBy(player => random.Next()).ToList();
+
+        int numPlayersToDamage = Mathf.CeilToInt(playersWithHealth.Count / 2f) + 1; // Half of the players
 
         List<PlayerData> playersToModify = new List<PlayerData>();
 
-        for (int i = 0; i < halfPlayerCount; i++)
+        for (int i = 0; i < numPlayersToDamage; i++)
         {
             PlayerData player = playersWithHealth[i];
-            int damageAmount = (GameStateSystem.Instance.GetRoundIndex + 1) * 12;
             player.playerHealth -= damageAmount;
             playersToModify.Add(player);
         }
@@ -228,7 +233,7 @@ public class PlayerCombat_PhaseState : GameState
         {
             floor.GetComponent<BoxCollider>().enabled = true;
         }
-        DamageOtherHalfofHealthlyPlayers();
+        DamageRandomHalfOfHealthyPlayers();
         IsCombatState = false;
         UnitPositionUtility.RefreshUnitsPosition();
     }

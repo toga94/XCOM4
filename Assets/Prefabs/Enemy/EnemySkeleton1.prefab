@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6478539475975344544}
   - component: {fileID: 248904923}
   m_Layer: 0
-  m_Name: EnemySkeleton
+  m_Name: EnemySkeleton1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   isDead: 0
   enemies: []
   target: {fileID: 0}
-  enemyDamage: 7
+  enemyDamage: 2
   objectPool: {fileID: 0}
 --- !u!195 &248904923
 NavMeshAgent:
@@ -110,9 +110,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6478539475975344546}
     m_Modifications:
-    - target: {fileID: 1479259742585066, guid: 3e4cf0221a0e8db41bcb50be99ebe457, type: 3}
+    - target: {fileID: 1088122725420890, guid: 3e4cf0221a0e8db41bcb50be99ebe457, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260639059715000, guid: 3e4cf0221a0e8db41bcb50be99ebe457, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479259742585066, guid: 3e4cf0221a0e8db41bcb50be99ebe457, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1623817811568398, guid: 3e4cf0221a0e8db41bcb50be99ebe457, type: 3}
       propertyPath: m_Name

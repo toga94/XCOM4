@@ -20,7 +20,8 @@ public class Minion_1_1_PhaseState : GameState
 
         IsCombatState = true;
         duration = 99999f;
-        GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
+        GameStateSystem gameStateSystem = GameStateSystem.Instance;
+        gameStateSystem.timeSlider.gameObject.SetActive(false);
         UnitPositionUtility.RefreshUnitsPosition();
 
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
@@ -28,16 +29,32 @@ public class Minion_1_1_PhaseState : GameState
         {
             floor.GetComponent<BoxCollider>().enabled = false;
         }
+        int minionIndex = gameStateSystem.GetRoundIndex < 4 ? gameStateSystem.GetRoundIndex : 3;
+        enemyPool = GameObject.Find("_Pooling").
+            transform.Find($"minion_{minionIndex}_Pool").GetComponent<LeanGameObjectPool>();
 
-        enemyPool = GameObject.Find("_Pooling").transform.Find("minion_1_1_UIPool").GetComponent<LeanGameObjectPool>();
-
-        List<Vector3> enemyPosition = new List<Vector3>
+        List<Vector3> enemyPosition = new List<Vector3>();
+        if (gameStateSystem.GetRoundIndex == 0)
         {
-            new Vector3(-0.5f, 0.24f, 24.5f),
-            new Vector3(11f, 0.24f, 20f),
-            new Vector3(22f, 0.24f, 24.5f)
-        };
-
+            enemyPosition = new List<Vector3> {
+                new Vector3(11f, 0.24f, 20f)
+            };
+        }
+        else if (gameStateSystem.GetRoundIndex == 1)
+        {
+            enemyPosition = new List<Vector3> {
+                new Vector3(-0.5f, 0.24f, 24.5f),
+                new Vector3(11f, 0.24f, 20f)
+            };
+        }
+        else if (gameStateSystem.GetRoundIndex >= 2)
+        {
+            enemyPosition = new List<Vector3> {
+                new Vector3(-0.5f, 0.24f, 24.5f),
+                new Vector3(11f, 0.24f, 20f),
+                new Vector3(22f, 0.24f, 24.5f)
+            };
+        }
         enemies = enemyPosition
             .Select(position => enemyPool.Spawn(position, Quaternion.Euler(0, 180, 0)).GetComponent<Enemy>())
             .ToList();
