@@ -41,13 +41,14 @@ public class GameStateSystem : Singleton<GameStateSystem>
     private List<GameState> gameStateList;
     public GameStateSystem()
     {
-        gameStateList = new List<GameState>(9)
+        gameStateList = new List<GameState>()
         {
             new CarouselState(),
             new ChampionSelectionState(),
             new Minion_1_1_PhaseState(),
             new ChampionSelectionState(),
             new Minion_1_1_PhaseState(),
+            new ChampionSelectionState(),
             new CarouselState(),
             new ChampionSelectionState(),
             new PlayerCombat_PhaseState(),
@@ -55,6 +56,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
             new PlayerCombat_PhaseState(),
             new ChampionSelectionState(),
             new PlayerCombat_PhaseState(),
+            new ChampionSelectionState(),
         };
         for (int i = 0; i < 10; i++)
         {

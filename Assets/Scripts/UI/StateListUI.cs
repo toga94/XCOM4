@@ -19,7 +19,7 @@ public class StateListUI : MonoBehaviour
     [SerializeField]
     private Dictionary<System.Type, Sprite> stateImageMap;
     private LeanGameObjectPool stateUIPool;
-    private List<GameObject> stateImageObjects; // To store the instantiated state image objects
+    private List<GameObject> stateImageObjects; 
     private GameObject childObject;
 
     private void Start()
@@ -32,18 +32,17 @@ public class StateListUI : MonoBehaviour
         stateUIPool = childObject.AddComponent<LeanGameObjectPool>();
         stateUIPool.Prefab = stateListUISprite;
         stateImageObjects = new List<GameObject>(); // Initialize the list
+        stateImageMap = new Dictionary<System.Type, Sprite>();
+        stateImageMap.Add(typeof(CarouselState), carouselStateSprite);
+        stateImageMap.Add(typeof(PlayerCombat_PhaseState), combatStateSprite);
+        stateImageMap.Add(typeof(Minion_1_1_PhaseState), minionStateSprite);
 
         OnGameStateChanged(GameStateSystem.Instance.GetCurrentState);
     }
 
     private void OnGameStateChanged(GameState obj)
     {
-        stateImageMap = new Dictionary<System.Type, Sprite>();
-        stateImageMap.Add(typeof(CarouselState), carouselStateSprite);
-        stateImageMap.Add(typeof(PlayerCombat_PhaseState), combatStateSprite);
-        stateImageMap.Add(typeof(Minion_1_1_PhaseState), minionStateSprite);
-        // Add other state types and their corresponding sprites
-
+        Debug.Log("state" + obj.GetType());
         UpdateList(obj);
     }
 
@@ -51,14 +50,11 @@ public class StateListUI : MonoBehaviour
     {
 
         System.Type stateType = gameState.GetType();
-
-        // Check if the stateType exists in the stateImageMap dictionary
         if (stateImageMap.ContainsKey(stateType))
         {
             return stateImageMap[stateType];
         }
 
-        // If no specific image is found for the state type, return a default image or handle it as needed
         return errorStateSprite;
     }
 
@@ -81,16 +77,14 @@ public class StateListUI : MonoBehaviour
             GameState gameState = statesInRound[i];
             Sprite stateImage = GetStateImage(gameState);
 
-            // TODO: Instantiate and position the state image object in the UI
-
-            // Example instantiation using a UI image component
             GameObject stateImageObject = stateUIPool.Spawn(Vector3.zero, Quaternion.identity);
-            stateImageObject.transform.SetParent(transform); // Set the UI object as the parent
+            stateImageObject.transform.SetParent(transform); 
             Image uiImage = stateImageObject.GetComponent<Image>();
             uiImage.sprite = stateImage;
 
 
             int _currentStateIndex = GameStateSystem.Instance.GetCurrentStateIndexUI / 2;
+            Debug.Log(_currentStateIndex);
             if (_currentStateIndex == i)
             {
                 uiImage.color = Color.white;
@@ -118,30 +112,7 @@ public class StateListUI : MonoBehaviour
                     uiImage.color = Color.grey;
                 }
             }
-
-            //if (gameState == curstate)
-            //{
-            //    uiImage.color = Color.white;
-            //}
-            //else if (gameState.IsFinished && gameState.IsWin)
-            //{
-            //    uiImage.color = Color.green;
-            //}
-            //else if (gameState.IsFinished && !gameState.IsWin)
-            //{
-            //    uiImage.color = Color.red;
-            //}
-            //else 
-            //{
-            //    uiImage.color = Color.grey;
-            //}
-
-
-
-            // Position the state image object in the UI (you can modify this based on your UI layout)
-            //stateUIListObj.transform.localPosition = new Vector3(0, -i * 100, 0);
             uiImage.transform.parent = stateUIListObj.transform;
-            //stateImageObjects.Add(stateImageObject); // Add the object to the list
         }
     }
 

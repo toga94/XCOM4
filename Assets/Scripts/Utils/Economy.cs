@@ -3,7 +3,7 @@ using UnityEngine;
 
 public struct Economy
 {
-    public static int gold = 80;
+    public static int gold = 20;
     public static int xpCost = 4;
     public static int Level { get; set; } = 1;
     public static int Exp { get; set; }

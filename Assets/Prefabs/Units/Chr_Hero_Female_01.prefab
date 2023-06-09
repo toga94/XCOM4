@@ -2238,7 +2238,7 @@ MonoBehaviour:
   Description: The fireball effect
   Cooldown: 1
   CastTime: 1
-  AbilityPower: 1
+  AbilityPower: 3
   ManaCost: 1
   IsOffensive: 1
   abilityType: 0
@@ -2261,7 +2261,7 @@ MonoBehaviour:
   Description: The meteor effect
   Cooldown: 1
   CastTime: 1
-  AbilityPower: 1
+  AbilityPower: 3
   ManaCost: 5
   IsOffensive: 1
   abilityType: 1
