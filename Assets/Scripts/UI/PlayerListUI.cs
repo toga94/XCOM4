@@ -48,24 +48,27 @@ public class PlayerListUI : Singleton<PlayerListUI>
         {
             GameObject playerEntry = playerUIPool.Spawn(playerListContainer);
             Text playerNameText = playerEntry.GetComponentInChildren<Text>();
+            int maxhpslidervalue = 150;
+            Image foregroundHpSlider;
+            foregroundHpSlider = playerEntry.transform.GetChild(0).GetComponentInChildren<Image>();
+
+            foregroundHpSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(maxhpslidervalue * playerData.playerHealth / 100, 23f);
 
             playerEntryMaterialInstance = Instantiate( 
                 playerEntry.GetComponent<Image>().material);
             if (CurBattlePlayerAI.PlayerName == playerData.PlayerName)
             {
-                playerEntryMaterialInstance.EnableKeyword("OUTBASE_ON");
-                playerEntryMaterialInstance.EnableKeyword("WAVEUV_ON");
+
             }
             else {
-                playerEntryMaterialInstance.DisableKeyword("OUTBASE_ON");
-                playerEntryMaterialInstance.DisableKeyword("WAVEUV_ON");
+
             }
             if (playerData.PlayerName.Equals("Me"))
             {
-                playerEntryMaterialInstance.EnableKeyword("CHANGECOLOR_ON");
+
             }
             else {
-                playerEntryMaterialInstance.DisableKeyword("CHANGECOLOR_ON");
+
             }
             
             playerEntry.GetComponent<Image>().material = playerEntryMaterialInstance;

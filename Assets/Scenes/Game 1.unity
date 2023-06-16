@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 483126893}
-  m_IndirectSpecularColor: {r: 0.39895537, g: 0.72225744, b: 0.79445356, a: 1}
+  m_IndirectSpecularColor: {r: 0.3982321, g: 0.7219238, b: 0.7941365, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -894,7 +894,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ad7d6ed69283f1c449365080bc376a20, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64329178493387444, guid: 35ab25eaae2ce3b4da8e82bb50d4691d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 35ab25eaae2ce3b4da8e82bb50d4691d, type: 3}
 --- !u!4 &134579483 stripped
 Transform:
@@ -1373,8 +1374,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -11.019714, y: -45}
-  m_SizeDelta: {x: -692.4945, y: 27.6977}
+  m_AnchoredPosition: {x: -11.019775, y: -45}
+  m_SizeDelta: {x: -619.535, y: 27.6977}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &278468404
 MonoBehaviour:
@@ -4791,7 +4792,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ad7d6ed69283f1c449365080bc376a20, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64329178493387444, guid: 35ab25eaae2ce3b4da8e82bb50d4691d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 35ab25eaae2ce3b4da8e82bb50d4691d, type: 3}
 --- !u!4 &1437728249 stripped
 Transform:
@@ -6127,7 +6129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -273.86127}
+  m_AnchoredPosition: {x: 60, y: -259.80817}
   m_SizeDelta: {x: 119.880005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716284766
@@ -6625,10 +6627,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: -190
+    m_Top: -200
     m_Bottom: 0
   m_ChildAlignment: 2
-  m_Spacing: 0
+  m_Spacing: 2
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -17449,20 +17451,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7094582195495529764
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7095495258063935533}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3664472655824258899, guid: 589633b19153b7a4589329873bd7f9ea, type: 3}
 --- !u!1 &7095495258063935533
 GameObject:
   m_ObjectHideFlags: 0
@@ -17474,7 +17462,6 @@ GameObject:
   - component: {fileID: 8675757649742729049}
   - component: {fileID: 8338245974496140717}
   - component: {fileID: 3939913496676848119}
-  - component: {fileID: 7094582195495529764}
   m_Layer: 0
   m_Name: structures_lp_6_1
   m_TagString: Untagged

@@ -95,6 +95,8 @@ public class EnemyWorldUI : MonoBehaviour
     RectTransform canvasRect;
     private void Update()
     {
+        if (unitTransform == null) Destroy(gameObject);
+
         if (hpDamageSldier.fillAmount != hpSldier.fillAmount)
         {
             hpDamageSldier.fillAmount = Mathf.Lerp(hpDamageSldier.fillAmount, hpSldier.fillAmount, Time.deltaTime * 2f);

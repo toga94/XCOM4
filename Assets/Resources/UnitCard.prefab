@@ -1785,30 +1785,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 884820849437329849}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 7054223780490377194}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &7054223780490377193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1829,6 +1805,8 @@ MonoBehaviour:
   HaveStarPanel: {fileID: 8793982747212391488}
   rareOptions: 0
   unit: {fileID: 0}
+  disabledui: {fileID: 884820849437329849}
+  unitcardbutton: {fileID: 7054223780490377194}
 --- !u!1 &7054223780623928193
 GameObject:
   m_ObjectHideFlags: 0

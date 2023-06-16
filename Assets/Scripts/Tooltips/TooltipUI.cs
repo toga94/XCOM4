@@ -40,7 +40,17 @@ public class TooltipUI : MonoBehaviour
             }
 
             string colorTag = currentTypeCount >= traitData.traitEffectsLevel[i] ? "<color=white>" : "<color=grey>";
-            string effectDescription = traitData.traitEffects[i].effectDescription;
+            string effectDescription = string.Empty;
+
+            try
+            {
+                effectDescription = traitData.traitEffects[i].effectDescription;
+            }
+            catch (System.Exception)
+            {
+                effectDescription = string.Empty;
+            }
+
 
             bunusEffects += $"\n {colorTag}{traitData.traitEffectsLevel[i]} units: {effectDescription}</color>";
         }
@@ -92,6 +102,6 @@ public class TooltipUI : MonoBehaviour
         float pivotY = position.y / Screen.height;
         //rectTransform.pivot = new Vector2(pivotX, pivotY * 2);
         transform.position = position;
-        
+
     }
 }

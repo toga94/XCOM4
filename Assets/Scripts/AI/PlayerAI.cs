@@ -66,19 +66,19 @@ public class PlayerAI : Singleton<PlayerAI>
 
     private int GetNumUnits(int round)
     {
-        if (round < 4)
+        if (round < 2)
         {
             return 2;
         }
-        else if (round <= 4)
+        else if (round <= 3)
         {
             return 3;
         }
-        else if (round <= 6)
+        else if (round <= 4)
         {
             return 4;
         }
-        else if (round <= 8)
+        else if (round <= 5)
         {
             return 5;
         }

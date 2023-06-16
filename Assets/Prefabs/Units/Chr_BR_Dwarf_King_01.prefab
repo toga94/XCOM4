@@ -306,7 +306,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &328477854113750616
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -319,10 +319,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &421675273676120818
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -422,8 +424,8 @@ MonoBehaviour:
   AbilityName: BrassKnuckles
   Description: BrassKnuckles
   Cooldown: 3
-  CastTime: 3
-  AbilityPower: 3
+  CastTime: 2
+  AbilityPower: 5
   ManaCost: 0
   IsOffensive: 1
   abilityType: 0
@@ -447,7 +449,7 @@ MonoBehaviour:
   Description: GroundAbility
   Cooldown: 3
   CastTime: 3
-  AbilityPower: 5
+  AbilityPower: 7
   ManaCost: 0
   IsOffensive: 1
   abilityType: 0

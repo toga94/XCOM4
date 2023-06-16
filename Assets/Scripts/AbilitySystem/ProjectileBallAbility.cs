@@ -69,7 +69,10 @@ public class ProjectileBallAbility : Ability
     Quaternion toTargetQuaternion = Quaternion.LookRotation(direction, Vector3.up);
     GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, toTargetQuaternion);
     float speed = 10f;
-    float distance = Vector3.Distance(projectile.transform.position, targetPos);
+        float distance;
+
+        distance = Vector3.Distance(projectile != null ? projectile.transform.position : Vector3.down * 55,
+            targetPos != null ? targetPos  :Vector3.down * 55);
     float duration = distance / speed;
 
     projectile.transform.DOMove(targetPos, duration).SetEase(Ease.Linear).OnUpdate(() =>

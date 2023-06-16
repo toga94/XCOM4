@@ -8,22 +8,22 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: tree 1 leafs
-  m_Shader: {fileID: 4800000, guid: 2600f353be94cd041b84cefd1ed65c8e, type: 3}
-  m_ShaderKeywords: _CUTOFFENABLED_ON _DIFFUSEHATCHING_CROSSHATCH _DIFFUSELIGHTINGSTYLE_TEXTURED
-    _DIFFUSETEXTUREMAPPING_SCREENSTABLE _INVERTSHADOWEDLINES_ON _KEEPLINESTHICC_ON
-    _LINESON_ON _PRESERVESPEC_ON _REFLECTIONSENABLED_ON _SPECULARHATCHING_SINGLECHANNEL
-    _SPECULARLIGHTINGSTYLE_TEXTURED _SPECULARTEXTUREMAPPING_SCREENSTABLE _SPECULARTYPE_COOKTORRANCE
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_ShaderKeywords: _ALPHATEST_ON _ENVIRONMENTREFLECTIONS_OFF _NORMALMAP _RECEIVE_SHADOWS_OFF
+    _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - SHADOWCASTER
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 59201fda973a649439cecea3fb6e68d4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -95,7 +95,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaClip: 0
+    - _AlphaClip: 1
     - _AmbientCategory: 0
     - _AmbientShadowStrength: 1
     - _BaseReflectStrength: 0.5
@@ -104,7 +104,7 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 0
-    - _Cutoff: 0.86
+    - _Cutoff: 0.805
     - _CutoffEnabled: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -116,10 +116,10 @@ Material:
     - _DiffuseTextureContrast: 1.19
     - _DiffuseTextureMapping: 2
     - _DiffuseTextureSize: 6
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _ENDFOLDOUT: 0
     - _Emission: 0
-    - _EnvironmentReflections: 1
+    - _EnvironmentReflections: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -134,6 +134,7 @@ Material:
     - _MinMaxDiffEdge: 0
     - _MinMaxPaintEdge: 0
     - _MinMaxSpecEdge: 0
+    - _Mode: 0
     - _NormalMapStr: 0.34
     - _OcclusionStrength: 1
     - _OpaqueLines: 0
@@ -141,7 +142,7 @@ Material:
     - _Parallax: 0.005
     - _PreserveSpec: 1
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
+    - _ReceiveShadows: 0
     - _ReflectionsCategory: 0
     - _ReflectionsEnabled: 1
     - _Refraction: 0
@@ -152,31 +153,32 @@ Material:
     - _SSAOCategory: 0
     - _ScreenStableDistanceScale: 0
     - _ScreenStableDistanceScaleSpec: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _Spacer: 0
     - _SpecularCategory: 0
     - _SpecularEdge: 0.071
     - _SpecularHatching: 0
-    - _SpecularHighlights: 1
+    - _SpecularHighlights: 0
     - _SpecularLightingStyle: 2
     - _SpecularSteps: 10.11
     - _SpecularTextureContrast: 1
     - _SpecularTextureMapping: 2
     - _SpecularTextureSize: 53.31
     - _SpecularType: 0
-    - _SrcBlend: 1
-    - _Surface: 0
+    - _SrcBlend: 5
+    - _Surface: 1
     - _TEXTURESFOLDOUT: 0
     - _TRANSPARENCYFOLDOUT: 0
     - _TransparencyNote: 0
+    - _UVSec: 0
     - _WorkflowMode: 1
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseEdge: {r: 0, g: 0.8032438, b: 0, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingRanges: {r: 0, g: 0.727, b: 1, a: 1}
     - _HatchingRangesSpec: {r: 1, g: 0.387, b: 0, a: 1}
     - _PaintMaskEdges: {r: 0, g: 1, b: 0, a: 0}

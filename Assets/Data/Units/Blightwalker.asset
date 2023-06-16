@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Blightwalker
   unitImage: {fileID: 6407455098029360505, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
-  health: 100
+  health: 325
   defence: 0
   attackPower: 3
   speed: 5
   mana: 50
-  attackRange: 10
-  traits: 010000000000000007000000
+  attackRange: 5
+  traits: 0100000007000000
   Prefab: {fileID: 6566292102668139068, guid: b58f7cc97cfa3634db127a938306f52e, type: 3}
   rareOptions: 0
   attackType: 0

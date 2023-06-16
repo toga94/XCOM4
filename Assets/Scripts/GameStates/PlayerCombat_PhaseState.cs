@@ -24,7 +24,7 @@ public class PlayerCombat_PhaseState : GameState
         gameManager = GameManager.Instance;
 
         IsCombatState = true;
-        duration = 99999f;
+        duration = 320f;
         GameStateSystem.Instance.timeSlider.gameObject.SetActive(false);
         UnitPositionUtility.RefreshUnitsPosition();
 
@@ -88,6 +88,7 @@ public class PlayerCombat_PhaseState : GameState
             duration = 3f;
             AfterGame();
             gameManager.LoseCombat(true);
+            Economy.SubtractHealth(damageAmount);
         }
     }
 
@@ -189,8 +190,10 @@ public class PlayerCombat_PhaseState : GameState
         int numPlayersToDamage = Mathf.CeilToInt(playersWithHealth.Count / 2f) + 1; // Half of the players
 
         List<PlayerData> playersToModify = new List<PlayerData>();
-
-        for (int i = 0; i < numPlayersToDamage; i++)
+        if (playersWithHealth.Count == 0) {
+            SceneManager.LoadScene(3);
+        }
+        for (int i = 0; i < numPlayersToDamage && i < playersWithHealth.Count; i++) // Added check for i < playersWithHealth.Count
         {
             PlayerData player = playersWithHealth[i];
             player.playerHealth -= damageAmount;
@@ -210,6 +213,7 @@ public class PlayerCombat_PhaseState : GameState
             }
         }
     }
+
 
 
     public override void OnExitState()
@@ -233,7 +237,15 @@ public class PlayerCombat_PhaseState : GameState
         {
             floor.GetComponent<BoxCollider>().enabled = true;
         }
-        DamageRandomHalfOfHealthyPlayers();
+        try
+        {
+            DamageRandomHalfOfHealthyPlayers();
+        }
+        catch (System.Exception)
+        {
+            SceneManager.LoadScene(3);
+        }
+
         IsCombatState = false;
         UnitPositionUtility.RefreshUnitsPosition();
     }

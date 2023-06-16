@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Azir
   unitImage: {fileID: 3774759999125446255, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
-  health: 150
+  health: 325
   defence: 0
   attackPower: 2
   speed: 5
   mana: 50
-  attackRange: 10
-  traits: 01000000020000000d000000
+  attackRange: 5
+  traits: 1200000002000000
   Prefab: {fileID: 1846756657532275767, guid: 92a832f406881f34c97b9646a3a15ab6, type: 3}
   rareOptions: 0
   attackType: 0

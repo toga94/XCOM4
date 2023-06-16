@@ -16,7 +16,7 @@ MonoBehaviour:
   traitName: Assasin
   traitDescription: Units with this trait deal bonus critical strike damage to enemies
     with low health and can jump to the backline.
-  traitEffectsLevel: 0400000002000000
+  traitEffectsLevel: 0200000001000000
   traitSprite: {fileID: 21300000, guid: 6980abda02f3f46c7a9ceef8df7e4048, type: 3}
   traitEffects:
   - effectDescription: All assassins gain bonus critical strike damage.

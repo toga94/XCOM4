@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6393600194038877188}
   enemyWorldUIPrefab: {fileID: 6882975772807749723, guid: ccab2969549a68d478ff17b74e1443bf, type: 3}
-  startHealth: 100
+  startHealth: 180
 --- !u!114 &6478539475975344544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   isDead: 0
   enemies: []
   target: {fileID: 0}
-  enemyDamage: 1
+  enemyDamage: 15
   objectPool: {fileID: 0}
 --- !u!195 &248904923
 NavMeshAgent:

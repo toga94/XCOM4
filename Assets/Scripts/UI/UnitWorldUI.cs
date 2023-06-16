@@ -19,7 +19,7 @@ public class UnitWorldUI : MonoBehaviour
     [SerializeField] private Image hpDamageSldier;
     [SerializeField] private bool is3D;
     [SerializeField] private HorizontalLayoutGroup horizontalLayoutGroup;
-    private int healthPerBar = 50;
+    [SerializeField] private int healthPerBar = 100;
     private bool uiInit;
     private Camera mainCamera;
     public float HealthBarOffsetZ;

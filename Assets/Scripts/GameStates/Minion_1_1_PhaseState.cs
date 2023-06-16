@@ -19,7 +19,7 @@ public class Minion_1_1_PhaseState : GameState
         gameManager = GameManager.Instance;
 
         IsCombatState = true;
-        duration = 99999f;
+        duration = 320f;
         GameStateSystem gameStateSystem = GameStateSystem.Instance;
         gameStateSystem.timeSlider.gameObject.SetActive(false);
         UnitPositionUtility.RefreshUnitsPosition();
@@ -30,9 +30,13 @@ public class Minion_1_1_PhaseState : GameState
             floor.GetComponent<BoxCollider>().enabled = false;
         }
         int minionIndex = gameStateSystem.GetRoundIndex < 4 ? gameStateSystem.GetRoundIndex : 3;
+
+        
+
         enemyPool = GameObject.Find("_Pooling").
             transform.Find($"minion_{minionIndex}_Pool").GetComponent<LeanGameObjectPool>();
-
+        enemyPool.Clean();
+        
         List<Vector3> enemyPosition = new List<Vector3>();
         if (gameStateSystem.GetRoundIndex == 0)
         {
@@ -47,7 +51,7 @@ public class Minion_1_1_PhaseState : GameState
                 new Vector3(11f, 0.24f, 20f)
             };
         }
-        else if (gameStateSystem.GetRoundIndex >= 2)
+        else if (gameStateSystem.GetRoundIndex == 2)
         {
             enemyPosition = new List<Vector3> {
                 new Vector3(-0.5f, 0.24f, 24.5f),
@@ -55,6 +59,25 @@ public class Minion_1_1_PhaseState : GameState
                 new Vector3(22f, 0.24f, 24.5f)
             };
         }
+        else if (gameStateSystem.GetRoundIndex == 3)
+        {
+            enemyPosition = new List<Vector3> {
+                new Vector3(-0.5f, 0.24f, 24.5f),
+                new Vector3(11f, 0.24f, 20f),
+                new Vector3(22f, 0.24f, 24.5f)
+            };
+        }
+        else if (gameStateSystem.GetRoundIndex >= 4)
+        {
+            enemyPosition = new List<Vector3> {
+                new Vector3(-0.5f, 0.24f, 24.5f),
+                new Vector3(11f, 0.24f, 20f),
+                new Vector3(22f, 0.24f, 24.5f),
+                new Vector3(-2.83f, 0, 27.47f)
+            };
+        }
+
+
         enemies = enemyPosition
             .Select(position => enemyPool.Spawn(position, Quaternion.Euler(0, 180, 0)).GetComponent<Enemy>())
             .ToList();
@@ -85,7 +108,8 @@ public class Minion_1_1_PhaseState : GameState
 
             unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
             enemies.ForEach(enemy => enemy.GetComponent<IDamageable>().TakeDamage(99999999));
-
+          int  damageAmount = ((GameStateSystem.Instance.GetRoundIndex + 1) * 12) / 2;
+            Economy.SubtractHealth(damageAmount);
             gameManager.LoseCombat(false);
         }
     }

@@ -431,8 +431,8 @@ public class GameManager : Singleton<GameManager>
             winStreak = 0;
             winStreakUI.SetActive(false);
         }
-        if (Economy.Health > 0)
-            Economy.SubtractHealth((GameStateSystem.Instance.GetRoundIndex + 1) * 12);
+        if (Economy.Health > 0) { }
+        //  Economy.SubtractHealth((GameStateSystem.Instance.GetRoundIndex + 1) * 12);
         else
         {
             SceneManager.LoadScene(2);

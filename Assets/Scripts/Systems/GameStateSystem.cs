@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameStateSystem : Singleton<GameStateSystem>
@@ -105,7 +106,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
             {
                 currentState.IsFinished = true;
             }
-
+            if (Economy.Health <= 0) { SceneManager.LoadScene(2); }
             timeSlider.value = timer;
             timeSlider.maxValue = currentState.duration;
             currentState.OnUpdate();
