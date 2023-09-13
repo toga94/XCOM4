@@ -5,14 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-
+using MoreMountains.Feedbacks;
 public class GameManager : Singleton<GameManager>
 {
     public int GetPlayerCoin { get; }
 
     public List<Unit> UnitsInGrid;
     public List<Unit> UnitsInInventory;
-
+    
 
     public TextMeshPro gridSizeTextMesh;
     private SpriteRenderer gridSizeIcon;
@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
     private GameStateSystem gameStateSystem;
 
     private List<Unit> alllUnits;
-
+    public MMF_Player GetMMF_Player;
 
     public List<Unit> GetAllUnits
     {

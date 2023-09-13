@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using MoreMountains.Feedbacks;
 public class UnitAI : MonoBehaviour
 {
 
@@ -31,7 +32,8 @@ public class UnitAI : MonoBehaviour
     private GameManager gameManager;
     [SerializeField]
     private List<Unit> enemyOnGrid;
-
+    [SerializeField]
+    private MMF_Player mmf_player;
     private GameObject nearestEnemy;
     private void Start()
     {
@@ -47,6 +49,7 @@ public class UnitAI : MonoBehaviour
         {
             GameStateChanged(currentState);
         }
+        mmf_player = gameManager.GetMMF_Player;
 
 
 
@@ -60,7 +63,11 @@ public class UnitAI : MonoBehaviour
 
     private void Update()
     {
-        if (stateSystem.GetCurrentState is ChampionSelectionState && !unit.isOwn) Destroy(gameObject);
+        currentState = stateSystem.GetCurrentState;
+        if (currentState is ChampionSelectionState && !unit.isOwn)
+        {
+            Destroy(gameObject);
+        }
         charState = unit.charState;
         AnimateState(currentState);
 
@@ -118,12 +125,17 @@ public class UnitAI : MonoBehaviour
                 ability.Cast(target, unit.GetUnitObject.attackPower);
             }
             healthSystem.IncreaseMana(healthSystem.GetMaxMana / 4);
+     
+           
         }
         else
         {
             superAbility.Cast(target, unit.GetUnitObject.attackPower);
             healthSystem.DecreaseMana(healthSystem.GetMaxMana);
         }
+        //mmf_player?.Feedbacks[0].
+        float damage = Random.Range(20, 200);
+        mmf_player?.PlayFeedbacks(target.transform.position + Vector3.up * 7, damage);
     }
 
     private void DefaultMethod()

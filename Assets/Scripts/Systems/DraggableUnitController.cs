@@ -290,17 +290,17 @@ public class DraggableUnitController : MonoBehaviour
 
     private void DragUnit(GridPosition lastgridPosition, GridPosition gridPosition)
     {
-
+        Unit unit = character.GetUnit;
+        bool isCombatState = GameStateSystem.Instance.GetCurrentState.IsCombatState;
+        bool gridIsFull = !GameManager.Instance.GridisFree();
         switch (GetDragState())
         {
             case DragState.Grid2Grid:
                 {
-                    if (GameStateSystem.Instance.GetCurrentState.IsCombatState) return;
+                    if (isCombatState) return;
                     if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
                     {
-                        Unit unit = character.GetUnit;
                         levelGrid.UnitMovedGridPosition(unit, lastgridPosition, gridPosition);
-
                         unit.TeleportToPosition(levelGrid.GetWorldPosition(gridPosition), gridPosition);
                         levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
                     }
@@ -316,9 +316,7 @@ public class DraggableUnitController : MonoBehaviour
                 {
                     if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))
                     {
-                        Unit unit = character.GetUnit;
                         inventoryGrid.UnitMovedInventoryPosition(unit, lastgridPosition, gridPosition);
-
                         unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(gridPosition), gridPosition);
                         inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
                     }
@@ -332,18 +330,15 @@ public class DraggableUnitController : MonoBehaviour
 
             case DragState.Inv2Grid:
                 {
-                    if (GameStateSystem.Instance.GetCurrentState.IsCombatState) return;
+                    if (isCombatState) return;
                     if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
                     {
-                        Unit unit = character.GetUnit;
-
                         unit.TeleportToPosition(levelGrid.GetWorldPosition(gridPosition), gridPosition);
                         inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
 
                         levelGrid.AddUnitAtGridPosition(gridPosition, unit);
                         unit.OnGrid = true;
-
-                        if (!GameManager.Instance.GridisFree())
+                        if (gridIsFull)
                         {
                             unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(lastgridPosition), lastgridPosition);
                             levelGrid.RemoveAnyUnitAtGridPosition(gridPosition);
@@ -378,8 +373,6 @@ public class DraggableUnitController : MonoBehaviour
                 {
                     if (!inventoryGrid.HasAnyUnitOnInventoryPosition(gridPosition))
                     {
-                        Unit unit = character.GetUnit;
-
                         unit.TeleportToPosition(inventoryGrid.GetInventoryWorldPosition(gridPosition), gridPosition);
                         levelGrid.RemoveAnyUnitAtGridPosition(lastgridPosition);
 

@@ -6,19 +6,23 @@ using UnityEngine.UI;
 
 public class GameStateSystem : Singleton<GameStateSystem>
 {
+    // Events
     public event Action<GameState> OnGameStateChanged;
-    public float currentDuration;
-    public bool finished;
-    private List<List<GameState>> rounds = new List<List<GameState>>(10);
-    [SerializeField]
-    private int currentRoundIndex = 0;
-    [SerializeField]
-    private int currentStateIndex = 0;
+
+    // Public variables
     public Slider timeSlider;
+    public bool finished;
+
+    // Private variables
+    private int currentRoundIndex = 0;
+    private int currentStateIndex = 0;
     private float currentStateStartTime;
 
+    // Properties
+    public float CurrentDuration => GetCurrentState?.duration ?? 0f;
     public int GetRoundIndex => currentRoundIndex;
     public int GetStateIndex => currentStateIndex;
+    public GameState CurrentState => GetCurrentState;
     public int GetCurrentStateIndexUI
     {
         get
@@ -37,12 +41,13 @@ public class GameStateSystem : Singleton<GameStateSystem>
             return -1;
         }
     }
-    public GameState CurrentState => GetCurrentState;
-
+    // Lists
+    private List<List<GameState>> rounds = new List<List<GameState>>(10);
     private List<GameState> gameStateList;
-    public GameStateSystem()
+
+    private void Awake()
     {
-        gameStateList = new List<GameState>()
+        gameStateList = new List<GameState>
         {
             new CarouselState(),
             new ChampionSelectionState(),
@@ -59,6 +64,8 @@ public class GameStateSystem : Singleton<GameStateSystem>
             new PlayerCombat_PhaseState(),
             new ChampionSelectionState(),
         };
+
+        // Initialize rounds
         for (int i = 0; i < 10; i++)
         {
             rounds.Add(new List<GameState>(gameStateList));
@@ -86,7 +93,6 @@ public class GameStateSystem : Singleton<GameStateSystem>
             List<GameState> currentRound = rounds[currentRoundIndex];
             GameState currentState = currentRound[currentStateIndex];
             finished = currentState.IsFinished;
-            currentDuration = currentState.duration;
 
             if (Input.GetKeyDown(KeyCode.KeypadEnter))
             {
@@ -101,23 +107,29 @@ public class GameStateSystem : Singleton<GameStateSystem>
                 currentStateStartTime = Time.time;
                 return;
             }
+
             float timer = Time.time - currentStateStartTime;
             if (timer > currentState.duration)
             {
                 currentState.IsFinished = true;
             }
-            if (Economy.Health <= 0) { SceneManager.LoadScene(2); }
+
+            if (Economy.Health <= 0)
+            {
+                SceneManager.LoadScene(2);
+            }
+
             timeSlider.value = timer;
             timeSlider.maxValue = currentState.duration;
             currentState.OnUpdate();
         }
     }
-    public List<GameState> currentRound;
+
     public void NextState()
     {
         if (currentRoundIndex < rounds.Count)
         {
-            currentRound = rounds[currentRoundIndex];
+            List<GameState> currentRound = rounds[currentRoundIndex];
             int nextStateIndex = currentStateIndex + 1;
 
             if (nextStateIndex >= 0 && nextStateIndex < currentRound.Count)
@@ -130,9 +142,9 @@ public class GameStateSystem : Singleton<GameStateSystem>
             }
         }
     }
+
     public List<GameState> GetStatesInRound()
     {
-
         List<GameState> currentRound = rounds[currentRoundIndex];
         List<GameState> statesInRound = new List<GameState>();
 
@@ -145,22 +157,15 @@ public class GameStateSystem : Singleton<GameStateSystem>
         }
 
         return statesInRound;
-
     }
+
     public List<GameState> GetAllStatesInCurrentRound()
     {
-
         List<GameState> currentRound = rounds[currentRoundIndex];
-        List<GameState> statesInRound = new List<GameState>();
-
-        foreach (GameState state in currentRound)
-        {
-            statesInRound.Add(state);
-        }
-
+        List<GameState> statesInRound = new List<GameState>(currentRound);
         return statesInRound;
-
     }
+
     private void NextRound()
     {
         currentRoundIndex++;
@@ -188,13 +193,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
         round[currentStateIndex].OnEnterState();
         OnGameStateChanged?.Invoke(CurrentState);
     }
-    private int GetMaxStateInRound()
-    {
-        List<GameState> _curRound = rounds[currentRoundIndex];
 
-
-        return 0;
-    }
     public GameState GetCurrentState
     {
         get

@@ -1,12 +1,10 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Lean.Pool;
+
 public class TraitsUI : Singleton<TraitsUI>
 {
-
     public List<Unit> units;
     public GameObject traitPrefab;
     public Transform traitList;
@@ -28,29 +26,19 @@ public class TraitsUI : Singleton<TraitsUI>
         Invoke(nameof(UpdateTraits), 0.001f);
     }
 
-    void UpdateList(object sender, EventArgs e)
-    {
-        Invoke(nameof(UpdateTraits), 0.001f);
-    }
-    private IOrderedEnumerable<KeyValuePair<TraitType, int>> sortedTraitCounts;
     public Dictionary<TraitType, int> traitCounts;
     private void UpdateTraits()
     {
         units = GameManager.Instance.GetAllUnitsOnGrid;
         pool.DespawnAll();
 
+        traitCounts = GetTraitsStacks(units);
 
-       traitCounts = GetTraitsStacks(units);
-
-        //sortedTraitCounts = traitCounts.OrderBy(kvp => (GetTraitMaxStack(kvp.Key) / kvp.Value)).ThenByDescending(kvp => kvp.Value);
-        sortedTraitCounts = traitCounts.OrderBy(kvp => GetTraitMaxStack(kvp.Key)).
-            ThenByDescending(kvp => kvp.Value);
-
-        foreach (KeyValuePair<TraitType, int> kvp in sortedTraitCounts)
+        foreach (KeyValuePair<TraitType, int> kvp in traitCounts)
         {
             float stackRatio = GetTraitMaxStack(kvp.Key) - kvp.Value;
-            
-            GameObject traitObject = pool.Spawn(traitList) ;
+
+            GameObject traitObject = pool.Spawn(traitList);
 
             var traitUITrigger = traitObject.GetComponent<TraitTooltipTrigger>();
             traitUITrigger.traitData = TraitDataManager.Instance.GetTraitData(kvp.Key);
@@ -68,71 +56,56 @@ public class TraitsUI : Singleton<TraitsUI>
             traitIconBg.color = GetTraitSpriteColor(kvp.Key, kvp.Value);
             traitIconBg.color -= new Color(0f, 0f, 0f, 0.5f);
         }
-        
+
+
     }
 
     private Sprite GetTraitSprite(TraitType trait)
     {
         TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
-
         return traitdata.traitSprite;
     }
+
     public Color GetTraitSpriteColor(TraitType trait, int level)
     {
         TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
         int maxStack = GetTraitMaxStack(trait);
 
-        Color[] traitColors = new Color[] {
-        new Color(0f, 0f, 0f), // level 1 color
-        new Color(0f, 0f, 1f), // level 2 color
-        new Color(0f, 1f, 0f), // level 3 color
-        new Color(1f, 0.8f, 0f), // level 4 color
-        new Color(1f, 0f, 0f) // level 5 color
-    };
-        int colorIndex = 0;
+        int colorIndex = Mathf.Min(traitdata.traitEffectsLevel.Length - 1, level - 1);
 
-        if (traitdata.traitEffectsLevel.Length > 0 && traitdata.traitEffectsLevel[0] <= level) colorIndex = 4;
-        else if (traitdata.traitEffectsLevel.Length > 1 && traitdata.traitEffectsLevel[1] <= level) colorIndex = 3;
-        else if (traitdata.traitEffectsLevel.Length > 2 && traitdata.traitEffectsLevel[2] <= level) colorIndex = 2;
-        else if (traitdata.traitEffectsLevel.Length > 3 && traitdata.traitEffectsLevel[3] <= level) colorIndex = 1;
-        else if (traitdata.traitEffectsLevel.Length > 4 && traitdata.traitEffectsLevel[4] <= level) colorIndex = 0;
-         
+        Color[] traitColors = new Color[]
+        {
+            new Color(0f, 0f, 0f), // level 1 color
+            new Color(0f, 0f, 1f), // level 2 color
+            new Color(0f, 1f, 0f), // level 3 color
+            new Color(1f, 0.8f, 0f), // level 4 color
+            new Color(1f, 0f, 0f) // level 5 color
+        };
 
         return traitColors[colorIndex];
     }
+
     private int GetTraitMaxStack(TraitType trait)
     {
         TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
         return traitdata.traitEffectsLevel[0];
     }
-    private int GetTraitLength(TraitType trait)
-    {
-        TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
-        return traitdata.traitEffectsLevel[traitdata.traitEffectsLevel.Length - 1];
-    }
+
     public Dictionary<TraitType, int> GetTraitsStacks(List<Unit> units)
     {
         Dictionary<TraitType, int> traitStack = new Dictionary<TraitType, int>();
-        HashSet<string> unitNames = new HashSet<string>();
 
         foreach (Unit unit in units)
         {
-            string unitName = unit.GetUnitName;
-
-            if (!unitNames.Contains(unitName))
+            foreach (TraitType trait in unit.traits)
             {
-                unitNames.Add(unitName);
-
-                foreach (TraitType trait in unit.traits)
+                if (traitStack.ContainsKey(trait))
                 {
-                    if (traitStack.ContainsKey(trait))
-                    {
-                        traitStack[trait]++;
-                    }
-                    else
-                    {
-                        traitStack.Add(trait, 1);
-                    }
+                    traitStack[trait]++;
+                }
+                else
+                {
+                    traitStack.Add(trait, 1);
                 }
             }
         }

@@ -1,10 +1,12 @@
 {
   "dependencies": {
     "com.needle.shadergraph-markdown": "file:C:/Users/toghrul.huseynzade/Desktop/shadergraph-markdown-main/shadergraph-markdown-main",
+    "com.unity.2d.animation": "5.2.7",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ads": "4.4.2",
     "com.unity.analytics": "3.6.12",
+    "com.unity.cinemachine": "2.9.7",
     "com.unity.collab-proxy": "2.0.4",
     "com.unity.device-simulator": "3.1.0-preview",
     "com.unity.ext.nunit": "1.0.6",
