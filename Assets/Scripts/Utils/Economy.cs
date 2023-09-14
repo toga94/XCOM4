@@ -63,18 +63,18 @@ public struct Economy
     public static void AddGold(int goldAmount)
     {
         gold += goldAmount;
-        OnGoldChanged.Invoke(gold);
+        OnGoldChanged?.Invoke(gold);
     }
 
     public static void SubtractGold(int goldAmount)
     {
         gold -= goldAmount;
-        OnGoldChanged.Invoke(gold);
+        OnGoldChanged?.Invoke(gold);
     }
     public static void SubtractHealth(int healthAmount)
     {
         Health -= healthAmount;
-        OnHealthChanged.Invoke(Health);
+        OnHealthChanged?.Invoke(Health);
     }
     public static bool CanIBuy(int amount)
     {

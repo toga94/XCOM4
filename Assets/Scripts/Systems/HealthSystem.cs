@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using MoreMountains.Feedbacks;
 public class HealthSystem : MonoBehaviour, IDamageable
 {
     public bool IsDie => Health <= 0;
@@ -23,6 +23,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
     private GameObject canvas;
     private GameStateSystem gameStateSystem;
     [SerializeField] private GameObject unitWorldUIPrefab;
+
+    private MMF_Player mmf_player;
     private void Start()
     {
         unit = GetComponent<Unit>();
@@ -40,6 +42,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
         OnManaChanged?.Invoke(mana, manaMax);
         gameStateSystem = GameStateSystem.Instance;
         gameStateSystem.OnGameStateChanged += OnGameStateChanged;
+
+        mmf_player = GameManager.Instance.GetMMF_Player;
     }
 
     private void OnGameStateChanged(GameState obj)
@@ -78,6 +82,18 @@ public class HealthSystem : MonoBehaviour, IDamageable
                 healthMax = unitObj.health * (unit.GetUnitLevel + 1);
                 OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
             }
+            MMF_FloatingText text = mmf_player.GetFeedbackOfType<MMF_FloatingText>();
+            Gradient gradient = new Gradient();
+            gradient.colorKeys = new GradientColorKey[]
+            {
+    new GradientColorKey(Color.red, 0f),    // Start color (0%)
+    new GradientColorKey(Color.white, 1f)   // End color (100%)
+            };
+            text.AnimateColorGradient = gradient;
+            text.ForceColor = damage > 130;
+
+            mmf_player?.PlayFeedbacks(unit.UnitPosition, damage);
+
         }
     }
     public void DecreaseMana(float value)

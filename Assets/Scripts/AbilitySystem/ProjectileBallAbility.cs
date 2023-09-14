@@ -1,36 +1,35 @@
-using DG.Tweening;
-using Lean.Pool;
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
+using Lean.Pool;
+
 public class ProjectileBallAbility : Ability
 {
     private Animator animator;
     public string AnimationName = "fireball";
-    [SerializeField]
-    private GameObject projectilePrefab;
+    [SerializeField] private GameObject projectilePrefab;
     private LeanGameObjectPool projectilePool;
+
+    private GameObject backupTarget;
+    private float backupAddDamage;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public override void Cast(GameObject target, float additionalDamage)
     {
-        PoolingSystem(projectilePrefab.name);
-        // Cast fireball spell
         if (target == null) return;
-        try
-        {
-            StartCoroutine(FireballCast(target, additionalDamage));
-        }
-        catch (System.Exception)
-        {
 
-            throw;
-        } 
+        PoolingSystem(projectilePrefab.name);
+        StartCoroutine(FireballCast(target, additionalDamage));
     }
 
     private void PoolingSystem(string className)
     {
         if (projectilePool == null)
         {
-            animator = GetComponent<Animator>();
             GameObject poolObj = GameObject.Find("_Pooling");
 
             Transform childTransform = poolObj.transform.Find(className);
@@ -52,38 +51,28 @@ public class ProjectileBallAbility : Ability
             }
         }
     }
-    private GameObject backupTarget;
-    private float backupAddDamage;
-   private IEnumerator FireballCast(GameObject target, float additionalDamage)
-{
-    if (target == null)
-    {
-        yield break; // exit the method if target is null
-    }
-    backupTarget = target;
-    backupAddDamage = additionalDamage;
-    Vector3 targetPos = target.transform.position;
-    animator.Play(base.abilityType.ToString());
-    float height = 3;
-    Vector3 direction = (targetPos - transform.position).normalized;
-    Quaternion toTargetQuaternion = Quaternion.LookRotation(direction, Vector3.up);
-    GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, toTargetQuaternion);
-    float speed = 10f;
-        float distance;
 
-        distance = Vector3.Distance(projectile != null ? projectile.transform.position : Vector3.down * 55,
-            targetPos != null ? targetPos  :Vector3.down * 55);
-    float duration = distance / speed;
+    private IEnumerator FireballCast(GameObject target, float additionalDamage)
+    {
+        backupTarget = target;
+        backupAddDamage = additionalDamage;
+        Vector3 targetPos = backupTarget.transform.position;
+        animator.Play(base.abilityType.ToString());
+        float height = 3;
+        Vector3 direction = (targetPos - transform.position).normalized;
+        Quaternion toTargetQuaternion = Quaternion.LookRotation(direction, Vector3.up);
+        GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, toTargetQuaternion);
+        float speed = 10f;
+        float distance = Vector3.Distance(projectile.transform.position, targetPos);
+        float duration = distance / speed;
 
-    projectile.transform.DOMove(targetPos, duration).SetEase(Ease.Linear).OnUpdate(() =>
-    {
-        // Update the target position during animation
-        var backuptar = target.transform.position;
-        if(backuptar != null) targetPos = target.transform.position;
-    }).OnComplete(() =>
-    {
+        yield return projectile.transform.DOMove(targetPos, duration).SetEase(Ease.Linear).WaitForCompletion();
+
         projectilePool.Despawn(projectile);
-        backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
-    });
-}
+
+        if (backupTarget != null && backupTarget.TryGetComponent(out IDamageable damageable))
+        {
+            damageable.TakeDamage(AbilityPower + backupAddDamage);
+        }
+    }
 }

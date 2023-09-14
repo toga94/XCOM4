@@ -135,11 +135,9 @@ public class Enemy : MonoBehaviour
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
         Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
-        IDamageable damagableTarget = target.GetComponent<IDamageable>();
-
-        if (damagableTarget == null) return;
         animator.SetTrigger("attack");
-        damagableTarget.TakeDamage(enemyDamage);
+        transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
+        if (target.TryGetComponent(out IDamageable damageable)) damageable.TakeDamage(enemyDamage);
     }
     void Die(bool value)
     {

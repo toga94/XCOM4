@@ -236,7 +236,7 @@ public class GameManager : Singleton<GameManager>
 
     public bool GridisFree()
     {
-        return GetAllUnitsOnGrid.Count <= Economy.Level;
+        return GetAllUnitsOnGrid.Count <= Economy.Level -1;
     }
 
     public bool GridIsFull()

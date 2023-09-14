@@ -49,7 +49,7 @@ public class UnitAI : MonoBehaviour
         {
             GameStateChanged(currentState);
         }
-        mmf_player = gameManager.GetMMF_Player;
+     //   mmf_player = gameManager.GetMMF_Player;
 
 
 
@@ -133,9 +133,7 @@ public class UnitAI : MonoBehaviour
             superAbility.Cast(target, unit.GetUnitObject.attackPower);
             healthSystem.DecreaseMana(healthSystem.GetMaxMana);
         }
-        //mmf_player?.Feedbacks[0].
-        float damage = Random.Range(20, 200);
-        mmf_player?.PlayFeedbacks(target.transform.position + Vector3.up * 7, damage);
+
     }
 
     private void DefaultMethod()
@@ -260,7 +258,6 @@ public class UnitAI : MonoBehaviour
         agent.isStopped = false;
         animator.SetBool("fall", false);
         Vector3 destination = DetermineDestination();
-
         animator.SetBool("moving", agent.velocity.magnitude > 0.3f);
         //targetObject.transform.position = destination;
         agent.SetDestination(destination);
@@ -268,7 +265,7 @@ public class UnitAI : MonoBehaviour
 
         if (agent.remainingDistance < agent.stoppingDistance && agent.velocity.magnitude < 0.3f)
         {
-
+            transform.LookAt(new Vector3(nearestEnemy.transform.position.x, transform.position.y, nearestEnemy.transform.position.z));
             if (attackType == AttackType.Melee)
             {
                 animator.SetFloat("attackAnim", 0);
