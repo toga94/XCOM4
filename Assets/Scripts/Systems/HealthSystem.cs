@@ -75,7 +75,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         Heal(999999);
     }
 
-    public void TakeDamage(float value)
+    public void TakeDamage(float value, bool isCritical)
     {
         if (GameStateSystem.Instance.CurrentState is ChampionSelectionState) return;
 
@@ -93,13 +93,13 @@ public class HealthSystem : MonoBehaviour, IDamageable
                 OnHealthChanged?.Invoke(Health, unit.GetUnitLevel, HealthMax);
             }
 
-            SetFloatingTextProperties(value);
+            SetFloatingTextProperties(value, isCritical);
 
             mmf_player?.PlayFeedbacks(unit.UnitPosition + Vector3.up * 9, damage);
         }
     }
 
-    private void SetFloatingTextProperties(float damage)
+    private void SetFloatingTextProperties(float damage, bool isCritical)
     {
         MMF_FloatingText text = mmf_player.GetFeedbackOfType<MMF_FloatingText>();
         Gradient gradient = new Gradient();
@@ -109,7 +109,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
             new GradientColorKey(Color.white, 1f)   // End color (100%)
         };
         text.AnimateColorGradient = gradient;
-        text.ForceColor = damage > 130;
+        text.ForceColor = isCritical;
     }
 
     public void DecreaseMana(float value)

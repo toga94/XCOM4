@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using Lean.Pool;
+using MoreMountains.Feedbacks;
+
 public class EnemyHealth : MonoBehaviour, IDamageable, IPoolable
 {
     public event Action<float, int, float> OnHealthChanged;
@@ -18,7 +20,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable, IPoolable
     [SerializeField] private float startHealth;
     public float GetStartHealth => startHealth;
 
-
+    private MMF_Player mmf_player;
     public float GetHealth => health;
     private Enemy enemy;
     public void Heal(float value)
@@ -27,8 +29,12 @@ public class EnemyHealth : MonoBehaviour, IDamageable, IPoolable
     }
     private bool dead;
 
+    private void Start()
+    {
+        mmf_player = GameManager.Instance.GetMMF_Player;
+    }
 
-    public void TakeDamage(float value)
+    public void TakeDamage(float value, bool isCritical)
     {
         float damage = value;
 
@@ -36,13 +42,29 @@ public class EnemyHealth : MonoBehaviour, IDamageable, IPoolable
         {
             health -= damage;
             OnHealthChanged?.Invoke(health, 0, startHealth);
+
+            SetFloatingTextProperties(value, isCritical);
+
+            mmf_player?.PlayFeedbacks(enemy.transform.position + Vector3.up * 9, damage);
         }
         if (health <= 0 && !dead) {
             dead = true;
             Die();
         }
-    }
 
+    }
+    private void SetFloatingTextProperties(float damage, bool isCritical)
+    {
+        MMF_FloatingText text = mmf_player.GetFeedbackOfType<MMF_FloatingText>();
+        Gradient gradient = new Gradient();
+        gradient.colorKeys = new GradientColorKey[]
+        {
+            new GradientColorKey(Color.red, 0f),    // Start color (0%)
+            new GradientColorKey(Color.white, 1f)   // End color (100%)
+        };
+        text.AnimateColorGradient = gradient;
+        text.ForceColor = isCritical;
+    }
 
     void Die()
     {

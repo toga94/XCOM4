@@ -64,11 +64,17 @@ public class MeteorAbility : Ability
         // Move the projectile towards the target
         float speed = 30f; // Speed of the projectile
         float duration = Vector3.Distance(projectilePos, targetPos) / speed;
+
+        float damage = AbilityPower + backupAddDamage;
+        int totalDamage = Mathf.FloorToInt(UnityEngine.Random.Range(damage, damage * 2f));
+
+        bool isCritical = totalDamage > damage * 1.6f;
+
         projectile.transform.DOMove(targetPos, duration).SetEase(Ease.InFlash)
             .OnComplete(() =>
             {
                 projectilePool.Despawn(projectile);
-                backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
+                backupTarget.GetComponent<IDamageable>().TakeDamage(totalDamage, isCritical);
             } );
         yield return null;
     }

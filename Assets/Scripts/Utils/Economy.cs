@@ -62,12 +62,14 @@ public struct Economy
 
     public static void AddGold(int goldAmount)
     {
+        GameManager.Instance.GetAddGoldPartice.Play();
         gold += goldAmount;
         OnGoldChanged?.Invoke(gold);
     }
 
     public static void SubtractGold(int goldAmount)
     {
+        GameManager.Instance.GetSubGoldPartice.Play();
         gold -= goldAmount;
         OnGoldChanged?.Invoke(gold);
     }

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using MoreMountains.Feedbacks;
+using AssetKits.ParticleImage;
+
 public class GameManager : Singleton<GameManager>
 {
     public int GetPlayerCoin { get; }
@@ -38,7 +40,19 @@ public class GameManager : Singleton<GameManager>
     private GameStateSystem gameStateSystem;
 
     private List<Unit> alllUnits;
+
+
+
     public MMF_Player GetMMF_Player;
+    public MMF_Player GetNextRoundMMF;
+    public MMF_Player GetSlotChangeMMF;
+    public MMF_Player GetWinCombatMMF;
+    public MMF_Player GetLoseCombatMMF;
+    public MMF_Player GetErrorMMF;
+
+
+    public ParticleImage GetAddGoldPartice;
+    public ParticleImage GetSubGoldPartice;
 
     public List<Unit> GetAllUnits
     {
@@ -421,6 +435,7 @@ public class GameManager : Singleton<GameManager>
                 winStreakUIText.text = winStreak.ToString();
             }
         }
+        GetWinCombatMMF.PlayFeedbacks();
     }
 
     public void LoseCombat(bool stack)
@@ -430,6 +445,7 @@ public class GameManager : Singleton<GameManager>
         {
             winStreak = 0;
             winStreakUI.SetActive(false);
+            GetLoseCombatMMF.PlayFeedbacks();
         }
         if (Economy.Health > 0) { }
         //  Economy.SubtractHealth((GameStateSystem.Instance.GetRoundIndex + 1) * 12);

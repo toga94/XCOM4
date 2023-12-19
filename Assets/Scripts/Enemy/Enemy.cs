@@ -137,7 +137,13 @@ public class Enemy : MonoBehaviour
         Quaternion to_Target_Quaternion = Quaternion.LookRotation(direction, Vector3.up);
         animator.SetTrigger("attack");
         transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
-        if (target.TryGetComponent(out IDamageable damageable)) damageable.TakeDamage(enemyDamage);
+
+        float damage = enemyDamage;
+        int totalDamage = Mathf.FloorToInt(UnityEngine.Random.Range(damage, damage * 2f));
+
+        bool isCritical = totalDamage > damage * 1.6f;
+
+        if (target.TryGetComponent(out IDamageable damageable)) damageable.TakeDamage(totalDamage, isCritical);
     }
     void Die(bool value)
     {

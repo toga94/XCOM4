@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoreMountains.Feedbacks;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -71,10 +72,11 @@ public class GameStateSystem : Singleton<GameStateSystem>
             rounds.Add(new List<GameState>(gameStateList));
         }
     }
-
+    private MMF_Player mmf_nextround;
     private void Start()
     {
         InitializeRound();
+        mmf_nextround = GameManager.Instance.GetNextRoundMMF;
     }
 
     private void InitializeRound()
@@ -131,7 +133,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
         {
             List<GameState> currentRound = rounds[currentRoundIndex];
             int nextStateIndex = currentStateIndex + 1;
-
+            mmf_nextround.PlayFeedbacks();
             if (nextStateIndex >= 0 && nextStateIndex < currentRound.Count)
             {
                 ChangeState(currentRound, nextStateIndex);
@@ -170,6 +172,9 @@ public class GameStateSystem : Singleton<GameStateSystem>
     {
         currentRoundIndex++;
         currentStateIndex = 0;
+
+        mmf_nextround.PlayFeedbacks();
+
 
         if (currentRoundIndex < rounds.Count)
         {

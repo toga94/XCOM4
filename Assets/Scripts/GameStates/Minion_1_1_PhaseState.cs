@@ -107,7 +107,7 @@ public class Minion_1_1_PhaseState : GameState
             duration = 3f;
 
             unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
-            enemies?.ForEach(enemy => enemy.GetComponent<IDamageable>().TakeDamage(99999999));
+            enemies?.ForEach(enemy => enemy.GetComponent<IDamageable>()?.TakeDamage(99999999, false));
           int  damageAmount = ((GameStateSystem.Instance.GetRoundIndex + 1) * 12) / 2;
             Economy.SubtractHealth(damageAmount);
             gameManager.LoseCombat(false);

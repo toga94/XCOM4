@@ -292,7 +292,10 @@ public class DraggableUnitController : MonoBehaviour
     {
         Unit unit = character.GetUnit;
         bool isCombatState = GameStateSystem.Instance.GetCurrentState.IsCombatState;
-        bool gridIsFull = !GameManager.Instance.GridisFree();
+        var gm = GameManager.Instance;
+        bool gridIsFull = !gm.GridisFree();
+
+
         switch (GetDragState())
         {
             case DragState.Grid2Grid:
@@ -330,9 +333,16 @@ public class DraggableUnitController : MonoBehaviour
 
             case DragState.Inv2Grid:
                 {
-                    if (isCombatState) return;
+
+                    if (isCombatState) {
+                            gm.GetErrorMMF.PlayFeedbacks();
+                            return;
+                    } 
+
+
                     if (!levelGrid.HasAnyUnitOnGridPosition(gridPosition))
                     {
+                        if (gridIsFull) gm.GetErrorMMF.PlayFeedbacks();
                         unit.TeleportToPosition(levelGrid.GetWorldPosition(gridPosition), gridPosition);
                         inventoryGrid.RemoveAnyUnitAtInventoryPosition(lastgridPosition);
 

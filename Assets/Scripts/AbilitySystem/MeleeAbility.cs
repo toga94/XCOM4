@@ -60,12 +60,18 @@ public class MeleeAbility : Ability
         animator = GetComponent<Animator>();
         animator.Play(base.AbilityName);
         Vector3 direction = (targetPos - transform.position).normalized;
+
+        float damage = AbilityPower + backupAddDamage;
+        int totalDamage = Mathf.FloorToInt( UnityEngine.Random.Range(damage, damage * 2f));
+
+        bool isCritical = totalDamage > damage * 1.6f;
+
         if (backupTarget == null)
         {
             return;
         }
         else {
-            backupTarget.GetComponent<IDamageable>().TakeDamage(AbilityPower + backupAddDamage);
+            backupTarget.GetComponent<IDamageable>().TakeDamage(totalDamage, isCritical);
         }
 
     }

@@ -70,9 +70,17 @@ public class ProjectileBallAbility : Ability
 
         projectilePool.Despawn(projectile);
 
+        float damage = AbilityPower + backupAddDamage;
+        int totalDamage = Mathf.FloorToInt(UnityEngine.Random.Range(damage, damage * 2f));
+
+        bool isCritical = totalDamage > damage * 1.6f;
+
         if (backupTarget != null && backupTarget.TryGetComponent(out IDamageable damageable))
         {
-            damageable.TakeDamage(AbilityPower + backupAddDamage);
+            damageable.TakeDamage(totalDamage, isCritical);
         }
+
+
+
     }
 }
