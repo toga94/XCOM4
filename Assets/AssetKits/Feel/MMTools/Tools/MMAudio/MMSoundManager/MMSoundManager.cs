@@ -39,6 +39,15 @@ namespace MoreMountains.Tools
 		MMEventListener<MMSoundManagerAllSoundsControlEvent>,
 		MMEventListener<MMSoundManagerTrackFadeEvent>
 	{
+		/// <summary>
+		/// Statics initialization to support enter play modes
+		/// </summary>
+		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+		protected static void InitializeStatics()
+		{
+			_instance = null;
+		}
+		
 		/// the possible ways to manage a track
 		public enum MMSoundManagerTracks { Sfx, Music, UI, Master, Other}
         
@@ -60,6 +69,9 @@ namespace MoreMountains.Tools
 		protected MMSoundManagerSound _sound;
 		protected List<MMSoundManagerSound> _sounds; 
 		protected AudioSource _tempAudioSource;
+		protected Dictionary<AudioSource, Coroutine> _fadeInSoundCoroutines;
+		protected Dictionary<AudioSource, Coroutine> _fadeOutSoundCoroutines;
+		protected Dictionary<MMSoundManagerTracks, Coroutine> _fadeTrackCoroutines;
 
 		#region Initialization
 
@@ -95,6 +107,9 @@ namespace MoreMountains.Tools
 			}
 			_sounds = new List<MMSoundManagerSound>();
 			_pool.FillAudioSourcePool(AudioSourcePoolSize, this.transform);
+			_fadeInSoundCoroutines = new Dictionary<AudioSource, Coroutine>();
+			_fadeOutSoundCoroutines = new Dictionary<AudioSource, Coroutine>();
+			_fadeTrackCoroutines = new Dictionary<MMSoundManagerTracks, Coroutine>();
 		}
         
 		#endregion
@@ -119,7 +134,7 @@ namespace MoreMountains.Tools
 				options.BypassEffects, options.BypassListenerEffects, options.BypassReverbZones, options.Priority,
 				options.ReverbZoneMix,
 				options.DopplerLevel, options.Spread, options.RolloffMode, options.MinDistance, options.MaxDistance, 
-				options.DoNotAutoRecycleIfNotDonePlaying, options.PlaybackTime, options.AttachToTransform,
+				options.DoNotAutoRecycleIfNotDonePlaying, options.PlaybackTime, options.PlaybackDuration, options.AttachToTransform,
 				options.UseSpreadCurve, options.SpreadCurve, options.UseCustomRolloffCurve, options.CustomRolloffCurve,
 				options.UseSpatialBlendCurve, options.SpatialBlendCurve, options.UseReverbZoneMixCurve, options.ReverbZoneMixCurve
 			);
@@ -167,7 +182,7 @@ namespace MoreMountains.Tools
 			bool soloSingleTrack = false, bool soloAllTracks = false, bool autoUnSoloOnEnd = false,  
 			bool bypassEffects = false, bool bypassListenerEffects = false, bool bypassReverbZones = false, int priority = 128, float reverbZoneMix = 1f,
 			float dopplerLevel = 1f, int spread = 0, AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic, float minDistance = 1f, float maxDistance = 500f,
-			bool doNotAutoRecycleIfNotDonePlaying = false, float playbackTime = 0f, Transform attachToTransform = null,
+			bool doNotAutoRecycleIfNotDonePlaying = false, float playbackTime = 0f, float playbackDuration = 0f, Transform attachToTransform = null,
 			bool useSpreadCurve = false, AnimationCurve spreadCurve = null, bool useCustomRolloffCurve = false, AnimationCurve customRolloffCurve = null,
 			bool useSpatialBlendCurve = false, AnimationCurve spatialBlendCurve = null, bool useReverbZoneMixCurve = false, AnimationCurve reverbZoneMixCurve = null
 		)
@@ -180,20 +195,20 @@ namespace MoreMountains.Tools
 			// we reuse an audiosource if one is passed in parameters
 			AudioSource audioSource = recycleAudioSource;   
             
-			if (audioSource == null)
+			if (!audioSource)
 			{
 				// we pick an idle audio source from the pool if possible
 				audioSource = _pool.GetAvailableAudioSource(PoolCanExpand, this.transform);
-				if ((audioSource != null) && (!loop))
+				if ((audioSource) && (!loop))
 				{
 					recycleAudioSource = audioSource;
-					// we destroy the host after the clip has played (if it not tag for reusability.
-					StartCoroutine(_pool.AutoDisableAudioSource(audioClip.length / Mathf.Abs(pitch), audioSource, audioClip, doNotAutoRecycleIfNotDonePlaying));
+					// we destroy the host after the clip has played (if it is not tagged for reusability.
+					StartCoroutine(_pool.AutoDisableAudioSource(audioClip.length / Mathf.Abs(pitch), audioSource, audioClip, doNotAutoRecycleIfNotDonePlaying, playbackTime, playbackDuration));
 				}
 			}
 
 			// we create an audio source if needed
-			if (audioSource == null)
+			if (!audioSource)
 			{
 				_tempAudioSourceGameObject = new GameObject("MMAudio_"+audioClip.name);
 				SceneManager.MoveGameObjectToScene(_tempAudioSourceGameObject, this.gameObject.scene);
@@ -273,7 +288,8 @@ namespace MoreMountains.Tools
 			// we destroy the host after the clip has played if it was a one time AS.
 			if (!loop && !recycleAudioSource)
 			{
-				Destroy(_tempAudioSourceGameObject, audioClip.length);
+				float destroyDelay = (playbackDuration > 0) ? playbackDuration : audioClip.length - playbackTime;
+				Destroy(_tempAudioSourceGameObject, destroyDelay);
 			}
             
 			// we fade the sound in if needed
@@ -307,6 +323,8 @@ namespace MoreMountains.Tools
 			_sound.Track = mmSoundManagerTrack;
 			_sound.Source = audioSource;
 			_sound.Persistent = persistent;
+			_sound.PlaybackTime = playbackTime;
+			_sound.PlaybackDuration = playbackDuration;
 
 			// we check if that audiosource is already being tracked in _sounds
 			bool alreadyIn = false;
@@ -514,6 +532,24 @@ namespace MoreMountains.Tools
 			}
 			return false;
 		}
+		
+		/// <summary>
+		/// Returns a list of MMSoundManagerSounds for the specified track
+		/// </summary>
+		/// <param name="track">the track on which to grab the playing sounds</param>
+		/// <returns></returns>
+		public virtual List<MMSoundManagerSound> GetSoundsPlaying(MMSoundManagerTracks track)
+		{
+			List<MMSoundManagerSound> soundsPlaying = new List<MMSoundManagerSound>();
+			foreach (MMSoundManagerSound sound in _sounds)
+			{
+				if ((sound.Track == track) && (sound.Source.isPlaying))
+				{
+					soundsPlaying.Add(sound);
+				}
+			}
+			return soundsPlaying;
+		}
         
 		/// <summary>
 		/// Stops all sounds on a track, and returns them to the pool
@@ -600,13 +636,13 @@ namespace MoreMountains.Tools
 			switch (track)
 			{
 				case MMSoundManagerTracks.Master:
-					return settingsSo.Settings.MasterOn; 
+					return !settingsSo.Settings.MasterOn; 
 				case MMSoundManagerTracks.Music:
-					return settingsSo.Settings.MusicOn;
+					return !settingsSo.Settings.MusicOn;
 				case MMSoundManagerTracks.Sfx:
-					return settingsSo.Settings.SfxOn;
+					return !settingsSo.Settings.SfxOn;
 				case MMSoundManagerTracks.UI:
-					return settingsSo.Settings.UIOn;
+					return !settingsSo.Settings.UIOn;
 			}
 			return false;
 		}
@@ -679,7 +715,8 @@ namespace MoreMountains.Tools
 		/// <param name="tweenType"></param>
 		public virtual void FadeTrack(MMSoundManagerTracks track, float duration, float initialVolume = 0f, float finalVolume = 1f, MMTweenType tweenType = null)
 		{
-			StartCoroutine(FadeTrackCoroutine(track, duration, initialVolume, finalVolume, tweenType));
+			Coroutine coroutine = StartCoroutine(FadeTrackCoroutine(track, duration, initialVolume, finalVolume, tweenType));
+			_fadeTrackCoroutines[track] = coroutine;
 		}
         
 		/// <summary>
@@ -690,9 +727,80 @@ namespace MoreMountains.Tools
 		/// <param name="initialVolume"></param>
 		/// <param name="finalVolume"></param>
 		/// <param name="tweenType"></param>
-		public virtual void FadeSound(AudioSource source, float duration, float initialVolume, float finalVolume, MMTweenType tweenType)
+		public virtual void FadeSound(AudioSource source, float duration, float initialVolume, float finalVolume, MMTweenType tweenType, bool freeAfterFade = false)
 		{
-			StartCoroutine(FadeCoroutine(source, duration, initialVolume, finalVolume, tweenType));
+			Coroutine coroutine = StartCoroutine(FadeCoroutine(source, duration, initialVolume, finalVolume, tweenType, freeAfterFade));
+			if (initialVolume < finalVolume)
+			{
+				_fadeInSoundCoroutines[source] = coroutine;	
+			}
+			else
+			{
+				_fadeOutSoundCoroutines[source] = coroutine;
+			}
+		}
+
+		/// <summary>
+		/// Returns true if the specified source is already fading, false otherwise
+		/// </summary>
+		/// <param name="source"></param>
+		/// <returns></returns>
+		public virtual bool SoundIsFadingIn(AudioSource source)
+		{
+			if (_fadeInSoundCoroutines.TryGetValue(source, out Coroutine co))
+			{
+				return (_fadeInSoundCoroutines[source] != null);	
+			}
+
+			return false;
+		}
+
+		/// <summary>
+		/// Returns true if the specified source is already fading, false otherwise
+		/// </summary>
+		/// <param name="source"></param>
+		/// <returns></returns>
+		public virtual bool SoundIsFadingOut(AudioSource source)
+		{
+			if (_fadeOutSoundCoroutines.TryGetValue(source, out Coroutine co))
+			{
+				return (_fadeOutSoundCoroutines[source] != null);	
+			}
+
+			return false;
+		}
+
+		/// <summary>
+		/// Stops any fade currently happening on the specified track
+		/// </summary>
+		/// <param name="track"></param>
+		public virtual void StopFadeTrack(MMSoundManagerTracks track)
+		{
+			Coroutine outCoroutine;
+			if (_fadeTrackCoroutines.TryGetValue(track, out outCoroutine))
+			{
+				StopCoroutine(outCoroutine);
+				_fadeTrackCoroutines.Remove(track);
+			}
+		}
+
+		/// <summary>
+		/// Stops any fade currently happening on the specified sound
+		/// </summary>
+		/// <param name="source"></param>
+		public virtual void StopFadeSound(AudioSource source)
+		{
+			Coroutine outCoroutine;
+			if ((source != null) && (_fadeInSoundCoroutines.TryGetValue(source, out outCoroutine)))
+			{
+				StopCoroutine(outCoroutine);
+				_fadeInSoundCoroutines.Remove(source);
+			}
+			if ((source != null) && (_fadeOutSoundCoroutines.TryGetValue(source, out outCoroutine)))
+			{
+				StopCoroutine(outCoroutine);
+				_fadeOutSoundCoroutines.Remove(source);
+			}
 		}
 
 		/// <summary>
@@ -730,7 +838,7 @@ namespace MoreMountains.Tools
 		/// <param name="finalVolume"></param>
 		/// <param name="tweenType"></param>
 		/// <returns></returns>
-		protected virtual IEnumerator FadeCoroutine(AudioSource source, float duration, float initialVolume, float finalVolume, MMTweenType tweenType)
+		protected virtual IEnumerator FadeCoroutine(AudioSource source, float duration, float initialVolume, float finalVolume, MMTweenType tweenType, bool freeAfterFade = false)
 		{
 			float startedAt = Time.unscaledTime;
 			if (tweenType == null)
@@ -745,6 +853,20 @@ namespace MoreMountains.Tools
 				yield return null;
 			}
 			source.volume = finalVolume;
+			
+			if (freeAfterFade)
+			{
+				FreeSound(source);
+			}
+
+			if (initialVolume < finalVolume)
+			{
+				_fadeInSoundCoroutines[source] = null;	
+			}
+			else
+			{
+				_fadeOutSoundCoroutines[source] = null;
+			}
 		}
         
 		#endregion
@@ -1045,17 +1167,32 @@ namespace MoreMountains.Tools
         
 		public virtual void OnMMEvent(MMSoundManagerTrackFadeEvent trackFadeEvent)
 		{
-			FadeTrack(trackFadeEvent.Track, trackFadeEvent.FadeDuration, settingsSo.GetTrackVolume(trackFadeEvent.Track), trackFadeEvent.FinalVolume, trackFadeEvent.FadeTween);
+			switch (trackFadeEvent.Mode)
+			{
+				case MMSoundManagerTrackFadeEvent.Modes.PlayFade:
+					FadeTrack(trackFadeEvent.Track, trackFadeEvent.FadeDuration, settingsSo.GetTrackVolume(trackFadeEvent.Track), trackFadeEvent.FinalVolume, trackFadeEvent.FadeTween);
+					break;
+				case MMSoundManagerTrackFadeEvent.Modes.StopFade:
+					StopFadeTrack(trackFadeEvent.Track);
+					break;
+			}
 		}
         
 		public virtual void OnMMEvent(MMSoundManagerSoundFadeEvent soundFadeEvent)
 		{
 			_tempAudioSource = FindByID(soundFadeEvent.SoundID);
-
-			if (_tempAudioSource != null)
+			switch (soundFadeEvent.Mode)
 			{
-				FadeSound(_tempAudioSource, soundFadeEvent.FadeDuration, _tempAudioSource.volume, soundFadeEvent.FinalVolume,
-					soundFadeEvent.FadeTween);
+				case MMSoundManagerSoundFadeEvent.Modes.PlayFade:
+					if (_tempAudioSource != null)
+					{
+						FadeSound(_tempAudioSource, soundFadeEvent.FadeDuration, _tempAudioSource.volume, soundFadeEvent.FinalVolume,
+							soundFadeEvent.FadeTween);
+					}
+					break;
+				case MMSoundManagerSoundFadeEvent.Modes.StopFade:
+					StopFadeSound(_tempAudioSource);
+					break;
 			}
 		}
         

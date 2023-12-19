@@ -1,20 +1,22 @@
 using System;
 using UnityEngine;
 using MoreMountains.Feedbacks;
+
 public class HealthSystem : MonoBehaviour, IDamageable
 {
+    // Use properties instead of public fields
     public bool IsDie => Health <= 0;
+    public float Health { get; private set; }
+    public float HealthMax { get; private set; }
+    public float GetMana { get; private set; }
+    public float GetMaxMana { get; private set; }
+
     public event Action<float, int, float> OnHealthChanged;
     public event Action<float, float> OnManaChanged;
     public event Action<bool, GameObject> OnDie;
 
-    
-
-
     private UnitObject unitObj;
     private Unit unit;
-    private float health;
-    private float healthMax;
     [SerializeField] private float mana;
     [SerializeField] private float manaMax;
 
@@ -23,44 +25,52 @@ public class HealthSystem : MonoBehaviour, IDamageable
     private GameObject canvas;
     private GameStateSystem gameStateSystem;
     [SerializeField] private GameObject unitWorldUIPrefab;
-
     private MMF_Player mmf_player;
-    private void Start()
+
+    private void Awake()
     {
         unit = GetComponent<Unit>();
         unitObj = unit.GetUnitObject;
-        int unitlevel = unit.GetUnitLevel;
-        healthMax = unitObj.health * (unitlevel + 1);
-        manaMax = unitObj.mana * (unitlevel + 1);
-        mana = manaMax;
-        health = healthMax;
-        canvas = GameObject.Find("BarCanvas");
-        canvasBar = (GameObject)Instantiate(unitWorldUIPrefab, canvas.transform);
-        this.unitWorldUI = canvasBar.GetComponent<UnitWorldUI>();
-        this.unitWorldUI.SetRoot(transform, canvas);
-        OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
-        OnManaChanged?.Invoke(mana, manaMax);
+        HealthMax = unitObj.health * (unit.GetUnitLevel + 1);
+        manaMax = unitObj.mana * (unit.GetUnitLevel + 1);
+        GetMana = manaMax;
+        Health = HealthMax;
+    }
+
+    private void Start()
+    {
+        InitializeUI();
         gameStateSystem = GameStateSystem.Instance;
         gameStateSystem.OnGameStateChanged += OnGameStateChanged;
-
         mmf_player = GameManager.Instance.GetMMF_Player;
+    }
+
+    private void InitializeUI()
+    {
+        canvas = GameObject.Find("BarCanvas");
+        canvasBar = Instantiate(unitWorldUIPrefab, canvas.transform);
+        unitWorldUI = canvasBar.GetComponent<UnitWorldUI>();
+        unitWorldUI.SetRoot(transform, canvas);
+        OnHealthChanged?.Invoke(Health, unit.GetUnitLevel, HealthMax);
+        OnManaChanged?.Invoke(GetMana, manaMax);
     }
 
     private void OnGameStateChanged(GameState obj)
     {
         int unitlevel = unit.GetUnitLevel;
-        healthMax = unitObj.health * (unitlevel + 1);
+        HealthMax = unitObj.health * (unitlevel + 1);
         manaMax = unitObj.mana * (unitlevel + 1);
 
         if (obj.IsCombatState)
         {
-            mana = 0;
+            GetMana = 0;
         }
-        else {
-            mana = manaMax;
+        else
+        {
+            GetMana = manaMax;
         }
 
-        health = healthMax;
+        Health = HealthMax;
 
         Heal(999999);
     }
@@ -78,67 +88,63 @@ public class HealthSystem : MonoBehaviour, IDamageable
             float damage = value - unitObj.defence;
             if (damage > 0)
             {
-                health = Mathf.Max(health - damage, 0);
-                healthMax = unitObj.health * (unit.GetUnitLevel + 1);
-                OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
+                Health = Mathf.Max(Health - damage, 0);
+                HealthMax = unitObj.health * (unit.GetUnitLevel + 1);
+                OnHealthChanged?.Invoke(Health, unit.GetUnitLevel, HealthMax);
             }
-            MMF_FloatingText text = mmf_player.GetFeedbackOfType<MMF_FloatingText>();
-            Gradient gradient = new Gradient();
-            gradient.colorKeys = new GradientColorKey[]
-            {
-    new GradientColorKey(Color.red, 0f),    // Start color (0%)
-    new GradientColorKey(Color.white, 1f)   // End color (100%)
-            };
-            text.AnimateColorGradient = gradient;
-            text.ForceColor = damage > 130;
 
-            mmf_player?.PlayFeedbacks(unit.UnitPosition, damage);
+            SetFloatingTextProperties(value);
 
+            mmf_player?.PlayFeedbacks(unit.UnitPosition + Vector3.up * 9, damage);
         }
     }
+
+    private void SetFloatingTextProperties(float damage)
+    {
+        MMF_FloatingText text = mmf_player.GetFeedbackOfType<MMF_FloatingText>();
+        Gradient gradient = new Gradient();
+        gradient.colorKeys = new GradientColorKey[]
+        {
+            new GradientColorKey(Color.red, 0f),    // Start color (0%)
+            new GradientColorKey(Color.white, 1f)   // End color (100%)
+        };
+        text.AnimateColorGradient = gradient;
+        text.ForceColor = damage > 130;
+    }
+
     public void DecreaseMana(float value)
     {
-        mana -= value;
-        if (mana > manaMax)
-        {
-            mana = manaMax;
-            mana -= value;
-        }
-        if (mana < 0) mana = 0;
-
-        OnManaChanged?.Invoke(mana, manaMax);
+        GetMana -= value;
+        GetMana = Mathf.Clamp(GetMana, 0, manaMax);
+        OnManaChanged?.Invoke(GetMana, manaMax);
     }
+
     public void IncreaseMana(float value)
     {
-        mana += value;
-        if (mana > manaMax) mana = manaMax;
-        float valueMax = Mathf.Clamp(GetMana / GetMaxMana, 0, 1);
-    
-        OnManaChanged?.Invoke(mana, manaMax);
+        GetMana += value;
+        GetMana = Mathf.Clamp(GetMana, 0, manaMax);
+        OnManaChanged?.Invoke(GetMana, manaMax);
     }
+
     public void Heal(float value)
     {
-        healthMax = unitObj.health * (unit.GetUnitLevel + 1);
-        health = Mathf.Min(health + value, healthMax);
-        OnHealthChanged?.Invoke(health, unit.GetUnitLevel, healthMax);
+        HealthMax = unitObj.health * (unit.GetUnitLevel + 1);
+        Health = Mathf.Min(Health + value, HealthMax);
+        OnHealthChanged?.Invoke(Health, unit.GetUnitLevel, HealthMax);
     }
-
-    public float Health => health;
-    public float HealthMax => healthMax;
-
-    public float GetMana => mana;
-    public float GetMaxMana => manaMax;
 
     private void OnDisable()
     {
         if (canvasBar)
             canvasBar.SetActive(false);
     }
+
     private void OnEnable()
     {
         if (canvasBar)
             canvasBar.SetActive(true);
     }
+
     private void OnDestroy()
     {
         Destroy(canvasBar);

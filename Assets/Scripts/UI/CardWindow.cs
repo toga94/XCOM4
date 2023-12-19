@@ -1,17 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Lean.Pool;
+using System.Collections.Generic;
+
 public class CardWindow : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private CardShop cardShop;
-    [SerializeField] 
+    [SerializeField]
     private RectTransform itemPanel;
     [SerializeField]
     private LeanGameObjectPool unitCardPool;
     [SerializeField]
     private LeanGameObjectPool traitCardItemUIPool;
-
+    private TraitDataManager traitManager;
 
     private void Awake()
     {
@@ -25,6 +27,12 @@ public class CardWindow : MonoBehaviour
     {
         cardShop.onItemsChanged -= ReDraw;
     }
+    private void Start()
+    {
+        traitManager = TraitDataManager.Instance;
+    }
+
+
     private void ReDraw(object sender, UnitObject[] e)
     {
         Transform itemPanelTransform = itemPanel.transform;
@@ -59,43 +67,37 @@ public class CardWindow : MonoBehaviour
         }
     }
 
+    private static readonly Dictionary<RareOptions, Color> RarityColors = new Dictionary<RareOptions, Color>
+    {
+        { RareOptions.Common, new Color(0.5f, 0.5f, 0.5f) },          // Grey
+        { RareOptions.Uncommon, new Color(0.016f, 0.247f, 0.831f) },  // #043FD4
+        { RareOptions.Rare, new Color(0.961f, 0f, 0.659f) },          // #F500A8
+        { RareOptions.Epic, new Color(0.839f, 0.714f, 0.051f) },      // #D6B50D
+        { RareOptions.Legendary, new Color(0.961f, 0.176f, 0.020f) }  // #F52D05
+    };
+
     private static void RarityColor(Image cardBgImage, RareOptions cardRarity)
     {
-        switch (cardRarity)
+        if (RarityColors.ContainsKey(cardRarity))
         {
-            case RareOptions.Common:
-                cardBgImage.color = new Color(0.5f, 0.5f, 0.5f); // Grey
-                break;
-            case RareOptions.Uncommon:
-                cardBgImage.color = new Color(0.016f, 0.247f, 0.831f); // #043FD4
-                break;
-            case RareOptions.Rare:
-                cardBgImage.color = new Color(0.961f, 0f, 0.659f); // #F500A8
-                break;
-            case RareOptions.Epic:
-                cardBgImage.color = new Color(0.839f, 0.714f, 0.051f); // #D6B50D
-                break;
-            case RareOptions.Legendary:
-                cardBgImage.color = new Color(0.961f, 0.176f, 0.020f); // #F52D05
-                break;
+            cardBgImage.color = RarityColors[cardRarity];
         }
     }
-
     private void TraitUI(UnitObject item, GameObject traitPanel)
     {
-        TraitDataManager traitManager = TraitDataManager.Instance;
         foreach (TraitType trait in item.traits)
         {
             GameObject traitUIItem = traitCardItemUIPool.Spawn(traitPanel.transform);
-            var traitTooltip = traitUIItem.GetComponent<TraitTooltipTrigger>();
+            TraitUICatch traitUICatch = traitUIItem.GetComponent<TraitUICatch>();
+            TraitTooltipTrigger traitTooltip = traitUICatch.traitTooltip;
 
             traitTooltip.traitData = traitManager.GetTraitData(trait);
-            Transform traitUITransform = traitUIItem.transform;
-            traitUITransform.localScale = new Vector3(2.5f, 2.5f, 0);
-            Image traitUIImage = traitUITransform.Find("traitImage").GetComponent<Image>();
-            traitUIImage.sprite = GetTraitSprite(trait);
-            Text traitText = traitUITransform.Find("traitText").GetComponent<Text>();
-            traitText.text = trait.ToString();
+
+            traitUIItem.transform.localScale = new Vector3(2.5f, 2.5f, 0);
+
+            traitUICatch.traitUIImage.sprite = GetTraitSprite(trait);
+
+            traitUICatch.traitText.text = trait.ToString();
         }
     }
 
@@ -115,7 +117,7 @@ public class CardWindow : MonoBehaviour
 
     private Sprite GetTraitSprite(TraitType trait)
     {
-        TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
+        TraitData traitdata = traitManager.GetTraitData(trait);
 
         return traitdata.traitSprite;
     }

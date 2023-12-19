@@ -85,6 +85,14 @@ namespace MoreMountains.Tools
 			protected float _lastButtonDownAt;
 			protected float _lastButtonUpAt;
 
+			/// <summary>
+			/// Constructor
+			/// </summary>
+			/// <param name="playerID"></param>
+			/// <param name="buttonID"></param>
+			/// <param name="btnDown"></param>
+			/// <param name="btnPressed"></param>
+			/// <param name="btnUp"></param>
 			public IMButton(string playerID, string buttonID, ButtonDownMethodDelegate btnDown = null, ButtonPressedMethodDelegate btnPressed = null, ButtonUpMethodDelegate btnUp = null) 
 			{
 				ButtonID = playerID + "_" + buttonID;
@@ -94,7 +102,30 @@ namespace MoreMountains.Tools
 				State = new MMStateMachine<MMInput.ButtonStates> (null, false);
 				State.ChangeState (MMInput.ButtonStates.Off);
 			}
+			
+			/// <summary>
+			/// Returns true if the button is currently pressed
+			/// </summary>
+			public virtual bool IsPressed => State.CurrentState == MMInput.ButtonStates.ButtonPressed;
+			
+			/// <summary>
+			/// Returns true if the button is down this frame 
+			/// </summary>
+			public virtual bool IsDown => State.CurrentState == MMInput.ButtonStates.ButtonDown;
+			
+			/// <summary>
+			/// Returns true if the button is up this frame
+			/// </summary>
+			public virtual bool IsUp => State.CurrentState == MMInput.ButtonStates.ButtonUp;
+			
+			/// <summary>
+			/// Returns true if the button is neither pressed, down or up this frame
+			/// </summary>
+			public virtual bool IsOff => State.CurrentState == MMInput.ButtonStates.Off;
 
+			/// <summary>
+			/// Presses the button for the first time, putting it in ButtonDown state
+			/// </summary>
 			public virtual void TriggerButtonDown()
 			{
 				_lastButtonDownAt = Time.unscaledTime;
@@ -108,6 +139,9 @@ namespace MoreMountains.Tools
 				}
 			}
 
+			/// <summary>
+			/// Puts the button in the Pressed state, potentially bypassing the Down state
+			/// </summary>
 			public virtual void TriggerButtonPressed()
 			{
 				if (ButtonPressedMethod == null)
@@ -120,6 +154,9 @@ namespace MoreMountains.Tools
 				}
 			}
 
+			/// <summary>
+			/// Puts the button in the Up state
+			/// </summary>
 			public virtual void TriggerButtonUp()
 			{
 				_lastButtonUpAt = Time.unscaledTime;

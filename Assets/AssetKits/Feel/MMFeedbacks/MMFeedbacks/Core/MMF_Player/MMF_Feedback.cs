@@ -143,6 +143,12 @@ namespace MoreMountains.Feedbacks
 
 		/// if this is true, the Randomness group will be displayed, otherwise it'll be hidden        
 		public virtual bool HasRandomness => false;
+		
+		/// if this is true, this feedback implements ForceInitialState, otherwise calling that method will have no effect
+		public virtual bool CanForceInitialValue => false;
+
+		/// if this is true, force initial value will happen over two frames
+		public virtual bool ForceInitialValueDelayed => false;
 
 		/// whether or not this feedback can automatically grab the target on this game object, or a parent, a child, or on a reference holder
 		public virtual bool HasAutomatedTargetAcquisition => false;
@@ -397,7 +403,17 @@ namespace MoreMountains.Feedbacks
 		#region Initialization
 
 		/// <summary>
-		/// Initializes the feedback and its timing related variables
+		/// Runs at Awake, lets you preinitialize your custom feedback before Initialization
+		/// </summary>
+		/// <param name="owner"></param>
+		/// <param name="index"></param>
+		public virtual void PreInitialization(MMF_Player owner, int index)
+		{
+			_channelData = new MMChannelData(ChannelMode, Channel, MMChannelDefinition);
+		}
+
+		/// <summary>
+		/// Typically runs on Start, Initializes the feedback and its timing related variables
 		/// </summary>
 		/// <param name="owner"></param>
 		public virtual void Initialization(MMF_Player owner, int index)
@@ -511,8 +527,9 @@ namespace MoreMountains.Feedbacks
 
 			if (!_initialized)
 			{
-				Debug.LogWarning("The " + this +
-				                 " feedback is being played without having been initialized. Call Initialization() first.");
+				string feedbackName = this.ToString().Replace("MoreMountains.Feedbacks.", "");
+				Debug.LogWarning("The " + feedbackName +
+				                 " feedback on "+Owner.gameObject.name+" is being played without having been initialized. Always call the Initialization() method first. This can be done manually, or on Start or Awake (automatically on Start is the default). If you're auto playing your feedback on Start or on Enable, initialize on Awake (which runs before Start and Enable). You can change that setting on your MMF Player, unfold the Settings foldout at the top, and change the Initialization Mode.", Owner.gameObject);
 			}
 
 			// we check the cooldown
@@ -789,6 +806,42 @@ namespace MoreMountains.Feedbacks
 		}
 
 		/// <summary>
+		/// Forces the feedback to set its initial value (behavior will change from feedback to feedback,
+		/// but for example, a Position feedback that moves a Transform from point A to B would
+		/// automatically move the Transform to point A when ForceInitialState is called
+		/// </summary>
+		public virtual void ForceInitialValue(Vector3 position, float feedbacksIntensity = 1.0f)
+		{
+			if (!CanForceInitialValue)
+			{
+				return;
+			}
+			if (ForceInitialValueDelayed)
+			{
+				Owner.StartCoroutine(ForceInitialValueDelayedCo(position, feedbacksIntensity));
+			}
+			else
+			{
+				Play(position, feedbacksIntensity);
+				Stop(position, feedbacksIntensity);	
+			}
+		}
+
+		/// <summary>
+		/// A coroutine used to delay the Stop when forcing initial values (used mostly with shaker based feedbacks)
+		/// </summary>
+		/// <param name="position"></param>
+		/// <param name="feedbacksIntensity"></param>
+		/// <returns></returns>
+		protected virtual IEnumerator ForceInitialValueDelayedCo(Vector3 position, float feedbacksIntensity = 1.0f)
+		{
+			Play(position, feedbacksIntensity);
+			yield return new WaitForEndOfFrame();
+			Stop(position, feedbacksIntensity);
+			
+		}
+
+		/// <summary>
 		/// Called when restoring the initial state of a player, calls custom Restore on all feedbacks
 		/// </summary>
 		/// <param name="position"></param>
@@ -805,6 +858,14 @@ namespace MoreMountains.Feedbacks
 		{
 			_playsLeft = Timing.NumberOfRepeats + 1;
 			CustomReset();
+		}
+
+		/// <summary>
+		/// This gets called by the MMF Player when all feedbacks have completed playing 
+		/// </summary>
+		public virtual void PlayerComplete()
+		{
+			CustomPlayerComplete();
 		}
 
 		#endregion
@@ -1015,6 +1076,10 @@ namespace MoreMountains.Feedbacks
 		/// This method describes what happens when the feedback gets restored
 		/// </summary>
 		protected virtual void CustomRestoreInitialValues() { }
+		/// <summary>
+		/// This method describes what happens when the player this feedback belongs to completes playing
+		/// </summary>
+		protected virtual void CustomPlayerComplete() { }
 
 		/// <summary>
 		/// This method describes what happens when the feedback gets reset

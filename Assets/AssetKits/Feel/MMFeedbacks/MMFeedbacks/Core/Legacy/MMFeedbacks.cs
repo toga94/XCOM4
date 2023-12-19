@@ -42,6 +42,9 @@ namespace MoreMountains.Feedbacks
 		         "Initialization method and passing it an owner. Otherwise, you can have this component initialize " +
 		         "itself at Awake or Start, and in this case the owner will be the MMFeedbacks itself")]
 		public InitializationModes InitializationMode = InitializationModes.Start;
+		/// if you set this to true, the system will make changes to ensure that initialization always happens before play
+		[Tooltip("if you set this to true, the system will make changes to ensure that initialization always happens before play")]
+		public bool AutoInitialization = true;
 		/// the selected safe mode
 		[Tooltip("the selected safe mode")]
 		public SafeModes SafeMode = SafeModes.Full;
@@ -244,7 +247,7 @@ namespace MoreMountains.Feedbacks
 		/// <summary>
 		/// Initializes the MMFeedbacks, setting this MMFeedbacks as the owner
 		/// </summary>
-		public virtual void Initialization()
+		public virtual void Initialization(bool forceInitIfPlaying = false)
 		{
 			Initialization(this.gameObject);
 		}
@@ -295,6 +298,18 @@ namespace MoreMountains.Feedbacks
 		public virtual async System.Threading.Tasks.Task PlayFeedbacksTask(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
 			PlayFeedbacks(position, feedbacksIntensity, forceRevert);
+			while (IsPlaying)
+			{
+				await System.Threading.Tasks.Task.Yield();
+			}
+		}
+        
+		/// <summary>
+		/// Plays all feedbacks and awaits until completion
+		/// </summary>
+		public virtual async System.Threading.Tasks.Task PlayFeedbacksTask()
+		{
+			PlayFeedbacks();
 			while (IsPlaying)
 			{
 				await System.Threading.Tasks.Task.Yield();

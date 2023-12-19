@@ -1,17 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class TraitDataManager : Singleton<TraitDataManager>
 {
-
     public List<TraitData> traitDataList;
 
-    private Dictionary<TraitType, TraitData> traitDataDict;
+    private Dictionary<TraitType, TraitData> traitDataDict {
+        get {
 
-    private void Awake()
-    {
-        traitDataDict = traitDataList.ToDictionary(traitData => traitData.traitType);
+            return traitDataList.ToDictionary(traitData => traitData.traitType);
+
+        }
     }
 
     public TraitData GetTraitData(TraitType traitType)

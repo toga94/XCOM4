@@ -63,57 +63,54 @@ public class StateListUI : MonoBehaviour
         GameStateSystem gameStateSystem = GameStateSystem.Instance;
         List<GameState> statesInRound = gameStateSystem.GetStatesInRound();
 
-        // Destroy previously instantiated state image objects
-        foreach (GameObject stateImageObject in stateImageObjects)
-        {
-            Destroy(stateImageObject);
-        }
-
         stateUIPool.DespawnAll();
+
+        int currentStateIndexUI = gameStateSystem.GetCurrentStateIndexUI / 2;
 
         for (int i = 0; i < statesInRound.Count; i++)
         {
-
             GameState gameState = statesInRound[i];
             Sprite stateImage = GetStateImage(gameState);
 
             GameObject stateImageObject = stateUIPool.Spawn(Vector3.zero, Quaternion.identity);
-            stateImageObject.transform.SetParent(transform); 
+            stateImageObject.transform.SetParent(transform);
             Image uiImage = stateImageObject.GetComponent<Image>();
             uiImage.sprite = stateImage;
 
-
-            int _currentStateIndex = GameStateSystem.Instance.GetCurrentStateIndexUI / 2;
-            Debug.Log(_currentStateIndex);
-            if (_currentStateIndex == i)
+            if (currentStateIndexUI == i)
             {
                 uiImage.color = Color.white;
             }
-            else if (_currentStateIndex < i)
+            else if (currentStateIndexUI < i)
             {
                 uiImage.color = Color.black;
             }
             else
             {
-                GameState stateInRound = GameStateSystem.Instance.GetStatesInRound()[i];
-                if (stateInRound is Minion_1_1_PhaseState || stateInRound is PlayerCombat_PhaseState)
-                { 
-                    if (GameStateSystem.Instance.GetStatesInRound()[i].IsWin)
-                    {
-                        uiImage.color = Color.green;
-                    }
-                    else
-                    {
-                        uiImage.color = Color.red;
-                    }
-                }
-                else
-                {
-                    uiImage.color = Color.grey;
-                }
+                SetStateColor(uiImage, gameState, i);
             }
             uiImage.transform.parent = stateUIListObj.transform;
         }
     }
+
+    private void SetStateColor(Image uiImage, GameState state, int index)
+    {
+        if (state is Minion_1_1_PhaseState || state is PlayerCombat_PhaseState)
+        {
+            if (state.IsWin)
+            {
+                uiImage.color = Color.green;
+            }
+            else
+            {
+                uiImage.color = Color.red;
+            }
+        }
+        else
+        {
+            uiImage.color = Color.grey;
+        }
+    }
+
 
 }

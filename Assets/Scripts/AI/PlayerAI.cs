@@ -70,17 +70,9 @@ public class PlayerAI : Singleton<PlayerAI>
         {
             return 2;
         }
-        else if (round <= 3)
-        {
-            return 3;
-        }
-        else if (round <= 4)
-        {
-            return 4;
-        }
         else if (round <= 5)
         {
-            return 5;
+            return round + 1;
         }
         else
         {
@@ -113,8 +105,8 @@ public class PlayerAI : Singleton<PlayerAI>
     private Vector3 GeneratePositions(string unitName)
     {
         Vector3 position = Vector3.zero;
-
-        foreach (UnitObject item in GameManager.Instance.unitObjects)
+        var unitObject = GameManager.Instance.unitObjects;
+        foreach (UnitObject item in unitObject)
         {
             if (item.unitName.Contains(unitName))
             {
@@ -122,7 +114,6 @@ public class PlayerAI : Singleton<PlayerAI>
 
                 if (availableIndices.Count == 0)
                 {
-                    Debug.LogWarning("No unique index available for unit: " + unitName);
                     return position;
                 }
 

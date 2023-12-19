@@ -153,6 +153,20 @@ namespace MoreMountains.Tools
 		[Tooltip("the delay (in seconds) after which to hide the bar")]
 		public float HideBarAtZeroDelay = 1f;
 
+		[Header("Test")] 
+		/// a test value to use when pressing the TestUpdateHealth button
+		[Tooltip("a test value to use when pressing the TestUpdateHealth button")]
+		public float TestMinHealth = 0f;
+		/// a test value to use when pressing the TestUpdateHealth button
+		[Tooltip("a test value to use when pressing the TestUpdateHealth button")]
+		public float TestMaxHealth = 100f;
+		/// a test value to use when pressing the TestUpdateHealth button
+		[Tooltip("a test value to use when pressing the TestUpdateHealth button")]
+		public float TestCurrentHealth = 25f;
+		[MMInspectorButton("TestUpdateHealth")]
+		public bool TestUpdateHealthButton;
+		
+		
 		protected MMProgressBar _progressBar;
 		protected MMFollowTarget _followTransform;
 		protected float _lastShowTimestamp = 0f;
@@ -178,19 +192,48 @@ namespace MoreMountains.Tools
 		{
 			_finalHideStarted = false;
 
+			SetInitialActiveState();
+		}
+
+		/// <summary>
+		/// Forces the bar into its initial active state (hiding it if AlwaysVisible is false)
+		/// </summary>
+		public virtual void SetInitialActiveState()
+		{
 			if (!AlwaysVisible && (_progressBar != null))
 			{
-				_progressBar.gameObject.SetActive(false);
+				ShowBar(false);
 			}
 		}
 
+		/// <summary>
+		/// Shows or hides the bar by changing its object's active state
+		/// </summary>
+		/// <param name="state"></param>
+		public virtual void ShowBar(bool state)
+		{
+			_progressBar.gameObject.SetActive(state);
+		}
+
+		/// <summary>
+		/// Whether or not the bar is currently active
+		/// </summary>
+		/// <returns></returns>
+		public virtual bool BarIsShown()
+		{
+			return _progressBar.gameObject.activeInHierarchy;
+		}
+
+		/// <summary>
+		/// Initializes the bar (handles visibility, parenting, initial value
+		/// </summary>
 		public virtual void Initialization()
 		{
 			_finalHideStarted = false;
 
 			if (_progressBar != null)
 			{
-				_progressBar.gameObject.SetActive(AlwaysVisible);
+				ShowBar(AlwaysVisible);
 				return;
 			}
 
@@ -218,7 +261,7 @@ namespace MoreMountains.Tools
 
 			if (!AlwaysVisible)
 			{
-				_progressBar.gameObject.SetActive(false);
+				ShowBar(false);
 			}
 
 			if (_progressBar != null)
@@ -307,7 +350,8 @@ namespace MoreMountains.Tools
 
 			if (Billboard)
 			{
-				_progressBar.gameObject.AddComponent<MMBillboard>();
+				MMBillboard billboard = _progressBar.gameObject.AddComponent<MMBillboard>();
+				billboard.NestObject = !NestDrawnHealthBar;
 			}
 
 			_progressBar.LerpDecreasingDelayedBar = LerpDelayedBar;
@@ -349,7 +393,7 @@ namespace MoreMountains.Tools
 
 			if (_showBar)
 			{
-				_progressBar.gameObject.SetActive(true);
+				ShowBar(true);
 				float currentTime = (TimeScale == TimeScales.UnscaledTime) ? Time.unscaledTime : Time.time;
 				if (currentTime - _lastShowTimestamp > DisplayDurationOnHit)
 				{
@@ -358,7 +402,10 @@ namespace MoreMountains.Tools
 			}
 			else
 			{
-				_progressBar.gameObject.SetActive(false);				
+				if (BarIsShown())
+				{
+					ShowBar(false);	
+				}
 			}
 		}
 
@@ -377,7 +424,7 @@ namespace MoreMountains.Tools
 			if (HideBarAtZeroDelay == 0)
 			{
 				_showBar = false;
-				_progressBar.gameObject.SetActive(false);
+				ShowBar(false);
 				yield return null;
 			}
 			else
@@ -452,6 +499,14 @@ namespace MoreMountains.Tools
 					_progressBar.Bump();
 				}
 			}
+		}
+
+		/// <summary>
+		/// A test method used to update the bar when pressing the TestUpdateHealth button in the inspector
+		/// </summary>
+		protected virtual void TestUpdateHealth()
+		{
+			UpdateBar(TestCurrentHealth, TestMinHealth, TestMaxHealth, true);
 		}
 	}
 }

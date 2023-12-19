@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
     }
     private GameObject DetermineTarget()
     {
-        agent = GetComponent<NavMeshAgent>();
+       if(agent is null) agent = GetComponent<NavMeshAgent>();
         enemies = gameManager.GetAllUnitsOnGrid;
         if (enemies.Count > 0)
         {
