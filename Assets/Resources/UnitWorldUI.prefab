@@ -665,7 +665,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4583851341757093450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,6 +687,7 @@ MonoBehaviour:
   hpDamageSldier: {fileID: 7977040515169983578}
   is3D: 1
   horizontalLayoutGroup: {fileID: 0}
+  healthPerBar: 100
   HealthBarOffsetZ: 0
   HealthBarOffsetYPercent: 10
   offset: {x: 0, y: 0, z: 0}
