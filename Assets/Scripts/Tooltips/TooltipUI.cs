@@ -59,13 +59,13 @@ public class TooltipUI : MonoBehaviour
     }
     private int GetTraitMaxStack(TraitType trait)
     {
-        TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
+        TraitData traitdata = TraitDataManager.Instance.FetchTraitData(trait);
         //return traitdata.traitEffectsLevel[traitdata.traitEffectsLevel.Length - 1];
         return traitdata.traitEffectsLevel[0];
     }
     private Color GetTraitColor(TraitType trait, int level)
     {
-        TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
+        TraitData traitdata = TraitDataManager.Instance.FetchTraitData(trait);
         int maxStack = GetTraitMaxStack(trait);
 
         Color[] traitColors = new Color[] {

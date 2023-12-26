@@ -13,10 +13,10 @@ public class PlayerAI : Singleton<PlayerAI>
 
     private void Start()
     {
-        GeneratePlayers(7, 9);
+        InitializePlayers(7, 9);
     }
 
-    public void GeneratePlayers(int numPlayers, int numRounds)
+    public void InitializePlayers(int numPlayers, int numRounds)
     {
         players = new List<PlayerData>();
 
@@ -29,12 +29,12 @@ public class PlayerAI : Singleton<PlayerAI>
                 .SetPlayerHealth(100)
                 .Build();
             player.roundBoughts = new List<RoundBought>();
-            GenerateEnemyGridPositions();
+            SetupEnemyGridPositions();
             selectedPositions = new List<Vector3>();
 
             for (int j = 0; j < numRounds; j++)
             {
-                RoundBought roundBought = GenerateRoundBought(j);
+                RoundBought roundBought = CreateRoundBoughtDetails(j);
                 player.roundBoughts.Add(roundBought);
             }
 
@@ -42,29 +42,29 @@ public class PlayerAI : Singleton<PlayerAI>
         }
     }
 
-    private void GenerateEnemyGridPositions()
+    private void SetupEnemyGridPositions()
     {
         enemyGridPositions = UnitPositionUtility.EnemyGridPositions().ToList();
     }
 
-    private RoundBought GenerateRoundBought(int round)
+    private RoundBought CreateRoundBoughtDetails(int round)
     {
         RoundBought roundBought = new RoundBought();
 
         roundBought.gridUnitsName = new List<string>();
         roundBought.gridUnitsPositions = new List<Vector3>();
 
-        int numUnits = GetNumUnits(round);
+        int numUnits = CalculateUnitsPerRound(round);
 
         for (int i = 0; i < numUnits; i++)
         {
-            GenerateUnitWithPosition(roundBought, round);
+            AssignUnitToPosition(roundBought, round);
         }
 
         return roundBought;
     }
 
-    private int GetNumUnits(int round)
+    private int CalculateUnitsPerRound(int round)
     {
         if (round < 2)
         {
@@ -80,10 +80,10 @@ public class PlayerAI : Singleton<PlayerAI>
         }
     }
 
-    private void GenerateUnitWithPosition(RoundBought roundBought, int round)
+    private void AssignUnitToPosition(RoundBought roundBought, int round)
     {
-        string unitName = GenerateUnits(round, false);
-        Vector3 unitPosition = GeneratePositions(unitName);
+        string unitName = SelectRandomUnit(round, false);
+        Vector3 unitPosition = DetermineUnitPosition(unitName);
 
         if (unitPosition != Vector3.zero)
         {
@@ -92,7 +92,7 @@ public class PlayerAI : Singleton<PlayerAI>
         }
     }
 
-    private string GenerateUnits(int round, bool isGrid)
+    private string SelectRandomUnit(int round, bool isGrid)
     {
         GameManager gameManager = GameManager.Instance;
         if (gameManager == null) return string.Empty;
@@ -102,7 +102,7 @@ public class PlayerAI : Singleton<PlayerAI>
         return unit;
     }
 
-    private Vector3 GeneratePositions(string unitName)
+    private Vector3 DetermineUnitPosition(string unitName)
     {
         Vector3 position = Vector3.zero;
         var unitObject = GameManager.Instance.unitObjects;
@@ -110,7 +110,7 @@ public class PlayerAI : Singleton<PlayerAI>
         {
             if (item.unitName.Contains(unitName))
             {
-                List<int> availableIndices = GetAvailableIndices(item.attackType == AttackType.Melee ? 1 : 14, item.attackType == AttackType.Melee ? 13 : 27);
+                List<int> availableIndices = FindOpenPositions(item.attackType == AttackType.Melee ? 1 : 14, item.attackType == AttackType.Melee ? 13 : 27);
 
                 if (availableIndices.Count == 0)
                 {
@@ -129,7 +129,7 @@ public class PlayerAI : Singleton<PlayerAI>
         return position;
     }
 
-    private List<int> GetAvailableIndices(int min, int max)
+    private List<int> FindOpenPositions(int min, int max)
     {
         List<int> availableIndices = new List<int>();
 

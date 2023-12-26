@@ -15,6 +15,11 @@ public class UnitWorldUI : MonoBehaviour
     [SerializeField] private LeanGameObjectPool hpLinePool;
     private Transform root;
     [SerializeField] private Image hpSldier;
+
+    [SerializeField] private Sprite hpPlayerSprite;
+    [SerializeField] private Sprite hpEnemySprite;
+
+
     [SerializeField] private Image manaSldier;
     [SerializeField] private Image hpDamageSldier;
     [SerializeField] private bool is3D;
@@ -24,6 +29,7 @@ public class UnitWorldUI : MonoBehaviour
     private Camera mainCamera;
     public float HealthBarOffsetZ;
     public float HealthBarOffsetYPercent = 10f;
+    private bool isOwn;
     private List<GameObject> hpLine = new List<GameObject>();
     private Canvas canvas;
     private RectTransform rectTransform;
@@ -35,7 +41,7 @@ public class UnitWorldUI : MonoBehaviour
     private float timeElapsed;
     private RectTransform canvasRect;
 
-    public void SetRoot(Transform value, GameObject canvasObj)
+    public void SetRoot(Transform value, GameObject canvasObj, bool isOwn)
     {
         canvas = canvasObj.GetComponent<Canvas>();
         if (is3D)
@@ -50,8 +56,17 @@ public class UnitWorldUI : MonoBehaviour
         maxHp = unit.MaxHealth;
         curLevel = unit.GetUnitLevel.ToString();
         healthSystem = root.GetComponent<HealthSystem>();
+        this.isOwn = isOwn;
+        if (isOwn)
+        {
+            hpSldier.sprite = hpPlayerSprite;
+        }
+        else {
+            hpSldier.sprite = hpEnemySprite;
+        }
 
-        uiInit = true;
+
+            uiInit = true;
     }
 
     private void Start()
@@ -64,6 +79,8 @@ public class UnitWorldUI : MonoBehaviour
         healthSystem.OnManaChanged += UpdateMana;
         unitTransform = unit.transform;
         rectTransform = GetComponent<RectTransform>();
+
+        
     }
 
     private void UpdateHp(float curHp, int level, float maxhp)

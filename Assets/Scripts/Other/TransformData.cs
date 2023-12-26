@@ -5,9 +5,9 @@ public struct TransformData
     public Vector3 position;
     public Quaternion rotation;
 
-    public TransformData(Vector3 pos, Quaternion rot)
+    public TransformData(Vector3 position, Quaternion rotation)
     {
-        position = pos;
-        rotation = rot;
+        this.position = position;
+        this.rotation = rotation;
     }
 }

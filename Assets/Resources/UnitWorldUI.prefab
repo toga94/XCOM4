@@ -683,6 +683,8 @@ MonoBehaviour:
   healthSystem: {fileID: 0}
   hpLinePool: {fileID: 0}
   hpSldier: {fileID: 795989851512036568}
+  hpPlayerSprite: {fileID: 0}
+  hpEnemySprite: {fileID: 0}
   manaSldier: {fileID: 0}
   hpDamageSldier: {fileID: 7977040515169983578}
   is3D: 1
@@ -690,6 +692,7 @@ MonoBehaviour:
   healthPerBar: 100
   HealthBarOffsetZ: 0
   HealthBarOffsetYPercent: 10
+  isOwn: 0
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &6670415186813302581
 MonoBehaviour:

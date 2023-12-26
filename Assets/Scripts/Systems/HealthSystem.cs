@@ -50,7 +50,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         canvas = GameObject.Find("BarCanvas");
         canvasBar = Instantiate(unitWorldUIPrefab, canvas.transform);
         unitWorldUI = canvasBar.GetComponent<UnitWorldUI>();
-        unitWorldUI.SetRoot(transform, canvas);
+        unitWorldUI.SetRoot(transform, canvas, unit.isOwn);
         OnHealthChanged?.Invoke(Health, unit.GetUnitLevel, HealthMax);
         OnManaChanged?.Invoke(GetMana, manaMax);
     }

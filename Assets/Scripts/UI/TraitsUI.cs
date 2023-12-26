@@ -41,7 +41,7 @@ public class TraitsUI : Singleton<TraitsUI>
             GameObject traitObject = pool.Spawn(traitList);
 
             var traitUITrigger = traitObject.GetComponent<TraitTooltipTrigger>();
-            traitUITrigger.traitData = TraitDataManager.Instance.GetTraitData(kvp.Key);
+            traitUITrigger.traitData = TraitDataManager.Instance.FetchTraitData(kvp.Key);
 
             Image traitIcon = traitObject.transform.Find("TraitIcon").GetComponent<Image>();
             traitIcon.sprite = GetTraitSprite(kvp.Key);
@@ -62,13 +62,13 @@ public class TraitsUI : Singleton<TraitsUI>
 
     private Sprite GetTraitSprite(TraitType trait)
     {
-        TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
+        TraitData traitdata = TraitDataManager.Instance.FetchTraitData(trait);
         return traitdata.traitSprite;
     }
 
     public Color GetTraitSpriteColor(TraitType trait, int level)
     {
-        TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
+        TraitData traitdata = TraitDataManager.Instance.FetchTraitData(trait);
         int maxStack = GetTraitMaxStack(trait);
 
         int colorIndex = Mathf.Min(traitdata.traitEffectsLevel.Length - 1, level - 1);
@@ -87,7 +87,7 @@ public class TraitsUI : Singleton<TraitsUI>
 
     private int GetTraitMaxStack(TraitType trait)
     {
-        TraitData traitdata = TraitDataManager.Instance.GetTraitData(trait);
+        TraitData traitdata = TraitDataManager.Instance.FetchTraitData(trait);
         return traitdata.traitEffectsLevel[0];
     }
 

@@ -91,7 +91,7 @@ public class CardWindow : MonoBehaviour
             TraitUICatch traitUICatch = traitUIItem.GetComponent<TraitUICatch>();
             TraitTooltipTrigger traitTooltip = traitUICatch.traitTooltip;
 
-            traitTooltip.traitData = traitManager.GetTraitData(trait);
+            traitTooltip.traitData = traitManager.FetchTraitData(trait);
 
             traitUIItem.transform.localScale = new Vector3(2.5f, 2.5f, 0);
 
@@ -117,7 +117,7 @@ public class CardWindow : MonoBehaviour
 
     private Sprite GetTraitSprite(TraitType trait)
     {
-        TraitData traitdata = traitManager.GetTraitData(trait);
+        TraitData traitdata = traitManager.FetchTraitData(trait);
 
         return traitdata.traitSprite;
     }

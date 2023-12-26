@@ -5,7 +5,7 @@ public class TraitDataManager : Singleton<TraitDataManager>
 {
     public List<TraitData> traitDataList;
 
-    private Dictionary<TraitType, TraitData> traitDataDict {
+    private Dictionary<TraitType, TraitData> TraitDataDictionary {
         get {
 
             return traitDataList.ToDictionary(traitData => traitData.traitType);
@@ -13,8 +13,8 @@ public class TraitDataManager : Singleton<TraitDataManager>
         }
     }
 
-    public TraitData GetTraitData(TraitType traitType)
+    public TraitData FetchTraitData(TraitType traitType)
     {
-        return traitDataDict.TryGetValue(traitType, out var traitData) ? traitData : null;
+        return TraitDataDictionary.TryGetValue(traitType, out var traitData) ? traitData : null;
     }
 }

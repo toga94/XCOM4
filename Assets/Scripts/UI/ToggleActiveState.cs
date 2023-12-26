@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ActivateDeActivate : MonoBehaviour
+public class ToggleActiveState : MonoBehaviour
 {
     public void OnClick(GameObject gameObject) {
         gameObject.SetActive(!gameObject.active);
