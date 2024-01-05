@@ -21,7 +21,7 @@ Material:
     m_TexEnvs:
     - _BaseTexture:
         m_Texture: {fileID: 2800000, guid: 1f0583b064d0cd142a54d977ac5b0481, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - _Base_Text:
         m_Texture: {fileID: 2800000, guid: 1f0583b064d0cd142a54d977ac5b0481, type: 3}
@@ -49,11 +49,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Emissive:
         m_Texture: {fileID: 2800000, guid: 0d509c6f81c59b542926956d8d70473e, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - _EmissiveMask:
         m_Texture: {fileID: 2800000, guid: 36150e972e30a6a4eba79d1c523bddfd, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - _Flipbook:
         m_Texture: {fileID: 2800000, guid: fcf8488f61b58ce44bd47d330dfacdb5, type: 3}
@@ -116,3 +116,4 @@ Material:
     - _Colour_02: {r: 0, g: 0.8694534, b: 1, a: 0}
     - _EmissionColor: {r: 0.54951894, g: 0.07573871, b: 0.6981132, a: 1}
     - _Speed: {r: 0.1, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
