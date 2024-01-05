@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.needle.shadergraph-markdown": "file:C:/Users/toghrul.huseynzade/Desktop/shadergraph-markdown-main/shadergraph-markdown-main",
     "com.unity.2d.animation": "5.2.7",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
