@@ -3,9 +3,9 @@ guid: a711ca3b984db6a4e81ec2d50ca4c0ca
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
-  - _Buildings_Normal_Map: {fileID: 2800000, guid: ee65395a565e9074f804642904a21ef2,
-      type: 3}
   - _Buildings_Diffuse_01: {fileID: 2800000, guid: 8d62ef60a478479458b717cd16718c5a,
+      type: 3}
+  - _Buildings_Normal_Map: {fileID: 2800000, guid: ee65395a565e9074f804642904a21ef2,
       type: 3}
   - _Buildings_Emissive_01: {fileID: 2800000, guid: 6f440ff87739f9142b8ba7ca4e302e31,
       type: 3}

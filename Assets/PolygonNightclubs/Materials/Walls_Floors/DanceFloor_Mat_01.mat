@@ -10,7 +10,7 @@ Material:
   m_Name: DanceFloor_Mat_01
   m_Shader: {fileID: 4800000, guid: 1f67b66c29dfd4f45aa8cc07bf5e901a, type: 3}
   m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 1
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Flipbook:
-        m_Texture: {fileID: 2800000, guid: 01064ed187fb2144da9d13dab4e69310, type: 3}
+        m_Texture: {fileID: 2800000, guid: fcf8488f61b58ce44bd47d330dfacdb5, type: 3}
         m_Scale: {x: 1, y: 0}
         m_Offset: {x: 0, y: 0}
     - _LED_Mask_01:
@@ -84,6 +84,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AlphaCutoff: 0.5
     - _BumpScale: 1
     - _Columns: 2
     - _Cutoff: 0.5
