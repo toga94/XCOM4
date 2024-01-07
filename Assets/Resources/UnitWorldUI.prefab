@@ -692,7 +692,6 @@ MonoBehaviour:
   healthPerBar: 100
   HealthBarOffsetZ: 0
   HealthBarOffsetYPercent: 10
-  isOwn: 0
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &6670415186813302581
 MonoBehaviour:
