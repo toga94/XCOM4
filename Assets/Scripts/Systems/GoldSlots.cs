@@ -5,9 +5,9 @@ public class GoldSlots : MonoBehaviour
     [SerializeField] private GameObject[] slots;
     void Start()
     {
-        Economy.OnGoldChanged += UpdateSlot;
+        EconomyManager.OnGoldChanged += UpdateSlot;
 
-        UpdateSlot(Economy.GetGold());
+        UpdateSlot(EconomyManager.GetGold());
     }
 
 

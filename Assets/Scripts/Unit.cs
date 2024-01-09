@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using Lean.Pool;
+using MoreMountains.Tools;
 public class Unit : MonoBehaviour
 {
     [SerializeField] private string unitName;
@@ -34,19 +35,21 @@ public class Unit : MonoBehaviour
         if (animator == null) animator = GetComponent<Animator>();
         animator?.Play("level_up");
     }
-
+    private LeanGameObjectPool dropool;
     public void TeleportToPosition(Vector3 targetPosition, GridPosition unitGridPosition)
     {
         UnitGridPosition = unitGridPosition;
         transform.position = targetPosition;
         UnitPosition = targetPosition;
-        Instantiate(dropUnitFX, targetPosition + Vector3.up / 2, Quaternion.identity);
-
+        //Instantiate(dropUnitFX, targetPosition + Vector3.up / 2, Quaternion.identity);
+        if(!dropool) dropool = GameObject.Find($"_Pooling/dropPool").MMGetComponentNoAlloc<LeanGameObjectPool>();
+       var lastspawn = dropool.Spawn(targetPosition + Vector3.up / 2, Quaternion.identity);
+        dropool.Despawn(lastspawn, 3);
     }
     private void Awake()
     {
         traits = unitObject.traits;
-        dropUnitFX = Resources.Load("DropUnitFX");
+       // dropUnitFX = Resources.Load("DropUnitFX");
         animator = GetComponent<Animator>();
     }
     private void Start()

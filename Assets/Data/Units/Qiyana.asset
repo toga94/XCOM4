@@ -15,10 +15,12 @@ MonoBehaviour:
   unitName: Qiyana
   unitImage: {fileID: 6452763012361440926, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
   health: 250
-  defence: 0
+  healthRegen: 1
+  defence: 5
   attackPower: 1
   speed: 8
   mana: 50
+  manaRegen: 5
   attackRange: 5
   traits: 130000000700000001000000
   Prefab: {fileID: 1233003953755296913, guid: 0822649ff3d5e3d42b91bd31c740ab64, type: 3}

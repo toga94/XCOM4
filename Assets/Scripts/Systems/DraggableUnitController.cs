@@ -212,7 +212,7 @@ public class DraggableUnitController : MonoBehaviour
     private void SellUnit()
     {
         Unit unit = character.GetUnit;
-        Economy.SellUnit(unit);
+        EconomyManager.SellUnit(unit);
 
         if (unit.OnGrid)
         {

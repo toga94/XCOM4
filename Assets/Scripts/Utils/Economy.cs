@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public struct Economy
+public struct EconomyManager
 {
     public static int gold = 20;
     public static int xpCost = 4;

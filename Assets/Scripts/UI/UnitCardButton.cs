@@ -27,7 +27,7 @@ public class UnitCardButton : MonoBehaviour, IPoolable
         gameManager = GameManager.Instance;
         inventoryGrid = InventoryGrid.Instance;
 
-        Economy.OnGoldChanged += UpdateUI;
+        EconomyManager.OnGoldChanged += UpdateUI;
         inventoryGrid.OnAnyUnitMovedInventoryPosition += UpdateUI;
         inventoryGrid.OnAnyUnitSwappedInventoryPosition += UpdateUI;
         inventoryGrid.OnAnyUnitAddedInventoryPosition += UpdateUI;
@@ -82,7 +82,7 @@ public class UnitCardButton : MonoBehaviour, IPoolable
 
         if (inventoryFree)
         {
-            if (Economy.BuyUnit(unit)) {
+            if (EconomyManager.BuyUnit(unit)) {
                 gameManager.SpawnUnitAtInventory(CharacterName, true);
                 unitcardbutton.enabled = false;
                 disabledui.SetActive(true);

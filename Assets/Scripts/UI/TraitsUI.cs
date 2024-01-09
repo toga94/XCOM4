@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Lean.Pool;
-
+using MoreMountains.Tools;
 public class TraitsUI : Singleton<TraitsUI>
 {
     public List<Unit> units;
@@ -90,11 +90,11 @@ public class TraitsUI : Singleton<TraitsUI>
         int maxStack = GetTraitMaxStack(trait);
 
         Color[] traitColors = new Color[] {
-        new Color(0f, 0f, 0f), // level 1 color
-        new Color(0f, 0f, 1f), // level 2 color
-        new Color(0f, 1f, 0f), // level 3 color
-        new Color(1f, 0.8f, 0f), // level 4 color
-        new Color(1f, 0f, 0f) // level 5 color
+        MMColors.Black, // level 1 color 
+        MMColors.Blue, // level 2 color
+        MMColors.DarkSeaGreen, // level 3 color
+        MMColors.Orangered, // level 4 color
+        MMColors.Red // level 5 color
         };
 
         int colorIndex = 0;

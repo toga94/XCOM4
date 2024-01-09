@@ -44,7 +44,12 @@ public class HealthSystem : MonoBehaviour, IDamageable
         gameStateSystem.OnGameStateChanged += OnGameStateChanged;
         mmf_player = GameManager.Instance.GetMMF_Player;
     }
-
+    private void Update()
+    {
+        if (IsDie) return;
+        Health += unitObj.healthRegen * Time.deltaTime;
+        GetMana += unitObj.manaRegen * Time.deltaTime;
+    }
     private void InitializeUI()
     {
         canvas = GameObject.Find("BarCanvas");

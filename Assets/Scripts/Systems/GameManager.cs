@@ -137,7 +137,7 @@ public class GameManager : Singleton<GameManager>
 
     private void UpdateGridSizeTextAndIcon()
     {
-        int curLevel = Economy.Level;
+        int curLevel = EconomyManager.Level;
         int unitsOnGrid = GetAllUnitsOnGrid.Count;
         gridSizeTextMesh.text = $"{unitsOnGrid}/{curLevel}";
         Color32 labelColor = unitsOnGrid < curLevel ?
@@ -160,7 +160,7 @@ public class GameManager : Singleton<GameManager>
 
         gameStateSystem = GameStateSystem.Instance;
         gameStateSystem.OnGameStateChanged += OnStateChanged;
-        Economy.OnExperienceChanged += CalculateUnits;
+        EconomyManager.OnExperienceChanged += CalculateUnits;
 
         if (UnitsInGrid.Count > 0)
             AddUnitsToGrid();
@@ -171,7 +171,7 @@ public class GameManager : Singleton<GameManager>
         gridSizeTextMesh = transform.GetComponentInChildren<TextMeshPro>();
         gridSizeIcon = gridSizeTextMesh.transform.GetComponentInChildren<SpriteRenderer>();
         UpdateMeText();
-        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{Economy.Level}";
+        gridSizeTextMesh.text = $"{GetAllUnitsOnGrid.Count}/{EconomyManager.Level}";
 
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -250,7 +250,7 @@ public class GameManager : Singleton<GameManager>
 
     public bool GridisFree()
     {
-        return GetAllUnitsOnGrid.Count <= Economy.Level -1;
+        return GetAllUnitsOnGrid.Count <= EconomyManager.Level -1;
     }
 
     public bool GridIsFull()
@@ -447,7 +447,7 @@ public class GameManager : Singleton<GameManager>
             winStreakUI.SetActive(false);
             GetLoseCombatMMF.PlayFeedbacks();
         }
-        if (Economy.Health > 0) { }
+        if (EconomyManager.Health > 0) { }
         //  Economy.SubtractHealth((GameStateSystem.Instance.GetRoundIndex + 1) * 12);
         else
         {

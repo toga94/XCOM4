@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
+using MoreMountains.Tools;
 public class ChampionSelectionState : GameState
 {
     private GameManager gameManager;
@@ -24,7 +25,7 @@ public class ChampionSelectionState : GameState
         cardShop.OpenShopMenu();
         cardShop.RandomSelect5ItemForShopFree();
         UnitPositionUtility.RefreshUnitsPosition();
-
+        
 
         List<Unit> allUnits = gameManager.GetAllUnits;
 
@@ -49,14 +50,14 @@ public class ChampionSelectionState : GameState
         List<Unit> onGridUnit = gameManager.GetAllUnitsOnGrid;
         List<Unit> onInvertoryUnit = gameManager.GetAllUnitsOnInventory;
         // Check if there is free space on the grid and if there are units in the inventory
-        bool onGridHaveFreeSpace = onGridUnit.Count < Economy.Level;
+        bool onGridHaveFreeSpace = onGridUnit.Count < EconomyManager.Level;
         bool unitsInInventory = onInvertoryUnit.Count > 0;
 
         if (onGridHaveFreeSpace && unitsInInventory)
         {
             // Move units from inventory to grid
             onInvertoryUnit
-                .Take(Economy.Level - onGridUnit.Count)
+                .Take(EconomyManager.Level - onGridUnit.Count)
                 .ToList()
                 .ForEach(unit =>
                 {

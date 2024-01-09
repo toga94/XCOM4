@@ -116,9 +116,12 @@ public class GameStateSystem : Singleton<GameStateSystem>
                 currentState.IsFinished = true;
             }
 
-            if (Economy.Health <= 0)
+            if (EconomyManager.Health <= 0)
             {
-                SceneManager.LoadScene(2);
+                var loseFeedback = GameObject.Find("Feedbacks/LoseLevelLoadFeedback").GetComponent<MMF_Player>();
+                if(loseFeedback) loseFeedback.PlayFeedbacks();
+                else SceneManager.LoadScene(2);
+
             }
 
             timeSlider.value = timer;

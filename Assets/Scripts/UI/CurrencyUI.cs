@@ -13,9 +13,9 @@ public class CurrencyUI : MonoBehaviour
     private void Start()
     {
         GameManager gm = GameManager.Instance;
-        Economy.OnGoldChanged += UpdateGoldText;
+        EconomyManager.OnGoldChanged += UpdateGoldText;
         goldText = GetComponent<Text>();
-        goldText.text = Economy.GetGold().ToString();
+        goldText.text = EconomyManager.GetGold().ToString();
     }
     private void UpdateGoldText(int gold)
     {

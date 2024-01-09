@@ -39,9 +39,9 @@ public class PlayerListUI : Singleton<PlayerListUI>
         allPlayers.Add(new PlayerData
         {
             PlayerName = "Me",
-            playerHealth = Economy.Health,
-            playerLevel = Economy.Level,
-            playerMoney = Economy.GetGold()
+            playerHealth = EconomyManager.Health,
+            playerLevel = EconomyManager.Level,
+            playerMoney = EconomyManager.GetGold()
         });
 
         foreach (PlayerData playerData in allPlayers)

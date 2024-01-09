@@ -69,11 +69,11 @@ public class CombatPhaseState : GameState
         {
             bonusGold = 1;
         }
-        int totalGold = Economy.MIN_GOLD + winStreak + bonusGold;
-        int goldBonus = (int)Mathf.FloorToInt(Economy.GetGold() / 10f);
+        int totalGold = EconomyManager.MIN_GOLD + winStreak + bonusGold;
+        int goldBonus = (int)Mathf.FloorToInt(EconomyManager.GetGold() / 10f);
         totalGold += goldBonus;
-        Economy.AddGold(totalGold);
-        Economy.GainExperience(1);
+        EconomyManager.AddGold(totalGold);
+        EconomyManager.GainExperience(1);
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
         floors.Select(floor => floor.GetComponent<BoxCollider>()).ToList().ForEach(bc => bc.enabled = true);
         IsCombatState = false;

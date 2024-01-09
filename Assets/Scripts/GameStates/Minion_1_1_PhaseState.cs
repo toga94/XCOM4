@@ -33,8 +33,7 @@ public class Minion_1_1_PhaseState : GameState
 
         
 
-        enemyPool = GameObject.Find("_Pooling").
-            transform.Find($"minion_{minionIndex}_Pool").GetComponent<LeanGameObjectPool>();
+        enemyPool = GameObject.Find($"_Pooling/minion_{minionIndex}_Pool").GetComponent<LeanGameObjectPool>();
         enemyPool.Clean();
         
         List<Vector3> enemyPosition = new List<Vector3>();
@@ -107,9 +106,9 @@ public class Minion_1_1_PhaseState : GameState
             duration = 3f;
 
             unitsOnGrid.ForEach(unit => unit.gameObject.SetActive(true));
-            enemies?.ForEach(enemy => enemy.GetComponent<IDamageable>()?.TakeDamage(99999999, false));
+            enemies?.ForEach(enemy => enemy?.GetComponent<IDamageable>()?.TakeDamage(99999999, false));
           int  damageAmount = ((GameStateSystem.Instance.GetRoundIndex + 1) * 12) / 2;
-            Economy.SubtractHealth(damageAmount);
+            EconomyManager.SubtractHealth(damageAmount);
             gameManager.LoseCombat(false);
         }
     }
@@ -140,12 +139,12 @@ public class Minion_1_1_PhaseState : GameState
         int winStreak = gameManager.GetWinStreak();
         int bonusGold = winStreak >= 5 ? 3 : winStreak >= 3 ? 2 : 1;
 
-        int totalGold = Economy.MIN_GOLD + winStreak + bonusGold;
-        int goldBonus = Mathf.FloorToInt(Economy.GetGold() / 10f);
+        int totalGold = EconomyManager.MIN_GOLD + winStreak + bonusGold;
+        int goldBonus = Mathf.FloorToInt(EconomyManager.GetGold() / 10f);
         totalGold += goldBonus;
 
-        Economy.AddGold(totalGold);
-        Economy.GainExperience(1);
+        EconomyManager.AddGold(totalGold);
+        EconomyManager.GainExperience(1);
 
         GameObject[] floors = GameObject.FindGameObjectsWithTag("floor");
 

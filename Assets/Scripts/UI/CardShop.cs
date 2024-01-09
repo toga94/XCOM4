@@ -18,26 +18,26 @@ public class CardShop : Singleton<CardShop>
     public void RandomSelect5ItemForShop()
     {
         int cost = 2;
-        Refresh(cost);
+        RefreshShopItems(cost);
     }
     public void RandomSelect5ItemForShopFree()
     {
         int cost = 0;
-        Refresh(cost);
+        RefreshShopItems(cost);
     }
-    private void Refresh(int cost)
+    private void RefreshShopItems(int cost)
     {
-        if (Economy.CanIBuy(cost))
+        if (EconomyManager.CanIBuy(cost))
         {
             List<UnitObject> allUnitsList = new List<UnitObject>(allUnitObjects);
-            UnitObject[] selectedUnits = RandomPick(allUnitObjects, 5).ToArray();
-            Economy.SubtractGold(cost);
+            UnitObject[] selectedUnits = PickRandomItems(allUnitObjects, 5).ToArray();
+            EconomyManager.SubtractGold(cost);
             onItemsChanged?.Invoke(this, selectedUnits);
         }
     }
 
 
-    private static List<T> RandomPick<T>(IList<T> list, int numItemsToSelect) where T : UnitObject
+    private static List<T> PickRandomItems<T>(IList<T> list, int numItemsToSelect) where T : UnitObject
     {
         List<T> selectedItems = new List<T>();
         Dictionary<T, float> cumulativeProbabilities = new Dictionary<T, float>();
@@ -45,7 +45,7 @@ public class CardShop : Singleton<CardShop>
 
         for (int i = 0; i < list.Count; i++)
         {
-            float itemProbability = Economy.GetItemProbability(list[i]);
+            float itemProbability = EconomyManager.GetItemProbability(list[i]);
             cumulativeProbability += itemProbability;
             cumulativeProbabilities[list[i]] = cumulativeProbability;
         }

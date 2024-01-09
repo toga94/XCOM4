@@ -22,7 +22,7 @@ public class LevelButtonUI : MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
-        Economy.OnExperienceChanged += UpdateUI;
+        EconomyManager.OnExperienceChanged += UpdateUI;
         UpdateUI(0);
     }
     private void OnDestroy()
@@ -33,21 +33,21 @@ public class LevelButtonUI : MonoBehaviour
     private void UpdateUI(int xp) {
 
 
-        int level = Economy.Level;
-        int xpCost = Economy.xpCost;
+        int level = EconomyManager.Level;
+        int xpCost = EconomyManager.xpCost;
         costText.text = xpCost.ToString();
         levelText.text = level.ToString();
 
-        minMaxExp.text = $"{Economy.Exp}/{Economy.GetExperienceNeededForNextLevel()} ";
-        fillRatio = (float)(Economy.Exp * 100  / Economy.GetExperienceNeededForNextLevel()) / 100 ;
+        minMaxExp.text = $"{EconomyManager.Exp}/{EconomyManager.GetExperienceNeededForNextLevel()} ";
+        fillRatio = (float)(EconomyManager.Exp * 100  / EconomyManager.GetExperienceNeededForNextLevel()) / 100 ;
         xpBar.fillAmount = fillRatio;
     }
 
     public void OnClick()
     {
-        int xpCost = Economy.xpCost;
-        if (!Economy.CanIBuy(xpCost)) return;
-        Economy.SubtractGold(xpCost);
-        Economy.GainExperience(1);
+        int xpCost = EconomyManager.xpCost;
+        if (!EconomyManager.CanIBuy(xpCost)) return;
+        EconomyManager.SubtractGold(xpCost);
+        EconomyManager.GainExperience(1);
     }
 }

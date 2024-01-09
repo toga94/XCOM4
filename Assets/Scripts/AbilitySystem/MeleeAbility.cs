@@ -3,7 +3,7 @@ using Lean.Pool;
 using System;
 using System.Collections;
 using UnityEngine;
-public class MeleeAbility : Ability
+public class MeleeAbility : Ability 
 {
     private Animator animator;
     public string AnimationName = "melee";

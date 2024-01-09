@@ -88,7 +88,7 @@ public class PlayerCombat_PhaseState : GameState
             duration = 3f;
             AfterGame();
             gameManager.LoseCombat(true);
-            Economy.SubtractHealth(damageAmount);
+            EconomyManager.SubtractHealth(damageAmount);
         }
     }
 
@@ -226,12 +226,12 @@ public class PlayerCombat_PhaseState : GameState
         int winStreak = gameManager.GetWinStreak();
         int bonusGold = winStreak >= 5 ? 3 : winStreak >= 3 ? 2 : 1;
 
-        int totalGold = Economy.MIN_GOLD + winStreak + bonusGold;
-        int goldBonus = Mathf.FloorToInt(Economy.GetGold() / 10f);
+        int totalGold = EconomyManager.MIN_GOLD + winStreak + bonusGold;
+        int goldBonus = Mathf.FloorToInt(EconomyManager.GetGold() / 10f);
         totalGold += goldBonus;
 
-        Economy.AddGold(totalGold);
-        Economy.GainExperience(1);
+        EconomyManager.AddGold(totalGold);
+        EconomyManager.GainExperience(1);
 
         foreach (var floor in floors)
         {
