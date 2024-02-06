@@ -87,7 +87,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
             currentRound[currentStateIndex].OnEnterState();
         }
     }
-
+    private bool isLoadedScene;
     private void Update()
     {
         if (currentRoundIndex < rounds.Count)
@@ -116,8 +116,9 @@ public class GameStateSystem : Singleton<GameStateSystem>
                 currentState.IsFinished = true;
             }
 
-            if (EconomyManager.Health <= 0)
+            if (EconomyManager.Health <= 0 && !isLoadedScene)
             {
+                isLoadedScene = true;
                 var loseFeedback = GameObject.Find("Feedbacks/LoseLevelLoadFeedback").GetComponent<MMF_Player>();
                 if(loseFeedback) loseFeedback.PlayFeedbacks();
                 else SceneManager.LoadScene(2);

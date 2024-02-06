@@ -57,8 +57,8 @@ Material:
   m_Name: 6_Aura_Vertical
   m_Shader: {fileID: 4800000, guid: b430983578466934c944e7171b4c372c, type: 3}
   m_ShaderKeywords: ADDITIVECONFIG_ON BLUR_ON COLORRAMPGRAD_ON COLORRAMP_ON DISTORT_ON
-    HSV_ON PREMULTIPLYCOLOR_ON SHAPE1CONTRAST_ON SHAPE2_ON SHAPE3CONTRAST_ON SHAPE3DISTORT_ON
-    SHAPE3_ON
+    GLOW_ON HSV_ON PREMULTIPLYCOLOR_ON SHAPE1CONTRAST_ON SHAPE2_ON SHAPE3CONTRAST_ON
+    SHAPE3DISTORT_ON SHAPE3_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -178,7 +178,7 @@ Material:
     - _FadeTransition: 0.075
     - _FishEyeUvAmount: 0.35
     - _Glow: 0
-    - _GlowGlobal: 1
+    - _GlowGlobal: 2
     - _HandDrawnAmount: 10
     - _HandDrawnSpeed: 5
     - _HsvBright: 1.43
@@ -223,9 +223,9 @@ Material:
     - _Shape2Brightness: 0
     - _Shape2ColorWeight: 2
     - _Shape2Contrast: 1
-    - _Shape2DistortAmount: 0.5
-    - _Shape2DistortXSpeed: 0.1
-    - _Shape2DistortYSpeed: 0.1
+    - _Shape2DistortAmount: 10
+    - _Shape2DistortXSpeed: 2.5
+    - _Shape2DistortYSpeed: 2.97
     - _Shape2RotationOffset: 0
     - _Shape2RotationSpeed: 0
     - _Shape2XSpeed: 0

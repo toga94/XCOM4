@@ -71,12 +71,12 @@ public class GridSystemVisualSingle : MonoBehaviour
         if (InventoryGrid.Instance.HasAnyUnitOnInventoryPosition(gridPosition))
         {
             debugText = $"{gridPosition.ToString()} \n {InventoryGrid.Instance.GetUnitAtInventoryPosition(gridPosition).GetUnitNameWithLevel}";
-            //material.SetFloat("_NegativeAmount", 1f);
+            material.SetFloat("_NegativeAmount", 1f);
         }
         else
         {
             debugText = gridPosition.ToString();
-            // material.SetFloat("_NegativeAmount", 0f);
+             material.SetFloat("_NegativeAmount", 0f);
         }
 
         return debugText;

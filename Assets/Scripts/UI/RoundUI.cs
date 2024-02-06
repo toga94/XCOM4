@@ -24,7 +24,6 @@ public class RoundUI : MonoBehaviour
     void UpdateText()
     {
         ChangeText();
-        
     }
 
     private void ChangeText()

@@ -2,8 +2,12 @@ using Lean.Pool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using Unity.Collections;
+using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class PlayerListUI : Singleton<PlayerListUI>
 {
@@ -85,19 +89,23 @@ public class PlayerListUI : Singleton<PlayerListUI>
             }
             else
             {
-                playerNameText.text = StrikeThrough($"{playerData.PlayerName}  {playerData.playerHealth}");
+                playerNameText.text = StrikeThrough($"{playerData.PlayerName} - {playerData.playerHealth} HP");
                 playerNameText.color = Color.grey;
             }
         }
     }
+
+
     public string StrikeThrough(string s)
     {
-        string strikethrough = "";
+        StringBuilder stringBuilder = new StringBuilder();
+
         foreach (char c in s)
         {
-            strikethrough = strikethrough + c + '\u0336';
+            stringBuilder.Append(c).Append('\u0336');
         }
-        return strikethrough;
+
+        return stringBuilder.ToString();
     }
     private void ClearPlayerList()
     {
