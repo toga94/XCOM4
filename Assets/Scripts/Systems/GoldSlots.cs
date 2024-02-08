@@ -3,6 +3,7 @@ using UnityEngine;
 public class GoldSlots : MonoBehaviour
 {
     [SerializeField] private GameObject[] slots;
+    [SerializeField] private MeshRenderer[] slotsObjMaterial;
     void Start()
     {
         EconomyManager.OnGoldChanged += UpdateSlot;
@@ -16,7 +17,10 @@ public class GoldSlots : MonoBehaviour
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i] == null) break;
-            slots[i].SetActive(i < gold / 10);
+            bool state = i < gold / 10;
+            slots[i].SetActive(state);
+           if(!state) slotsObjMaterial[i].material.DisableKeyword("_EMISSION");
+           else slotsObjMaterial[i].material.EnableKeyword("_EMISSION");
         }
     }
 }
