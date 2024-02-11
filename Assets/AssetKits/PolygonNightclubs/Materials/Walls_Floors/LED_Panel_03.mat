@@ -106,7 +106,8 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 0.3223858, g: 1, b: 0, a: 0}
     - _Color1: {r: 0, g: 0, b: 0, a: 0}
-    - _Colour_01: {r: 0, g: 1, b: 0.00222373, a: 0}
-    - _Colour_02: {r: 0, g: 0, b: 0, a: 0}
+    - _Colour_01: {r: 0.9137255, g: 0.1764706, b: 0.1764706, a: 0}
+    - _Colour_02: {r: 0.3207547, g: 0.11952651, b: 0.11952651, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Speed: {r: 0, g: 0.5, b: 0, a: 0}
+  m_BuildTextureStacks: []
