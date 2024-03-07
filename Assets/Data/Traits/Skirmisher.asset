@@ -19,4 +19,41 @@ MonoBehaviour:
   traitEffectsLevel: 0200000001000000
   traitSprite: {fileID: 21300000, guid: 9e23c74e16b244bb19edf0175baaa545, type: 3}
   traitEffects:
-  - effectDescription: Gain bonus attack damage
+  - effectDescription: Gain +10 bonus attack damage
+    TraitAura: 0
+    EffectOnlyForTraitOwners: 0
+    criticalDamagePercent: 0
+    attackSpeed: 0
+    skillDamage: 0
+    physicalDamage: 0
+    healthPoint: 0
+    healthRegen: 0
+    manaPoint: 0
+    manaRegen: 0
+    evasion: 0
+    damageShield: 0
+    oneTime: 0
+    atStart: 0
+    timer: 0
+    cond_Damage: 0
+    cond_HealthPoint: 0
+    cond_ManaPoint: 0
+  - effectDescription: Gain +3 bonus attack damage
+    TraitAura: 0
+    EffectOnlyForTraitOwners: 0
+    criticalDamagePercent: 0
+    attackSpeed: 0
+    skillDamage: 0
+    physicalDamage: 0
+    healthPoint: 0
+    healthRegen: 0
+    manaPoint: 0
+    manaRegen: 0
+    evasion: 0
+    damageShield: 0
+    oneTime: 0
+    atStart: 0
+    timer: 0
+    cond_Damage: 0
+    cond_HealthPoint: 0
+    cond_ManaPoint: 0

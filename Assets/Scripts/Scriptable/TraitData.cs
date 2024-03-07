@@ -12,4 +12,8 @@ public partial class TraitData : ScriptableObject
 
     public TraitEffect[] traitEffects;
 
+    public void Use() {
+
+    }
+
 }

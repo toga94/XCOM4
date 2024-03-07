@@ -25,7 +25,7 @@ public class PlayerAI : Singleton<PlayerAI>
             PlayerData player = new PlayerDataBuilder()
                 .SetPlayerName(RandomUsernameGenerator.GenerateRandomUsername())
                 .SetPlayerLevel(1)
-                .SetPlayerMoney(20)
+                .SetPlayerMoney(40)
                 .SetPlayerHealth(100)
                 .Build();
             player.roundBoughts = new List<RoundBought>();

@@ -66,46 +66,65 @@ public class TraitsUI : Singleton<TraitsUI>
         return traitdata.traitSprite;
     }
 
-    //public Color GetTraitSpriteColor(TraitType trait, int level)
+    //private Color GetTraitSpriteColor(TraitType trait, int level)
     //{
     //    TraitData traitdata = TraitDataManager.Instance.FetchTraitData(trait);
     //    int maxStack = GetTraitMaxStack(trait);
 
-    //    int colorIndex = Mathf.Min(traitdata.traitEffectsLevel.Length - 1, level - 1);
-
-    //    Color[] traitColors = new Color[]
-    //    {
-    //        new Color(0f, 0f, 0f), // level 1 color
-    //        new Color(0f, 0f, 1f), // level 2 color
-    //        new Color(0f, 1f, 0f), // level 3 color
-    //        new Color(1f, 0.8f, 0f), // level 4 color
-    //        new Color(1f, 0f, 0f) // level 5 color
+    //    Color[] traitColors = new Color[] {
+    //    MMColors.Black, // level 1 color 
+    //    MMColors.Blue, // level 2 color
+    //    MMColors.DarkSeaGreen, // level 3 color
+    //    MMColors.Orangered, // level 4 color
+    //    MMColors.Red // level 5 color
     //    };
 
+    //    int colorIndex = 0;
+    //    var traitEffectLevel = traitdata.traitEffectsLevel;
+    //    var allTraitEffects = traitdata.traitEffectsLevel;
+    //    if (traitEffectLevel.Length > 0 && allTraitEffects[0] <= level) colorIndex = 4;
+    //    else if (traitEffectLevel.Length > 1 && allTraitEffects[1] <= level) colorIndex = 3;
+    //    else if (traitEffectLevel.Length > 2 && allTraitEffects[2] <= level) colorIndex = 2;
+    //    else if (traitEffectLevel.Length > 3 && allTraitEffects[3] <= level) colorIndex = 1;
+    //    else if (traitEffectLevel.Length > 4 && allTraitEffects[4] <= level) colorIndex = 0;
     //    return traitColors[colorIndex];
     //}
+
     private Color GetTraitSpriteColor(TraitType trait, int level)
     {
-        TraitData traitdata = TraitDataManager.Instance.FetchTraitData(trait);
+        TraitData traitData = TraitDataManager.Instance.FetchTraitData(trait);
         int maxStack = GetTraitMaxStack(trait);
 
-        Color[] traitColors = new Color[] {
-        MMColors.Black, // level 1 color 
-        MMColors.Blue, // level 2 color
-        MMColors.DarkSeaGreen, // level 3 color
-        MMColors.Orangered, // level 4 color
-        MMColors.Red // level 5 color
+        Color[] traitColors = new Color[]
+        {
+        MMColors.Black,          // level 1 color 
+        MMColors.Blue,           // level 2 color
+        MMColors.DarkSeaGreen,   // level 3 color
+        MMColors.Orangered,      // level 4 color
+        MMColors.Red              // level 5 color
         };
 
         int colorIndex = 0;
-        var traitEffectLevel = traitdata.traitEffectsLevel;
-        var allTraitEffects = traitdata.traitEffectsLevel;
-        if (traitEffectLevel.Length > 0 && allTraitEffects[0] <= level) colorIndex = 4;
-        else if (traitEffectLevel.Length > 1 && allTraitEffects[1] <= level) colorIndex = 3;
-        else if (traitEffectLevel.Length > 2 && allTraitEffects[2] <= level) colorIndex = 2;
-        else if (traitEffectLevel.Length > 3 && allTraitEffects[3] <= level) colorIndex = 1;
-        else if (traitEffectLevel.Length > 4 && allTraitEffects[4] <= level) colorIndex = 0;
+        var traitEffectLevel = traitData.traitEffectsLevel;
+        var allTraitEffects = traitData.traitEffectsLevel;
+        for (int i = 0; i < traitEffectLevel.Length; i++)
+        {
+            if (allTraitEffects[i] <= level)
+            {
+                colorIndex = 4 - i;
+                break;
+            }
+        }
+
         return traitColors[colorIndex];
+    }
+
+    public TraitData.TraitEffect GetActiveTraitEffects()
+    {
+        // Implement activeTraits here
+        // Add your logic to determine and return active traits
+        // This method should return TraitData.TraitEffect or a suitable type based on your requirements
+        return null; // Placeholder, replace with the actual implementation
     }
     private int GetTraitMaxStack(TraitType trait)
     {

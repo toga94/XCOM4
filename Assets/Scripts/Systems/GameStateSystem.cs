@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class GameStateSystem : Singleton<GameStateSystem>
 {
     // Events
@@ -12,6 +12,10 @@ public class GameStateSystem : Singleton<GameStateSystem>
 
     // Public variables
     public Slider timeSlider;
+   [SerializeField] private Transform bgState;
+    private float bgstateOffset = 20f;
+    private float bgstateAtStart;
+
     public bool finished;
 
     // Private variables
@@ -48,6 +52,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
 
     private void Awake()
     {
+
         gameStateList = new List<GameState>
         {
             new CarouselState(),
@@ -75,6 +80,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
     private MMF_Player mmf_nextround;
     private void Start()
     {
+        bgstateAtStart = bgState.transform.position.y;
         InitializeRound();
         mmf_nextround = GameManager.Instance.GetNextRoundMMF;
     }
@@ -128,6 +134,14 @@ public class GameStateSystem : Singleton<GameStateSystem>
             timeSlider.value = timer;
             timeSlider.maxValue = currentState.duration;
             currentState.OnUpdate();
+        }
+
+        if (timeSlider.IsActive())
+        {
+            bgState.transform.DOMoveY(bgstateAtStart, 0.3f).SetEase(Ease.OutBounce);
+        }
+        else {
+            bgState.transform.DOMoveY(bgstateAtStart + bgstateOffset, 0.3f).SetEase(Ease.OutBounce);
         }
     }
 
