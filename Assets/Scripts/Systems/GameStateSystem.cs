@@ -13,7 +13,7 @@ public class GameStateSystem : Singleton<GameStateSystem>
     // Public variables
     public Slider timeSlider;
    [SerializeField] private Transform bgState;
-    private float bgstateOffset = 20f;
+    private const float bgstateOffset = 35f;
     private float bgstateAtStart;
 
     public bool finished;
@@ -138,10 +138,10 @@ public class GameStateSystem : Singleton<GameStateSystem>
 
         if (timeSlider.IsActive())
         {
-            bgState.transform.DOMoveY(bgstateAtStart, 0.3f).SetEase(Ease.OutBounce);
+            bgState.transform.DOMoveY(bgstateAtStart, 0.5f).SetEase(Ease.OutBounce);
         }
         else {
-            bgState.transform.DOMoveY(bgstateAtStart + bgstateOffset, 0.3f).SetEase(Ease.OutBounce);
+            bgState.transform.DOMoveY(bgstateAtStart + bgstateOffset, 0.5f).SetEase(Ease.OutBounce);
         }
     }
 
