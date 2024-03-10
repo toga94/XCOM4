@@ -32,7 +32,7 @@ public class ChampionSelectionState : GameState
         allUnits.Select(u => u.GetComponent<HealthSystem>()).
             ToList().ForEach(d =>
             {
-                d.Heal(999999f);
+                d.Heal();
                 d.DecreaseMana(d.GetMana);
             });
     }

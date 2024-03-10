@@ -7,27 +7,35 @@ public partial class TraitData
     {
         public string effectDescription;
         [Header("Aura Settings")]
-        public bool TraitAura;
-        public bool EffectOnlyForTraitOwners;
+        public bool hasAura;
+        public bool effectOnlyForTraitOwners;
         [Header("Addional Parameters Settings")]
         public float criticalDamagePercent;
         public float attackSpeed;
         public float skillDamage;
         public float physicalDamage;
-        public float healthPoint;
+        public float healthPoints;
         public float healthRegen;
-        public float manaPoint;
+        public float manaPoints;
         public float manaRegen;
         public float evasion;
         public float damageShield;
+        public float vampirism;
 
         [Header("Conditions Settings")]
-        public bool oneTime;
-        public bool atStart;
-        public float timer;
-        public float cond_Damage;
-        public float cond_HealthPoint;
-        public float cond_ManaPoint;
-    }
+   
 
+        public ActivationTiming activationTiming;
+    
+        public float timer;
+        public float conditionDamage;
+        public float conditionHealthPoints;
+        public float conditionManaPoints;
+    }
+    public enum ActivationTiming
+    {
+        None,
+        OnUpdate,
+        AtStart
+    }
 }

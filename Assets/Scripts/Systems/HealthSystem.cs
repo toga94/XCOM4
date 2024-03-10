@@ -1,4 +1,4 @@
-using System;
+ using System;
 using UnityEngine;
 using MoreMountains.Feedbacks;
 
@@ -77,7 +77,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
         Health = HealthMax;
 
-        Heal(999999);
+        Heal();
     }
 
     public void TakeDamage(float value, bool isCritical)
@@ -120,10 +120,15 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public void DecreaseMana(float value)
     {
         GetMana -= value;
-        GetMana = Mathf.Clamp(GetMana, 0, manaMax);
+        // GetMana = Mathf.Clamp(GetMana, 0, manaMax);
+        if (GetMana < 0) GetMana = 0;
         OnManaChanged?.Invoke(GetMana, manaMax);
     }
-
+    public void SetManaZero()
+    {
+        GetMana = 0;
+        OnManaChanged?.Invoke(0, manaMax);
+    }
     public void IncreaseMana(float value)
     {
         GetMana += value;
@@ -131,7 +136,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         OnManaChanged?.Invoke(GetMana, manaMax);
     }
 
-    public void Heal(float value)
+    public void Heal(float value = 999999f)
     {
         HealthMax = unitObj.health * (unit.GetUnitLevel + 1);
         Health = Mathf.Min(Health + value, HealthMax);
@@ -152,6 +157,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
     private void OnDestroy()
     {
+        
         Destroy(canvasBar);
     }
 }

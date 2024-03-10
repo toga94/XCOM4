@@ -7,9 +7,7 @@ public class TraitDataManager : Singleton<TraitDataManager>
 
     private Dictionary<TraitType, TraitData> TraitDataDictionary {
         get {
-
             return traitDataList.ToDictionary(traitData => traitData.traitType);
-
         }
     }
 

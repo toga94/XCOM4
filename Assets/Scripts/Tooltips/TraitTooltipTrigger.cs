@@ -8,7 +8,6 @@ public class TraitTooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
     public TraitData traitData;
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
         TooltipSystem.Instance.ShowTrait(traitData);
     }
 

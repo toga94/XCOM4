@@ -55,7 +55,7 @@ public class PlayerCombat_PhaseState : GameState
                 Unit enemyUnit = gameManager.SpawnUnitAtPosition(enemyUnitsNames[i], enemyPosition[i], false);
                 Debug.Log(enemyUnitsNames[i] + enemyPosition[i]);
                 enemyUnit.OnGrid = true;
-                enemyUnit.GetComponent<HealthSystem>().DecreaseMana(999999);
+                enemyUnit.GetComponent<HealthSystem>().SetManaZero();
                 enemyUnits.Add(enemyUnit);
             }
             enemiesCount = enemyUnits.Count;
@@ -248,5 +248,10 @@ public class PlayerCombat_PhaseState : GameState
 
         IsCombatState = false;
         UnitPositionUtility.RefreshUnitsPosition();
+
+        unitsOnGrid = gameManager.GetAllUnitsOnGrid;
+        enemyUnitsOnGrid = gameManager.GetAllEnemyUnitsOnGrid;
+        unitsCount = unitsOnGrid.Count;
+        enemyUnitsCount = enemyUnitsOnGrid.Count;
     }
 }

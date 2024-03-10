@@ -135,18 +135,21 @@ public class TraitsUI : Singleton<TraitsUI>
     public Dictionary<TraitType, int> GetTraitsStacks(List<Unit> units)
     {
         Dictionary<TraitType, int> traitStack = new Dictionary<TraitType, int>();
-
+        HashSet<string> uniqueUnitNames = new HashSet<string>();
         foreach (Unit unit in units)
         {
-            foreach (TraitType trait in unit.traits)
+            if (uniqueUnitNames.Add(unit.GetUnitName))
             {
-                if (traitStack.ContainsKey(trait))
+                foreach (TraitType trait in unit.traits)
                 {
-                    traitStack[trait]++;
-                }
-                else
-                {
-                    traitStack.Add(trait, 1);
+                    if (traitStack.ContainsKey(trait))
+                    {
+                        traitStack[trait]++;
+                    }
+                    else
+                    {
+                        traitStack.Add(trait, 1);
+                    }
                 }
             }
         }
