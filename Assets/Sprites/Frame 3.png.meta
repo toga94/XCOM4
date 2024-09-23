@@ -23,6 +23,9 @@ TextureImporter:
   - first:
       213: 7679639329021130305
     second: Frame 3_4
+  - first:
+      213: -42057020258486058
+    second: Frame 3_7
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -262,7 +265,7 @@ TextureImporter:
         width: 354
         height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,7 +286,7 @@ TextureImporter:
         width: 126
         height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,6 +294,27 @@ TextureImporter:
       bones: []
       spriteID: 1467c61084f839a60800000000000000
       internalID: 7679639329021130305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 3_7
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 287
+        width: 448
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d87e27ec559a6ff0800000000000000
+      internalID: -42057020258486058
       vertices: []
       indices: 
       edges: []
