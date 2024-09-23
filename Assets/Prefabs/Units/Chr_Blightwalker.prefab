@@ -132,6 +132,7 @@ MonoBehaviour:
   isOwn: 0
   UnitPosition: {x: 0, y: 0, z: 0}
   traits: 
+  traitEffects: []
   charState: 0
   unitObject: {fileID: 11400000, guid: fd59c07299a5af14e9601fd60070d2f6, type: 2}
 --- !u!114 &3845131320017173537
@@ -183,6 +184,7 @@ MonoBehaviour:
   ability: {fileID: 8244803003042930736}
   superAbility: {fileID: 8244803003042930736}
   enemyOnGrid: []
+  mmf_player: {fileID: 0}
   enemies: []
 --- !u!114 &8244803003042930736
 MonoBehaviour:
@@ -255,7 +257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6568554942683854806
 Transform:
   m_ObjectHideFlags: 0
@@ -2719,7 +2721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6568882762969869148
 Transform:
   m_ObjectHideFlags: 0

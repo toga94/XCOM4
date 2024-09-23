@@ -16,6 +16,7 @@ public class Unit : MonoBehaviour
     public Vector3 UnitPosition;
     public GridPosition UnitGridPosition;
     public List<TraitType> traits;
+    public List<TraitData.TraitEffect> traitEffects;
     public CharState charState;
 
     [SerializeField]private UnitObject unitObject;

@@ -7,4 +7,5 @@ public struct RoundBought
     public List<Vector3> gridUnitsPositions;
     public List<string> inventoryUnitsName;
     public List<Vector3> inventoryUnitsPosition;
+    public List<int> money;
 }

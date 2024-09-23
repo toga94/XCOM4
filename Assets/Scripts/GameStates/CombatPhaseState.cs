@@ -29,6 +29,7 @@ public class CombatPhaseState : GameState
         {
             enemyhp.OnDie += OnEnemyKilled;
         }
+
     }
 
 

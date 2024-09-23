@@ -18,7 +18,8 @@ public class UnitCardButton : MonoBehaviour, IPoolable
     private Coroutine checkUpgradeCoroutine;
     InventoryGrid inventoryGrid;
     private bool isUIUpdateNeeded = true;
-    [SerializeField] private GameObject disabledui;
+    [SerializeField] private GameObject[] disableui;
+    [SerializeField] private GameObject soldout;
     [SerializeField] private Button unitcardbutton;
 
 
@@ -73,7 +74,14 @@ public class UnitCardButton : MonoBehaviour, IPoolable
         isUIUpdateNeeded = false;
     }
 
-
+    public void ReEnable() {
+        unitcardbutton.enabled = true;
+        foreach (var item in disableui)
+        {
+            item.SetActive(true);
+        }
+        soldout.SetActive(false);
+    }
 
     public void OnClick()
     {
@@ -85,7 +93,11 @@ public class UnitCardButton : MonoBehaviour, IPoolable
             if (EconomyManager.BuyUnit(unit)) {
                 gameManager.SpawnUnitAtInventory(CharacterName, true);
                 unitcardbutton.enabled = false;
-                disabledui.SetActive(true);
+                foreach (var item in disableui)
+                {
+                    item.SetActive(false);
+                }
+                soldout.SetActive(true);
             }
               
         }

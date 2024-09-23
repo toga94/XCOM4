@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Blightwalker
   m_EditorClassIdentifier: 
   unitName: Blightwalker
-  unitImage: {fileID: 6407455098029360505, guid: 505517f53aa56314194bca1c81fa3ddf, type: 3}
+  unitImage: {fileID: 21300000, guid: 3e4bce5241c7642d392b39886c15f562, type: 3}
   health: 325
   healthRegen: 1
   defence: 5

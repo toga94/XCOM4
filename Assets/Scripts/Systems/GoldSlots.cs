@@ -5,12 +5,13 @@ public class GoldSlots : MonoBehaviour
     [SerializeField] private Animator[] slots;
     [SerializeField] private MeshRenderer[] slotsRender;
     [SerializeField] private GameObject[] slotsLight;
-
-    void Start()
+    [SerializeField] private bool isPlayer;
+    
+    void Update()
     {
-        EconomyManager.OnGoldChanged += UpdateSlot;
+       // EconomyManager.OnGoldChanged += UpdateSlot;
 
-        UpdateSlot(EconomyManager.GetGold());
+        UpdateSlot(isPlayer ? EconomyManager.GetGold() : PlayerListUI.Instance.CurBattlePlayerAI.playerMoney);
     }
 
 
@@ -22,8 +23,8 @@ public class GoldSlots : MonoBehaviour
             bool state = i < gold / 10;
             slotsLight[i].SetActive(state);
             slots[i].speed = state ? 1 : 0;
-           if(!state) slotsRender[i].material.DisableKeyword("_EMISSION");
-          else slotsRender[i].material.EnableKeyword("_EMISSION");
+            if (!state) slotsRender[i].material.DisableKeyword("_EMISSION");
+            else slotsRender[i].material.EnableKeyword("_EMISSION");
         }
     }
 }

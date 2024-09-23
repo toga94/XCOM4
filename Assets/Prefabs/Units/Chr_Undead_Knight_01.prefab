@@ -1651,6 +1651,7 @@ MonoBehaviour:
   isOwn: 0
   UnitPosition: {x: 0, y: 0, z: 0}
   traits: 
+  traitEffects: []
   charState: 0
   unitObject: {fileID: 11400000, guid: e4c93b4312d78164ab15609185082dfb, type: 2}
 --- !u!114 &3467676677698262277
@@ -1702,6 +1703,7 @@ MonoBehaviour:
   ability: {fileID: 1386649804203288190}
   superAbility: {fileID: 1386649804203288190}
   enemyOnGrid: []
+  mmf_player: {fileID: 0}
   enemies: []
 --- !u!114 &1386649804203288190
 MonoBehaviour:

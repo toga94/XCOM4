@@ -25,7 +25,7 @@ RectTransform:
   m_GameObject: {fileID: 20285321453202171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 24.267815, y: 24.267815, z: 24.267815}
+  m_LocalScale: {x: 24, y: 22, z: 24}
   m_Children:
   - {fileID: 3016215087094136137}
   - {fileID: 5353338538657420484}
@@ -39,8 +39,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.62, y: -0.44}
-  m_SizeDelta: {x: 2.4060001, y: 0.22529984}
+  m_AnchoredPosition: {x: 1.62, y: 0.65}
+  m_SizeDelta: {x: 2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1013995431109419742
 GameObject:
@@ -444,7 +444,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.78, y: 0.26}
+  m_AnchoredPosition: {x: -0.78, y: 1.23}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5071416763535879551
@@ -611,7 +611,6 @@ MonoBehaviour:
   healthPerBar: 100
   HealthBarOffsetZ: 100
   HealthBarOffsetYPercent: 10
-  isOwn: 0
   offset: {x: -1, y: 7, z: 0}
 --- !u!114 &2480079346174020437
 MonoBehaviour:

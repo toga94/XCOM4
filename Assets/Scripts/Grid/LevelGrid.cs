@@ -40,14 +40,9 @@ public class LevelGrid : Singleton<LevelGrid>
 
     private void Awake()
     {
-
         gridSystem = new GridSystemHex<GridObjectHex>(width, height, cellSize,
                  (GridSystemHex<GridObjectHex> g, GridPosition gridPosition) => new GridObjectHex(g, gridPosition));
-
     }
-
-
-
 
     /// <summary>
     /// //////////
@@ -84,7 +79,6 @@ public class LevelGrid : Singleton<LevelGrid>
         GridObjectHex gridObject = gridSystem.GetGridObjectHex(unitPos);
         if (!gridObject.HasAnyUnit())
         {
-           // Debug.LogError(unitPos.ToString() + " is empty");
             return;
         }
         gridObject.RemoveUnit(unit);

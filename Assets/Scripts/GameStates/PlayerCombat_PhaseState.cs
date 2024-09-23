@@ -74,6 +74,8 @@ public class PlayerCombat_PhaseState : GameState
             // Example:
             SceneManager.LoadScene(3);
         }
+
+        unitsOnGrid.ForEach(unit => unit.traitEffects = TraitEffectManager.Instance.TraitEffectsForUnit(unit));
     }
 
 

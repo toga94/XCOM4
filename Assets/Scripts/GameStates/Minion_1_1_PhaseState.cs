@@ -93,6 +93,7 @@ public class Minion_1_1_PhaseState : GameState
         unitsCount = unitsOnGrid.Count;
 
         unitsOnGrid.ForEach(unit => unit.GetComponent<HealthSystem>().OnDie += OnUnitKilled);
+        unitsOnGrid.ForEach(unit => unit.traitEffects = TraitEffectManager.Instance.TraitEffectsForUnit(unit));
     }
 
     private void OnUnitKilled(bool value, GameObject killedUnit)

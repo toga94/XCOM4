@@ -43,7 +43,7 @@ public class CardWindow : MonoBehaviour
         {
             GameObject card = unitCardPool.Spawn(transform.position, Quaternion.identity, itemPanel.transform) as GameObject;
             Transform cardTransform = card.transform;
-            Image cardBgImage = cardTransform.Find("TextFrame").GetComponent<Image>();
+            Image cardBgImage = cardTransform.Find("bg").GetComponent<Image>();
 
             UnitCardButton unitCardButton = card.GetComponent<UnitCardButton>();
             unitCardButton.unit = item.Prefab.GetComponent<Unit>();
@@ -58,18 +58,18 @@ public class CardWindow : MonoBehaviour
             unitCardButton.rareOptions = cardRarity;
 
             GameObject traitPanel = cardTransform.Find("traitPanel").gameObject;
-            GameObject DisabledPanel = cardTransform.Find("Disabled").gameObject;
+          //  GameObject[] DisabledPanel = unitCardButton.;
 
             TraitUI(item, traitPanel);
-            ReEnableUI(card, DisabledPanel);
-
+            // ReEnableUI(card, DisabledPanel);
+            unitCardButton.ReEnable();
             unitCardButton.CheckUpgrade();
         }
     }
 
     private static readonly Dictionary<RareOptions, Color> RarityColors = new Dictionary<RareOptions, Color>
     {
-        { RareOptions.Common, new Color(0.5f, 0.5f, 0.5f) },          // Grey
+        { RareOptions.Common, new Color(0.2f, 0.76f, 0.996f) },          // Grey
         { RareOptions.Uncommon, new Color(0.016f, 0.247f, 0.831f) },  // #043FD4
         { RareOptions.Rare, new Color(0.961f, 0f, 0.659f) },          // #F500A8
         { RareOptions.Epic, new Color(0.839f, 0.714f, 0.051f) },      // #D6B50D
@@ -101,12 +101,7 @@ public class CardWindow : MonoBehaviour
         }
     }
 
-    private static void ReEnableUI(GameObject card, GameObject DisabledPanel)
-    {
-        DisabledPanel.SetActive(false);
-        Button unitCardButton = card.GetComponent<Button>();
-        unitCardButton.enabled = true;
-    }
+
 
     private static void RarityGold(GameObject card, RareOptions cardRarity)
     {

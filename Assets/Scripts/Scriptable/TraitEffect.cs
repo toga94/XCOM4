@@ -23,7 +23,7 @@ public partial class TraitData
         public float vampirism;
 
         [Header("Conditions Settings")]
-   
+        
 
         public ActivationTiming activationTiming;
     
@@ -35,7 +35,7 @@ public partial class TraitData
     public enum ActivationTiming
     {
         None,
-        OnUpdate,
-        AtStart
+        OnStart,
+        OnUpdate
     }
 }

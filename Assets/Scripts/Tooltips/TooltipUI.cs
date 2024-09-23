@@ -63,29 +63,7 @@ public class TooltipUI : MonoBehaviour
         //return traitdata.traitEffectsLevel[traitdata.traitEffectsLevel.Length - 1];
         return traitdata.traitEffectsLevel[0];
     }
-    private Color GetTraitColor(TraitType trait, int level)
-    {
-        TraitData traitdata = TraitDataManager.Instance.FetchTraitData(trait);
-        int maxStack = GetTraitMaxStack(trait);
 
-        Color[] traitColors = new Color[] {
-        new Color(0f, 0f, 0f), // level 1 color
-        new Color(0f, 0f, 1f), // level 2 color
-        new Color(0f, 1f, 0f), // level 3 color
-        new Color(1f, 0.8f, 0f), // level 4 color
-        new Color(1f, 0f, 0f) // level 5 color
-    };
-        int colorIndex = 0;
-
-        if (traitdata.traitEffectsLevel.Length > 0 && traitdata.traitEffectsLevel[0] <= level) colorIndex = 4;
-        else if (traitdata.traitEffectsLevel.Length > 1 && traitdata.traitEffectsLevel[1] <= level) colorIndex = 3;
-        else if (traitdata.traitEffectsLevel.Length > 2 && traitdata.traitEffectsLevel[2] <= level) colorIndex = 2;
-        else if (traitdata.traitEffectsLevel.Length > 3 && traitdata.traitEffectsLevel[3] <= level) colorIndex = 1;
-        else if (traitdata.traitEffectsLevel.Length > 4 && traitdata.traitEffectsLevel[4] <= level) colorIndex = 0;
-
-
-        return traitColors[colorIndex];
-    }
     private void Update()
     {
         if (Application.isEditor)
