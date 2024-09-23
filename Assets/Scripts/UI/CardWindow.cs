@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Lean.Pool;
 using System.Collections.Generic;
-
+using DG.Tweening;
 public class CardWindow : MonoBehaviour
 {
     [SerializeField]
@@ -39,10 +39,21 @@ public class CardWindow : MonoBehaviour
         traitCardItemUIPool.DespawnAll();
         unitCardPool.DespawnAll();
 
-        foreach (UnitObject item in e)
+        for (int i = 0; i < e.Length; i++)
         {
+            UnitObject item = e[i];
+
+            // Spawn the card
             GameObject card = unitCardPool.Spawn(transform.position, Quaternion.identity, itemPanel.transform) as GameObject;
             Transform cardTransform = card.transform;
+
+            // Set the initial scale for the animation
+            cardTransform.localScale = Vector3.zero;
+
+            // Card appearance animation (draw effect)
+            float delay = i * 0.2f; // Delay each card animation slightly for staggered effect
+            cardTransform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack).SetDelay(delay); // Animate scale from 0 to 1
+
             Image cardBgImage = cardTransform.Find("bg").GetComponent<Image>();
 
             UnitCardButton unitCardButton = card.GetComponent<UnitCardButton>();
@@ -58,10 +69,8 @@ public class CardWindow : MonoBehaviour
             unitCardButton.rareOptions = cardRarity;
 
             GameObject traitPanel = cardTransform.Find("traitPanel").gameObject;
-          //  GameObject[] DisabledPanel = unitCardButton.;
 
             TraitUI(item, traitPanel);
-            // ReEnableUI(card, DisabledPanel);
             unitCardButton.ReEnable();
             unitCardButton.CheckUpgrade();
         }
