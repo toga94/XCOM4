@@ -26,6 +26,15 @@ TextureImporter:
   - first:
       213: -42057020258486058
     second: Frame 3_7
+  - first:
+      213: -8806584682665874567
+    second: Frame 3_8
+  - first:
+      213: 485170780037601017
+    second: Frame 3_9
+  - first:
+      213: -1029002164623498257
+    second: Frame 3_10
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -266,7 +275,7 @@ TextureImporter:
         height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 162, y: 29, z: 162, w: 30}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -307,14 +316,77 @@ TextureImporter:
         width: 448
         height: 141
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 202, y: 55, z: 205, w: 51}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 6d87e27ec559a6ff0800000000000000
       internalID: -42057020258486058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 3_8
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 66
+        width: 434
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 22, y: 17, z: 33, w: 20}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97bed41f3e9b8c580800000000000000
+      internalID: -8806584682665874567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 3_9
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 92
+        width: 184
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 21, y: 24, z: 21, w: 22}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f65a8ff04cabb600800000000000000
+      internalID: 485170780037601017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 3_10
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 303
+        width: 496
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 78, y: 42, z: 46, w: 39}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe32280bbff38b1f0800000000000000
+      internalID: -1029002164623498257
       vertices: []
       indices: 
       edges: []

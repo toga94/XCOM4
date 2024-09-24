@@ -1,11 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using System;
 using UnityEngine.UI;
 using Lean.Pool;
 using System.Collections.Generic;
-using System.Linq;
 
 public class UnitWorldUI : MonoBehaviour
 {
@@ -13,23 +11,20 @@ public class UnitWorldUI : MonoBehaviour
     [SerializeField] private Unit unit;
     [SerializeField] private HealthSystem healthSystem;
     [SerializeField] private LeanGameObjectPool hpLinePool;
-    private Transform root;
-    [SerializeField] private Image hpSldier;
+    [SerializeField] private Image hpSlider;
+    [SerializeField] private Image manaSlider;
+    [SerializeField] private Image hpDamageSlider;
 
     [SerializeField] private Sprite hpPlayerSprite;
     [SerializeField] private Sprite hpEnemySprite;
 
-
-    [SerializeField] private Image manaSldier;
-    [SerializeField] private Image hpDamageSldier;
     [SerializeField] private bool is3D;
     [SerializeField] private HorizontalLayoutGroup horizontalLayoutGroup;
     [SerializeField] private int healthPerBar = 100;
+
+    private Transform root;
     private bool uiInit;
     private Camera mainCamera;
-    public float HealthBarOffsetZ;
-    public float HealthBarOffsetYPercent = 10f;
-    private bool isOwn;
     private List<GameObject> hpLine = new List<GameObject>();
     private Canvas canvas;
     private RectTransform rectTransform;
@@ -40,33 +35,23 @@ public class UnitWorldUI : MonoBehaviour
     private float delay = 2f; // 2 seconds delay
     private float timeElapsed;
     private RectTransform canvasRect;
+    private bool isOwn;
 
     public void SetRoot(Transform value, GameObject canvasObj, bool isOwn)
     {
         canvas = canvasObj.GetComponent<Canvas>();
-        if (is3D)
-        {
-            root = transform.root;
-        }
-        else
-        {
-            root = value;
-        }
+        root = is3D ? transform.root : value;
+
         unit = root.GetComponent<Unit>();
+        healthSystem = root.GetComponent<HealthSystem>();
+
         maxHp = unit.MaxHealth;
         curLevel = unit.GetUnitLevel.ToString();
-        healthSystem = root.GetComponent<HealthSystem>();
         this.isOwn = isOwn;
-        if (isOwn)
-        {
-            hpSldier.sprite = hpPlayerSprite;
-        }
-        else {
-            hpSldier.sprite = hpEnemySprite;
-        }
 
+        hpSlider.sprite = isOwn ? hpPlayerSprite : hpEnemySprite;
 
-            uiInit = true;
+        uiInit = true;
     }
 
     private void Start()
@@ -74,61 +59,26 @@ public class UnitWorldUI : MonoBehaviour
         mainCamera = Camera.main;
         levelText = GetComponentInChildren<TextMeshProUGUI>();
         hpLinePool = GetComponent<LeanGameObjectPool>();
+        rectTransform = GetComponent<RectTransform>();
         canvasRect = canvas.GetComponent<RectTransform>();
+
         healthSystem.OnHealthChanged += UpdateHp;
         healthSystem.OnManaChanged += UpdateMana;
+
         unitTransform = unit.transform;
-        rectTransform = GetComponent<RectTransform>();
-
-        
-    }
-
-    private void UpdateHp(float curHp, int level, float maxhp)
-    {
-        if (!uiInit || !hpSldier) return;
-
-        float value = Mathf.Clamp(curHp / maxhp, 0, 1);
-        hpSldier.fillAmount = value;
-
-        int numBars = Mathf.FloorToInt(maxhp) / healthPerBar;
-
-        maxHp = maxhp;
-        if (horizontalLayoutGroup != null) horizontalLayoutGroup?.CalculateLayoutInputHorizontal();
-
-        int numSpawnedBars = hpLine.Count;
-        while (numSpawnedBars < numBars)
-        {
-            GameObject item = hpLinePool.Spawn(hpSldier.transform);
-            hpLine.Add(item);
-            item.transform.SetParent(hpSldier.transform, false);
-            numSpawnedBars++;
-        }
-
-        curLevel = level.ToString();
-        levelText.text = curLevel;
-    }
-
-    private void UpdateMana(float curMana, float maxMana)
-    {
-        if (!uiInit) return;
-
-        float value = Mathf.Clamp(curMana / maxMana, 0, 1);
-        manaSldier.fillAmount = value;
-        levelText.text = curLevel;
     }
 
     private void Update()
     {
-        if (hpDamageSldier.fillAmount != hpSldier.fillAmount)
-        {
-            hpDamageSldier.fillAmount = Mathf.Lerp(hpDamageSldier.fillAmount, hpSldier.fillAmount, Time.deltaTime * 2f);
-        }
+        if (!uiInit) return;
 
-        Vector3 headPosition = unitTransform.position;
-        rectTransform.anchoredPosition = WorldToCanvasPosition(canvasRect, mainCamera, headPosition + offset);
+        // Smooth damage slider
+        UpdateDamageSlider();
 
-        UpdateElement();
+        // Update UI position based on world position
+        UpdateUIPosition();
 
+        // Periodically fix HP bar alignment
         timeElapsed += Time.deltaTime;
         if (timeElapsed >= delay)
         {
@@ -137,51 +87,81 @@ public class UnitWorldUI : MonoBehaviour
         }
     }
 
-    private Vector2 WorldToCanvasPosition(RectTransform canvas, Camera camera, Vector3 position)
+    private void UpdateHp(float curHp, int level, float maxhp)
     {
-        Vector2 temp = camera.WorldToViewportPoint(position);
-        temp.x *= canvas.sizeDelta.x;
-        temp.y *= canvas.sizeDelta.y;
-        temp.x -= canvas.sizeDelta.x * canvas.pivot.x;
-        temp.y -= canvas.sizeDelta.y * canvas.pivot.y;
-        return temp;
+        if (!uiInit || !hpSlider) return;
+
+        curLevel = level.ToString();
+        levelText.text = curLevel;
+
+        maxHp = maxhp;
+
+        // Update HP UI
+        UpdateHealthBar(curHp, maxhp);
+        UpdateHealthBarsCount(maxhp);
     }
 
-    private void UpdateElement()
+    private void UpdateMana(float curMana, float maxMana)
     {
-        float curHp = healthSystem.Health;
-        int level = unit.GetUnitLevel;
-        float maxHp = healthSystem.HealthMax;
+        if (!uiInit || !manaSlider) return;
 
+        float value = Mathf.Clamp(curMana / maxMana, 0, 1);
+        manaSlider.fillAmount = value;
+        levelText.text = curLevel;
+    }
+
+    private void UpdateHealthBar(float curHp, float maxHp)
+    {
         float hpValue = Mathf.Clamp(curHp / maxHp, 0, 1);
-        hpSldier.fillAmount = hpValue;
-        hpDamageSldier.fillAmount = Mathf.Lerp(hpDamageSldier.fillAmount, hpValue, Time.deltaTime * 2f);
+        hpSlider.fillAmount = hpValue;
+        hpDamageSlider.fillAmount = Mathf.Lerp(hpDamageSlider.fillAmount, hpValue, Time.deltaTime * 2f);
+    }
 
+    private void UpdateHealthBarsCount(float maxHp)
+    {
         int numBars = Mathf.FloorToInt(maxHp) / healthPerBar;
         int numSpawnedBars = hpLine.Count;
 
         while (numSpawnedBars < numBars)
         {
-            GameObject item = hpLinePool.Spawn(hpSldier.transform);
+            GameObject item = hpLinePool.Spawn(hpSlider.transform);
             hpLine.Add(item);
-            item.transform.SetParent(hpSldier.transform, false);
+            item.transform.SetParent(hpSlider.transform, false);
             numSpawnedBars++;
         }
+    }
 
-        curLevel = level.ToString();
-        levelText.text = curLevel;
+    private void UpdateDamageSlider()
+    {
+        if (hpDamageSlider.fillAmount != hpSlider.fillAmount)
+        {
+            hpDamageSlider.fillAmount = Mathf.Lerp(hpDamageSlider.fillAmount, hpSlider.fillAmount, Time.deltaTime * 2f);
+        }
+    }
+
+    private void UpdateUIPosition()
+    {
+        Vector3 headPosition = unitTransform.position;
+        rectTransform.anchoredPosition = WorldToCanvasPosition(canvasRect, mainCamera, headPosition + offset);
+    }
+
+    private Vector2 WorldToCanvasPosition(RectTransform canvas, Camera camera, Vector3 position)
+    {
+        Vector2 viewportPos = camera.WorldToViewportPoint(position);
+        viewportPos.x *= canvas.sizeDelta.x;
+        viewportPos.y *= canvas.sizeDelta.y;
+        viewportPos.x -= canvas.sizeDelta.x * canvas.pivot.x;
+        viewportPos.y -= canvas.sizeDelta.y * canvas.pivot.y;
+        return viewportPos;
     }
 
     private void FixHpLine()
     {
         int numBars = Mathf.FloorToInt(maxHp) / healthPerBar;
 
-        for (int i = 0; i < hpLine.Count; i++)
+        foreach (var item in hpLine)
         {
-            GameObject item = hpLine[i];
-            item.transform.SetPositionAndRotation(
-                new Vector3(transform.position.x, 0, 0),
-                Quaternion.identity);
+            item.transform.SetPositionAndRotation(new Vector3(transform.position.x, 0, 0), Quaternion.identity);
         }
 
         if (horizontalLayoutGroup != null)

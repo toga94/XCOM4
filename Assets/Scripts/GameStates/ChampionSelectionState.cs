@@ -21,11 +21,6 @@ public class ChampionSelectionState : GameState
             new Vector3(gridSizeMonitor.position.x, 1.67f, gridSizeMonitor.position.z), 1f
             ).SetEase(Ease.OutElastic);
         // gameManager.gridSizeTextMesh.gameObject.SetActive(true);
-        CardShop cardShop = CardShop.Instance;
-        cardShop.OpenShopMenu();
-        cardShop.RandomSelect5ItemForShopFree();
-        UnitPositionUtility.RefreshUnitsPosition();
-        
 
         List<Unit> allUnits = gameManager.GetAllUnits;
 
@@ -35,6 +30,18 @@ public class ChampionSelectionState : GameState
                 d.Heal();
                 d.DecreaseMana(d.GetMana);
             });
+        UnitPositionUtility.RefreshUnitsPosition();
+
+        CardShop cardShop = CardShop.Instance;
+
+        DOVirtual.DelayedCall(1f, () =>
+        {
+            cardShop.OpenShopMenu();
+            cardShop.RandomSelect5ItemForShopFree();
+        });
+      
+        
+
     }
 
 

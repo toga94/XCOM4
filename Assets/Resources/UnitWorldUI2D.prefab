@@ -597,20 +597,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1b28f376a273641a6f045ffc1b2ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelText: {fileID: 0}
+  levelText: {fileID: 7076279708841081290}
   unit: {fileID: 0}
   healthSystem: {fileID: 0}
-  hpLinePool: {fileID: 0}
-  hpSldier: {fileID: 795989851512036568}
+  hpLinePool: {fileID: 2480079346174020437}
+  hpSlider: {fileID: 795989851512036568}
+  manaSlider: {fileID: 614931868707418387}
+  hpDamageSlider: {fileID: 7977040515169983578}
   hpPlayerSprite: {fileID: 21300000, guid: 517383715b279044ca0c019be998b455, type: 3}
   hpEnemySprite: {fileID: 21300000, guid: f7afa07efe3946f46a956863c1db5d22, type: 3}
-  manaSldier: {fileID: 614931868707418387}
-  hpDamageSldier: {fileID: 7977040515169983578}
   is3D: 0
   horizontalLayoutGroup: {fileID: 5867031925392859299}
   healthPerBar: 100
-  HealthBarOffsetZ: 100
-  HealthBarOffsetYPercent: 10
   offset: {x: -1, y: 7, z: 0}
 --- !u!114 &2480079346174020437
 MonoBehaviour:

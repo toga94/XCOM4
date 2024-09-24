@@ -52,11 +52,15 @@ public class PlayerListUI : Singleton<PlayerListUI>
         {
             GameObject playerEntry = playerUIPool.Spawn(playerListContainer);
             Text playerNameText = playerEntry.GetComponentInChildren<Text>();
-            int maxhpslidervalue = 150;
-            Image foregroundHpSlider;
+            Image foregroundHpSlider = null;
             foregroundHpSlider = playerEntry.transform.GetChild(0).GetComponentInChildren<Image>();
+            Vector2 deltasize;
+            deltasize = foregroundHpSlider.GetComponent<RectTransform>().sizeDelta;
+            int maxhpslidervalue = Mathf.FloorToInt(deltasize.x);
+    
+         
 
-            foregroundHpSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(maxhpslidervalue * playerData.playerHealth / 100, 23f);
+            foregroundHpSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(maxhpslidervalue * playerData.playerHealth / 100, deltasize.y);
 
             playerEntryMaterialInstance = Instantiate( 
                 playerEntry.GetComponent<Image>().material);
@@ -78,7 +82,7 @@ public class PlayerListUI : Singleton<PlayerListUI>
             playerEntry.GetComponent<Image>().material = playerEntryMaterialInstance;
             if (playerData.playerHealth > 0)
             {
-                playerNameText.text = $"{playerData.PlayerName}  {playerData.playerHealth}";
+                playerNameText.text = $"{playerData.PlayerName}";
                 if (CurBattlePlayerAI.PlayerName != playerData.PlayerName)
                 {
                     playerNameText.color = Color.white;
@@ -89,7 +93,7 @@ public class PlayerListUI : Singleton<PlayerListUI>
             }
             else
             {
-                playerNameText.text = StrikeThrough($"{playerData.PlayerName} - {playerData.playerHealth} HP");
+                playerNameText.text = StrikeThrough($"{playerData.PlayerName} is Died");
                 playerNameText.color = Color.grey;
             }
         }
