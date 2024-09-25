@@ -36,7 +36,7 @@ public class LevelButtonUI : MonoBehaviour
         int level = EconomyManager.Level;
         int xpCost = EconomyManager.xpCost;
         costText.text = xpCost.ToString();
-        levelText.text = $"Level: {level.ToString()}";
+        levelText.text = $"<size=24>Level:</size> <size=32>{level.ToString()}</size>";
 
         minMaxExp.text = $"{EconomyManager.Exp}/{EconomyManager.GetExperienceNeededForNextLevel()} ";
         fillRatio = (float)(EconomyManager.Exp * 100  / EconomyManager.GetExperienceNeededForNextLevel()) / 100 ;
