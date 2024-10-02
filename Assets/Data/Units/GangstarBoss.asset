@@ -17,11 +17,11 @@ MonoBehaviour:
   health: 325
   healthRegen: 1
   defence: 5
-  attackPower: 3
+  attackPower: 1
   speed: 5
   mana: 50
   manaRegen: 5
-  attackRange: 5
+  attackRange: 25
   traits: 0100000007000000
   Prefab: {fileID: 3458525367960157096, guid: 96d50f155db58a346a726ba67d233bc9, type: 3}
   rareOptions: 0

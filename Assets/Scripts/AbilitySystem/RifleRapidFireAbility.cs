@@ -3,16 +3,19 @@ using UnityEngine;
 using DG.Tweening;
 using Lean.Pool;
 
-public class ProjectileBallAbility : Ability
+public class RifleRapidFireAbility : Ability
 {
     private Animator animator;
-    public string AnimationName = "fireball";
+    public string AnimationName = "rifleShoot";
     [SerializeField] private GameObject projectilePrefab;
     private LeanGameObjectPool projectilePool;
 
     private GameObject backupTarget;
     private float backupAddDamage;
     [SerializeField] private bool CustomAnimation;
+    private int numberOfProjectiles = 20; // Number of projectiles per shot
+    private float fireRate = 1f / 20f; // Fire rate (20 projectiles per second)
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -23,7 +26,7 @@ public class ProjectileBallAbility : Ability
         if (target == null) return;
 
         PoolingSystem(projectilePrefab.name);
-        StartCoroutine(FireballCast(target, additionalDamage));
+        StartCoroutine(RifleRapidFire(target, additionalDamage));
     }
 
     private void PoolingSystem(string className)
@@ -46,44 +49,63 @@ public class ProjectileBallAbility : Ability
                 childObject.transform.parent = poolObj.transform;
                 projectilePool = childObject.AddComponent<LeanGameObjectPool>();
                 projectilePool.Prefab = projectilePrefab;
-                projectilePool.Capacity = 10;
+                projectilePool.Capacity = 20;
                 projectilePool.Recycle = true;
             }
         }
     }
 
-    private IEnumerator FireballCast(GameObject target, float additionalDamage)
+    private IEnumerator RifleRapidFire(GameObject target, float additionalDamage)
     {
         backupTarget = target;
         backupAddDamage = additionalDamage;
         Vector3 targetPos = backupTarget.transform.position;
+
         if (!CustomAnimation) animator.Play(base.abilityType.ToString());
-        else {
-            animator.Play(base.AbilityName);
+        else animator.Play(base.AbilityName);
+
+        for (int i = 0; i < numberOfProjectiles; i++)
+        {
+            // Spawn each projectile
+            FireProjectile(targetPos);
+
+            // Wait for the next shot
+            yield return new WaitForSeconds(fireRate);
         }
+    }
+    private void FireProjectile(Vector3 targetPos)
+    {
         float height = 3;
         Vector3 direction = (targetPos - transform.position).normalized;
+
+        // Add spread by applying a small random angle to the direction
+        float spreadAngle = 10f; // Adjust this to control the spread (in degrees)
+        direction = Quaternion.Euler(
+            Random.Range(-spreadAngle, spreadAngle),
+            Random.Range(-spreadAngle, spreadAngle),
+            0
+        ) * direction;
+
         Quaternion toTargetQuaternion = Quaternion.LookRotation(direction, Vector3.up);
+
         GameObject projectile = projectilePool.Spawn(transform.position + Vector3.up * height, toTargetQuaternion);
         float speed = 10f;
         float distance = Vector3.Distance(projectile.transform.position, targetPos);
         float duration = distance / speed;
 
-        yield return projectile.transform.DOMove(targetPos, duration).SetEase(Ease.Linear).WaitForCompletion();
-
-        projectilePool.Despawn(projectile);
-
-        float damage = AbilityPower + backupAddDamage;
-        int totalDamage = Mathf.FloorToInt(UnityEngine.Random.Range(damage, damage * 2f));
-
-        bool isCritical = totalDamage > damage * 1.6f;
-
-        if (backupTarget != null && backupTarget.TryGetComponent(out IDamageable damageable))
+        projectile.transform.DOMove(targetPos, duration).SetEase(Ease.Linear).OnComplete(() =>
         {
-            damageable.TakeDamage(totalDamage, isCritical);
-        }
+            projectilePool.Despawn(projectile);
 
+            float damage = AbilityPower + backupAddDamage;
+            float totalDamage = Random.Range(damage, damage * 2f) / 10;
 
+            bool isCritical = totalDamage > damage * 1.6f;
 
+            if (backupTarget != null && backupTarget.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(totalDamage, isCritical);
+            }
+        });
     }
 }

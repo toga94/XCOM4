@@ -2171,6 +2171,7 @@ MonoBehaviour:
   isOwn: 0
   UnitPosition: {x: 0, y: 0, z: 0}
   traits: 
+  traitEffects: []
   charState: 0
   unitObject: {fileID: 11400000, guid: 0e4c23bf3a50d5649aeab529cadd3f8d, type: 2}
 --- !u!114 &-1737890715897108833
@@ -2222,6 +2223,7 @@ MonoBehaviour:
   ability: {fileID: 4092357898597445698}
   superAbility: {fileID: -1888885080248365643}
   enemyOnGrid: []
+  mmf_player: {fileID: 0}
   enemies: []
 --- !u!114 &4092357898597445698
 MonoBehaviour:
@@ -3348,7 +3350,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 89.963
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64742090443588196, guid: 0b9d00be92a5f7c48a303a09572d5ab5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b9d00be92a5f7c48a303a09572d5ab5, type: 3}
 --- !u!4 &1670350828178238413 stripped
 Transform:
